@@ -1,0 +1,6 @@
+{
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "editor.formatOnSave": true,
+    "javascript.format.enable": false,
+    "typescript.preferences.importModuleSpecifier": "relative"
+}

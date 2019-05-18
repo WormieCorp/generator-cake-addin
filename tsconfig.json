@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "rootDir": "./src",
+        "target": "es2018",
+        "module": "commonjs",
+        "outDir": "generators",
+        "incremental": true,
+        "removeComments": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "moduleResolution": "node",
+        "esModuleInterop": false,
+        "resolveJsonModule": true
+    },
+    "include": ["src/**/*.ts", "types/**/*.d.ts"]
+}
