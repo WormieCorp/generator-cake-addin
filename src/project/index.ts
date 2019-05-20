@@ -63,6 +63,34 @@ export default class ProjectGenerator extends BaseGenerator {
       ),
       this.allValues
     );
+    this.fs.copyTpl(
+      this.templatePath("Cake.Template.Tests/TemplateAliasesFixture.cs"),
+      this.destinationPath(
+        `${testProjectDirectory}/${projectName}AliasesFixture.cs`
+      ),
+      this.allValues
+    );
+    this.fs.copyTpl(
+      this.templatePath("Cake.Template.Tests/TemplateAliasesTests.cs"),
+      this.destinationPath(
+        `${testProjectDirectory}/${projectName}AliasesTests.cs`
+      ),
+      this.allValues
+    );
+    this.fs.copyTpl(
+      this.templatePath("Cake.Template.Tests/TemplateRunnerFixture.cs"),
+      this.destinationPath(
+        `${testProjectDirectory}/${projectName}RunnerFixture.cs`
+      ),
+      this.allValues
+    );
+    this.fs.copyTpl(
+      this.templatePath("Cake.Template.Tests/TemplateRunnerTests.cs"),
+      this.destinationPath(
+        `${testProjectDirectory}/${projectName}RunnerTests.cs`
+      ),
+      this.allValues
+    );
   }
 
   public async install() {
@@ -77,11 +105,7 @@ export default class ProjectGenerator extends BaseGenerator {
           )} to build your new addin project!`
         )
       );
-      await this.spawnCommand("dotnet", [
-        "build",
-        "--no-restore",
-        solutionPath,
-      ]);
+      await this.spawnCommand("dotnet", ["build", solutionPath]);
     } else {
       this.log(
         yosay(
