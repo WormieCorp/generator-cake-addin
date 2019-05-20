@@ -100,7 +100,8 @@ export abstract class GeneratorPrompts {
     },
     {
       description: "The cake addin description",
-      inputType: InputType.Text,
+      filter: (answer) => answer.trim(),
+      inputType: InputType.Editor,
       isCommon: true,
       message: "What is the description for the Cake addin? ",
       name: "description",
