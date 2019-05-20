@@ -24,10 +24,21 @@ import yosay = require("yosay");
 import BaseGenerator from "../utils/base-generator";
 import { PathUtils } from "../utils/file-utils";
 
+/**
+ * Generator for creating the basic Cake addin project structure.
+ */
 export default class ProjectGenerator extends BaseGenerator {
+  /**
+   * The function responsible for prompting the user for questions.
+   */
   public prompting() {
     return this.callPrompts();
   }
+
+  /**
+   * The function responsible for writing/copying files/templates to
+   * the user specified directory.
+   */
   public writing() {
     const sourceDir = this.getValue<string>("sourceDir", "./src");
     if (!sourceDir) {
@@ -111,6 +122,10 @@ export default class ProjectGenerator extends BaseGenerator {
     );
   }
 
+  /**
+   * Function responsible for running the dotnet tool for either
+   * restoring or building the project.
+   */
   public async install() {
     const solutionPath = this.destinationPath(
       `${this.getValue("sourceDir")}/Cake.${this.getValue("projectName")}.sln`
@@ -136,6 +151,10 @@ export default class ProjectGenerator extends BaseGenerator {
     }
   }
 
+  /**
+   * Function that will register the necessary questions to ask the user.
+   * As well as setting the current description of the generator.
+   */
   protected _setup() {
     this.description =
       "Generator for creating a basic cake addin project structure.";

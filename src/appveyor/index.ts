@@ -19,11 +19,21 @@
 import BaseGenerator from "../utils/base-generator";
 import { PathUtils } from "../utils/file-utils";
 
-export = class AppveyorGenerator extends BaseGenerator {
+/**
+ * Generator for creating a simple appveyor.yml file.
+ */
+export default class AppveyorGenerator extends BaseGenerator {
+  /**
+   * The function responsible for prompting the user for questions.
+   */
   public async prompting() {
     await this.callPrompts();
   }
 
+  /**
+   * The function responsible for writing/copying files/templates to
+   * the user specified directory.
+   */
   public writing() {
     this.log("Enable appveyor Linux Build: " + this.getValue("enableLinux"));
     this.fs.copyTpl(
@@ -33,7 +43,14 @@ export = class AppveyorGenerator extends BaseGenerator {
     );
   }
 
+  /**
+   * Function that will register the necessary questions to ask the user.
+   * As well as setting the current description of the generator.
+   */
   protected _setup(): void {
+    this.description =
+      "Simple generator for creating a appveyor.yml file to be used with Cake addins";
+
     this.addPromptAndOption({
       default: "recipe.cake",
       description: "The cake build script to use as a cache dependency",
@@ -52,4 +69,4 @@ export = class AppveyorGenerator extends BaseGenerator {
       type: "confirm",
     });
   }
-};
+}

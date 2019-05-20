@@ -16,7 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/** Simple path utility. */
 export abstract class PathUtils {
+  /**
+   * A simple normalizer that will replace Windows specific directory separators
+   * Can optionally make sure that either a prefix, or a suffix is used.
+   */
   public static normalizePath(
     path: string,
     prefix: string | null = null,
