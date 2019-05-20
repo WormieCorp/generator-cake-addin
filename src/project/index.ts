@@ -39,6 +39,11 @@ export default class ProjectGenerator extends BaseGenerator {
       this.allValues
     );
     this.fs.copyTpl(
+      this.templatePath("Cake.Template/TemplateAliases.cs"),
+      this.destinationPath(`${mainProjectDirectory}/${projectName}Aliases.cs`),
+      this.allValues
+    );
+    this.fs.copyTpl(
       this.templatePath("Cake.Template/TemplateRunner.cs"),
       this.destinationPath(`${mainProjectDirectory}/${projectName}Runner.cs`),
       this.allValues
