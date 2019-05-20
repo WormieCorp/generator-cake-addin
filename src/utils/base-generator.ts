@@ -39,7 +39,7 @@ export default abstract class BaseGenerator extends Generator {
   }
 
   protected async callPrompts() {
-    this._answers = await this.prompt(this._prompts);
+    this._answers = { ...(await this.prompt(this._prompts)), ...this._answers };
   }
 
   protected abstract _setup(): void;

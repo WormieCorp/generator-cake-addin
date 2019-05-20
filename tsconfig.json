@@ -5,7 +5,6 @@
         "module": "commonjs",
         "outDir": "generators",
         "incremental": true,
-        "removeComments": true,
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
