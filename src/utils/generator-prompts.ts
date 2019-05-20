@@ -9,6 +9,18 @@ const validators = {
     answer.length > 0 ? true : `A ${name} is required`,
 };
 
+// tslint:disable: object-literal-sort-keys
+const spdxToLicenseName: { [key: string]: string } = {
+  // "Apache-2.0": "Apache License 2.0",
+  MIT: "MIT License",
+  /*"AGPL-3.0-or-later": "GNU Affero General Public License v3.0 or later",
+  "GPL-3.0-or-later": "GNU General Public License v3.0 or later",
+  "LGPL-3.0-or-later": "GNU Lesser General Public License v3.0 or later",
+  "MPL-2.0": "Mozilla Public License 2.0",
+  Unlicense: "The Unlicense",*/
+};
+// tslint:enable: object-literal-sort-keys
+
 export abstract class GeneratorPrompts {
   public static get commonPrompts(): Question[] {
     const result = [];
@@ -94,22 +106,15 @@ export abstract class GeneratorPrompts {
       name: "description",
     },
     {
-      choices: ["MIT"],
+      choices: Object.entries(spdxToLicenseName).map((value) => {
+        return { name: value[1], value: value[0] };
+      }),
       default: "MIT",
       description: "The cake addin license.",
       inputType: InputType.Selection,
       isCommon: true,
       message: "What license will the Cake addin use? ",
       name: "licenseType",
-      transformer: (input) => {
-        switch (input) {
-          case "MIT":
-            return "MIT License";
-
-          default:
-            return input;
-        }
-      },
     },
     {
       default: "recipe.cake",

@@ -1,3 +1,4 @@
+import { ChoiceType } from "inquirer";
 import { Answers } from "yeoman-generator";
 
 /** Represents 1 single generator prompt with options */
@@ -9,7 +10,7 @@ export const enum InputType {
 }
 
 export interface IGeneratorPrompt {
-  choices?: string[];
+  choices?: string[] | ChoiceType[];
   default?: any | ((answers: Answers) => any);
   description?: string;
   filter?: (input: string) => string;
