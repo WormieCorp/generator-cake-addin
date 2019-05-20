@@ -19,15 +19,19 @@
 import chalk from "chalk";
 import { join } from "path";
 import * as uuid from "uuid/v4";
-import { Answers } from "yeoman-generator";
 import yosay = require("yosay");
 import BaseGenerator from "../utils/base-generator";
 import { PathUtils } from "../utils/file-utils";
+import { GeneratorPrompts } from "../utils/generator-prompts";
 
 /**
  * Generator for creating the basic Cake addin project structure.
  */
-export default class ProjectGenerator extends BaseGenerator {
+export = class ProjectGenerator extends BaseGenerator {
+  constructor(args: string | string[], opts: {}) {
+    super(args, opts);
+  }
+
   /**
    * The function responsible for prompting the user for questions.
    */
@@ -175,67 +179,29 @@ export default class ProjectGenerator extends BaseGenerator {
       optionType: String,
       store: true,
     });
-    this.addPromptAndOption({
-      default: this.appname,
-      description:
-        "The name of the C# project that will be created (without the Cake. prefix)",
-      filter: (answer) => {
-        if (answer.startsWith("Cake.") || answer.startsWith("Cake ")) {
-          return answer.substr("Cake.".length);
-        } else {
-          return answer;
-        }
-      },
-      message: "What is the name of the Cake addin (without a Cake. prefix)? ",
-      name: "projectName",
-      optionType: String,
-      store: true,
-    });
-    this.addPromptAndOption({
-      default: this.user.git.name(),
-      description: "The repository owner/organization that will host the addin",
-      message: "What is the repository owner/organization for this addin? ",
-      name: "repositoryOwner",
-      optionType: String,
-      store: true,
-      validate: (answer) =>
-        answer.length > 0 ? true : "A repository owner/author is required",
-    });
-    this.addPromptAndOption({
-      default: (answers: Answers) => answers.repositoryOwner,
-      description: "The name of the Cake addin author",
-      message: "What is the name of the main author of this Cake addin? ",
-      name: "author",
-      optionType: String,
-      store: true,
-      validate: (answer) => (answer.length > 0 ? true : "A author is required"),
-    });
-    this.addPromptAndOption({
-      default: "A cake addin for...",
-      description: "The description of this Cake Addin",
-      message: "What is the description of this Cake addin? ",
-      name: "description",
-      optionType: String,
-      store: true,
-    });
+    this.option("projectName", GeneratorPrompts.getOption("projectName"));
+    this.addPrompt(GeneratorPrompts.getPrompt("projectName"), true);
+    this.option(
+      "repositoryOwner",
+      GeneratorPrompts.getOption("repositoryOwner")
+    );
+    this.addPrompt(
+      GeneratorPrompts.getPrompt("repositoryOwner", this.user.git.name()),
+      true
+    );
+    this.option("author", GeneratorPrompts.getOption("author"));
+    this.addPrompt(GeneratorPrompts.getPrompt("author"), true);
 
-    this.addPrompt({
-      choices: ["MIT"],
-      default: "MIT",
-      message: "What license will this cake addin be using? ",
-      name: "licenseType",
-      store: true,
-      type: "list",
-    });
+    this.option("description", GeneratorPrompts.getOption("description"));
+    this.addPrompt(GeneratorPrompts.getPrompt("description"), true);
 
-    this.addPrompt({
-      default: true,
-      message: "Do you want to enable wyam for generating documentation? ",
-      name: "enableWyam",
-      type: "confirm",
-    });
+    this.option("licenseType", GeneratorPrompts.getOption("licenseType"));
+    this.addPrompt(GeneratorPrompts.getPrompt("licenseType"), true);
+
+    this.option("enableWyam", GeneratorPrompts.getOption("enableWyam"));
+    this.addPrompt(GeneratorPrompts.getPrompt("enableWyam"), true);
 
     this.setValue("mainProjectGuid", uuid().toUpperCase());
     this.setValue("testProjectGuid", uuid().toUpperCase());
   }
-}
+};

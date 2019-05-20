@@ -16,7 +16,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import inquirer = require("inquirer");
 import * as Generator from "yeoman-generator";
 
 /** Describes the acceptable values that can be used when creating a prompt and an option. */
@@ -94,43 +93,22 @@ export default abstract class BaseGenerator extends Generator {
       type: question.optionType,
     });
 
-    if (question.when !== undefined) {
-      const existingWhenStatement = question.when;
-      question.when = this.createWhenStatement(existingWhenStatement, name);
-    } else {
-      question.when = () => !this.hasKey(name);
-    }
-
-    this.addPrompt(question);
+    this.addPrompt(question, true);
   }
 
   /** Registers a single prompt that should be asked of the user */
-  protected addPrompt(question: Generator.Question) {
-    this._prompts.push(question);
-  }
-
-  private createWhenStatement(
-    prevWhenStatement:
-      | boolean
-      | ((answers: inquirer.Answers) => boolean)
-      | ((answers: inquirer.Answers) => Promise<boolean>),
-    optionKey: string
+  protected addPrompt(
+    question: Generator.Question,
+    skipIfOption: boolean = false
   ) {
-    if (typeof prevWhenStatement === typeof "boolean") {
-      return () => prevWhenStatement && !this.hasKey(optionKey);
-    } else if (typeof prevWhenStatement === "function") {
-      return (answers: inquirer.Answers) =>
-        prevWhenStatement(answers) && !this.hasKey(optionKey);
+    if (!question.name) {
+      return;
     }
 
-    return prevWhenStatement;
-  }
-
-  private hasKey(key: string, table?: {}): boolean {
-    if (table) {
-      return key in table;
-    } else {
-      return key in this.options;
+    if (skipIfOption && question.name in this.options) {
+      return;
     }
+
+    this._prompts.push(question);
   }
 }

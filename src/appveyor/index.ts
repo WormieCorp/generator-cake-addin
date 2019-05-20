@@ -17,17 +17,19 @@
  */
 
 import BaseGenerator from "../utils/base-generator";
-import { PathUtils } from "../utils/file-utils";
+import { GeneratorPrompts } from "../utils/generator-prompts";
 
 /**
  * Generator for creating a simple appveyor.yml file.
  */
-export default class AppveyorGenerator extends BaseGenerator {
+export = class AppveyorGenerator extends BaseGenerator {
   /**
    * The function responsible for prompting the user for questions.
    */
-  public async prompting() {
-    await this.callPrompts();
+  public prompting() {
+    this.addPrompt(GeneratorPrompts.getPrompt("scriptName"), true);
+    this.addPrompt(GeneratorPrompts.getPrompt("enableLinux"));
+    return this.callPrompts();
   }
 
   /**
@@ -35,7 +37,6 @@ export default class AppveyorGenerator extends BaseGenerator {
    * the user specified directory.
    */
   public writing() {
-    this.log("Enable appveyor Linux Build: " + this.getValue("enableLinux"));
     this.fs.copyTpl(
       this.templatePath("appveyor.yml.tmpl"),
       this.destinationPath(".appveyor.yml"),
@@ -51,22 +52,6 @@ export default class AppveyorGenerator extends BaseGenerator {
     this.description =
       "Simple generator for creating a appveyor.yml file to be used with Cake addins";
 
-    this.addPromptAndOption({
-      default: "recipe.cake",
-      description: "The cake build script to use as a cache dependency",
-      filter: (answer: string) =>
-        PathUtils.normalizePath(answer, null, ".cake"),
-      message:
-        "What is the name of the cake build script to use as a build dependency? ",
-      name: "scriptName",
-      optionType: String,
-      store: true,
-    });
-    this.addPrompt({
-      default: false,
-      message: "Do you want linux builds enabled on appveyor? ",
-      name: "enableLinux",
-      type: "confirm",
-    });
+    this.option("scriptName", GeneratorPrompts.getOption("scriptName"));
   }
-}
+};

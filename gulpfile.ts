@@ -61,9 +61,11 @@ function compileTypescript() {
   const tsResult = src("src/**/*.ts")
     .pipe(init())
     .pipe(tsProject());
-  return merge([tsResult.dts, tsResult.js.pipe(write("."))]).pipe(
-    dest("generators")
-  );
+  return merge([
+    src("src/**/*.d.ts"),
+    tsResult.dts,
+    tsResult.js.pipe(write(".")),
+  ]).pipe(dest("generators"));
 }
 
 function watchTask() {
