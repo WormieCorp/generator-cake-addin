@@ -66,24 +66,44 @@ export default class ProjectGenerator extends BaseGenerator {
   }
 
   public async install() {
-    this.log(
-      yosay(
-        `Running ${chalk.yellow(
-          "dotnet restore"
-        )} to restore ${chalk.magentaBright.bold(".NET Core")} packages!`
-      )
+    const solutionPath = this.destinationPath(
+      `${this.getValue("sourceDir")}/Cake.${this.getValue("projectName")}.sln`
     );
-    await this.spawnCommand("dotnet", [
-      "restore",
-      this.destinationPath(
-        `${this.getValue("sourceDir")}/Cake.${this.getValue("projectName")}.sln`
-      ),
-    ]);
+    if (this.getValue<boolean>("build")) {
+      this.log(
+        yosay(
+          `Running ${chalk.yellow(
+            "dotnet build"
+          )} to build your new addin project!`
+        )
+      );
+      await this.spawnCommand("dotnet", [
+        "build",
+        "--no-restore",
+        solutionPath,
+      ]);
+    } else {
+      this.log(
+        yosay(
+          `Running ${chalk.yellow(
+            "dotnet restore"
+          )} to restore ${chalk.magentaBright.bold(".NET Core")} packages!`
+        )
+      );
+      await this.spawnCommand("dotnet", ["restore", solutionPath]);
+    }
   }
 
   protected _setup() {
     this.description =
       "Generator for creating a basic cake addin project structure.";
+
+    this.option("build", {
+      alias: "b",
+      default: false,
+      description: "Build the addin project after creation",
+      type: Boolean,
+    });
 
     this.addPromptAndOption({
       default: "./src",

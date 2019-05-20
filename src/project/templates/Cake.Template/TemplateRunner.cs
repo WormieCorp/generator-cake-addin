@@ -1,11 +1,11 @@
-using System;
-using System.Collection.Generic;
-using Cake.Core;
-using Cake.Core.IO;
-using Cake.Core.Tooling;
-
 namespace Cake.<%= projectName %>
 {
+    using System;
+    using System.Collections.Generic;
+    using Cake.Core;
+    using Cake.Core.IO;
+    using Cake.Core.Tooling;
+
     public sealed class <%= projectName %>Runner : Tool<<%= projectName %>Settings>
     {
         public <%= projectName %>Runner(

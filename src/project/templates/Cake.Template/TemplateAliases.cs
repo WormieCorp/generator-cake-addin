@@ -1,20 +1,20 @@
-using Cake.Core;
-using Cake.Core.Annotations;
-using Cake.Core.IO;
-
 namespace Cake.<%= projectName %>
 {
+    using Cake.Core;
+    using Cake.Core.Annotations;
+    using Cake.Core.IO;
+
     [CakeAliasCategory("<%= projectName %>")]
     public static class <%= projectName %>Aliases
     {
         [CakeMethodAlias]
-        public static void <%= projectName %> (this ICakeContext context)
+        public static void <%= projectName %>(this ICakeContext context)
         {
             <%= projectName %>(context, new <%= projectName %>Settings());
         }
 
         [CakeMethodAlias]
-        public static void <%= projectName %> (this ICakeContext context, <%= projectName %>Settings settings)
+        public static void <%= projectName %>(this ICakeContext context, <%= projectName %>Settings settings)
         {
             var runner = new <%= projectName %>Runner(
                 context.FileSystem,
