@@ -29,14 +29,22 @@ export default class ProjectGenerator extends BaseGenerator {
       );
     }
 
+    const mainProjectDirectory = `${destinationDir}/Cake.${projectName}`;
+
     this.fs.copyTpl(
       this.templatePath("Cake.Template/Cake.Template.csproj.tmpl"),
       this.destinationPath(
-        `${destinationDir}/Cake.${projectName}/Cake.${projectName}.csproj`
+        `${mainProjectDirectory}/Cake.${projectName}.csproj`
       ),
       this.allValues
     );
+    this.fs.copyTpl(
+      this.templatePath("Cake.Template/TemplateRunner.cs"),
+      this.destinationPath(`${mainProjectDirectory}/${projectName}Runner.cs`),
+      this.allValues
+    );
   }
+
   protected _setup() {
     this.addPromptAndOption({
       default: "./src",
