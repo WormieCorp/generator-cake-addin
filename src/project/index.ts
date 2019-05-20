@@ -1,6 +1,8 @@
+import chalk from "chalk";
 import { join } from "path";
 import * as uuid from "uuid/v4";
 import { Answers } from "yeoman-generator";
+import yosay = require("yosay");
 import BaseGenerator from "../utils/base-generator";
 import { PathUtils } from "../utils/file-utils";
 
@@ -19,6 +21,8 @@ export default class ProjectGenerator extends BaseGenerator {
       throw Error("Unable to get the name of the project");
     }
     const solutionPath = join(destinationDir, `Cake.${projectName}.sln`);
+    const mainProjectDirectory = `${destinationDir}/Cake.${projectName}`;
+    const testProjectDirectory = `${destinationDir}/Cake.${projectName}.Tests`;
     if (this.fs.exists(solutionPath)) {
       this.log("Solution file already exist, skipping creation of sln file");
     } else {
@@ -28,8 +32,6 @@ export default class ProjectGenerator extends BaseGenerator {
         this.allValues
       );
     }
-
-    const mainProjectDirectory = `${destinationDir}/Cake.${projectName}`;
 
     this.fs.copyTpl(
       this.templatePath("Cake.Template/Cake.Template.csproj.tmpl"),
@@ -53,9 +55,36 @@ export default class ProjectGenerator extends BaseGenerator {
       this.destinationPath(`${mainProjectDirectory}/${projectName}Settings.cs`),
       this.allValues
     );
+
+    this.fs.copyTpl(
+      this.templatePath("Cake.Template.Tests/Cake.Template.Tests.csproj.tmpl"),
+      this.destinationPath(
+        `${testProjectDirectory}/Cake.${projectName}.Tests.csproj`
+      ),
+      this.allValues
+    );
+  }
+
+  public async install() {
+    this.log(
+      yosay(
+        `Running ${chalk.yellow(
+          "dotnet restore"
+        )} to restore ${chalk.magentaBright.bold(".NET Core")} packages!`
+      )
+    );
+    await this.spawnCommand("dotnet", [
+      "restore",
+      this.destinationPath(
+        `${this.getValue("sourceDir")}/Cake.${this.getValue("projectName")}.sln`
+      ),
+    ]);
   }
 
   protected _setup() {
+    this.description =
+      "Generator for creating a basic cake addin project structure.";
+
     this.addPromptAndOption({
       default: "./src",
       description: "The path where the project source files will be located",
