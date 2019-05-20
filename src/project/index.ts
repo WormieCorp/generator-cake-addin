@@ -16,10 +16,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import chalk from "chalk";
 import { join } from "path";
 import * as uuid from "uuid/v4";
-import yosay = require("yosay");
 import BaseGenerator from "../utils/base-generator";
 import { PathUtils } from "../utils/file-utils";
 import { GeneratorPrompts } from "../utils/generator-prompts";
@@ -130,28 +128,15 @@ export = class ProjectGenerator extends BaseGenerator {
    * Function responsible for running the dotnet tool for either
    * restoring or building the project.
    */
-  public async install() {
+  public install() {
     const solutionPath = this.destinationPath(
       `${this.getValue("sourceDir")}/Cake.${this.getValue("projectName")}.sln`
     );
+    const done = this.async();
     if (this.getValue<boolean>("build")) {
-      this.log(
-        yosay(
-          `Running ${chalk.yellow(
-            "dotnet build"
-          )} to build your new addin project!`
-        )
-      );
-      await this.spawnCommand("dotnet", ["build", solutionPath]);
+      this.spawnCommand("dotnet", ["build", solutionPath]).on("close", done);
     } else {
-      this.log(
-        yosay(
-          `Running ${chalk.yellow(
-            "dotnet restore"
-          )} to restore ${chalk.magentaBright.bold(".NET Core")} packages!`
-        )
-      );
-      await this.spawnCommand("dotnet", ["restore", solutionPath]);
+      this.spawnCommand("dotnet", ["restore", solutionPath]).on("close", done);
     }
   }
 
