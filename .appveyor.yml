@@ -17,8 +17,7 @@ environment:
 stack: node %nodejs_version%
 
 install:
-  - ps: Install-Product $env:nodejs_version
-  - cmd: dotnet tool install --global codecov.tool
+  - dotnet tool install --global codecov.tool
   - yarn install
 
 build_script:
@@ -28,9 +27,8 @@ test_script:
   - yarn test --coverage --ci
 
 on_success:
-  - sh: bash <(curl -s https://codecov.io/bash) -e nodejs_version
-  - cmd: codecov --env nodejs_version --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
+  - codecov --env nodejs_version --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
   - yarn pack
 
 cache:
-  - "node_modules -> package.json,yarn.lock"
+  - "node_modules -> package.json,yarn.lock,.yarnclean"
