@@ -59,7 +59,11 @@ export = class MainGenerator extends BaseGenerator {
         prompt.default = this.user.git.name();
       }
 
-      this.option(prompt.name, GeneratorPrompts.getOption(prompt.name));
+      const option = GeneratorPrompts.getOption(prompt.name);
+
+      if (option.type !== Boolean) {
+        this.option(prompt.name, GeneratorPrompts.getOption(prompt.name));
+      }
       this.addPrompt(prompt, true);
     }
   }
