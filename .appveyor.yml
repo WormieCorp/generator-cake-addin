@@ -31,4 +31,4 @@ on_success:
   - yarn pack
 
 cache:
-  - "node_modules -> package.json,yarn.lock,.yarnclean"
+  - "node_modules -> package.json,yarn.lock,"
