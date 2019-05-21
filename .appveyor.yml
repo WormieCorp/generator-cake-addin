@@ -5,19 +5,20 @@ skip_branch_with_pr: true
 
 image:
   - Ubuntu
-  - Visual Studio 2015
+#  - Visual Studio 2015
 
 environment:
   APPVEYOR_YML_DISABLE_PS_LINUX: true
   matrix:
-    - nodejs_version: "8"
+#    - nodejs_version: "8"
     - nodejs_version: "10"
-    - nodejs_version: "12"
+#    - nodejs_version: "12"
 
 stack: node %nodejs_version%
 
 install:
   - ps: Install-Product $env:nodejs_version
+  - cmd: dotnet tool install --global codecov.tool
   - yarn install
 
 build_script:
@@ -25,7 +26,8 @@ build_script:
 
 test_script:
   - yarn test --coverage
-  - bash <(curl -s https://codecov.io/bash) -e nodejs_version
+  - sh: bash <(curl -s https://codecov.io/bash) -e nodejs_version
+  - cmd: codecov --env nodejs_version --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
 
 cache:
   - "node_modules -> package.json,yarn.lock"
