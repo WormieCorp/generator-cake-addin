@@ -46,6 +46,8 @@
 
 *.eps      binary
 
+*.ps1      text    eol=crlf
+
 #
 # Exclude files from exporting
 #
