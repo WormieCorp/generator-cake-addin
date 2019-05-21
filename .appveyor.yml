@@ -26,8 +26,11 @@ build_script:
 
 test_script:
   - yarn test --coverage
+
+on_success:
   - sh: bash <(curl -s https://codecov.io/bash) -e nodejs_version
   - cmd: codecov --env nodejs_version --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
+  - yarn pack
 
 cache:
   - "node_modules -> package.json,yarn.lock"
