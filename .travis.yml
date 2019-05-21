@@ -1,15 +1,15 @@
 os:
-    - linux
-    - osx
+  - linux
+  - osx
 
 language: node_js
 node_js:
-    - v12
-    - v10
-    - v8
+  - v12
+  - v10
+  - v8
 
 script:
-    - yarn build
-    - yarn test --coverage && bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
+  - yarn build
+  - yarn test --coverage && bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
 
 cache: yarn
