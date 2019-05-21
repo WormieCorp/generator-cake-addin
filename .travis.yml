@@ -1,7 +1,6 @@
 os:
     - linux
     - osx
-    - windows
 
 language: node_js
 node_js:
@@ -11,6 +10,6 @@ node_js:
 
 script:
     - yarn build
-    - yarn test --coverage && bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION,TRAVIS_OS_NAME
+    - yarn test --coverage && bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
 
 cache: yarn
