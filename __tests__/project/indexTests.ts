@@ -149,4 +149,29 @@ describe("generator:project", () => {
       assert.fileContent("src/Cake.TestApp/Cake.TestApp.csproj", expected);
     });
   });
+
+  if (!skipDotnet) {
+    describe("with --build", () => {
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts({
+            author: "Kim Nordmo",
+            description: "Cake addin generation test",
+            enableWyam: true,
+            licenseType: "MIT",
+            projectName: "TestApp",
+            repositoryOwner: "AdmiringWorm",
+            sourceDir: "./src",
+          })
+          .withOptions({ build: true });
+      });
+
+      it("should have built project", () => {
+        assert.file(
+          "src/Cake.TestApp/bin/Debug/netstandard2.0/Cake.TestApp.dll"
+        );
+      });
+    });
+  }
 });
