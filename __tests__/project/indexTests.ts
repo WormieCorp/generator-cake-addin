@@ -4,6 +4,8 @@ import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
 
+jest.setTimeout(5 * 60 * 1000);
+
 const generatorDir = path.join(__dirname, "../../src/project");
 const expectedFiles = [
   "src/Cake.TestApp.sln",
@@ -60,7 +62,7 @@ function assertFileContent(filePath: string, expectedFile: string) {
   );
 }
 
-describe("generator:travis", () => {
+describe("generator:project", () => {
   describe("default", () => {
     beforeAll(() => {
       return helpers
