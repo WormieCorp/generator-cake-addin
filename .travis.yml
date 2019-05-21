@@ -1,14 +1,16 @@
+os:
+    - linux
+    - osx
+    - windows
+
 language: node_js
 node_js:
     - v12
     - v10
     - v8
 
-before_install:
-    - yarn global add codecov
-
 script:
     - yarn build
-    - yarn test --coverage && codecov -e TRAVIS_NODE_VERSION
+    - yarn test --coverage && bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION,TRAVIS_OS_NAME
 
 cache: yarn
