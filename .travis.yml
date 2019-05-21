@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+    - v12
+    - v10
+    - v8
+    - v6
+    - v4
+
+install:
+    - npm install -g gulp-cli
+
+script:
+    - gulp build
+
+cache: yarn
