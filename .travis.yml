@@ -3,8 +3,6 @@ node_js:
     - v12
     - v10
     - v8
-    - v6
-    - v4
 
 script:
     - yarn run build
