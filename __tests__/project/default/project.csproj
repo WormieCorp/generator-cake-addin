@@ -7,25 +7,21 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <StartYear><%= startYear %></StartYear>
+        <StartYear>2018</StartYear>
         <EndYear>$([System.DateTime]::Today.Year)</EndYear>
         <FullYear Condition="'$(StartYear)'=='$(EndYear)'">$(StartYear)</FullYear>
         <FullYear Condition="'$(StartYear)'!='$(EndYear)'">$(StartYear)-$(EndYear)</FullYear>
 
         <!-- Properties related to packaging -->
-        <Authors><%= author %></Authors>
-        <Copyright>Copyright © $(FullYear) — <%= author %></Copyright>
-        <Description><%= description %></Description>
+        <Authors>Kim Nordmo</Authors>
+        <Copyright>Copyright © $(FullYear) — Kim Nordmo</Copyright>
+        <Description>Cake addin generation test</Description>
         <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
-        <PackageLicenseExpression><%= licenseType %></PackageLicenseExpression>
-<% if (enableWyam) { -%>
-        <PackageProjectUrl>https://<%= repositoryOwner.toLowerCase() %>.github.io/Cake.<%= projectName %></PackageProjectUrl>
-<% } else { -%>
-        <PackageProjectUrl>https://github.com/<%= repositoryOwner %>/Cake.<%= projectName %></PackageProjectUrl>
-<% } -%>
-        <PackageTags>cake;addin;<%= projectName.toLowerCase() %></PackageTags>
-        <RepositoryUrl>https://github.com/<%= repositoryOwner %>/Cake.<%= projectName %>.git</RepositoryUrl>
-        <PackageReleaseNotes>https://github.com/<%= repositoryOwner %>/Cake.<%= projectName %>/releases/tag/$(Version)</PackageReleaseNotes>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/AdmiringWorm/Cake.TestApp</PackageProjectUrl>
+        <PackageTags>cake;addin;testapp</PackageTags>
+        <RepositoryUrl>https://github.com/AdmiringWorm/Cake.TestApp.git</RepositoryUrl>
+        <PackageReleaseNotes>https://github.com/AdmiringWorm/Cake.TestApp/releases/tag/$(Version)</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>

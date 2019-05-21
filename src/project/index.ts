@@ -188,8 +188,20 @@ export = class ProjectGenerator extends BaseGenerator {
       type: Boolean,
     });
 
+    const currentYear = new Date().getFullYear();
+
+    this.option("start-year", {
+      default: currentYear,
+      description: "The year for when the copyright starts",
+      type: Number,
+    });
+
     for (const name of optionNames) {
       this.option(name, GeneratorPrompts.getOption(name));
+    }
+
+    if (!this.options.startYear) {
+      this.options.startYear = currentYear;
     }
 
     this.setValue("mainProjectGuid", uuid().toUpperCase());

@@ -179,9 +179,6 @@ export abstract class GeneratorPrompts {
 
   private static _getOptionType(inputType: InputType | string) {
     switch (inputType) {
-      case InputType.Confirm:
-        return Boolean;
-
       case InputType.Number:
         return Number;
 

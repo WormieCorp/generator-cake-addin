@@ -1,4 +1,4 @@
-namespace Cake.<%= projectName %>
+namespace Cake.TestApp
 {
     using System;
     using System.Collections.Generic;
@@ -6,9 +6,9 @@ namespace Cake.<%= projectName %>
     using Cake.Core.IO;
     using Cake.Core.Tooling;
 
-    public sealed class <%= projectName %>Runner : Tool<<%= projectName %>Settings>
+    public sealed class TestAppRunner : Tool<TestAppSettings>
     {
-        public <%= projectName %>Runner(
+        public TestAppRunner(
             IFileSystem fileSystem,
             ICakeEnvironment environment,
             IProcessRunner processRunner,
@@ -17,7 +17,7 @@ namespace Cake.<%= projectName %>
         {
         }
 
-        public void Run(<%= projectName %>Settings settings)
+        public void Run(TestAppSettings settings)
         {
             if (settings == null)
             {
@@ -29,16 +29,16 @@ namespace Cake.<%= projectName %>
 
         protected override IEnumerable<string> GetToolExecutableNames()
         {
-            yield return "<%= projectName %>.exe";
-            yield return "<%= projectName %>";
+            yield return "TestApp.exe";
+            yield return "TestApp";
         }
 
         protected override string GetToolName()
         {
-            return "<%= projectName %>";
+            return "TestApp";
         }
 
-        private static ProcessArgumentBuilder GetArguments(<%= projectName %>Settings settings)
+        private static ProcessArgumentBuilder GetArguments(TestAppSettings settings)
         {
             var builder = new ProcessArgumentBuilder();
 
