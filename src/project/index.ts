@@ -152,6 +152,9 @@ export = class ProjectGenerator extends BaseGenerator {
    * restoring or building the project.
    */
   public install() {
+    if (this.options.skipDotnet) {
+      return;
+    }
     const solutionPath = this.destinationPath(
       `${this.getValue("sourceDir")}/Cake.${this.getValue("projectName")}.sln`
     );
@@ -194,6 +197,13 @@ export = class ProjectGenerator extends BaseGenerator {
       default: currentYear,
       description: "The year for when the copyright starts",
       type: Number,
+    });
+
+    this.option("skip-dotnet", {
+      default: false,
+      description:
+        "Skips any call to the dotnet utility after creating the project",
+      type: Boolean,
     });
 
     for (const name of optionNames) {

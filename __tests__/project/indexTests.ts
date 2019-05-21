@@ -1,3 +1,4 @@
+import { sync } from "command-exists";
 import { readFileSync } from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
@@ -16,6 +17,8 @@ const expectedFiles = [
   "src/Cake.TestApp.Tests/TestAppRunnerFixture.cs",
   "src/Cake.TestApp.Tests/TestAppRunnerTests.cs",
 ];
+
+const skipDotnet = !sync("dotnet");
 
 const expectedContentFiles = [
   {
@@ -71,7 +74,7 @@ describe("generator:travis", () => {
           repositoryOwner: "AdmiringWorm",
           sourceDir: "./src",
         })
-        .withOptions({ "start-year": "2018" });
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
 
     it("creates default project structure files", () => {
@@ -101,7 +104,7 @@ describe("generator:travis", () => {
           repositoryOwner: "AdmiringWorm",
           sourceDir: "./source",
         })
-        .withOptions({ "start-year": "2018" });
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
 
     it("creates default project structure files", () => {
@@ -120,15 +123,18 @@ describe("generator:travis", () => {
 
   describe("without year", () => {
     beforeAll(() => {
-      return helpers.run(generatorDir).withPrompts({
-        author: "Kim Nordmo",
-        description: "Cake addin generation test",
-        enableWyam: true,
-        licenseType: "MIT",
-        projectName: "TestApp",
-        repositoryOwner: "AdmiringWorm",
-        sourceDir: "./src",
-      });
+      return helpers
+        .run(generatorDir)
+        .withPrompts({
+          author: "Kim Nordmo",
+          description: "Cake addin generation test",
+          enableWyam: true,
+          licenseType: "MIT",
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+          sourceDir: "./src",
+        })
+        .withOptions({ "skip-dotnet": skipDotnet });
     });
 
     it("creates default project structure files", () => {
