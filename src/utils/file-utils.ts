@@ -31,7 +31,7 @@ export abstract class PathUtils {
       return path;
     }
 
-    let newPath = path.replace("\\", "/").replace(/(^\.?\/|\/+$)/, "");
+    let newPath = path.replace(/\\/g, "/").replace(/(^\.?\/+|\/+$)/g, "");
     if (prefix && !newPath.startsWith(prefix)) {
       newPath = prefix + newPath;
     }
