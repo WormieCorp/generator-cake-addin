@@ -118,6 +118,15 @@ export abstract class GeneratorPrompts {
       name: "licenseType",
     },
     {
+      default: "./src",
+      description: "The path where the project source files will be located.",
+      filter: (answer) => PathUtils.normalizePath(answer, "./") || "./",
+      inputType: InputType.Text,
+      isCommon: true,
+      message: "Where will the project source files be located? ",
+      name: "sourceDir",
+    },
+    {
       default: "recipe.cake",
       filter: (answer: string) =>
         PathUtils.normalizePath(answer, null, ".cake"),

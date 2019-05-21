@@ -19,7 +19,6 @@
 import { join } from "path";
 import * as uuid from "uuid/v4";
 import BaseGenerator from "../utils/base-generator";
-import { PathUtils } from "../utils/file-utils";
 import { GeneratorPrompts } from "../utils/generator-prompts";
 
 /**
@@ -155,15 +154,8 @@ export = class ProjectGenerator extends BaseGenerator {
       type: Boolean,
     });
 
-    this.addPromptAndOption({
-      default: "./src",
-      description: "The path where the project source files will be located",
-      filter: (answer) => PathUtils.normalizePath(answer, "./") || "./",
-      message: "Where will the project source files be located? ",
-      name: "sourceDir",
-      optionType: String,
-      store: true,
-    });
+    this.option("sourceDir", GeneratorPrompts.getOption("sourceDir"));
+    this.addPrompt(GeneratorPrompts.getPrompt("sourceDir"), true);
     this.option("projectName", GeneratorPrompts.getOption("projectName"));
     this.addPrompt(GeneratorPrompts.getPrompt("projectName"), true);
     this.option(
