@@ -6,10 +6,7 @@ node_js:
     - v6
     - v4
 
-install:
-    - npm install -g gulp-cli
-
 script:
-    - gulp build
+    - yarn run build
 
 cache: yarn
