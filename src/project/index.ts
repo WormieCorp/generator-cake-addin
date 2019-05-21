@@ -33,6 +33,30 @@ export = class ProjectGenerator extends BaseGenerator {
    * The function responsible for prompting the user for questions.
    */
   public prompting() {
+    const promptNames = [
+      "sourceDir",
+      "projectName",
+      "author",
+      `repositoryOwner::${this.user.git.name()}`,
+      "description",
+      "licenseType",
+      "enableWyam",
+    ];
+
+    for (const name of promptNames) {
+      const index = name.indexOf("::");
+      if (index > 0) {
+        const nameValue = name.substr(0, index);
+        const defaultValue = name.substr(index + 2);
+        this.addPrompt(
+          GeneratorPrompts.getPrompt(nameValue, defaultValue),
+          true
+        );
+      } else {
+        this.addPrompt(GeneratorPrompts.getPrompt(name), true);
+      }
+    }
+
     return this.callPrompts();
   }
 
@@ -147,6 +171,16 @@ export = class ProjectGenerator extends BaseGenerator {
     this.description =
       "Generator for creating a basic cake addin project structure.";
 
+    const optionNames = [
+      "sourceDir",
+      "projectName",
+      "repositoryOwner",
+      "author",
+      "description",
+      "licenseType",
+      "enableWyam",
+    ];
+
     this.option("build", {
       alias: "b",
       default: false,
@@ -154,29 +188,9 @@ export = class ProjectGenerator extends BaseGenerator {
       type: Boolean,
     });
 
-    this.option("sourceDir", GeneratorPrompts.getOption("sourceDir"));
-    this.addPrompt(GeneratorPrompts.getPrompt("sourceDir"), true);
-    this.option("projectName", GeneratorPrompts.getOption("projectName"));
-    this.addPrompt(GeneratorPrompts.getPrompt("projectName"), true);
-    this.option(
-      "repositoryOwner",
-      GeneratorPrompts.getOption("repositoryOwner")
-    );
-    this.addPrompt(
-      GeneratorPrompts.getPrompt("repositoryOwner", this.user.git.name()),
-      true
-    );
-    this.option("author", GeneratorPrompts.getOption("author"));
-    this.addPrompt(GeneratorPrompts.getPrompt("author"), true);
-
-    this.option("description", GeneratorPrompts.getOption("description"));
-    this.addPrompt(GeneratorPrompts.getPrompt("description"), true);
-
-    this.option("licenseType", GeneratorPrompts.getOption("licenseType"));
-    this.addPrompt(GeneratorPrompts.getPrompt("licenseType"), true);
-
-    this.option("enableWyam", GeneratorPrompts.getOption("enableWyam"));
-    this.addPrompt(GeneratorPrompts.getPrompt("enableWyam"), true);
+    for (const name of optionNames) {
+      this.option(name, GeneratorPrompts.getOption(name));
+    }
 
     this.setValue("mainProjectGuid", uuid().toUpperCase());
     this.setValue("testProjectGuid", uuid().toUpperCase());
