@@ -12,8 +12,12 @@ export = class MainGenerator extends BaseGenerator {
 
     await this.callPrompts();
 
+    this.composeWith(require.resolve("../build"), this.allValues);
     this.composeWith(require.resolve("../project"), this.allValues);
     this.composeWith(require.resolve("../appveyor"), this.allValues);
+    if (this.getValue<boolean>("enableTravis")) {
+      this.composeWith(require.resolve("../travis"), this.allValues);
+    }
   }
 
   // tslint:disable-next-line: no-empty
