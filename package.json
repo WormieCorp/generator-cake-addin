@@ -51,8 +51,6 @@
         "yosay": "^2.0.2"
     },
     "devDependencies": {
-        "@types/chalk": "^2.2.0",
-        "@types/del": "^4.0.0",
         "@types/gulp": "^4.0.6",
         "@types/gulp-sourcemaps": "^0.0.32",
         "@types/jest": "^24.0.13",
