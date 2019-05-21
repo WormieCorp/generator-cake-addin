@@ -33,12 +33,13 @@ export function pretty() {
     "**/*.yml",
     "!node_modules{,/**}",
     "!generators{,/**}",
+    "!coverage/{,/**}",
   ]).pipe(check());
 }
 
 export function lint() {
   const program = Linter.createProgram("tsconfig.json");
-  return src("src/**/*.ts")
+  return src("{src,__tests__}/**/*.ts")
     .pipe(check())
     .pipe(
       gtslint({
@@ -70,6 +71,7 @@ function compileTypescript() {
 
 function watchTask() {
   gulpWatch("src/**/*.ts", series(lint, compileTypescript));
+  gulpWatch("__tests__/**/*.ts", lint);
   gulpWatch("src/**/templates/**", exportTemplatesTask);
   gulpWatch(
     ["tsconfig.json", "tslint.json"],
@@ -85,6 +87,7 @@ function watchTask() {
       "!tsconfig.json",
       "!tslint.json",
       "!generators{,/**}",
+      "!coverage/{,/**}",
     ],
     pretty
   );

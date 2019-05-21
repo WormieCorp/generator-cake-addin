@@ -5,6 +5,7 @@ node_js:
     - v8
 
 script:
-    - yarn run build
+    - yarn build
+    - yarn test --coverage && codecov
 
 cache: yarn

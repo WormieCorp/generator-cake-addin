@@ -1,6 +1,5 @@
 {
     "compilerOptions": {
-        "rootDir": "./src",
         "target": "es2018",
         "module": "commonjs",
         "outDir": "generators",
@@ -21,5 +20,5 @@
         "esModuleInterop": false,
         "resolveJsonModule": true
     },
-    "include": ["src/**/*.ts", "types/**/*.d.ts"]
+    "include": ["src/**/*.ts", "types/**/*.d.ts", "__tests__/**/*.ts"]
 }

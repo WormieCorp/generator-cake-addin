@@ -5,6 +5,7 @@
     "scripts": {
         "postinstall": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",
         "build": "gulp build",
+        "test": "jest",
         "watch": "gulp watch"
     },
     "files": [
@@ -27,6 +28,22 @@
     "engines": {
         "npm": ">= 4.0.0"
     },
+    "jest": {
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "json"
+        ],
+        "transform": {
+            "\\.(ts|tsx)$": "ts-jest"
+        },
+        "testRegex": "/__tests__/.*\\.(ts|tsx)$",
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+            "tepmlates"
+        ]
+    },
     "dependencies": {
         "chalk": "^2.4.2",
         "uuid": "^3.3.2",
@@ -38,11 +55,14 @@
         "@types/del": "^4.0.0",
         "@types/gulp": "^4.0.6",
         "@types/gulp-sourcemaps": "^0.0.32",
+        "@types/jest": "^24.0.13",
         "@types/merge-stream": "^1.1.2",
         "@types/prettier": "^1.16.4",
         "@types/uuid": "^3.4.4",
+        "@types/yeoman-assert": "^3.1.1",
         "@types/yeoman-environment": "^2.3.0",
         "@types/yeoman-generator": "^3.1.2",
+        "@types/yeoman-test": "^2.0.2",
         "@types/yosay": "^0.0.29",
         "del": "^4.1.1",
         "gulp": "^4.0.2",
@@ -50,11 +70,15 @@
         "gulp-sourcemaps": "^2.6.5",
         "gulp-tslint": "^8.1.4",
         "gulp-typescript": "^5.0.1",
+        "jest": "^24.8.0",
         "merge-stream": "^1.0.1",
         "prettier": "^1.17.1",
+        "ts-jest": "^24.0.2",
         "tslint": "^5.16.0",
         "tslint-config-prettier": "^1.18.0",
         "tslint-plugin-prettier": "^2.0.1",
-        "typescript": "^3.4.5"
+        "typescript": "^3.4.5",
+        "yeoman-assert": "^3.1.1",
+        "yeoman-test": "^2.0.0"
     }
 }
