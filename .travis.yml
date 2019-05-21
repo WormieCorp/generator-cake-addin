@@ -4,8 +4,11 @@ node_js:
     - v10
     - v8
 
+before_install:
+    - yarn global add codecov
+
 script:
     - yarn build
-    - yarn test --coverage && codecov
+    - yarn test --coverage && codecov -e TRAVIS_NODE_VERSION
 
 cache: yarn
