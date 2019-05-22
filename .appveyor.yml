@@ -17,6 +17,7 @@ environment:
 stack: node %nodejs_version%
 
 install:
+  - sh: export FrameworkPathOverride=$(dirname $(which mono))/../lib/mono/4.5/
   - dotnet tool install --global codecov.tool
   - yarn install
 
