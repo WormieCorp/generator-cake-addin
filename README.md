@@ -8,7 +8,7 @@ However, there are currently a few generators available for testing,
 and you may try them out with the following build instructions.
 
 1. Ensure that you got both nodejs, yarn, and yo installed (Check your distro/OS on how to install these).
-2. Clone the repository with `git clone https://github.com/AdmiringWorm/generator-cake-addin.git`.
+2. Clone the repository with `git clone https://github.com/WormieCorp/generator-cake-addin.git`.
 3. Navigate to the new directory and run `yarn install`
 4. To build the project itself, run `yarn run build` (you may alternatively run `gulp build` if you have gulp installed).
 5. Run `yarn link` to create a symlink so you can make use of the generators.
