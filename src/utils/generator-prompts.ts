@@ -1,6 +1,7 @@
+import fullname = require("fullname");
 import { basename } from "path";
 import { cwd } from "process";
-import { Answers, OptionConfig, Question } from "yeoman-generator";
+import { OptionConfig, Question } from "yeoman-generator";
 import { PathUtils } from "./file-utils";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 
@@ -90,7 +91,7 @@ export abstract class GeneratorPrompts {
       validate: validators.notEmpty("owner/organization"),
     },
     {
-      default: (answers: Answers) => answers.repositoryOwner,
+      default: fullname,
       description: "The name of the Cake addin author",
       inputType: InputType.Text,
       isCommon: true,
