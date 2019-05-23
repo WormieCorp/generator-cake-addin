@@ -10,17 +10,48 @@ const validators = {
     answer.length > 0 ? true : `A ${name} is required`,
 };
 
-// tslint:disable: object-literal-sort-keys
-const spdxToLicenseName: { [key: string]: string } = {
-  // "Apache-2.0": "Apache License 2.0",
-  MIT: "MIT License",
-  /*"AGPL-3.0-or-later": "GNU Affero General Public License v3.0 or later",
-  "GPL-3.0-or-later": "GNU General Public License v3.0 or later",
-  "LGPL-3.0-or-later": "GNU Lesser General Public License v3.0 or later",
-  "MPL-2.0": "Mozilla Public License 2.0",
-  Unlicense: "The Unlicense",*/
-};
-// tslint:enable: object-literal-sort-keys
+export const licenses = [
+  {
+    FileHeader: true,
+    Name: "Apache License 2.0",
+    NeedsAuthor: true,
+    Spdx: "Apache-2.0",
+  },
+  {
+    FileHeader: true,
+    Name: "GNU General Public License v3.0 or later",
+    NeedsAuthor: false,
+    Spdx: "GPL-3.0-or-later",
+  },
+  {
+    FileHeader: false,
+    Name: "MIT License",
+    NeedsAuthor: true,
+    Spdx: "MIT",
+  },
+  {
+    FileHeader: false,
+    Name: "Mozilla Public License 2.0",
+    NeedsAuthor: false,
+    Spdx: "MPL-2.0",
+  },
+  {
+    FileHeader: false,
+    Name: "The Unlicense",
+    NeedsAuthor: false,
+    Spdx: "Unlicense",
+  },
+  {
+    FileHeader: false,
+    Name: "Do What The F*ck You Want To Public License",
+    NeedsAuthor: false,
+    Spdx: "WTFPL",
+  },
+];
+
+export interface IOptionConfigEx extends OptionConfig {
+  name: string;
+}
 
 export abstract class GeneratorPrompts {
   public static get commonPrompts(): Question[] {
@@ -44,7 +75,7 @@ export abstract class GeneratorPrompts {
     throw Error(`A prompt with the name: ${name} was not found.`);
   }
 
-  public static getOption(name: string): OptionConfig {
+  public static getOption(name: string): IOptionConfigEx {
     for (const option of GeneratorPrompts._allPrompts) {
       if (option.name === name) {
         return this._convertToOption(option);
@@ -108,8 +139,11 @@ export abstract class GeneratorPrompts {
       name: "description",
     },
     {
-      choices: Object.entries(spdxToLicenseName).map((value) => {
+      /*choices: Object.entries(spdxToLicenseName).map((value) => {
         return { name: value[1], value: value[0] };
+      })*/
+      choices: licenses.map((value) => {
+        return { name: value.Name, value: value.Spdx, short: value.Spdx };
       }),
       default: "MIT",
       description: "The cake addin license.",
@@ -171,9 +205,10 @@ export abstract class GeneratorPrompts {
 
   private static _convertToOption(
     generatorPrompt: IGeneratorPrompt
-  ): OptionConfig {
+  ): IOptionConfigEx {
     return {
       description: generatorPrompt.description || generatorPrompt.message,
+      name: generatorPrompt.name,
       type: this._getOptionType(generatorPrompt.inputType),
     };
   }
