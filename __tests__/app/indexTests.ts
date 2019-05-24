@@ -9,6 +9,7 @@ const expectedFiles = [
   ".travis.yml",
   "build.ps1",
   "build.sh",
+  "LICENSE.txt",
   "recipe.cake",
   "src/Cake.MyTestApp.sln",
   "src/Cake.MyTestApp/Cake.MyTestApp.csproj",
