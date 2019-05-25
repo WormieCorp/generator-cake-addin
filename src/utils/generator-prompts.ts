@@ -4,11 +4,7 @@ import { cwd } from "process";
 import { OptionConfig, Question } from "yeoman-generator";
 import { PathUtils } from "./file-utils";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
-
-const validators = {
-  notEmpty: (name: string) => (answer: string) =>
-    answer.length > 0 ? true : `A ${name} is required`,
-};
+import { NotEmptyValidator } from "./validators";
 
 export const licenses = [
   {
@@ -119,7 +115,7 @@ export abstract class GeneratorPrompts {
       message:
         "Who is the repository owner/organization where the addin will located? ",
       name: "repositoryOwner",
-      validate: validators.notEmpty("owner/organization"),
+      validate: new NotEmptyValidator("owner/organization").validate,
     },
     {
       default: fullname,
@@ -128,7 +124,7 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message: "Who is the main author of the Cake addin? ",
       name: "author",
-      validate: validators.notEmpty("author"),
+      validate: new NotEmptyValidator("author").validate,
     },
     {
       description: "The cake addin description",
