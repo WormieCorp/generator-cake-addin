@@ -3,7 +3,7 @@ import { basename } from "path";
 import { cwd } from "process";
 import { OptionConfig, Question } from "yeoman-generator";
 import { PathUtils } from "./file-utils";
-import { trimFilter } from "./filters";
+import { PrefixFilter, trimFilter } from "./filters";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
 
@@ -96,13 +96,7 @@ export abstract class GeneratorPrompts {
       default: basename(cwd()),
       description:
         "The name of the Cake addin project (without the Cake. prefix)",
-      filter: (answer) => {
-        if (answer.startsWith("Cake.") || answer.startsWith("Cake ")) {
-          return answer.substr("Cake.".length);
-        } else {
-          return answer;
-        }
-      },
+      filter: new PrefixFilter("Cake.").filter,
       inputType: InputType.Text,
       isCommon: true,
       message: "What is the name of the Cake addin project? ",
