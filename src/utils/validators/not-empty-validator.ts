@@ -1,3 +1,4 @@
+import { trimFilter } from "../filters";
 import IValidator from "./ivalidator";
 
 export class NotEmptyValidator implements IValidator {
@@ -8,7 +9,7 @@ export class NotEmptyValidator implements IValidator {
       return true;
     }
 
-    if (input.trim().length > 0) {
+    if (trimFilter(input).length > 0) {
       return true;
     }
 

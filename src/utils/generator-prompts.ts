@@ -3,6 +3,7 @@ import { basename } from "path";
 import { cwd } from "process";
 import { OptionConfig, Question } from "yeoman-generator";
 import { PathUtils } from "./file-utils";
+import { trimFilter } from "./filters";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
 
@@ -110,6 +111,7 @@ export abstract class GeneratorPrompts {
     {
       description:
         "The repository owner/organization that the addin will be located under.",
+      filter: trimFilter,
       inputType: InputType.Text,
       isCommon: true,
       message:
@@ -120,6 +122,7 @@ export abstract class GeneratorPrompts {
     {
       default: fullname,
       description: "The name of the Cake addin author",
+      filter: trimFilter,
       inputType: InputType.Text,
       isCommon: true,
       message: "Who is the main author of the Cake addin? ",
@@ -128,7 +131,7 @@ export abstract class GeneratorPrompts {
     },
     {
       description: "The cake addin description",
-      filter: (answer) => answer.trim(),
+      filter: trimFilter,
       inputType: InputType.Editor,
       isCommon: true,
       message: "What is the description for the Cake addin? ",
