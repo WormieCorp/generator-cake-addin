@@ -2,8 +2,7 @@ import fullname = require("fullname");
 import { basename } from "path";
 import { cwd } from "process";
 import { OptionConfig, Question } from "yeoman-generator";
-import { PathUtils } from "./file-utils";
-import { PrefixFilter, trimFilter } from "./filters";
+import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
 
@@ -148,7 +147,7 @@ export abstract class GeneratorPrompts {
     {
       default: "./src",
       description: "The path where the project source files will be located.",
-      filter: (answer) => PathUtils.normalizePath(answer, "./") || "./",
+      filter: new PathNormalizeFilter("./").filter,
       inputType: InputType.Text,
       isCommon: true,
       message: "Where will the project source files be located? ",
@@ -156,8 +155,7 @@ export abstract class GeneratorPrompts {
     },
     {
       default: "recipe.cake",
-      filter: (answer: string) =>
-        PathUtils.normalizePath(answer, null, ".cake"),
+      filter: new PathNormalizeFilter(undefined, ".cake").filter,
       inputType: InputType.Text,
       isCommon: true,
       message: "What is the name of the cake build script to use? ",
