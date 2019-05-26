@@ -6,7 +6,9 @@ export class AnswerNotInInputValidator implements IValidator {
     private _name: string,
     private _answerName: string,
     private _prefix: string = ""
-  ) {}
+  ) {
+    this.validate = this.validate.bind(this);
+  }
 
   public validate(input: any, answers?: Answers) {
     if (!answers || typeof input !== "string") {

@@ -16,6 +16,8 @@ export class LenghtValidator implements IValidator {
     if (!_name) {
       throw Error("No name have been specified");
     }
+
+    this.validate = this.validate.bind(this);
   }
 
   public validate(input: any) {
