@@ -2,7 +2,9 @@ import { trimFilter } from "../filters";
 import IValidator from "./ivalidator";
 
 export class NotEmptyValidator implements IValidator {
-  constructor(private _name: string) {}
+  constructor(private _name: string) {
+    this.validate = this.validate.bind(this);
+  }
 
   public validate(input: any) {
     if (typeof input !== "string") {
