@@ -10,9 +10,9 @@ image:
 environment:
   APPVEYOR_YML_DISABLE_PS_LINUX: true
   matrix:
-#    - nodejs_version: "8"
+    - nodejs_version: "8"
     - nodejs_version: "10"
-#    - nodejs_version: "12"
+    - nodejs_version: "12"
 
 stack: node %nodejs_version%
 
@@ -28,7 +28,7 @@ test_script:
   - yarn test --coverage --ci
 
 on_success:
-  - codecov --env nodejs_version --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
+  - codecov --env nodejs_version,APPVEYOR_BUILD_WORKER_IMAGE --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
   - yarn pack
 
 cache:
