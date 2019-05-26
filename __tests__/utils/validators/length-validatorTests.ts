@@ -2,9 +2,9 @@ import { LenghtValidator } from "../../../src/utils/validators/lenght-validator"
 
 describe("validators:Length", () => {
   it("should return true if input is not a string", () => {
-    const validator = new LenghtValidator("test", 1, 3);
+    const validator = new LenghtValidator("test", 1, 3).validate;
 
-    expect(validator.validate(42)).toBeTruthy();
+    expect(validator(42)).toBeTruthy();
   });
 
   it("should throw error if no min and max is specified", () => {
@@ -20,40 +20,38 @@ describe("validators:Length", () => {
   });
 
   describe("minimum lenth", () => {
-    const minValidator = new LenghtValidator("test", 3);
+    const minValidator = new LenghtValidator("test", 3).validate;
 
     it("should not allow length shorter than specified", () => {
-      expect(minValidator.validate("NO")).toBe(
+      expect(minValidator("NO")).toBe(
         "test must be a minimum of 3 characters."
       );
     });
 
     it("should allow lenght equal to 3 characters", () => {
-      expect(minValidator.validate("YES")).toBeTruthy();
+      expect(minValidator("YES")).toBeTruthy();
     });
 
     it("should allow lenth longer than 3 characters", () => {
-      expect(minValidator.validate("I am longer")).toBeTruthy();
+      expect(minValidator("I am longer")).toBeTruthy();
     });
   });
 
   describe("maximum length", () => {
-    const maxValidator = new LenghtValidator("test", undefined, 30);
+    const maxValidator = new LenghtValidator("test", undefined, 30).validate;
 
     it("should not allow length longer than specified", () => {
-      expect(maxValidator.validate("Duis ut ullamcorper orci metus.")).toBe(
+      expect(maxValidator("Duis ut ullamcorper orci metus.")).toBe(
         "test can not be longer than 30 characters."
       );
     });
 
     it("should allow lenght equal to max characters", () => {
-      expect(
-        maxValidator.validate("Aliquam vel leo vel metus sed.")
-      ).toBeTruthy();
+      expect(maxValidator("Aliquam vel leo vel metus sed.")).toBeTruthy();
     });
 
     it("should allow lenth shorter than max characters", () => {
-      expect(maxValidator.validate("Maecenas lobortis volutpat.")).toBeTruthy();
+      expect(maxValidator("Maecenas lobortis volutpat.")).toBeTruthy();
     });
   });
 });
