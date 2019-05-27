@@ -14,7 +14,14 @@ const promptOptions = [
 export = class ReadmeGenerator extends BaseGenerator {
   public async prompting() {
     for (const prompt of promptOptions) {
-      this.addPrompt(GeneratorPrompts.getPrompt(prompt));
+      if (
+        prompt === "enableTravis" &&
+        this.fs.exists(this.destinationPath(".travis.yml"))
+      ) {
+        this.setValue("enableTravis", true);
+      } else {
+        this.addPrompt(GeneratorPrompts.getPrompt(prompt), true);
+      }
     }
 
     await this.callPrompts();

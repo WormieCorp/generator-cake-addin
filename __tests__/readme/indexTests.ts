@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
@@ -66,6 +66,36 @@ describe("generator:Readme", () => {
         projectName: "TestApp",
         repositoryOwner: "AdmiringWorm",
       })
+    );
+
+    it("should create readme file", () => {
+      assert.file("README.md");
+    });
+
+    it("should have expected content", () => {
+      assert.equalsFileContent(
+        "README.md",
+        readFileSync(path.join(__dirname, "basic_with_travis.md"), {
+          encoding: "utf8",
+        })
+      );
+    });
+  });
+
+  describe("basic with travis enabled when travis file exist", () => {
+    beforeAll(() =>
+      helpers
+        .run(generatorDir)
+        .withPrompts({
+          author: "Kim Nordmo",
+          description: "The most awesome test cake addin library.",
+          licenseType: "MIT",
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+        })
+        .inTmpDir((tmpDir) => {
+          writeFileSync(path.join(tmpDir, ".travis.yml"), "");
+        })
     );
 
     it("should create readme file", () => {
