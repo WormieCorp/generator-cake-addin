@@ -49,9 +49,6 @@ export = class MainGenerator extends BaseGenerator {
       if (!prompt.name) {
         continue;
       }
-      if (prompt.name === "repositoryOwner") {
-        prompt.default = this.user.git.name();
-      }
 
       const option = GeneratorPrompts.getOption(prompt.name);
 

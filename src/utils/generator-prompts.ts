@@ -1,6 +1,7 @@
 import fullname = require("fullname");
 import { basename } from "path";
 import { cwd } from "process";
+import username = require("username");
 import { OptionConfig, Question } from "yeoman-generator";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
@@ -103,6 +104,7 @@ export abstract class GeneratorPrompts {
       name: "projectName",
     },
     {
+      default: username,
       description:
         "The repository owner/organization that the addin will be located under.",
       filter: trimFilter,
