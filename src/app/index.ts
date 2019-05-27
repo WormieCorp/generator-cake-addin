@@ -17,6 +17,7 @@ export = class MainGenerator extends BaseGenerator {
     if (this.getValue<boolean>("enableTravis")) {
       this.composeWith(require.resolve("../travis"), this.allValues);
     }
+    this.composeWith(require.resolve("../readme"), this.allValues);
     this.composeWith(require.resolve("../build"), this.allValues);
     this.composeWith(require.resolve("../project"), this.allValues);
   }
