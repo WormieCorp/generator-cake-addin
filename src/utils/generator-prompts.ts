@@ -211,6 +211,7 @@ export abstract class GeneratorPrompts {
       transformer: generatorPrompt.transformer,
       type: generatorPrompt.inputType,
       validate: generatorPrompt.validate,
+      when: generatorPrompt.when,
     };
   }
 
