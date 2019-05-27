@@ -143,7 +143,8 @@ export abstract class GeneratorPrompts {
       name: "shortDescription",
       validate: new LenghtValidator("short description", undefined, 120)
         .validate,
-      when: (answers) => answers.description.length > 120,
+      when: (answers) =>
+        answers.description !== undefined && answers.description.length > 120,
     },
     {
       /*choices: Object.entries(spdxToLicenseName).map((value) => {
