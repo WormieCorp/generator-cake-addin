@@ -2,7 +2,6 @@ import chalk from "chalk";
 import yosay = require("yosay");
 import BaseGenerator from "../utils/base-generator";
 import { GeneratorPrompts } from "../utils/generator-prompts";
-import { InputType } from "../utils/igenerator-prompt";
 
 export = class MainGenerator extends BaseGenerator {
   public async prompting() {
@@ -10,13 +9,6 @@ export = class MainGenerator extends BaseGenerator {
       `Welcome to the ${chalk.red("cake-addin generator")}. ` +
       "We will now ask you some questions so we can set up your new Cake addin project!";
     this.log(yosay(message));
-
-    this.addPrompt({
-      default: false,
-      message: "Do you wish to enable travis builds? ",
-      name: "enableTravis",
-      type: InputType.Confirm,
-    });
 
     await this.callPrompts();
 

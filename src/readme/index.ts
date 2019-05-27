@@ -8,6 +8,7 @@ const promptOptions = [
   "shortDescription",
   "licenseType",
   "author",
+  "enableTravis",
 ];
 
 export = class ReadmeGenerator extends BaseGenerator {

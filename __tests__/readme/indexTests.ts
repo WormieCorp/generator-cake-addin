@@ -55,4 +55,30 @@ describe("generator:Readme", () => {
       );
     });
   });
+
+  describe("basic with travis enabled", () => {
+    beforeAll(() =>
+      helpers.run(generatorDir).withPrompts({
+        author: "Kim Nordmo",
+        description: "The most awesome test cake addin library.",
+        enableTravis: true,
+        licenseType: "MIT",
+        projectName: "TestApp",
+        repositoryOwner: "AdmiringWorm",
+      })
+    );
+
+    it("should create readme file", () => {
+      assert.file("README.md");
+    });
+
+    it("should have expected content", () => {
+      assert.equalsFileContent(
+        "README.md",
+        readFileSync(path.join(__dirname, "basic_with_travis.md"), {
+          encoding: "utf8",
+        })
+      );
+    });
+  });
 });

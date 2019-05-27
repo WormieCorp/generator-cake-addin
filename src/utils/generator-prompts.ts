@@ -188,6 +188,13 @@ export abstract class GeneratorPrompts {
       message: "Do you want to enable linux builds on appveyor? ",
       name: "enableLinux",
     },
+    {
+      default: false,
+      inputType: InputType.Confirm,
+      isCommon: true,
+      message: "Do you wish to enable travis builds? ",
+      name: "enableTravis",
+    },
   ];
 
   private static _convertToPrompt(

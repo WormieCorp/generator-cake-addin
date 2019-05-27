@@ -2,6 +2,8 @@
 
 [![standard-readme compliant][]][standard-readme]
 [![Appveyor build][appveyorimage]][appveyor]
+<% if (enableTravis) { %>[![Travis build][travisimage]][travis]
+<% } -%>
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
 <% if(description.length > 120) { -%>
@@ -58,3 +60,7 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 [license]: LICENSE.txt
 [standard-readme]: https://github.com/RichardLitt/standard-readme
 [standard-readme compliant]: https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
+<% if(enableTravis) { -%>
+[travis]: https://travis-ci.org/<%= repositoryOwner %>/<%= fullProjectName %>
+[travisimage]: https://img.shields.io/travis/<%= repositoryOwner %>/<%= fullProjectName %>.svg?logo=travis&style=flat-square
+<% } -%>
