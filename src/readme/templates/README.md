@@ -4,8 +4,17 @@
 [![Appveyor build][appveyorimage]][appveyor]
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
+<% if(description.length > 120) { -%>
 
-> <%= description %>
+> <%= shortDescription %>
+
+<%= description -%>
+
+<% } else { -%>
+
+> <%= description -%>
+
+<% } -%>
 
 ## Table of Contents
 

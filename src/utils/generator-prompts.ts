@@ -5,6 +5,7 @@ import { OptionConfig, Question } from "yeoman-generator";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
+import { LenghtValidator } from "./validators/lenght-validator";
 
 export const licenses = [
   {
@@ -129,6 +130,18 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message: "What is the description for the Cake addin? ",
       name: "description",
+    },
+    {
+      description:
+        "The short description of the cake addin (120 characters or less): ",
+      inputType: InputType.Text,
+      isCommon: false,
+      message:
+        "What is the short description for the cake addin (120 characters or less)? ",
+      name: "shortDescription",
+      validate: new LenghtValidator("short description", undefined, 120)
+        .validate,
+      when: (answers) => answers.description.length > 120,
     },
     {
       /*choices: Object.entries(spdxToLicenseName).map((value) => {

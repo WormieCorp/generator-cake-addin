@@ -5,6 +5,7 @@ const promptOptions = [
   "projectName",
   "repositoryOwner",
   "description",
+  "shortDescription",
   "licenseType",
   "author",
 ];

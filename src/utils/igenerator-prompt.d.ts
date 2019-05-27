@@ -24,4 +24,5 @@ export interface IGeneratorPrompt {
   name: string;
   transformer?: (input: string) => string;
   validate?: (answer: string) => string | boolean;
+  when?: (answers: Answers) => boolean;
 }
