@@ -93,7 +93,7 @@ export abstract class GeneratorPrompts {
 
   private static _allPrompts: IGeneratorPrompt[] = [
     {
-      default: basename(cwd()),
+      default: basename(cwd()).replace(/^Cake\./i, ""),
       description:
         "The name of the Cake addin project (without the Cake. prefix)",
       filter: new PrefixFilter("Cake.").filter,
