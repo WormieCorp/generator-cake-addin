@@ -14,6 +14,6 @@ and you may try them out with the following build instructions.
 5. Run `yarn link` to create a symlink so you can make use of the generators.
 6. Run one of the generators, the main generator can be run with the following `yo cake-addin`.
 
-    - You may also test out one of the sub generators as well by running `yo cake-addin:subgenerator-name` (ie `yo cake-addin:appveyor`).
+   - You may also test out one of the sub generators as well by running `yo cake-addin:subgenerator-name` (ie `yo cake-addin:appveyor`).
 
 7. When you're done with testing, run `yarn unlink` to remove the previously created symlinks.
