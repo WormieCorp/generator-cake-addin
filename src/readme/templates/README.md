@@ -1,0 +1,51 @@
+# <%= fullProjectName %>
+
+[![standard-readme compliant][]][standard-readme]
+[![Appveyor build][appveyorimage]][appveyor]
+[![Codecov Report][codecovimage]][codecov]
+[![NuGet package][nugetimage]][nuget]
+
+> <%= description %>
+
+## Table of Contents
+
+- [Install](#install)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Install
+
+```cs
+#addin nuget:?package=<%= fullProjectName %>
+```
+
+## Usage
+
+```cs
+#addin nuget:?package=<%= fullProjectName %>
+
+Task("MyTask").Does(() => {
+  <%= projectName %>();
+});
+```
+
+## Contributing
+
+We accept Pull Requests.
+
+Small note: If editing the Readme, please conform to the [standard-readme][] specification.
+
+## License
+
+[<%= licenseType.Name %> © <%= author %>][license]
+
+[appveyor]: https://ci.appveyor.com/project/<%= appveyorAccount %>/<%= appveyorProjectName %>
+[appveyorimage]: https://img.shields.io/appveyor/ci/<%= appveyorAccount %>/<%= appveyorProjectName %>.svg?logo=appveyor&style=flat-square
+[codecov]: https://codecov.io/gh/<%= repositoryOwner %>/<%= fullProjectName %>
+[codecovimage]: https://img.shields.io/codecov/c/github/<%= repositoryOwner %>/<%= fullProjectName %>.svg?logo=codecov&style=flat-square
+[nuget]: https://nuget.org/packages/<%= fullProjectName %>
+[nugetimage]: https://img.shields.io/nuget/v/<%= fullProjectName %>.svg?logo=nuget&style=flat-square
+[license]: LICENSE.txt
+[standard-readme]: https://github.com/RichardLitt/standard-readme
+[standard-readme compliant]: https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
