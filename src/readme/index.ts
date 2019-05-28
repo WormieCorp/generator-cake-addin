@@ -4,6 +4,7 @@ import { GeneratorPrompts, licenses } from "../utils/generator-prompts";
 const promptOptions = [
   "projectName",
   "repositoryOwner",
+  "projectMaintainer",
   "description",
   "shortDescription",
   "licenseType",

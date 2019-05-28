@@ -22,6 +22,7 @@
 
 - [Install](#install)
 - [Usage](#usage)
+- [Maintainer](#maintainer)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -40,6 +41,10 @@ Task("MyTask").Does(() => {
   <%= projectName %>();
 });
 ```
+
+## Maintainer
+
+[<%= author %> @<%= projectMaintainer %>][maintainer]
 
 ## Contributing
 
@@ -64,6 +69,7 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 <% if(enableContributing) { -%>
 [contributing]: CONTRIBUTING.md
 <% } -%>
+[maintainer]: https://github.com/<%= projectMaintainer %>
 [nuget]: https://nuget.org/packages/<%= fullProjectName %>
 [nugetimage]: https://img.shields.io/nuget/v/<%= fullProjectName %>.svg?logo=nuget&style=flat-square
 [license]: LICENSE.txt

@@ -11,6 +11,7 @@
 
 - [Install](#install)
 - [Usage](#usage)
+- [Maintainer](#maintainer)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -29,6 +30,10 @@ Task("MyTask").Does(() => {
   TestApp();
 });
 ```
+
+## Maintainer
+
+[Kim Nordmo @AdmiringWorm][maintainer]
 
 ## Contributing
 
@@ -49,6 +54,7 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 [codecovimage]: https://img.shields.io/codecov/c/github/AdmiringWorm/Cake.TestApp.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
 [contributing]: CONTRIBUTING.md
+[maintainer]: https://github.com/AdmiringWorm
 [nuget]: https://nuget.org/packages/Cake.TestApp
 [nugetimage]: https://img.shields.io/nuget/v/Cake.TestApp.svg?logo=nuget&style=flat-square
 [license]: LICENSE.txt

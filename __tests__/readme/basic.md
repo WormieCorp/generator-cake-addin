@@ -11,6 +11,7 @@
 
 - [Install](#install)
 - [Usage](#usage)
+- [Maintainer](#maintainer)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -30,6 +31,10 @@ Task("MyTask").Does(() => {
 });
 ```
 
+## Maintainer
+
+[Kim Nordmo @AdmiringWorm][maintainer]
+
 ## Contributing
 
 Cake.TestApp follows the [Contributor Covenant][contrib-covenant] Code of Conduct.
@@ -47,6 +52,7 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 [codecov]: https://codecov.io/gh/AdmiringWorm/Cake.TestApp
 [codecovimage]: https://img.shields.io/codecov/c/github/AdmiringWorm/Cake.TestApp.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
+[maintainer]: https://github.com/AdmiringWorm
 [nuget]: https://nuget.org/packages/Cake.TestApp
 [nugetimage]: https://img.shields.io/nuget/v/Cake.TestApp.svg?logo=nuget&style=flat-square
 [license]: LICENSE.txt

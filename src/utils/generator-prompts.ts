@@ -2,7 +2,7 @@ import fullname = require("fullname");
 import { basename } from "path";
 import { cwd } from "process";
 import username = require("username");
-import { OptionConfig, Question } from "yeoman-generator";
+import { Answers, OptionConfig, Question } from "yeoman-generator";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
@@ -114,6 +114,16 @@ export abstract class GeneratorPrompts {
         "Who is the repository owner/organization where the addin will located? ",
       name: "repositoryOwner",
       validate: new NotEmptyValidator("owner/organization").validate,
+    },
+    {
+      default: (answers: Answers) => answers.repositoryOwner,
+      description: "The github username of the main author of the cake addin",
+      filter: trimFilter,
+      inputType: InputType.Text,
+      isCommon: true,
+      message: "What is the github username of the main addin author? ",
+      name: "projectMaintainer",
+      validate: new NotEmptyValidator("project maintainer").validate,
     },
     {
       default: fullname,
