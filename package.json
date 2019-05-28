@@ -3,8 +3,7 @@
     "version": "0.1.0",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
     "scripts": {
-        "postinstall": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",
-        "build": "gulp build",
+        "build": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop && gulp build",
         "test": "jest",
         "watch": "gulp watch"
     },
