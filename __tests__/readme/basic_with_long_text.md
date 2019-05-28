@@ -36,6 +36,8 @@ Task("MyTask").Does(() => {
 
 ## Contributing
 
+Cake.TestApp follows the [Contributor Covenant][contrib-covenant] Code of Conduct.
+
 We accept Pull Requests.
 
 Small note: If editing the Readme, please conform to the [standard-readme][] specification.
@@ -48,6 +50,7 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 [appveyorimage]: https://img.shields.io/appveyor/ci/admiringworm/cake-testapp.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/AdmiringWorm/Cake.TestApp
 [codecovimage]: https://img.shields.io/codecov/c/github/AdmiringWorm/Cake.TestApp.svg?logo=codecov&style=flat-square
+[contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
 [nuget]: https://nuget.org/packages/Cake.TestApp
 [nugetimage]: https://img.shields.io/nuget/v/Cake.TestApp.svg?logo=nuget&style=flat-square
 [license]: LICENSE.txt

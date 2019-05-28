@@ -43,6 +43,8 @@ Task("MyTask").Does(() => {
 
 ## Contributing
 
+<%= fullProjectName %> follows the [Contributor Covenant][contrib-covenant] Code of Conduct.
+
 We accept Pull Requests.
 
 Small note: If editing the Readme, please conform to the [standard-readme][] specification.
@@ -55,6 +57,7 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 [appveyorimage]: https://img.shields.io/appveyor/ci/<%= appveyorAccount %>/<%= appveyorProjectName %>.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/<%= repositoryOwner %>/<%= fullProjectName %>
 [codecovimage]: https://img.shields.io/codecov/c/github/<%= repositoryOwner %>/<%= fullProjectName %>.svg?logo=codecov&style=flat-square
+[contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
 [nuget]: https://nuget.org/packages/<%= fullProjectName %>
 [nugetimage]: https://img.shields.io/nuget/v/<%= fullProjectName %>.svg?logo=nuget&style=flat-square
 [license]: LICENSE.txt
