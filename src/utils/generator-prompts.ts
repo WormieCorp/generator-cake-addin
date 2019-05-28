@@ -198,6 +198,13 @@ export abstract class GeneratorPrompts {
       message: "Do you wish to enable travis builds? ",
       name: "enableTravis",
     },
+    {
+      default: false,
+      inputType: InputType.Confirm,
+      isCommon: false,
+      message: "Do you wish to use a CONTRIBUTING.md file? ",
+      name: "enableContributing",
+    },
   ];
 
   private static _convertToPrompt(

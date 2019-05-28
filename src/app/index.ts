@@ -57,5 +57,6 @@ export = class MainGenerator extends BaseGenerator {
       }
       this.addPrompt(prompt, true);
     }
+    this.addPrompt(GeneratorPrompts.getPrompt("enableContributing"));
   }
 };

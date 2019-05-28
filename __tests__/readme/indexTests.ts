@@ -111,4 +111,60 @@ describe("generator:Readme", () => {
       );
     });
   });
+
+  describe("basic with contributing enabled", () => {
+    beforeAll(() =>
+      helpers.run(generatorDir).withPrompts({
+        author: "Kim Nordmo",
+        description: "The most awesome test cake addin library.",
+        enableContributing: true,
+        licenseType: "MIT",
+        projectName: "TestApp",
+        repositoryOwner: "AdmiringWorm",
+      })
+    );
+
+    it("should create readme file", () => {
+      assert.file("README.md");
+    });
+
+    it("should have expected content", () => {
+      assert.equalsFileContent(
+        "README.md",
+        readFileSync(path.join(__dirname, "basic_with_contributing.md"), {
+          encoding: "utf8",
+        })
+      );
+    });
+  });
+
+  describe("basic with contributing enabled when CONTRIBUTING.md file exist", () => {
+    beforeAll(() =>
+      helpers
+        .run(generatorDir)
+        .withPrompts({
+          author: "Kim Nordmo",
+          description: "The most awesome test cake addin library.",
+          licenseType: "MIT",
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+        })
+        .inTmpDir((tmpDir) => {
+          writeFileSync(path.join(tmpDir, "CONTRIBUTING.md"), "");
+        })
+    );
+
+    it("should create readme file", () => {
+      assert.file("README.md");
+    });
+
+    it("should have expected content", () => {
+      assert.equalsFileContent(
+        "README.md",
+        readFileSync(path.join(__dirname, "basic_with_contributing.md"), {
+          encoding: "utf8",
+        })
+      );
+    });
+  });
 });

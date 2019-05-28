@@ -9,6 +9,7 @@ const promptOptions = [
   "licenseType",
   "author",
   "enableTravis",
+  "enableContributing",
 ];
 
 export = class ReadmeGenerator extends BaseGenerator {
@@ -18,7 +19,12 @@ export = class ReadmeGenerator extends BaseGenerator {
         prompt === "enableTravis" &&
         this.fs.exists(this.destinationPath(".travis.yml"))
       ) {
-        this.setValue("enableTravis", true);
+        this.setValue(prompt, true);
+      } else if (
+        prompt === "enableContributing" &&
+        this.fs.exists(this.destinationPath("CONTRIBUTING.md"))
+      ) {
+        this.setValue(prompt, true);
       } else {
         this.addPrompt(GeneratorPrompts.getPrompt(prompt), true);
       }
