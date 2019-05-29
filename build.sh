@@ -12,7 +12,7 @@ runbuild() {
 
 runtest() {
     echo "Running unit tests..."
-    if [ "$CI" == "true" ]; then
+    if [ "$CI" = "true" ]; then
         yarn test --coverage --ci
     else
         yarn test
