@@ -19,7 +19,7 @@ stack: node %nodejs_version%
 install:
   - sh: export FrameworkPathOverride=$(dirname $(which mono))/../lib/mono/4.5/
   - dotnet tool install --global codecov.tool
-  - yarn global add codacy-coverage
+  - npm install --global codacy-coverage # This is so we don't need to manipulate the path
 
 build_script:
   - pwsh: ./build.ps1 --build
