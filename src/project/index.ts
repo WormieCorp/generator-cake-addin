@@ -37,7 +37,7 @@ export = class ProjectGenerator extends BaseGenerator {
       "sourceDir",
       "projectName",
       "author",
-      `repositoryOwner::${this.user.git.name()}`,
+      `repositoryOwner`,
       "description",
       "licenseType",
       "enableWyam",

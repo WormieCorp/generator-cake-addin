@@ -2,7 +2,6 @@ import chalk from "chalk";
 import yosay = require("yosay");
 import BaseGenerator from "../utils/base-generator";
 import { GeneratorPrompts } from "../utils/generator-prompts";
-import { InputType } from "../utils/igenerator-prompt";
 
 export = class MainGenerator extends BaseGenerator {
   public async prompting() {
@@ -11,13 +10,6 @@ export = class MainGenerator extends BaseGenerator {
       "We will now ask you some questions so we can set up your new Cake addin project!";
     this.log(yosay(message));
 
-    this.addPrompt({
-      default: false,
-      message: "Do you wish to enable travis builds? ",
-      name: "enableTravis",
-      type: InputType.Confirm,
-    });
-
     await this.callPrompts();
 
     this.composeWith(require.resolve("../license"), this.allValues);
@@ -25,6 +17,7 @@ export = class MainGenerator extends BaseGenerator {
     if (this.getValue<boolean>("enableTravis")) {
       this.composeWith(require.resolve("../travis"), this.allValues);
     }
+    this.composeWith(require.resolve("../readme"), this.allValues);
     this.composeWith(require.resolve("../build"), this.allValues);
     this.composeWith(require.resolve("../project"), this.allValues);
   }
@@ -56,9 +49,6 @@ export = class MainGenerator extends BaseGenerator {
       if (!prompt.name) {
         continue;
       }
-      if (prompt.name === "repositoryOwner") {
-        prompt.default = this.user.git.name();
-      }
 
       const option = GeneratorPrompts.getOption(prompt.name);
 
@@ -67,5 +57,6 @@ export = class MainGenerator extends BaseGenerator {
       }
       this.addPrompt(prompt, true);
     }
+    this.addPrompt(GeneratorPrompts.getPrompt("enableContributing"));
   }
 };

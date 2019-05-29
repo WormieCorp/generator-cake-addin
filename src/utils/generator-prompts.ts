@@ -1,10 +1,12 @@
 import fullname = require("fullname");
 import { basename } from "path";
 import { cwd } from "process";
-import { OptionConfig, Question } from "yeoman-generator";
+import username = require("username");
+import { Answers, OptionConfig, Question } from "yeoman-generator";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
 import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
+import { LenghtValidator } from "./validators/lenght-validator";
 
 export const licenses = [
   {
@@ -92,7 +94,7 @@ export abstract class GeneratorPrompts {
 
   private static _allPrompts: IGeneratorPrompt[] = [
     {
-      default: basename(cwd()),
+      default: basename(cwd()).replace(/^Cake\./i, ""),
       description:
         "The name of the Cake addin project (without the Cake. prefix)",
       filter: new PrefixFilter("Cake.").filter,
@@ -102,6 +104,7 @@ export abstract class GeneratorPrompts {
       name: "projectName",
     },
     {
+      default: username,
       description:
         "The repository owner/organization that the addin will be located under.",
       filter: trimFilter,
@@ -111,6 +114,16 @@ export abstract class GeneratorPrompts {
         "Who is the repository owner/organization where the addin will located? ",
       name: "repositoryOwner",
       validate: new NotEmptyValidator("owner/organization").validate,
+    },
+    {
+      default: (answers: Answers) => answers.repositoryOwner,
+      description: "The github username of the main author of the cake addin",
+      filter: trimFilter,
+      inputType: InputType.Text,
+      isCommon: true,
+      message: "What is the github username of the main addin author? ",
+      name: "projectMaintainer",
+      validate: new NotEmptyValidator("project maintainer").validate,
     },
     {
       default: fullname,
@@ -129,6 +142,19 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message: "What is the description for the Cake addin? ",
       name: "description",
+    },
+    {
+      description:
+        "The short description of the cake addin (120 characters or less): ",
+      inputType: InputType.Text,
+      isCommon: false,
+      message:
+        "What is the short description for the cake addin (120 characters or less)? ",
+      name: "shortDescription",
+      validate: new LenghtValidator("short description", undefined, 120)
+        .validate,
+      when: (answers) =>
+        answers.description !== undefined && answers.description.length > 120,
     },
     {
       /*choices: Object.entries(spdxToLicenseName).map((value) => {
@@ -175,6 +201,20 @@ export abstract class GeneratorPrompts {
       message: "Do you want to enable linux builds on appveyor? ",
       name: "enableLinux",
     },
+    {
+      default: false,
+      inputType: InputType.Confirm,
+      isCommon: true,
+      message: "Do you wish to enable travis builds? ",
+      name: "enableTravis",
+    },
+    {
+      default: false,
+      inputType: InputType.Confirm,
+      isCommon: false,
+      message: "Do you wish to use a CONTRIBUTING.md file? ",
+      name: "enableContributing",
+    },
   ];
 
   private static _convertToPrompt(
@@ -191,6 +231,7 @@ export abstract class GeneratorPrompts {
       transformer: generatorPrompt.transformer,
       type: generatorPrompt.inputType,
       validate: generatorPrompt.validate,
+      when: generatorPrompt.when,
     };
   }
 

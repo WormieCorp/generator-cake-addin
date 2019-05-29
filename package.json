@@ -3,8 +3,7 @@
     "version": "0.1.0",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
     "scripts": {
-        "postinstall": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",
-        "build": "gulp build",
+        "build": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop && gulp build",
         "test": "jest",
         "watch": "gulp watch"
     },
@@ -47,6 +46,7 @@
     "dependencies": {
         "chalk": "^2.4.2",
         "fullname": "^4.0.0",
+        "username": "^5.0.0",
         "uuid": "^3.3.2",
         "yeoman-generator": "^4.0.0",
         "yosay": "^2.0.2"

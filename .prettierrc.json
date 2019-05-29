@@ -5,7 +5,7 @@
     "endOfLine": "lf",
     "overrides": [
         {
-            "files": ["*.ts", "*.js", "*.yml"],
+            "files": ["*.ts", "*.js", "*.md", "*.yml"],
             "options": {
                 "tabWidth": 2
             }
