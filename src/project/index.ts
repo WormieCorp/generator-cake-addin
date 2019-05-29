@@ -88,7 +88,7 @@ export = class ProjectGenerator extends BaseGenerator {
     }
 
     this.fs.copyTpl(
-      this.templatePath("Cake.Template/Cake.Template.csproj.tmpl"),
+      this.templatePath("Cake.Template/Cake.Template.csproj"),
       this.destinationPath(
         `${mainProjectDirectory}/Cake.${projectName}.csproj`
       ),
@@ -111,7 +111,7 @@ export = class ProjectGenerator extends BaseGenerator {
     );
 
     this.fs.copyTpl(
-      this.templatePath("Cake.Template.Tests/Cake.Template.Tests.csproj.tmpl"),
+      this.templatePath("Cake.Template.Tests/Cake.Template.Tests.csproj"),
       this.destinationPath(
         `${testProjectDirectory}/Cake.${projectName}.Tests.csproj`
       ),
