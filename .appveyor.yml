@@ -20,19 +20,17 @@ install:
   - sh: export FrameworkPathOverride=$(dirname $(which mono))/../lib/mono/4.5/
   - dotnet tool install --global codecov.tool
   - yarn global add codacy-coverage
-  - yarn install
 
 build_script:
-  - yarn build
+  - pwsh: ./build.ps1 --build
 
 test_script:
-  - yarn test --coverage --ci
+  - pwsh: ./build.ps1 --test
 
 on_success:
   - codecov --env nodejs_version,APPVEYOR_BUILD_WORKER_IMAGE --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
   - sh: cat coverage/lcov.info | codacy-coverage --language typescript
   - cmd: codacy-coverage --language typescript < coverage/lcov.info
-  - yarn pack
 
 cache:
-  - "node_modules -> package.json,yarn.lock,"
+  - "node_modules -> package.json,yarn.lock"
