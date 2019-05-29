@@ -9,7 +9,10 @@ node_js:
   - v8
 
 script:
+  - export PATH="$(yarn global bin):$PATH"
   - yarn build
   - yarn test --coverage --ci && bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
+  - yarn global add codacy-coverage
+  - cat coverage/lcov.info | codacy-coverage --language typescript
 
 cache: yarn
