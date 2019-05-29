@@ -19,7 +19,7 @@
         "yeoman-generator"
     ],
     "author": "Kim J. Nordmo",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "bugs": {
         "url": "https://github.com/WormieCorp/generator-cake-addin/issues"
     },
