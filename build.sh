@@ -1,5 +1,4 @@
 #!/bin/sh
-shopt -s nocasematch
 
 runinstall() {
     echo "Installing generator dependencies..."
@@ -63,18 +62,18 @@ for i in $arguments; do
     esac
 done
 
-if [ "$BUILD" == "TRUE" ]; then
+if [ "$BUILD" = "TRUE" ]; then
     runinstall && runbuild && runpack
 fi
 
-if [ "$TEST" == "TRUE" ]; then
+if [ "$TEST" = "TRUE" ]; then
     runtest
 fi
 
-if [ "$INSTALL" == "TRUE" ]; then
+if [ "$INSTALL" = "TRUE" ]; then
     installgenerator
 fi
 
-if [ "$UNINSTALL" == "TRUE" ]; then
+if [ "$UNINSTALL" = "TRUE" ]; then
     uninstallGenerator
 fi
