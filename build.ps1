@@ -5,12 +5,12 @@ param(
 
 function runInstall() {
     "Installing generator dependencies..."
-    Start-Process -FilePath "yarn" -ArgumentList "install", "--frozen-lockfile" -Wait
+    yarn install --frozen-lockfile
 }
 
 function runBuild() {
     "Building generator..."
-    Start-Process -FilePath "yarn" -ArgumentList "build" -Wait
+    yarn build
 }
 
 function runTest() {
@@ -19,23 +19,23 @@ function runTest() {
         "test"
         if ($env:CI -ieq "true") { "--coverage"; "--ci" }
     )
-    Start-Process -FilePath "yarn" -ArgumentList $arguments -Wait
+    yarn @arguments
 }
 
 function runPack() {
     "Creating npm package..."
     Remove-Item "*.tgz"
-    Start-Process -FilePath "yarn" -ArgumentList "pack", "--force" -Wait
+    yarn pack
 }
 
 function installGenerator() {
     "Installing cake addin generator..."
-    Start-Process -FilePath "yarn" -ArgumentList "global", "add", (Get-Item "*.tgz" | Select-Object -ExpandProperty FullName) -Wait
+    yarn global add "$(Get-Item "*.tgz" | Select-Object -ExpandProperty FullName)"
 }
 
 function uninstallGenerator() {
     "Uninstalling cake addin generator..."
-    Start-Process -FilePath "yarn" -ArgumentList "global", "remove", "generator-cake-addin" -Wait
+    yarn global remove generator-cake-addin
 }
 
 $BUILD = $false
