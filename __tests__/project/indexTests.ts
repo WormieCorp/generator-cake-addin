@@ -24,7 +24,7 @@ const skipDotnet = !sync("dotnet");
 
 const expectedContentFiles = [
   {
-    expectedFile: "project.csproj",
+    expectedFile: "project/project.csproj",
     name: "project",
     testFile: "Cake.TestApp/Cake.TestApp.csproj",
   },
@@ -44,7 +44,7 @@ const expectedContentFiles = [
     testFile: "Cake.TestApp/TestAppSettings.cs",
   },
   {
-    expectedFile: "testProject.csproj",
+    expectedFile: "testProject/testProject.csproj",
     name: "test project",
     testFile: "Cake.TestApp.Tests/Cake.TestApp.Tests.csproj",
   },
