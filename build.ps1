@@ -77,8 +77,8 @@ foreach ($arg in $ScriptArgs) {
 
 if ($BUILD) {
     if (Test-Path Env:\APPVEYOR) { UpdateAppveyorBuildVersion }
-    runSetup
     runInstall
+    runSetup
     runBuild
     runPack
 }

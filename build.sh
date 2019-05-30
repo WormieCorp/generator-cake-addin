@@ -2,39 +2,39 @@
 
 runsetup() {
     echo "Compiling gulp build file..."
-    yarn setup
+    yarn setup || exit $?
 }
 
 runinstall() {
     echo "Installing generator dependencies..."
-    yarn install --frozen-lockfile
+    yarn install --frozen-lockfile || exit $?
 }
 
 runbuild() {
     echo "Building generators..."
-    yarn build
+    yarn build || exit $?
 }
 
 runtest() {
     echo "Running unit tests..."
     if [ "$CI" = "true" ]; then
-        yarn test --coverage --ci
+        yarn test --coverage --ci || exit $?
     else
-        yarn test
+        yarn test || exit $?
     fi
 }
 
 runpack() {
     rm *.tgz
-    yarn pack
+    yarn pack || exit $?
 }
 
 installgenerator() {
-    find ~+ -name "*.tgz" -exec yarn global add {} --force \;
+    find ~+ -name "*.tgz" -exec yarn global add {} --force \; || exit $?
 }
 
 uninstallGenerator() {
-    yarn global remove generator-cake-addin
+    yarn global remove generator-cake-addin || exit $?
 }
 
 BUILD="FALSE"
@@ -68,7 +68,7 @@ for i in $arguments; do
 done
 
 if [ "$BUILD" = "TRUE" ]; then
-    runsetup && runinstall && runbuild && runpack
+    runinstall && runsetup && runbuild && runpack
 fi
 
 if [ "$TEST" = "TRUE" ]; then
