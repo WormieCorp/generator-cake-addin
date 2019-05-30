@@ -1,5 +1,10 @@
 #!/bin/sh
 
+runsetup() {
+    echo "Compiling gulp build file..."
+    yarn setup
+}
+
 runinstall() {
     echo "Installing generator dependencies..."
     yarn install --frozen-lockfile
@@ -63,7 +68,7 @@ for i in $arguments; do
 done
 
 if [ "$BUILD" = "TRUE" ]; then
-    runinstall && runbuild && runpack
+    runsetup && runinstall && runbuild && runpack
 fi
 
 if [ "$TEST" = "TRUE" ]; then

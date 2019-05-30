@@ -3,6 +3,26 @@ param(
     [string[]]$ScriptArgs = @("--build", "--tests")
 )
 
+$ErrorActionPreference = 'Stop'
+
+function UpdateAppveyorBuildVersion {
+    $pkgJson = Get-Content -Raw -Encoding utf8 -LiteralPath "package.json" | ConvertFrom-Json
+    $buildVersion = $env:APPVEYOR_BUILD_NUMBER
+
+    $newVersion = "$($pkgJson.version)+build.$buildVersion"
+
+    Update-AppveyorBuild -Version $newVersion
+}
+
+function runSetup() {
+    "Compiling gulp build file..."
+    yarn setup
+
+    if (Test-Path Env:\APPVEYOR) {
+        gulp appveyor
+    }
+}
+
 function runInstall() {
     "Installing generator dependencies..."
     yarn install --frozen-lockfile
@@ -56,6 +76,8 @@ foreach ($arg in $ScriptArgs) {
 }
 
 if ($BUILD) {
+    if (Test-Path Env:\APPVEYOR) { UpdateAppveyorBuildVersion }
+    runSetup
     runInstall
     runBuild
     runPack

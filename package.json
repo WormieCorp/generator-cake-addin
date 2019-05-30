@@ -1,9 +1,10 @@
 {
     "name": "generator-cake-addin",
-    "version": "0.1.0",
+    "version": "0.1.0-alpha1",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
     "scripts": {
-        "build": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop && gulp build",
+        "setup": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",
+        "build": "gulp build",
         "test": "jest",
         "watch": "gulp watch"
     },
