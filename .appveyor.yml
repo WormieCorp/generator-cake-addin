@@ -27,8 +27,8 @@ test_script:
 
 on_success:
   - codecov --env nodejs_version,APPVEYOR_BUILD_WORKER_IMAGE --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
-  - sh: cat coverage/lcov.info | codacy-coverage --language typescript
-  - cmd: codacy-coverage --language typescript < coverage/lcov.info
+  - sh: [ ! -z "$CODACY_PROJECT_TOKEN" ] && cat coverage/lcov.info | codacy-coverage --language typescript
+  - cmd: if NOT "%CODACY_PROJECT_TOKEN%" == "" (codacy-coverage --language typescript < coverage/lcov.info)
 
 cache:
   - "node_modules -> package.json,yarn.lock"
