@@ -7,9 +7,10 @@ $ErrorActionPreference = 'Stop'
 
 function UpdateAppveyorBuildVersion {
     $pkgJson = Get-Content -Raw -Encoding utf8 -LiteralPath "package.json" | ConvertFrom-Json
-    $buildVersion = $env:APPVEYOR_BUILD_NUMBER
+    $buildVersion = $env:APPVEYOR_BUILD_VERSION
+    $commitSha = $env:APPVEYOR_REPO_COMMIT
 
-    $newVersion = "$($pkgJson.version)+build.$buildVersion"
+    $newVersion = "$($pkgJson.version)+build.$buildVersion.sha.$commitSha"
 
     Update-AppveyorBuild -Version $newVersion
 }
