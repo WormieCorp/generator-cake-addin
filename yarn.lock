@@ -564,10 +564,10 @@
   resolved "https://registry.yarnpkg.com/@types/yeoman-assert/-/yeoman-assert-3.1.1.tgz#d1f683e5f6e6b15d36bfb216221a19bd7e9735c6"
   integrity sha512-ACDlMVhoLIA3VQPFKtJWlr3evUE3DaEbVxi1ukivBRNB1havMW+vo2J0+hNURF19yiqs7iu+yUHLG25bCi2xcw==
 
-"@types/yeoman-environment@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-environment/-/yeoman-environment-2.3.0.tgz#d937df5dbd1b12757c91bc1b5d1a4b85bf33ebc2"
-  integrity sha512-b0t2cdqMRkVloC4/hQr7o40U1YP9rM1Gg3BTUkz9LYtQH2uxy7ESQoaO5NuxOHhwtvJvkqpmpStd/VSWhGhevQ==
+"@types/yeoman-environment@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@types/yeoman-environment/-/yeoman-environment-2.3.1.tgz#d9706c9548edec639f6ea919a909d6e574cd1c46"
+  integrity sha512-tShYukGMgbnJKJmviwRpzNm7tLO5a7kDypMtn+dieRWkSRbBjxxBic+QL3pU0LIXisivajc94oe/WeAuJYjE+A==
   dependencies:
     "@types/inquirer" "*"
     "@types/mem-fs" "*"

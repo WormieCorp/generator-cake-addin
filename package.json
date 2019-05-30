@@ -61,7 +61,7 @@
         "@types/prettier": "^1.16.4",
         "@types/uuid": "^3.4.4",
         "@types/yeoman-assert": "^3.1.1",
-        "@types/yeoman-environment": "^2.3.0",
+        "@types/yeoman-environment": "^2.3.1",
         "@types/yeoman-generator": "^3.1.2",
         "@types/yeoman-test": "^2.0.2",
         "@types/yosay": "^0.0.29",
