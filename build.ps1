@@ -17,10 +17,6 @@ function UpdateAppveyorBuildVersion {
 function runSetup() {
     "Compiling gulp build file..."
     yarn setup
-
-    if (Test-Path Env:\APPVEYOR) {
-        gulp appveyor
-    }
 }
 
 function runInstall() {
