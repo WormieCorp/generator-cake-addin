@@ -66,6 +66,7 @@ export const licenses = [
 export interface IGeneratorOption extends OptionConfig {
   name: string;
   filter?: (input: string) => string;
+  validate?: (answer: string) => string | boolean;
 }
 
 export abstract class GeneratorPrompts {
@@ -258,6 +259,7 @@ export abstract class GeneratorPrompts {
       hide: generatorPrompt.inputType === InputType.Confirm,
       name: generatorPrompt.name,
       type: this._getOptionType(generatorPrompt.inputType),
+      validate: generatorPrompt.validate,
     };
   }
 

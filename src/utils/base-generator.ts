@@ -27,11 +27,14 @@ import {
 export default abstract class BaseGenerator extends Generator {
   private _prompts: Generator.Question[] = [];
   private _answers: Generator.Answers = {};
+  private _optionConfigs: IGeneratorOption[] = [];
 
   constructor(args: string | string[], opts: {}) {
     super(args, opts);
 
     this._setup();
+
+    this.validateOptions();
   }
 
   /** Gets all of the registered prompt values, together with the passed in options */
@@ -108,6 +111,7 @@ export default abstract class BaseGenerator extends Generator {
     }
 
     this.option(question.name, question);
+    this._optionConfigs.push(question);
 
     if (question.default && !(question.name in this.options)) {
       this.options[question.name] = question.default;
@@ -117,6 +121,22 @@ export default abstract class BaseGenerator extends Generator {
       this.options[question.name] = question.filter(
         this.options[question.name]
       );
+    }
+  }
+
+  private validateOptions() {
+    for (const option of this._optionConfigs) {
+      if (!option.validate || !(option.name in this.options)) {
+        continue;
+      }
+
+      const result = option.validate(this.options[option.name]);
+
+      if (typeof result === "string") {
+        throw Error(result);
+      } else if (!result) {
+        throw Error(`Invalid input for ${option.name}`);
+      }
     }
   }
 }
