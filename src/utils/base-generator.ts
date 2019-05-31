@@ -17,11 +17,9 @@
  */
 
 import * as Generator from "yeoman-generator";
-import {
-  GeneratorPrompts,
-  IGeneratorOption,
-  PromptNames,
-} from "./generator-prompts";
+import { PromptNames } from "./constants/prompt-names";
+import { GeneratorPrompts } from "./generator-prompts";
+import { IGeneratorOption } from "./igenerator-option";
 
 /** Declares a common base to be used by all of the implemented generators */
 export default abstract class BaseGenerator extends Generator {

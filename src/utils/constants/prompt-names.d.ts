@@ -1,0 +1,16 @@
+export const enum PromptNames {
+  AppVeyorAccount = "appveyorAccount",
+  Author = "author",
+  Description = "description",
+  EnableContributing = "enableContributing",
+  EnableLinux = "enableLinux",
+  EnableTravis = "enableTravis",
+  EnableWyam = "enableWyam",
+  LicenseType = "licenseType",
+  ProjectMaintainer = "projectMaintainer",
+  ProjectName = "projectName",
+  RepositoryOwner = "repositoryOwner",
+  ScriptName = "scriptName",
+  ShortDescription = "shortDescription",
+  SourceDir = "sourceDir",
+}

@@ -2,77 +2,18 @@ import fullname = require("fullname");
 import { basename } from "path";
 import { cwd } from "process";
 import username = require("username");
-import { Answers, OptionConfig, Question } from "yeoman-generator";
+import { Answers, Question } from "yeoman-generator";
 import { IGeneratorPrompt, InputType } from "./";
+import { PromptNames } from "./constants/prompt-names";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
+import { IGeneratorOption } from "./igenerator-option";
+import { licenses } from "./licenses";
 import {
   AnswerNotInInputValidator,
   LengthValidator,
   MultiValidator,
   NotEmptyValidator,
 } from "./validators";
-
-export const enum PromptNames {
-  AppVeyorAccount = "appveyorAccount",
-  Author = "author",
-  Description = "description",
-  EnableContributing = "enableContributing",
-  EnableLinux = "enableLinux",
-  EnableTravis = "enableTravis",
-  EnableWyam = "enableWyam",
-  LicenseType = "licenseType",
-  ProjectMaintainer = "projectMaintainer",
-  ProjectName = "projectName",
-  RepositoryOwner = "repositoryOwner",
-  ScriptName = "scriptName",
-  ShortDescription = "shortDescription",
-  SourceDir = "sourceDir",
-}
-
-export const licenses = [
-  {
-    FileHeader: true,
-    Name: "Apache License 2.0",
-    NeedsAuthor: true,
-    Spdx: "Apache-2.0",
-  },
-  {
-    FileHeader: true,
-    Name: "GNU General Public License v3.0 or later",
-    NeedsAuthor: false,
-    Spdx: "GPL-3.0-or-later",
-  },
-  {
-    FileHeader: false,
-    Name: "MIT License",
-    NeedsAuthor: true,
-    Spdx: "MIT",
-  },
-  {
-    FileHeader: false,
-    Name: "Mozilla Public License 2.0",
-    NeedsAuthor: false,
-    Spdx: "MPL-2.0",
-  },
-  {
-    FileHeader: false,
-    Name: "The Unlicense",
-    NeedsAuthor: false,
-    Spdx: "Unlicense",
-  },
-  {
-    FileHeader: false,
-    Name: "Do What The F*ck You Want To Public License",
-    NeedsAuthor: false,
-    Spdx: "WTFPL",
-  },
-];
-
-export interface IGeneratorOption extends OptionConfig {
-  name: string;
-  filter?: (input: string) => string;
-  validate?: (answer: string) => string | boolean;
-}
 
 export abstract class GeneratorPrompts {
   public static get commonPrompts(): Question[] {
