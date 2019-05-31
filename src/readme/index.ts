@@ -1,28 +1,32 @@
 import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts, licenses } from "../utils/generator-prompts";
+import {
+  GeneratorPrompts,
+  licenses,
+  PromptNames,
+} from "../utils/generator-prompts";
 
 const promptOptions = [
-  "projectName",
-  "repositoryOwner",
-  "projectMaintainer",
-  "description",
-  "shortDescription",
-  "licenseType",
-  "author",
-  "enableTravis",
-  "enableContributing",
+  PromptNames.ProjectName,
+  PromptNames.RepositoryOwner,
+  PromptNames.ProjectMaintainer,
+  PromptNames.Description,
+  PromptNames.ShortDescription,
+  PromptNames.LicenseType,
+  PromptNames.Author,
+  PromptNames.EnableTravis,
+  PromptNames.EnableContributing,
 ];
 
 export = class ReadmeGenerator extends BaseGenerator {
   public async prompting() {
     for (const prompt of promptOptions) {
       if (
-        prompt === "enableTravis" &&
+        prompt === PromptNames.EnableTravis &&
         this.fs.exists(this.destinationPath(".travis.yml"))
       ) {
         this.setValue(prompt, true);
       } else if (
-        prompt === "enableContributing" &&
+        prompt === PromptNames.EnableContributing &&
         this.fs.exists(this.destinationPath("CONTRIBUTING.md"))
       ) {
         this.setValue(prompt, true);
@@ -33,28 +37,33 @@ export = class ReadmeGenerator extends BaseGenerator {
 
     await this.callPrompts();
 
-    const repoOwner = this.getValue<string>("repositoryOwner") as string;
+    const repoOwner = this.getValue<string>(
+      PromptNames.RepositoryOwner
+    ) as string;
     if (repoOwner === "cake-contrib") {
-      this.setValue("appveyorAccount", "cakecontrib");
+      this.setValue(PromptNames.AppVeyorAccount, "cakecontrib");
     } else {
       this.setValue(
-        "appveyorAccount",
+        PromptNames.AppVeyorAccount,
         repoOwner.replace("-", "").toLowerCase()
       );
     }
-    const fullProjectName = `Cake.${this.getValue("projectName")}`;
+    const fullProjectName = `Cake.${this.getValue(PromptNames.ProjectName)}`;
     this.setValue("fullProjectName", fullProjectName);
     this.setValue(
       "appveyorProjectName",
       fullProjectName.replace(".", "-").toLowerCase()
     );
 
-    const licenseTypeSpdx = this.getValue<string>("licenseType", "MIT");
+    const licenseTypeSpdx = this.getValue<string>(
+      PromptNames.LicenseType,
+      "MIT"
+    );
     const licenseType = licenses.find((value) => {
       return value.Spdx === licenseTypeSpdx;
     });
 
-    this.setValue("licenseType", licenseType);
+    this.setValue(PromptNames.LicenseType, licenseType);
   }
 
   public writing() {

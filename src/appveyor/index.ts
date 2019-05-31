@@ -17,7 +17,7 @@
  */
 
 import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts } from "../utils/generator-prompts";
+import { GeneratorPrompts, PromptNames } from "../utils/generator-prompts";
 
 /**
  * Generator for creating a simple appveyor.yml file.
@@ -27,8 +27,8 @@ export = class AppveyorGenerator extends BaseGenerator {
    * The function responsible for prompting the user for questions.
    */
   public prompting() {
-    this.addPrompt(GeneratorPrompts.getPrompt("scriptName"), true);
-    this.addPrompt(GeneratorPrompts.getPrompt("enableLinux"));
+    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.ScriptName), true);
+    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.EnableLinux));
     return this.callPrompts();
   }
 
@@ -52,6 +52,9 @@ export = class AppveyorGenerator extends BaseGenerator {
     this.description =
       "Simple generator for creating a appveyor.yml file to be used with Cake addins";
 
-    this.option("scriptName", GeneratorPrompts.getOption("scriptName"));
+    this.option(
+      "scriptName",
+      GeneratorPrompts.getOption(PromptNames.ScriptName)
+    );
   }
 };

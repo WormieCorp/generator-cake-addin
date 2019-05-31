@@ -8,6 +8,23 @@ import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
 import { LenghtValidator } from "./validators/lenght-validator";
 
+export const enum PromptNames {
+  AppVeyorAccount = "appveyorAccount",
+  Author = "author",
+  Description = "description",
+  EnableContributing = "enableContributing",
+  EnableLinux = "enableLinux",
+  EnableTravis = "enableTravis",
+  EnableWyam = "enableWyam",
+  LicenseType = "licenseType",
+  ProjectMaintainer = "projectMaintainer",
+  ProjectName = "projectName",
+  RepositoryOwner = "repositoryOwner",
+  ScriptName = "scriptName",
+  ShortDescription = "shortDescription",
+  SourceDir = "sourceDir",
+}
+
 export const licenses = [
   {
     FileHeader: true,
@@ -63,7 +80,7 @@ export abstract class GeneratorPrompts {
     return result;
   }
 
-  public static getPrompt(name: string, defaultValue?: any): Question {
+  public static getPrompt(name: PromptNames, defaultValue?: any): Question {
     for (const prompt of GeneratorPrompts._allPrompts) {
       if (prompt.name === name) {
         return GeneratorPrompts._convertToPrompt(prompt, defaultValue);
@@ -73,7 +90,7 @@ export abstract class GeneratorPrompts {
     throw Error(`A prompt with the name: ${name} was not found.`);
   }
 
-  public static getOption(name: string): IOptionConfigEx {
+  public static getOption(name: PromptNames): IOptionConfigEx {
     for (const option of GeneratorPrompts._allPrompts) {
       if (option.name === name) {
         return this._convertToOption(option);
@@ -83,7 +100,7 @@ export abstract class GeneratorPrompts {
     throw Error(`A prompt with the name: ${name} was not found`);
   }
 
-  public static getFilter(name: string) {
+  public static getFilter(name: PromptNames) {
     const prompt = this.getPrompt(name);
     if (prompt) {
       return prompt.filter;
@@ -101,7 +118,7 @@ export abstract class GeneratorPrompts {
       inputType: InputType.Text,
       isCommon: true,
       message: "What is the name of the Cake addin project? ",
-      name: "projectName",
+      name: PromptNames.ProjectName,
     },
     {
       default: username,
@@ -112,7 +129,7 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message:
         "Who is the repository owner/organization where the addin will located? ",
-      name: "repositoryOwner",
+      name: PromptNames.RepositoryOwner,
       validate: new NotEmptyValidator("owner/organization").validate,
     },
     {
@@ -122,7 +139,7 @@ export abstract class GeneratorPrompts {
       inputType: InputType.Text,
       isCommon: true,
       message: "What is the github username of the main addin author? ",
-      name: "projectMaintainer",
+      name: PromptNames.ProjectMaintainer,
       validate: new NotEmptyValidator("project maintainer").validate,
     },
     {
@@ -132,8 +149,8 @@ export abstract class GeneratorPrompts {
       inputType: InputType.Text,
       isCommon: true,
       message: "Who is the main author of the Cake addin? ",
-      name: "author",
-      validate: new NotEmptyValidator("author").validate,
+      name: PromptNames.Author,
+      validate: new NotEmptyValidator(PromptNames.Author).validate,
     },
     {
       description: "The cake addin description",
@@ -141,7 +158,7 @@ export abstract class GeneratorPrompts {
       inputType: InputType.Editor,
       isCommon: true,
       message: "What is the description for the Cake addin? ",
-      name: "description",
+      name: PromptNames.Description,
     },
     {
       description:
@@ -150,16 +167,13 @@ export abstract class GeneratorPrompts {
       isCommon: false,
       message:
         "What is the short description for the cake addin (120 characters or less)? ",
-      name: "shortDescription",
+      name: PromptNames.ShortDescription,
       validate: new LenghtValidator("short description", undefined, 120)
         .validate,
       when: (answers) =>
         answers.description !== undefined && answers.description.length > 120,
     },
     {
-      /*choices: Object.entries(spdxToLicenseName).map((value) => {
-        return { name: value[1], value: value[0] };
-      })*/
       choices: licenses.map((value) => {
         return { name: value.Name, value: value.Spdx, short: value.Spdx };
       }),
@@ -168,7 +182,7 @@ export abstract class GeneratorPrompts {
       inputType: InputType.Selection,
       isCommon: true,
       message: "What license will the Cake addin use? ",
-      name: "licenseType",
+      name: PromptNames.LicenseType,
     },
     {
       default: "./src",
@@ -177,7 +191,7 @@ export abstract class GeneratorPrompts {
       inputType: InputType.Text,
       isCommon: true,
       message: "Where will the project source files be located? ",
-      name: "sourceDir",
+      name: PromptNames.SourceDir,
     },
     {
       default: "recipe.cake",
@@ -185,35 +199,35 @@ export abstract class GeneratorPrompts {
       inputType: InputType.Text,
       isCommon: true,
       message: "What is the name of the cake build script to use? ",
-      name: "scriptName",
+      name: PromptNames.ScriptName,
     },
     {
       default: true,
       inputType: InputType.Confirm,
       isCommon: true,
       message: "Do you want to use Wyam to generate documentation? ",
-      name: "enableWyam",
+      name: PromptNames.EnableWyam,
     },
     {
       default: false,
       inputType: InputType.Confirm,
       isCommon: false,
       message: "Do you want to enable linux builds on appveyor? ",
-      name: "enableLinux",
+      name: PromptNames.EnableLinux,
     },
     {
       default: false,
       inputType: InputType.Confirm,
       isCommon: true,
       message: "Do you wish to enable travis builds? ",
-      name: "enableTravis",
+      name: PromptNames.EnableTravis,
     },
     {
       default: false,
       inputType: InputType.Confirm,
       isCommon: false,
       message: "Do you wish to use a CONTRIBUTING.md file? ",
-      name: "enableContributing",
+      name: PromptNames.EnableContributing,
     },
   ];
 

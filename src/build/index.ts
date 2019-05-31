@@ -17,7 +17,7 @@
  */
 
 import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts } from "../utils/generator-prompts";
+import { GeneratorPrompts, PromptNames } from "../utils/generator-prompts";
 
 /**
  * Generator for creating build scripts for a cake addin using Cake.Recipe.
@@ -27,18 +27,21 @@ export = class BuildGenerator extends BaseGenerator {
    * The function responsible for prompting the user for questions.
    */
   public async prompting() {
-    this.addPrompt(GeneratorPrompts.getPrompt("projectName"), true);
-    this.addPrompt(GeneratorPrompts.getPrompt("repositoryOwner"), true);
-    this.addPrompt(GeneratorPrompts.getPrompt("scriptName"), true);
-    this.addPrompt(GeneratorPrompts.getPrompt("sourceDir"), true);
+    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.ProjectName), true);
+    this.addPrompt(
+      GeneratorPrompts.getPrompt(PromptNames.RepositoryOwner),
+      true
+    );
+    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.ScriptName), true);
+    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.SourceDir), true);
 
     await this.callPrompts();
 
-    const repoOwner = this.getValue("repositoryOwner");
+    const repoOwner = this.getValue(PromptNames.RepositoryOwner);
     if (repoOwner === "cake-contrib") {
-      this.setValue("appveyorAccount", "cakecontrib");
+      this.setValue(PromptNames.AppVeyorAccount, "cakecontrib");
     } else {
-      this.setValue("appveyorAccount", false);
+      this.setValue(PromptNames.AppVeyorAccount, false);
     }
   }
 
@@ -59,7 +62,9 @@ export = class BuildGenerator extends BaseGenerator {
     );
     this.fs.copyTpl(
       this.templatePath("recipe.cake"),
-      this.destinationPath(this.getValue("scriptName") || "recipe.cake"),
+      this.destinationPath(
+        this.getValue(PromptNames.ScriptName) || "recipe.cake"
+      ),
       this.allValues
     );
     this.fs.copy(
@@ -76,12 +81,21 @@ export = class BuildGenerator extends BaseGenerator {
     this.description =
       "Generator for setting up a basic cake addin build using Cake.Recipe";
 
-    this.option("scriptName", GeneratorPrompts.getOption("scriptName"));
-    this.option("projectName", GeneratorPrompts.getOption("projectName"));
     this.option(
-      "repositoryOwner",
-      GeneratorPrompts.getOption("repositoryOwner")
+      PromptNames.ScriptName,
+      GeneratorPrompts.getOption(PromptNames.ScriptName)
     );
-    this.option("sourceDir", GeneratorPrompts.getOption("sourceDir"));
+    this.option(
+      PromptNames.ProjectName,
+      GeneratorPrompts.getOption(PromptNames.ProjectName)
+    );
+    this.option(
+      PromptNames.RepositoryOwner,
+      GeneratorPrompts.getOption(PromptNames.RepositoryOwner)
+    );
+    this.option(
+      PromptNames.SourceDir,
+      GeneratorPrompts.getOption(PromptNames.SourceDir)
+    );
   }
 };

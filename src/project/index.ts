@@ -19,7 +19,7 @@
 import { join } from "path";
 import * as uuid from "uuid/v4";
 import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts } from "../utils/generator-prompts";
+import { GeneratorPrompts, PromptNames } from "../utils/generator-prompts";
 
 /**
  * Generator for creating the basic Cake addin project structure.
@@ -34,27 +34,17 @@ export = class ProjectGenerator extends BaseGenerator {
    */
   public prompting() {
     const promptNames = [
-      "sourceDir",
-      "projectName",
-      "author",
-      `repositoryOwner`,
-      "description",
-      "licenseType",
-      "enableWyam",
+      PromptNames.SourceDir,
+      PromptNames.ProjectName,
+      PromptNames.Author,
+      PromptNames.RepositoryOwner,
+      PromptNames.Description,
+      PromptNames.LicenseType,
+      PromptNames.EnableWyam,
     ];
 
     for (const name of promptNames) {
-      const index = name.indexOf("::");
-      if (index > 0) {
-        const nameValue = name.substr(0, index);
-        const defaultValue = name.substr(index + 2);
-        this.addPrompt(
-          GeneratorPrompts.getPrompt(nameValue, defaultValue),
-          true
-        );
-      } else {
-        this.addPrompt(GeneratorPrompts.getPrompt(name), true);
-      }
+      this.addPrompt(GeneratorPrompts.getPrompt(name), true);
     }
 
     return this.callPrompts();
@@ -65,12 +55,12 @@ export = class ProjectGenerator extends BaseGenerator {
    * the user specified directory.
    */
   public writing() {
-    const sourceDir = this.getValue<string>("sourceDir", "./src");
+    const sourceDir = this.getValue<string>(PromptNames.SourceDir, "./src");
     if (!sourceDir) {
       throw Error("Unable to get the current source directory to use");
     }
     const destinationDir = this.destinationPath(sourceDir);
-    const projectName = this.getValue<string>("projectName");
+    const projectName = this.getValue<string>(PromptNames.ProjectName);
     if (!projectName) {
       throw Error("Unable to get the name of the project");
     }
@@ -156,7 +146,9 @@ export = class ProjectGenerator extends BaseGenerator {
       return;
     }
     const solutionPath = this.destinationPath(
-      `${this.getValue("sourceDir")}/Cake.${this.getValue("projectName")}.sln`
+      `${this.getValue(PromptNames.SourceDir)}/Cake.${this.getValue(
+        PromptNames.ProjectName
+      )}.sln`
     );
     const done = this.async();
     if (this.getValue<boolean>("build")) {
@@ -175,13 +167,13 @@ export = class ProjectGenerator extends BaseGenerator {
       "Generator for creating a basic cake addin project structure.";
 
     const optionNames = [
-      "sourceDir",
-      "projectName",
-      "repositoryOwner",
-      "author",
-      "description",
-      "licenseType",
-      "enableWyam",
+      PromptNames.SourceDir,
+      PromptNames.ProjectName,
+      PromptNames.RepositoryOwner,
+      PromptNames.Author,
+      PromptNames.Description,
+      PromptNames.LicenseType,
+      PromptNames.EnableWyam,
     ];
 
     this.option("build", {

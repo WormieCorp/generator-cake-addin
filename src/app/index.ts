@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import yosay = require("yosay");
 import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts } from "../utils/generator-prompts";
+import { GeneratorPrompts, PromptNames } from "../utils/generator-prompts";
 
 export = class MainGenerator extends BaseGenerator {
   public async prompting() {
@@ -15,7 +15,7 @@ export = class MainGenerator extends BaseGenerator {
     this.composeWith(require.resolve("../conduct"), {});
     this.composeWith(require.resolve("../license"), this.allValues);
     this.composeWith(require.resolve("../appveyor"), this.allValues);
-    if (this.getValue<boolean>("enableTravis")) {
+    if (this.getValue<boolean>(PromptNames.EnableTravis)) {
       this.composeWith(require.resolve("../travis"), this.allValues);
     }
     this.composeWith(require.resolve("../readme"), this.allValues);
@@ -51,13 +51,16 @@ export = class MainGenerator extends BaseGenerator {
         continue;
       }
 
-      const option = GeneratorPrompts.getOption(prompt.name);
+      const option = GeneratorPrompts.getOption(prompt.name as PromptNames);
 
       if (option.type !== Boolean) {
-        this.option(prompt.name, GeneratorPrompts.getOption(prompt.name));
+        this.option(
+          prompt.name,
+          GeneratorPrompts.getOption(prompt.name as PromptNames)
+        );
       }
       this.addPrompt(prompt, true);
     }
-    this.addPrompt(GeneratorPrompts.getPrompt("enableContributing"));
+    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.EnableContributing));
   }
 };

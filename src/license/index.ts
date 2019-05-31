@@ -1,6 +1,10 @@
 import { Answers } from "yeoman-generator";
 import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts, licenses } from "../utils/generator-prompts";
+import {
+  GeneratorPrompts,
+  licenses,
+  PromptNames,
+} from "../utils/generator-prompts";
 
 export = class LicenseGenerator extends BaseGenerator {
   private static _needsAuthor(
@@ -28,8 +32,8 @@ export = class LicenseGenerator extends BaseGenerator {
   }
 
   public prompting(): void | Promise<void> {
-    this.addPrompt(GeneratorPrompts.getPrompt("licenseType"));
-    const authorPrompt = GeneratorPrompts.getPrompt("author");
+    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.LicenseType));
+    const authorPrompt = GeneratorPrompts.getPrompt(PromptNames.Author);
 
     authorPrompt.when = (answers) =>
       !this.options.author &&
@@ -49,8 +53,8 @@ export = class LicenseGenerator extends BaseGenerator {
 
   protected _setup(): void {
     const options = [
-      GeneratorPrompts.getOption("licenseType"),
-      GeneratorPrompts.getOption("author"),
+      GeneratorPrompts.getOption(PromptNames.LicenseType),
+      GeneratorPrompts.getOption(PromptNames.Author),
     ];
 
     for (const option of options) {
