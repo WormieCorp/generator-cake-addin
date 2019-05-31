@@ -1,26 +1,26 @@
-import { LenghtValidator } from "../../../src/utils/validators/lenght-validator";
+import { LengthValidator } from "../../../src/utils/validators/length-validator";
 
 describe("validators:Length", () => {
   it("should return true if input is not a string", () => {
-    const validator = new LenghtValidator("test", 1, 3).validate;
+    const validator = new LengthValidator("test", 1, 3).validate;
 
     expect(validator(42)).toBeTruthy();
   });
 
   it("should throw error if no min and max is specified", () => {
-    expect(() => new LenghtValidator("test")).toThrowError(
+    expect(() => new LengthValidator("test")).toThrowError(
       "Unable to create length validator without a minimum or maximum length"
     );
   });
 
   it("should throw error if no name is specified", () => {
-    expect(() => new LenghtValidator("", 2, 6)).toThrowError(
+    expect(() => new LengthValidator("", 2, 6)).toThrowError(
       "No name have been specified"
     );
   });
 
   describe("minimum lenth", () => {
-    const minValidator = new LenghtValidator("test", 3).validate;
+    const minValidator = new LengthValidator("test", 3).validate;
 
     it("should not allow length shorter than specified", () => {
       expect(minValidator("NO")).toBe(
@@ -38,7 +38,7 @@ describe("validators:Length", () => {
   });
 
   describe("maximum length", () => {
-    const maxValidator = new LenghtValidator("test", undefined, 30).validate;
+    const maxValidator = new LengthValidator("test", undefined, 30).validate;
 
     it("should not allow length longer than specified", () => {
       expect(maxValidator("Duis ut ullamcorper orci metus.")).toBe(

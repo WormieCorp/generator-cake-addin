@@ -5,7 +5,7 @@ import username = require("username");
 import { Answers, OptionConfig, Question } from "yeoman-generator";
 import { IGeneratorPrompt, InputType } from "./";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
-import { LenghtValidator, NotEmptyValidator } from "./validators";
+import { LengthValidator, NotEmptyValidator } from "./validators";
 
 export const enum PromptNames {
   AppVeyorAccount = "appveyorAccount",
@@ -167,7 +167,7 @@ export abstract class GeneratorPrompts {
       message:
         "What is the short description for the cake addin (120 characters or less)? ",
       name: PromptNames.ShortDescription,
-      validate: new LenghtValidator("short description", undefined, 120)
+      validate: new LengthValidator("short description", undefined, 120)
         .validate,
       when: (answers) =>
         answers.description !== undefined && answers.description.length > 120,

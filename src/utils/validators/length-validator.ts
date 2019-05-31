@@ -1,7 +1,7 @@
 import { trimFilter } from "../filters";
 import IValidator from "./ivalidator";
 
-export class LenghtValidator implements IValidator {
+export class LengthValidator implements IValidator {
   private static _filter = trimFilter;
   constructor(
     private _name: string,
@@ -25,7 +25,7 @@ export class LenghtValidator implements IValidator {
       return true;
     }
 
-    const value = LenghtValidator._filter(input);
+    const value = LengthValidator._filter(input);
     if (this._min && value.length < this._min) {
       return `${this._name} must be a minimum of ${this._min} characters.`;
     }
