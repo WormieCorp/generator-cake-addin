@@ -582,10 +582,10 @@
     "@types/inquirer" "*"
     rxjs ">=6.4.0"
 
-"@types/yeoman-test@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-2.0.2.tgz#066b985c48ba9034f9661fba99208f1108e583a2"
-  integrity sha512-yFtPL9CExaHMEXccQ0wMSck6E4BIcVmnq+Jj2faAeLZS/2O8aQMbeOp9UbLcCosIn3yY7JWDQpS6PHlCCPfB+w==
+"@types/yeoman-test@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-2.0.3.tgz#888a170783094f79369c5cdff64a237f14b9aa21"
+  integrity sha512-aeRSIs1wk9DURLIwfD+0/JOEBSYU7oBjYNIQcYnuU5xLidT+CgDHyMvySwIe4BKSS7eZnP2qpg00QGG5f9YqPA==
   dependencies:
     "@types/yeoman-generator" "*"
 
