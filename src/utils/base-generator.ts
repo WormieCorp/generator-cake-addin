@@ -112,5 +112,11 @@ export default abstract class BaseGenerator extends Generator {
     if (question.default && !(question.name in this.options)) {
       this.options[question.name] = question.default;
     }
+
+    if (question.filter && question.name in this.options) {
+      this.options[question.name] = question.filter(
+        this.options[question.name]
+      );
+    }
   }
 }
