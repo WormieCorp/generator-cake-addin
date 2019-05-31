@@ -5,8 +5,7 @@ import username = require("username");
 import { Answers, OptionConfig, Question } from "yeoman-generator";
 import { IGeneratorPrompt, InputType } from "./";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
-import { NotEmptyValidator } from "./validators";
-import { LenghtValidator } from "./validators/lenght-validator";
+import { LenghtValidator, NotEmptyValidator } from "./validators";
 
 export const enum PromptNames {
   AppVeyorAccount = "appveyorAccount",
