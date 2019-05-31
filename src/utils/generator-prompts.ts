@@ -5,7 +5,12 @@ import username = require("username");
 import { Answers, OptionConfig, Question } from "yeoman-generator";
 import { IGeneratorPrompt, InputType } from "./";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
-import { LengthValidator, NotEmptyValidator } from "./validators";
+import {
+  AnswerNotInInputValidator,
+  LengthValidator,
+  MultiValidator,
+  NotEmptyValidator,
+} from "./validators";
 
 export const enum PromptNames {
   AppVeyorAccount = "appveyorAccount",
@@ -120,6 +125,7 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message: "What is the name of the Cake addin project? ",
       name: PromptNames.ProjectName,
+      validate: new NotEmptyValidator("project name").validate,
     },
     {
       default: username,
@@ -160,6 +166,7 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message: "What is the description for the Cake addin? ",
       name: PromptNames.Description,
+      validate: new NotEmptyValidator(PromptNames.Description).validate,
     },
     {
       description:
@@ -169,10 +176,18 @@ export abstract class GeneratorPrompts {
       message:
         "What is the short description for the cake addin (120 characters or less)? ",
       name: PromptNames.ShortDescription,
-      validate: new LengthValidator("short description", undefined, 120)
-        .validate,
+      validate: new MultiValidator(
+        new LengthValidator("short description", undefined, 120),
+        new AnswerNotInInputValidator(
+          "short description",
+          PromptNames.ProjectName,
+          "Cake."
+        )
+      ).validate,
       when: (answers) =>
-        answers.description !== undefined && answers.description.length > 120,
+        answers.description !== undefined &&
+        (answers.description.length > 120 ||
+          answers.description.indexOf("Cake." + answers.projectName) >= 0),
     },
     {
       choices: licenses.map((value) => {
@@ -184,6 +199,7 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message: "What license will the Cake addin use? ",
       name: PromptNames.LicenseType,
+      validate: new NotEmptyValidator("license").validate,
     },
     {
       default: "./src",
@@ -201,6 +217,7 @@ export abstract class GeneratorPrompts {
       isCommon: true,
       message: "What is the name of the cake build script to use? ",
       name: PromptNames.ScriptName,
+      validate: new NotEmptyValidator("cake build script").validate,
     },
     {
       default: true,
