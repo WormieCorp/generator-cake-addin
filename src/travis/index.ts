@@ -1,4 +1,4 @@
-import BaseGenerator from "../utils/base-generator";
+import { BaseGenerator } from "../utils";
 
 export = class TravisGenerator extends BaseGenerator {
   public prompting(): void | Promise<void> {

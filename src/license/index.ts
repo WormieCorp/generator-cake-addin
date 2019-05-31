@@ -1,10 +1,10 @@
 import { Answers } from "yeoman-generator";
-import BaseGenerator from "../utils/base-generator";
 import {
+  BaseGenerator,
   GeneratorPrompts,
   licenses,
   PromptNames,
-} from "../utils/generator-prompts";
+} from "../utils";
 
 export = class LicenseGenerator extends BaseGenerator {
   private static _needsAuthor(

@@ -18,8 +18,7 @@
 
 import { join } from "path";
 import * as uuid from "uuid/v4";
-import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts, PromptNames } from "../utils/generator-prompts";
+import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
 /**
  * Generator for creating the basic Cake addin project structure.

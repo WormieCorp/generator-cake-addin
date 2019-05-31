@@ -1,9 +1,9 @@
-import BaseGenerator from "../utils/base-generator";
 import {
+  BaseGenerator,
   GeneratorPrompts,
   licenses,
   PromptNames,
-} from "../utils/generator-prompts";
+} from "../utils";
 
 const promptOptions = [
   PromptNames.ProjectName,

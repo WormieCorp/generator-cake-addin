@@ -3,6 +3,7 @@ export { PathUtils } from "./file-utils";
 export {
   GeneratorPrompts,
   IGeneratorOption,
+  licenses,
   PromptNames,
 } from "./generator-prompts";
-export { IGeneratorPrompt } from "./igenerator-prompt";
+export { IGeneratorPrompt, InputType } from "./igenerator-prompt";

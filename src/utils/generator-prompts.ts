@@ -3,8 +3,8 @@ import { basename } from "path";
 import { cwd } from "process";
 import username = require("username");
 import { Answers, OptionConfig, Question } from "yeoman-generator";
+import { IGeneratorPrompt, InputType } from "./";
 import { PathNormalizeFilter, PrefixFilter, trimFilter } from "./filters";
-import { IGeneratorPrompt, InputType } from "./igenerator-prompt";
 import { NotEmptyValidator } from "./validators";
 import { LenghtValidator } from "./validators/lenght-validator";
 

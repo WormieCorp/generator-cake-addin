@@ -1,7 +1,6 @@
 import chalk from "chalk";
 import yosay = require("yosay");
-import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts, PromptNames } from "../utils/generator-prompts";
+import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
 export = class MainGenerator extends BaseGenerator {
   public async prompting() {

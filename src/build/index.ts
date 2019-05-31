@@ -16,8 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import BaseGenerator from "../utils/base-generator";
-import { GeneratorPrompts, PromptNames } from "../utils/generator-prompts";
+import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
 /**
  * Generator for creating build scripts for a cake addin using Cake.Recipe.

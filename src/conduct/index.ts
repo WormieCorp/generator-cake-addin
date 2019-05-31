@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import BaseGenerator from "../utils/base-generator";
+import { BaseGenerator } from "../utils";
 
 export = class ConductGenerator extends BaseGenerator {
   public prompting() {
