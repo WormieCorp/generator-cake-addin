@@ -253,6 +253,7 @@ export abstract class GeneratorPrompts {
   ): IGeneratorOption {
     return {
       description: generatorPrompt.description || generatorPrompt.message,
+      hide: generatorPrompt.inputType === InputType.Confirm,
       name: generatorPrompt.name,
       type: this._getOptionType(generatorPrompt.inputType),
     };
