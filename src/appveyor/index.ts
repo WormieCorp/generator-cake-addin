@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
+import { BaseGenerator, PromptNames } from "../utils";
 
 /**
  * Generator for creating a simple appveyor.yml file.
@@ -51,9 +51,6 @@ export = class AppveyorGenerator extends BaseGenerator {
     this.description =
       "Simple generator for creating a appveyor.yml file to be used with Cake addins";
 
-    this.option(
-      "scriptName",
-      GeneratorPrompts.getOption(PromptNames.ScriptName)
-    );
+    this.addOption(PromptNames.ScriptName);
   }
 };

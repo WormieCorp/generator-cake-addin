@@ -17,7 +17,11 @@
  */
 
 import * as Generator from "yeoman-generator";
-import { GeneratorPrompts, PromptNames } from "./generator-prompts";
+import {
+  GeneratorPrompts,
+  IGeneratorOption,
+  PromptNames,
+} from "./generator-prompts";
 
 /** Declares a common base to be used by all of the implemented generators */
 export default abstract class BaseGenerator extends Generator {
@@ -92,5 +96,21 @@ export default abstract class BaseGenerator extends Generator {
     }
 
     this._prompts.push(question);
+  }
+
+  protected addOption(question: IGeneratorOption | PromptNames) {
+    if (typeof question === "string") {
+      question = GeneratorPrompts.getOption(question);
+    }
+
+    if (!question.name) {
+      return;
+    }
+
+    this.option(question.name, question);
+
+    if (question.default && !(question.name in this.options)) {
+      this.options[question.name] = question.default;
+    }
   }
 }

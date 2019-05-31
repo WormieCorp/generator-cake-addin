@@ -18,7 +18,7 @@
 
 import { join } from "path";
 import * as uuid from "uuid/v4";
-import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
+import { BaseGenerator, PromptNames } from "../utils";
 
 /**
  * Generator for creating the basic Cake addin project structure.
@@ -175,34 +175,31 @@ export = class ProjectGenerator extends BaseGenerator {
       PromptNames.EnableWyam,
     ];
 
-    this.option("build", {
+    this.addOption({
       alias: "b",
       default: false,
       description: "Build the addin project after creation",
+      name: "build",
       type: Boolean,
     });
 
-    const currentYear = new Date().getFullYear();
-
-    this.option("start-year", {
-      default: currentYear,
+    this.addOption({
+      default: new Date().getFullYear(),
       description: "The year for when the copyright starts",
+      name: "startYear",
       type: Number,
     });
 
-    this.option("skip-dotnet", {
+    this.addOption({
       default: false,
       description:
         "Skips any call to the dotnet utility after creating the project",
+      name: "skipDotnet",
       type: Boolean,
     });
 
     for (const name of optionNames) {
-      this.option(name, GeneratorPrompts.getOption(name));
-    }
-
-    if (!this.options.startYear) {
-      this.options.startYear = currentYear;
+      this.addOption(name);
     }
 
     this.setValue("mainProjectGuid", uuid().toUpperCase());

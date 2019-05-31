@@ -1,9 +1,4 @@
-import {
-  BaseGenerator,
-  GeneratorPrompts,
-  licenses,
-  PromptNames,
-} from "../utils";
+import { BaseGenerator, licenses, PromptNames } from "../utils";
 
 const promptOptions = [
   PromptNames.ProjectName,
@@ -76,7 +71,7 @@ export = class ReadmeGenerator extends BaseGenerator {
 
   protected _setup(): void {
     for (const option of promptOptions) {
-      this.option(option, GeneratorPrompts.getOption(option));
+      this.addOption(option);
     }
   }
 };

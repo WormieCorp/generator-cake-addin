@@ -1,6 +1,11 @@
 import chalk from "chalk";
 import yosay = require("yosay");
-import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
+import {
+  BaseGenerator,
+  GeneratorPrompts,
+  InputType,
+  PromptNames,
+} from "../utils";
 
 export = class MainGenerator extends BaseGenerator {
   public async prompting() {
@@ -38,10 +43,11 @@ export = class MainGenerator extends BaseGenerator {
     this.description =
       "Generate a recommended structure and recommended files for creating a Cake addin";
 
-    this.option("build", {
+    this.addOption({
       alias: "b",
       default: false,
       description: "Build the addin project after creation",
+      name: "build",
       type: Boolean,
     });
 
@@ -50,13 +56,8 @@ export = class MainGenerator extends BaseGenerator {
         continue;
       }
 
-      const option = GeneratorPrompts.getOption(prompt.name as PromptNames);
-
-      if (option.type !== Boolean) {
-        this.option(
-          prompt.name,
-          GeneratorPrompts.getOption(prompt.name as PromptNames)
-        );
+      if (prompt.type !== InputType.Confirm) {
+        this.addOption(prompt.name as PromptNames);
       }
       this.addPrompt(prompt, true);
     }

@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
+import { BaseGenerator, PromptNames } from "../utils";
 
 /**
  * Generator for creating build scripts for a cake addin using Cake.Recipe.
@@ -77,21 +77,15 @@ export = class BuildGenerator extends BaseGenerator {
     this.description =
       "Generator for setting up a basic cake addin build using Cake.Recipe";
 
-    this.option(
+    const options = [
       PromptNames.ScriptName,
-      GeneratorPrompts.getOption(PromptNames.ScriptName)
-    );
-    this.option(
       PromptNames.ProjectName,
-      GeneratorPrompts.getOption(PromptNames.ProjectName)
-    );
-    this.option(
       PromptNames.RepositoryOwner,
-      GeneratorPrompts.getOption(PromptNames.RepositoryOwner)
-    );
-    this.option(
       PromptNames.SourceDir,
-      GeneratorPrompts.getOption(PromptNames.SourceDir)
-    );
+    ];
+
+    for (const option of options) {
+      this.addOption(option);
+    }
   }
 };

@@ -51,25 +51,25 @@ export = class LicenseGenerator extends BaseGenerator {
   }
 
   protected _setup(): void {
-    const options = [
-      GeneratorPrompts.getOption(PromptNames.LicenseType),
-      GeneratorPrompts.getOption(PromptNames.Author),
-    ];
+    const options = [PromptNames.LicenseType, PromptNames.Author];
 
-    for (const option of options) {
-      this.option(option.name, option);
-    }
-
-    this.option("year", {
+    this.addOption({
       default: new Date().getFullYear(),
       description: "The year of the copyright text",
+      name: "year",
       type: Number,
     });
 
-    this.option("out", {
+    this.addOption({
+      alias: "o",
       default: "LICENSE.txt",
       description: "The file to write the license to",
+      name: "out",
       type: String,
     });
+
+    for (const option of options) {
+      this.addOption(option);
+    }
   }
 };
