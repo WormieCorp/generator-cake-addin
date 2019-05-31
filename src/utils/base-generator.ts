@@ -18,14 +18,6 @@
 
 import * as Generator from "yeoman-generator";
 
-/** Describes the acceptable values that can be used when creating a prompt and an option. */
-export interface IQuestionOption extends Generator.Question {
-  /** The description that will be shown for options */
-  description: string;
-  /** The type the option will accept */
-  optionType: typeof Boolean | typeof String | typeof Number;
-}
-
 /** Declares a common base to be used by all of the implemented generators */
 export default abstract class BaseGenerator extends Generator {
   private _prompts: Generator.Question[] = [];
@@ -80,21 +72,6 @@ export default abstract class BaseGenerator extends Generator {
 
   /** Everything that should be used by the generator will go here. */
   protected abstract _setup(): void;
-
-  /** Creates a single prompt, with an accomponying option. */
-  protected addPromptAndOption(question: IQuestionOption) {
-    if (!question.name) {
-      return;
-    }
-    const name = question.name;
-
-    this.option(name, {
-      description: question.description,
-      type: question.optionType,
-    });
-
-    this.addPrompt(question, true);
-  }
 
   /** Registers a single prompt that should be asked of the user */
   protected addPrompt(
