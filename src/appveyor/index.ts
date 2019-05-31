@@ -26,8 +26,8 @@ export = class AppveyorGenerator extends BaseGenerator {
    * The function responsible for prompting the user for questions.
    */
   public prompting() {
-    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.ScriptName), true);
-    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.EnableLinux));
+    this.addPrompt(PromptNames.ScriptName, true);
+    this.addPrompt(PromptNames.EnableLinux);
     return this.callPrompts();
   }
 

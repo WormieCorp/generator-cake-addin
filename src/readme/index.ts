@@ -31,7 +31,7 @@ export = class ReadmeGenerator extends BaseGenerator {
       ) {
         this.setValue(prompt, true);
       } else {
-        this.addPrompt(GeneratorPrompts.getPrompt(prompt), true);
+        this.addPrompt(prompt, true);
       }
     }
 

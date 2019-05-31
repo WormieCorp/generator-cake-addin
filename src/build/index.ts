@@ -26,13 +26,10 @@ export = class BuildGenerator extends BaseGenerator {
    * The function responsible for prompting the user for questions.
    */
   public async prompting() {
-    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.ProjectName), true);
-    this.addPrompt(
-      GeneratorPrompts.getPrompt(PromptNames.RepositoryOwner),
-      true
-    );
-    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.ScriptName), true);
-    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.SourceDir), true);
+    this.addPrompt(PromptNames.ProjectName, true);
+    this.addPrompt(PromptNames.RepositoryOwner, true);
+    this.addPrompt(PromptNames.ScriptName, true);
+    this.addPrompt(PromptNames.SourceDir, true);
 
     await this.callPrompts();
 

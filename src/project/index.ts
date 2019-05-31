@@ -43,7 +43,7 @@ export = class ProjectGenerator extends BaseGenerator {
     ];
 
     for (const name of promptNames) {
-      this.addPrompt(GeneratorPrompts.getPrompt(name), true);
+      this.addPrompt(name, true);
     }
 
     return this.callPrompts();

@@ -32,13 +32,12 @@ export = class LicenseGenerator extends BaseGenerator {
   }
 
   public prompting(): void | Promise<void> {
-    this.addPrompt(GeneratorPrompts.getPrompt(PromptNames.LicenseType));
+    this.addPrompt(PromptNames.LicenseType, true);
     const authorPrompt = GeneratorPrompts.getPrompt(PromptNames.Author);
 
     authorPrompt.when = (answers) =>
-      !this.options.author &&
       LicenseGenerator._needsAuthor(this.options, answers);
-    this.addPrompt(authorPrompt);
+    this.addPrompt(authorPrompt, true);
 
     return this.callPrompts();
   }

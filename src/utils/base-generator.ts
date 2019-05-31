@@ -17,6 +17,7 @@
  */
 
 import * as Generator from "yeoman-generator";
+import { GeneratorPrompts, PromptNames } from "./generator-prompts";
 
 /** Declares a common base to be used by all of the implemented generators */
 export default abstract class BaseGenerator extends Generator {
@@ -75,9 +76,13 @@ export default abstract class BaseGenerator extends Generator {
 
   /** Registers a single prompt that should be asked of the user */
   protected addPrompt(
-    question: Generator.Question,
+    question: Generator.Question | PromptNames,
     skipIfOption: boolean = false
   ) {
+    if (typeof question === "string") {
+      question = GeneratorPrompts.getPrompt(question);
+    }
+
     if (!question.name) {
       return;
     }
