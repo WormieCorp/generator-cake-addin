@@ -64,7 +64,7 @@ export const licenses = [
   },
 ];
 
-export interface IOptionConfigEx extends OptionConfig {
+export interface IGeneratorOption extends OptionConfig {
   name: string;
 }
 
@@ -90,7 +90,7 @@ export abstract class GeneratorPrompts {
     throw Error(`A prompt with the name: ${name} was not found.`);
   }
 
-  public static getOption(name: PromptNames): IOptionConfigEx {
+  public static getOption(name: PromptNames): IGeneratorOption {
     for (const option of GeneratorPrompts._allPrompts) {
       if (option.name === name) {
         return this._convertToOption(option);
@@ -251,7 +251,7 @@ export abstract class GeneratorPrompts {
 
   private static _convertToOption(
     generatorPrompt: IGeneratorPrompt
-  ): IOptionConfigEx {
+  ): IGeneratorOption {
     return {
       description: generatorPrompt.description || generatorPrompt.message,
       name: generatorPrompt.name,
