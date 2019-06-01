@@ -119,6 +119,7 @@ describe("generator:app", () => {
         .withPrompts({
           author: "Kim Nordmo",
           description: "My Awesome Test Description",
+          enableAllContributors: false,
           enableContributing: false,
           enableLinux: true,
           enableTravis: false,
