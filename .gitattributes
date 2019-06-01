@@ -45,6 +45,7 @@
 # *.svg    binary
 
 *.md text whitespace=-blank-at-eol
+*.md.tmpl text whitespace=-blank-at-eol
 
 *.eps      binary
 

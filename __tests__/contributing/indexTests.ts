@@ -7,10 +7,14 @@ const generatorDir = join(__dirname, "../../src/contributing");
 
 describe("generator:contributing", () => {
   describe("default", () => {
-    beforeAll(() => run(generatorDir).withPrompts({}));
+    beforeAll(() =>
+      run(generatorDir).withPrompts({
+        projectName: "TestApp",
+      })
+    );
 
     it("creates contributing file", () => {
-      assert.file("CONTRIBUTING.Md");
+      assert.file("CONTRIBUTING.md");
     });
 
     it("creates file with expected content", () => {
