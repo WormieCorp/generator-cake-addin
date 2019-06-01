@@ -7,7 +7,7 @@ const generatorDir = join(__dirname, "../../src/config");
 
 describe("generator:contributing", () => {
   describe("default", () => {
-    beforeAll(() => run(generatorDir));
+    beforeAll(() => run(generatorDir).withOptions({ projectName: "TestApp" }));
 
     it("creates editorconfig file", () => {
       assert.file(".editorconfig");
@@ -43,6 +43,19 @@ describe("generator:contributing", () => {
       assert.equalsFileContent(
         ".gitignore",
         readFileSync(join(__dirname, "expected/.gitignore"), {
+          encoding: "utf8",
+        })
+      );
+    });
+
+    it("creates GitReleaseManager file", () => {
+      assert.file("GitReleaseManager.yml");
+    });
+
+    it("creates GitReleaseManager with expected content", () => {
+      assert.equalsFileContent(
+        "GitReleaseManager.yml",
+        readFileSync(join(__dirname, "expected/GitReleaseManager.yml"), {
           encoding: "utf8",
         })
       );

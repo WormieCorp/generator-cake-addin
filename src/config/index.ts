@@ -16,19 +16,37 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseGenerator } from "../utils";
+import { BaseGenerator, PromptNames } from "../utils";
 
 export = class ConfigGenerator extends BaseGenerator {
-  public prompting(): void | Promise<void> {
-    // TODO
+  get promptNames() {
+    return [PromptNames.ProjectName];
   }
-  public writing(): void | Promise<void> {
+
+  public prompting() {
+    return this.callPrompts();
+  }
+  public writing() {
     const copyFiles = [".editorconfig", ".gitattributes", ".gitignore"];
+    const templateFiles = ["GitReleaseManager.yml"];
     for (const file of copyFiles) {
       this.fs.copy(this.templatePath(file), this.destinationPath(file));
     }
+
+    for (const file of templateFiles) {
+      this.fs.copyTpl(
+        this.templatePath(file),
+        this.destinationPath(file),
+        this.allValues
+      );
+    }
   }
-  protected _setup(): void {
+  protected _setup() {
     this.description = "Creates common configuration files for running builds";
+
+    for (const name of this.promptNames) {
+      this.addOption(name);
+      this.addPrompt(name, true);
+    }
   }
 };

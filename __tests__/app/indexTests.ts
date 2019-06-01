@@ -13,6 +13,7 @@ const expectedFiles = [
   "build.ps1",
   "build.sh",
   "CODE_OF_CONDUCT.md",
+  "GitReleaseManager.yml",
   "LICENSE.txt",
   "README.md",
   "recipe.cake",
