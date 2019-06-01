@@ -1,7 +1,7 @@
 # generator-cake-addin
 
 [![standard-readme compliant][]][standard-readme]
-[![All Contributors][allcontributorsimage]](#allcontributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
 [![Appveyor build][appveyorimage]][appveyor]
 [![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
@@ -80,7 +80,6 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [GNU General Public License v3.0 or later © Kim J. Nordmo][license]
 
 [all-contributors]: https://github.com/all-contributors/all-contributors
-[allcontributorsimage]: https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square
 [appveyor]: https://ci.appveyor.com/project/admiringworm/generator-cake-addin
 [appveyorimage]: https://img.shields.io/appveyor/ci/admiringworm/generator-cake-addin.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/WormieCorp/generator-cake-addin

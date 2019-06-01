@@ -1,7 +1,7 @@
 # <%= fullProjectName %>
 
 [![standard-readme compliant][]][standard-readme]
-<% if (enableAllContributors) { %>[![All Contributors][allcontributorsimage]](#allcontributors)
+<% if (enableAllContributors) { %>[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
 <% } -%>
 [![Appveyor build][appveyorimage]][appveyor]
 <% if (enableTravis) { %>[![Travis build][travisimage]][travis]
@@ -77,7 +77,6 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [<%= licenseType.Name %> © <%= author %>][license]
 
 <% if (enableAllContributors) { %>[all-contributors]: https://github.com/all-contributors/all-contributors
-[allcontributorsimage]: https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square
 <% } -%>
 [appveyor]: https://ci.appveyor.com/project/<%= appveyorAccount %>/<%= appveyorProjectName %>
 [appveyorimage]: https://img.shields.io/appveyor/ci/<%= appveyorAccount %>/<%= appveyorProjectName %>.svg?logo=appveyor&style=flat-square
