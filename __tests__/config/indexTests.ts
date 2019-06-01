@@ -7,7 +7,13 @@ const generatorDir = join(__dirname, "../../src/config");
 
 describe("generator:contributing", () => {
   describe("default", () => {
-    beforeAll(() => run(generatorDir).withOptions({ projectName: "TestApp" }));
+    beforeAll(() =>
+      run(generatorDir).withOptions({
+        enableAllContributors: true,
+        projectName: "TestApp",
+        repositoryOwner: "AdmiringWorm",
+      })
+    );
 
     it("creates editorconfig file", () => {
       assert.file(".editorconfig");
@@ -59,6 +65,32 @@ describe("generator:contributing", () => {
           encoding: "utf8",
         })
       );
+    });
+
+    it("creates all-contributorsrc file", () => {
+      assert.file(".all-contributorsrc");
+    });
+
+    it("creates all-contributorsrc with expected content", () => {
+      assert.equalsFileContent(
+        ".all-contributorsrc",
+        readFileSync(join(__dirname, "expected/.all-contributorsrc"), {
+          encoding: "utf8",
+        })
+      );
+    });
+  });
+
+  describe("disable all-contributors", () => {
+    beforeAll(() =>
+      run(generatorDir).withPrompts({
+        enableAllContributors: false,
+        projectName: "TestApp",
+      })
+    );
+
+    it("should not create all contributors configuratior file", () => {
+      assert.noFile(".all-contributorsrc");
     });
   });
 });

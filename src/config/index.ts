@@ -16,11 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseGenerator, PromptNames } from "../utils";
+import { Answers } from "yeoman-generator";
+import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
 export = class ConfigGenerator extends BaseGenerator {
   get promptNames() {
-    return [PromptNames.ProjectName];
+    return [PromptNames.ProjectName, PromptNames.EnableAllContributors];
   }
 
   public prompting() {
@@ -40,6 +41,14 @@ export = class ConfigGenerator extends BaseGenerator {
         this.allValues
       );
     }
+
+    if (this.getValue<boolean>(PromptNames.EnableAllContributors)) {
+      this.fs.copyTpl(
+        this.templatePath(".all-contributorsrc"),
+        this.destinationPath(".all-contributorsrc"),
+        this.allValues
+      );
+    }
   }
   protected _setup() {
     this.description = "Creates common configuration files for running builds";
@@ -48,5 +57,16 @@ export = class ConfigGenerator extends BaseGenerator {
       this.addOption(name);
       this.addPrompt(name, true);
     }
+
+    const whenCondition = (answers: Answers) =>
+      answers.enableAllContributors ||
+      this.options.enableAllContributors === true;
+    const projectOwnerPrompt = GeneratorPrompts.getPrompt(
+      PromptNames.RepositoryOwner
+    );
+    projectOwnerPrompt.when = whenCondition;
+
+    this.addOption(PromptNames.RepositoryOwner);
+    this.addPrompt(projectOwnerPrompt, true);
   }
 };

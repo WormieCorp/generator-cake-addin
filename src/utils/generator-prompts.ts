@@ -164,6 +164,14 @@ export abstract class GeneratorPrompts {
       default: true,
       inputType: InputType.Confirm,
       isCommon: true,
+      message:
+        "Do you want to add configurations for the All Contributors Bot? ",
+      name: PromptNames.EnableAllContributors,
+    },
+    {
+      default: true,
+      inputType: InputType.Confirm,
+      isCommon: true,
       message: "Do you want to use Wyam to generate documentation? ",
       name: PromptNames.EnableWyam,
     },

@@ -55,7 +55,9 @@ export function lint() {
 }
 
 function exportTemplatesTask() {
-  return src("src/**/templates/**").pipe(dest("generators"));
+  return src(["src/**/templates/**", "src/**/templates/**/.*"]).pipe(
+    dest("generators")
+  );
 }
 
 function compileTypescript() {
