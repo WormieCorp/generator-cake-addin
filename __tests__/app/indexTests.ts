@@ -51,6 +51,10 @@ describe("generator:app", () => {
     it("creates default project structure files", () => {
       assert.file(expectedFiles);
     });
+
+    it("does not create contributing file when not enabled", () => {
+      assert.noFile("CONTRIBUTING.md");
+    });
   });
 
   describe("disable-travis", () => {
@@ -74,6 +78,31 @@ describe("generator:app", () => {
 
     it("does not create travis file when disabled", () => {
       assert.noFile(".travis.yml");
+    });
+  });
+
+  describe("enable-contributing", () => {
+    beforeAll(() => {
+      return helpers
+        .run(generatorDir)
+        .withPrompts({
+          author: "Kim Nordmo",
+          description: "My Awesome Test Description",
+          enableContributing: true,
+          enableLinux: true,
+          enableTravis: false,
+          enableWyam: true,
+          licenseType: "MIT",
+          projectName: "MyTestApp",
+          repositoryOwner: "AdmiringWorm",
+          scriptName: "recipe.cake",
+          sourceDir: "./src",
+        })
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
+    });
+
+    it("creates contributing file when enabled", () => {
+      assert.file("CONTRIBUTING.md");
     });
   });
 });

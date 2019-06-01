@@ -17,6 +17,9 @@ export = class MainGenerator extends BaseGenerator {
     await this.callPrompts();
 
     this.composeWith(require.resolve("../conduct"), {});
+    if (this.getValue<boolean>(PromptNames.EnableContributing)) {
+      this.composeWith(require.resolve("../contributing"), this.allValues);
+    }
     this.composeWith(require.resolve("../license"), this.allValues);
     this.composeWith(require.resolve("../appveyor"), this.allValues);
     if (this.getValue<boolean>(PromptNames.EnableTravis)) {
