@@ -10,6 +10,7 @@ describe("generator:contributing", () => {
     beforeAll(() =>
       run(generatorDir).withPrompts({
         projectName: "TestApp",
+        repositoryOwner: "AdmiringWorm",
       })
     );
 

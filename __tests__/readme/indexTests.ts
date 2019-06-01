@@ -216,4 +216,31 @@ describe("generator:Readme", () => {
       );
     });
   });
+
+  describe("with options", () => {
+    beforeAll(() =>
+      helpers.run(generatorDir).withOptions({
+        author: "Kim Nordmo",
+        description: "The most awesome test cake addin library.",
+        enableAllContributors: false,
+        enableContributing: false,
+        enableTravis: false,
+        licenseType: "MIT",
+        projectMaintainer: "AdmiringWorm",
+        projectName: "TestApp",
+        repositoryOwner: "AdmiringWorm",
+      })
+    );
+
+    it("should create readme file", () => {
+      assert.file("README.md");
+    });
+
+    it("should have expected content", () => {
+      assert.equalsFileContent(
+        "README.md",
+        readFileSync(path.join(__dirname, "basic.md"), { encoding: "utf8" })
+      );
+    });
+  });
 });

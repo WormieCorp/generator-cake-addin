@@ -161,7 +161,7 @@ export abstract class GeneratorPrompts {
       validate: new NotEmptyValidator("cake build script").validate,
     },
     {
-      default: true,
+      default: false,
       inputType: InputType.Confirm,
       isCommon: true,
       message:
@@ -223,6 +223,7 @@ export abstract class GeneratorPrompts {
       description: generatorPrompt.description || generatorPrompt.message,
       filter: generatorPrompt.filter,
       hide: generatorPrompt.inputType === InputType.Confirm,
+      isBoolean: generatorPrompt.inputType === InputType.Confirm,
       name: generatorPrompt.name,
       type: this._getOptionType(generatorPrompt.inputType),
       validate: generatorPrompt.validate,

@@ -133,7 +133,7 @@ describe("generator:app", () => {
     });
 
     it("should not create all contributors file when disabled", () => {
-      assert.file(".all-contributorsrc");
+      assert.noFile(".all-contributorsrc");
     });
   });
 });

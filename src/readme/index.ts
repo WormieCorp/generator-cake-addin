@@ -15,6 +15,13 @@ const promptOptions = [
 
 export = class ReadmeGenerator extends BaseGenerator {
   public async prompting() {
+    let enableValue = this.allValues[PromptNames.EnableAllContributors];
+    this.log(
+      `${
+        PromptNames.EnableAllContributors
+      } is of type ${typeof enableValue} before adding prompts with value ${enableValue}`
+    );
+
     for (const prompt of promptOptions) {
       if (
         prompt === PromptNames.EnableTravis &&
@@ -31,7 +38,21 @@ export = class ReadmeGenerator extends BaseGenerator {
       }
     }
 
+    enableValue = this.allValues[PromptNames.EnableAllContributors];
+    this.log(
+      `${
+        PromptNames.EnableAllContributors
+      } is of type ${typeof enableValue} before calling prompts with value ${enableValue}`
+    );
+
     await this.callPrompts();
+
+    enableValue = this.allValues[PromptNames.EnableAllContributors];
+    this.log(
+      `${
+        PromptNames.EnableAllContributors
+      } is of type ${typeof enableValue} after calling prompts with value ${enableValue}`
+    );
 
     const repoOwner = this.getValue<string>(
       PromptNames.RepositoryOwner
@@ -55,6 +76,7 @@ export = class ReadmeGenerator extends BaseGenerator {
       PromptNames.LicenseType,
       "MIT"
     );
+
     const licenseType = licenses.find((value) => {
       return value.Spdx === licenseTypeSpdx;
     });
@@ -63,6 +85,8 @@ export = class ReadmeGenerator extends BaseGenerator {
   }
 
   public writing() {
+    this.log("Logging values in allValues");
+
     this.fs.copyTpl(
       this.templatePath("README.md.tmpl"),
       this.destinationPath("README.md"),
