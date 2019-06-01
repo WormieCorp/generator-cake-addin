@@ -1,7 +1,7 @@
 # generator-cake-addin
 
 [![standard-readme compliant][]][standard-readme]
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 [![Appveyor build][appveyorimage]][appveyor]
 [![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
@@ -73,6 +73,8 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://github.com/AdmiringWorm"><img src="https://avatars3.githubusercontent.com/u/1474648?v=4" width="100px;" alt="Kim J. Nordmo"/><br /><sub><b>Kim J. Nordmo</b></sub></a><br /><a href="#maintenance-AdmiringWorm" title="Maintenance">🚧</a></td></tr></table>
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
