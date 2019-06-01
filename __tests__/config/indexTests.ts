@@ -34,5 +34,18 @@ describe("generator:contributing", () => {
         })
       );
     });
+
+    it("creates gitignore file", () => {
+      assert.file(".gitignore");
+    });
+
+    it("creates gitignore with expected content", () => {
+      assert.equalsFileContent(
+        ".gitignore",
+        readFileSync(join(__dirname, "expected/.gitignore"), {
+          encoding: "utf8",
+        })
+      );
+    });
   });
 });

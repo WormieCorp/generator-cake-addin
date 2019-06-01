@@ -8,6 +8,7 @@ const expectedFiles = [
   ".appveyor.yml",
   ".editorconfig",
   ".gitattributes",
+  ".gitignore",
   ".travis.yml",
   "build.ps1",
   "build.sh",
