@@ -42,7 +42,7 @@ export = class ConfigGenerator extends BaseGenerator {
       );
     }
 
-    if (this.getValue<boolean>(PromptNames.EnableAllContributors)) {
+    if (this.getBoolValue(PromptNames.EnableAllContributors)) {
       this.fs.copyTpl(
         this.templatePath(".all-contributorsrc"),
         this.destinationPath(".all-contributorsrc"),
@@ -60,7 +60,7 @@ export = class ConfigGenerator extends BaseGenerator {
 
     const whenCondition = (answers: Answers) =>
       answers.enableAllContributors ||
-      this.options.enableAllContributors === true;
+      this.getBoolValue(PromptNames.EnableAllContributors);
     const projectOwnerPrompt = GeneratorPrompts.getPrompt(
       PromptNames.RepositoryOwner
     );

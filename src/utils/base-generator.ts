@@ -55,6 +55,18 @@ export default abstract class BaseGenerator extends Generator {
     }
   }
 
+  public getBoolValue(key: string, defaultValue?: boolean): boolean {
+    const existingValues = this.allValues;
+    if (key in existingValues) {
+      const value = existingValues[key];
+      return value === "true" || value === true;
+    } else if (defaultValue !== undefined) {
+      return defaultValue;
+    }
+
+    return false;
+  }
+
   /**
    * The function responsible for prompting the user for questions.
    * (Must be implemented in inherited generator to be discovered by yeoman)

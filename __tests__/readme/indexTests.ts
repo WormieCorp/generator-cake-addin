@@ -11,6 +11,7 @@ describe("generator:Readme", () => {
       helpers.run(generatorDir).withPrompts({
         author: "Kim Nordmo",
         description: "The most awesome test cake addin library.",
+        enableAllContributors: false,
         enableContributing: false,
         enableTravis: false,
         licenseType: "MIT",

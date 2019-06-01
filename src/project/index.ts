@@ -150,7 +150,7 @@ export = class ProjectGenerator extends BaseGenerator {
       )}.sln`
     );
     const done = this.async();
-    if (this.getValue<boolean>("build")) {
+    if (this.getBoolValue("build")) {
       this.spawnCommand("dotnet", ["build", solutionPath]).on("close", done);
     } else {
       this.spawnCommand("dotnet", ["restore", solutionPath]).on("close", done);
