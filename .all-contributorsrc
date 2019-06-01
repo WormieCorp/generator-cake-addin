@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "AdmiringWorm",
+      "name": "Kim J. Nordmo",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1474648?v=4",
+      "profile": "https://github.com/AdmiringWorm",
+      "contributions": [
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "generator-cake-addin",
+  "projectOwner": "WormieCorp",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
