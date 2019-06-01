@@ -17,13 +17,13 @@ export = class MainGenerator extends BaseGenerator {
     await this.callPrompts();
 
     this.composeWith(require.resolve("../conduct"), {});
-    if (this.getValue<boolean>(PromptNames.EnableContributing)) {
+    if (this.getBoolValue(PromptNames.EnableContributing)) {
       this.composeWith(require.resolve("../contributing"), this.allValues);
     }
     this.composeWith(require.resolve("../license"), this.allValues);
     this.composeWith(require.resolve("../config"), this.allValues);
     this.composeWith(require.resolve("../appveyor"), this.allValues);
-    if (this.getValue<boolean>(PromptNames.EnableTravis)) {
+    if (this.getBoolValue(PromptNames.EnableTravis)) {
       this.composeWith(require.resolve("../travis"), this.allValues);
     }
     this.composeWith(require.resolve("../readme"), this.allValues);

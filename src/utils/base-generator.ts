@@ -25,19 +25,18 @@ import { IGeneratorOption } from "./igenerator-option";
 export default abstract class BaseGenerator extends Generator {
   private _prompts: Generator.Question[] = [];
   private _answers: Generator.Answers = {};
+  private _overrides: Generator.Answers = {};
   private _optionConfigs: IGeneratorOption[] = [];
 
   constructor(args: string | string[], opts: {}) {
     super(args, opts);
 
     this._setup();
-
-    this.validateOptions();
   }
 
   /** Gets all of the registered prompt values, together with the passed in options */
   public get allValues() {
-    return { ...this._answers, ...this.options };
+    return { ...this._answers, ...this.options, ...this._overrides };
   }
 
   /**
@@ -55,6 +54,18 @@ export default abstract class BaseGenerator extends Generator {
     }
   }
 
+  public getBoolValue(key: string, defaultValue?: boolean): boolean {
+    const existingValues = this.allValues;
+    if (key in existingValues) {
+      const value = existingValues[key];
+      return value === "true" || value === true;
+    } else if (defaultValue !== undefined) {
+      return defaultValue;
+    }
+
+    return false;
+  }
+
   /**
    * The function responsible for prompting the user for questions.
    * (Must be implemented in inherited generator to be discovered by yeoman)
@@ -68,11 +79,14 @@ export default abstract class BaseGenerator extends Generator {
   public abstract writing(): void | Promise<void>;
 
   public setValue(key: string, value: any): void {
-    this._answers[key] = value;
+    this._overrides[key] = value;
   }
 
   /** Helper method that can be called from the prompting function to prompt users with the registered prompts */
   protected async callPrompts() {
+    // First let us populate the existing answers with available options
+    this.validateOptions();
+
     this._answers = { ...(await this.prompt(this._prompts)), ...this._answers };
   }
 
@@ -108,33 +122,52 @@ export default abstract class BaseGenerator extends Generator {
       return;
     }
 
-    this.option(question.name, question);
+    if (question.isBoolean) {
+      this.option(question.name, {
+        alias: question.alias,
+        description: question.description,
+        hide: question.hide,
+        type: String,
+      });
+    } else {
+      this.option(question.name, question);
+    }
     this._optionConfigs.push(question);
-
-    if (question.default && !(question.name in this.options)) {
-      this.options[question.name] = question.default;
-    }
-
-    if (question.filter && question.name in this.options) {
-      this.options[question.name] = question.filter(
-        this.options[question.name]
-      );
-    }
   }
 
   private validateOptions() {
     for (const option of this._optionConfigs) {
-      if (!option.validate || !(option.name in this.options)) {
+      if (!(option.name in this.options)) {
+        if (option.default !== undefined) {
+          if (typeof option.default === "function") {
+            this.options[option.name] = option.default();
+          } else {
+            this.options[option.name] = option.default;
+          }
+        }
         continue;
       }
 
-      const result = option.validate(this.options[option.name]);
+      if (option.validate) {
+        const result = option.validate(this.options[option.name]);
 
-      if (typeof result === "string") {
-        throw Error(result);
-      } else if (!result) {
-        throw Error(`Invalid input for ${option.name}`);
+        if (typeof result === "string") {
+          throw Error(result);
+        } else if (!result) {
+          throw Error(`Invalid input for ${option.name}`);
+        }
       }
+      let value = this.options[option.name];
+
+      if (option.filter) {
+        value = option.filter(value);
+      }
+
+      if (option.isBoolean && typeof value === "string") {
+        value = value.toLowerCase() === "true";
+      }
+
+      this.options[option.name] = value;
     }
   }
 }

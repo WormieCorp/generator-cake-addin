@@ -5,6 +5,7 @@ import * as helpers from "yeoman-test";
 
 const generatorDir = path.join(__dirname, "../../src/app");
 const expectedFiles = [
+  ".all-contributorsrc",
   ".appveyor.yml",
   ".editorconfig",
   ".gitattributes",
@@ -40,6 +41,7 @@ describe("generator:app", () => {
         .withPrompts({
           author: "Kim Nordmo",
           description: "My Awesome Test Description",
+          enableAllContributors: true,
           enableLinux: true,
           enableTravis: true,
           enableWyam: true,
@@ -107,6 +109,31 @@ describe("generator:app", () => {
 
     it("creates contributing file when enabled", () => {
       assert.file("CONTRIBUTING.md");
+    });
+  });
+
+  describe("disable-allcontributors", () => {
+    beforeAll(() => {
+      return helpers
+        .run(generatorDir)
+        .withPrompts({
+          author: "Kim Nordmo",
+          description: "My Awesome Test Description",
+          enableContributing: false,
+          enableLinux: true,
+          enableTravis: false,
+          enableWyam: true,
+          licenseType: "MIT",
+          projectName: "MyTestApp",
+          repositoryOwner: "AdmiringWorm",
+          scriptName: "recipe.cake",
+          sourceDir: "./src",
+        })
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
+    });
+
+    it("should not create all contributors file when disabled", () => {
+      assert.noFile(".all-contributorsrc");
     });
   });
 });
