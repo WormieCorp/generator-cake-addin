@@ -1,6 +1,8 @@
 # <%= fullProjectName %>
 
 [![standard-readme compliant][]][standard-readme]
+<% if (enableAllContributors) { %>[![All Contributors][allcontributorsimage]](#allcontributors)
+<% } -%>
 [![Appveyor build][appveyorimage]][appveyor]
 <% if (enableTravis) { %>[![Travis build][travisimage]][travis]
 <% } -%>
@@ -24,6 +26,8 @@
 - [Usage](#usage)
 - [Maintainer](#maintainer)
 - [Contributing](#contributing)
+<% if (enableAllContributors) { %>  - [Contributors](#contributors)
+<% } -%>
 - [License](#license)
 
 ## Install
@@ -57,10 +61,24 @@ Please see [the contributing file][contributing] for how to contribute to <%= fu
 
 Small note: If editing the Readme, please conform to the [standard-readme][] specification.
 
+<% if (enableAllContributors) { %>This project follows the [all-contributors][] specification. Contributions of any kind welcome!
+
+### Contributors
+
+Thanks goes to these wonderful people ([emoji key][emoji-key]):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+<% } -%>
 ## License
 
 [<%= licenseType.Name %> © <%= author %>][license]
 
+<% if (enableAllContributors) { %>[all-contributors]: https://github.com/all-contributors/all-contributors
+[allcontributorsimage]: https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square
+<% } -%>
 [appveyor]: https://ci.appveyor.com/project/<%= appveyorAccount %>/<%= appveyorProjectName %>
 [appveyorimage]: https://img.shields.io/appveyor/ci/<%= appveyorAccount %>/<%= appveyorProjectName %>.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/<%= repositoryOwner %>/<%= fullProjectName %>
@@ -68,6 +86,8 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
 <% if(enableContributing) { -%>
 [contributing]: CONTRIBUTING.md
+<% } -%>
+<% if (enableAllContributors) { %>[emoji-key]: https://allcontributors.org/docs/en/emoji-key
 <% } -%>
 [maintainer]: https://github.com/<%= projectMaintainer %>
 [nuget]: https://nuget.org/packages/<%= fullProjectName %>

@@ -8,6 +8,7 @@ const promptOptions = [
   PromptNames.ShortDescription,
   PromptNames.LicenseType,
   PromptNames.Author,
+  PromptNames.EnableAllContributors,
   PromptNames.EnableTravis,
   PromptNames.EnableContributing,
 ];
@@ -63,7 +64,7 @@ export = class ReadmeGenerator extends BaseGenerator {
 
   public writing() {
     this.fs.copyTpl(
-      this.templatePath("README.md"),
+      this.templatePath("README.md.tmpl"),
       this.destinationPath("README.md"),
       this.allValues
     );
