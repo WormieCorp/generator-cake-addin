@@ -23,7 +23,7 @@ export = class ConfigGenerator extends BaseGenerator {
     // TODO
   }
   public writing(): void | Promise<void> {
-    const copyFiles = [".editorconfig"];
+    const copyFiles = [".editorconfig", ".gitattributes"];
     for (const file of copyFiles) {
       this.fs.copy(this.templatePath(file), this.destinationPath(file));
     }

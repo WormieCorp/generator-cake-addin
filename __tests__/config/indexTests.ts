@@ -21,5 +21,18 @@ describe("generator:contributing", () => {
         })
       );
     });
+
+    it("creates gitattributes file", () => {
+      assert.file(".gitattributes");
+    });
+
+    it("creates gitattributes with expected content", () => {
+      assert.equalsFileContent(
+        ".gitattributes",
+        readFileSync(join(__dirname, "expected/.gitattributes"), {
+          encoding: "utf8",
+        })
+      );
+    });
   });
 });

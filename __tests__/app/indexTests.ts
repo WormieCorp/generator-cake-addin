@@ -7,6 +7,7 @@ const generatorDir = path.join(__dirname, "../../src/app");
 const expectedFiles = [
   ".appveyor.yml",
   ".editorconfig",
+  ".gitattributes",
   ".travis.yml",
   "build.ps1",
   "build.sh",
