@@ -5,6 +5,7 @@ import {
   licenses,
   PromptNames,
 } from "../utils";
+import { NotEmptyValidator } from "../utils/validators";
 
 export = class LicenseGenerator extends BaseGenerator {
   private static _needsAuthor(
@@ -66,6 +67,7 @@ export = class LicenseGenerator extends BaseGenerator {
       description: "The file to write the license to",
       name: "out",
       type: String,
+      validate: new NotEmptyValidator("out").validate,
     });
 
     for (const option of options) {
