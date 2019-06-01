@@ -21,6 +21,7 @@ export = class MainGenerator extends BaseGenerator {
       this.composeWith(require.resolve("../contributing"), this.allValues);
     }
     this.composeWith(require.resolve("../license"), this.allValues);
+    this.composeWith(require.resolve("../config"), this.allValues);
     this.composeWith(require.resolve("../appveyor"), this.allValues);
     if (this.getValue<boolean>(PromptNames.EnableTravis)) {
       this.composeWith(require.resolve("../travis"), this.allValues);

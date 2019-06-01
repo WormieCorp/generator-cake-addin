@@ -6,6 +6,7 @@ import * as helpers from "yeoman-test";
 const generatorDir = path.join(__dirname, "../../src/app");
 const expectedFiles = [
   ".appveyor.yml",
+  ".editorconfig",
   ".travis.yml",
   "build.ps1",
   "build.sh",
