@@ -1,0 +1,13 @@
+{
+    "files" [
+        "README.md"
+    ],
+    "imageSize": 100,
+    "commit": false,
+    "contributors": [],
+    "contributorsPerLine": 7,
+    "projectName": "Cake.generator-cake-addin",
+    "projectOwner": "WormieCorp",
+    "repoType": "github",
+    "repoHost": "https://github.com"
+}
