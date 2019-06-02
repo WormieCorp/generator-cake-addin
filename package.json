@@ -1,19 +1,23 @@
 {
     "name": "generator-cake-addin",
-    "version": "0.1.0-alpha1",
+    "version": "0.1.0-development",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
+    "release": {
+        "branch": "master"
+    },
     "scripts": {
         "setup": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",
         "build": "gulp build",
         "test": "jest",
-        "watch": "gulp watch"
+        "watch": "gulp watch",
+        "semantic-release": "semantic-release"
     },
     "files": [
         "generators"
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/WormieCorp/generator-cake-addin.git"
+        "url": "https://github.com/WormieCorp/generator-cake-addin.git"
     },
     "keywords": [
         "cake-addin",
@@ -81,6 +85,7 @@
         "tslint-plugin-prettier": "^2.0.1",
         "typescript": "^3.5.1",
         "yeoman-assert": "^3.1.1",
-        "yeoman-test": "^2.0.0"
+        "yeoman-test": "^2.0.0",
+        "semantic-release": "^15.13.12"
     }
 }
