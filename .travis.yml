@@ -4,8 +4,8 @@ os:
 
 language: node_js
 node_js:
-  - v12
-  - v10
+  - node
+  - lts/*
 
 script:
   - export PATH="$(yarn global bin):$PATH"
@@ -20,6 +20,9 @@ jobs:
   include:
     - stage: release
       node_js: lts/*
+      script:
+        - export PATH="$(yarn global bin):$PATH"
+        - ./build.sh --build
       deploy:
         provider: script
         skip_cleanup: true
