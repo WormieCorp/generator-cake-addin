@@ -19,6 +19,7 @@ cache: yarn
 jobs:
   include:
     - stage: release
+      if: branch = master
       node_js: lts/*
       script:
         - export PATH="$(yarn global bin):$PATH"
