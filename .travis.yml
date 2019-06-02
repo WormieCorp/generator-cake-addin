@@ -7,6 +7,15 @@ node_js:
   - node
   - lts/*
 
+branches:
+  # Whitelist
+  only:
+    - develop
+    - master
+    - /release/.*/
+    - /hotfix/.*/
+    - ci/travis
+
 script:
   - export PATH="$(yarn global bin):$PATH"
   - ./build.sh --build --test
