@@ -15,3 +15,13 @@ script:
   - cat coverage/lcov.info | codacy-coverage --language typescript
 
 cache: yarn
+
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+    deyloy:
+      provider: script
+      skip_cleanup: true
+      script:
+        - yarn semantic-release
