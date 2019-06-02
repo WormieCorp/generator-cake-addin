@@ -3,6 +3,15 @@ pull_requests:
   do_not_increment_build_number: true
 skip_branch_with_pr: true
 
+branches:
+  # Whitelist
+  only:
+    - develop
+    - master
+    - /release/.*/
+    - /hotfix/.*/
+    - ci/appveyor
+
 image:
   - Ubuntu
   - Visual Studio 2015
