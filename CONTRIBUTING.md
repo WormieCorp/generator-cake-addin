@@ -11,6 +11,14 @@ your time is valuable, and your contributions mean a lot to us.
   - [Before creating an issue](#before-creating-an-issue)
   - [Creating an issue](#creating-an-issue)
   - [Closing issues](#closing-issues)
+- [Pull Requests](#pull-requests)
+  - [Commit Message Format](#commit-message-format)
+  - [Revert](#revert)
+  - [Type](#type)
+  - [Scope](#scope)
+  - [Subject](#subject)
+  - [Body](#body)
+  - [Footer](#footer)
 - [Next steps](#next-steps)
 
 ## Important
@@ -108,6 +116,96 @@ Typically, but not exclusively, issues are closed when:
 - An issue is clearly a duplicate of another issue, in which case the duplicate issue will be linked.
 - A discussion has clearly run its course
 
+## Pull Requests
+
+Please submit an [issue](#issue) and get a buyoff from one of the maintainers before starting to work
+on a Pull Request. You may also look at any of the issues already submitted, and comment on the one you
+would like to create a pull request for.
+
+### Commit Message Format
+
+Each commit message consists of a **header**, a **body** and a **footer**.
+The header has a special format that includes a **type**, a **scope** and a **subject**:
+
+```text
+<type>(<scope>): <subject>
+<BLANK_LINE>
+<body>
+<BLANK_LINE>
+<footer>
+```
+
+The **header** is mandatary and the **scope** of the header is optional.
+
+Any line of the commit message cannat be longer than 100 characters!
+This allows the message to be easier to read on GitHub as well
+as in various git tools.
+
+The footer should contain a [closing reference to an issue][closing-ref] if any.
+
+Samples:
+
+```text
+docs(changelog): update changelog to beta.5
+```
+
+```text
+fix(release): need to depend on latest rxjs and zone.js
+
+The version in our package.json gets copied to the one we publish,
+and users need the latest of these.
+```
+
+### Revert
+
+If the commit reverts a previous commit, it should begin with `revert:`, followed by the header of the reverted commit.
+In the body it should say: `This reverts commit <hash>.`, where the hash is the SHA of the commit being reverted.
+
+### Type
+
+Must be one of the following:
+
+- **build**: Changes that affect the build system or external dependencies
+- **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, AppVeyor)
+- **docs**: Documentation only changes
+- **feat**: A new feature
+- **fix**: A bug fix
+- **perf**: A code change that improves performance
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **test**: Adding missing tests or correcting existing tests
+
+### Scope
+
+The scope should be the name of the name of the generator affected (as perceived by the person reading the changelog generated from commit messages).
+
+The following is a list of supported scopes that do not match a generator name:
+
+- **contributing**: Any change to `CONTRIBUTING.md` requires this scope.
+- **licensing**: Any change that is related to licensing or copyright requires this scope.
+
+### Subject
+
+The subject contains a succinct description of the change:
+
+- use the imperative, present tense: "change" not "changed" nor "changes"
+- don't capitalize the first letter
+- no dot (.) at the end
+
+### Body
+
+Just as in the **subject**, use the imperative, present tense: "change" not "changed" nor "changes".
+The body should include the motivation for the change and contrast this with previous behavior.
+
+### Footer
+
+The footer should contain any information about **Breaking Changes** and is also the place to reference GitHub issues that this commit **Closes**.
+
+**Breaking Changes** should start with the word `BREAKING CHANGE:` with a space or two newlines.
+The rest of the commit message is then used for this.
+
+A detailed explanation can be found in the [AngularJS Git Commit Message Convention document][angular-message-convention] _(NOTE: There may be some differences in their convention and what have been detailed here)_
+
 ## Next steps
 
 **Tips for creating idiomatic issues**  
@@ -134,7 +232,9 @@ At the very least, please try to:
   and makes the code more readable to others
 - When applicable, use syntax highlighting by adding the correct language name after the "code fence"
 
+[angular-message-convention]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.uyo6cb12dt6w
 [basic-md]: https://help.github.com/articles/markdown-basics/
+[closing-ref]: https://help.github.com/articles/closing-issues-via-commit-messages/
 [gh-flavored-md]: https://help.github.com/articles/github-flavored-markdown/
 [gist]: https://gist.github.com/
 [idiomatic-contributing]: https://github.com/jonschlinkert/idiomatic-contributing
