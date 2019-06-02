@@ -1,0 +1,14 @@
+{
+    "trailingComma": "es5",
+    "arrowParens": "always",
+    "tabWidth": 4,
+    "endOfLine": "lf",
+    "overrides": [
+        {
+            "files": ["*.ts", "*.js", "*.md", "*.yml"],
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+os:
+  - linux
+  - osx
+
+language: node_js
+node_js:
+  - node
+  - lts/*
+
+branches:
+  # Whitelist
+  only:
+    - develop
+    - master
+    - /release/.*/
+    - /hotfix/.*/
+    - ci/travis
+
+script:
+  - export PATH="$(yarn global bin):$PATH"
+  - ./build.sh --build --test
+  - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
+  - yarn global add codacy-coverage
+  - cat coverage/lcov.info | codacy-coverage --language typescript
+
+cache: yarn
+
+jobs:
+  include:
+    - stage: release
+      if: branch = master
+      node_js: lts/*
+      script:
+        - export PATH="$(yarn global bin):$PATH"
+        - ./build.sh --build
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - yarn semantic-release

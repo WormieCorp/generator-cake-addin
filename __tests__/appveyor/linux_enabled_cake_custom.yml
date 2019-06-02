@@ -1,0 +1,44 @@
+image:
+  - Ubuntu
+  - Visual Studio 2017
+
+pull_requests:
+  do_not_increment_build_number: true
+
+skip_branch_with_pr: true
+
+environment:
+  APPVEYOR_YML_DISABLE_PS_LINUX: true
+
+branches:
+  only:
+    - master
+    - develop
+    - /release\/.*/
+    - /hotfix\/.*/
+
+matrix:
+  fast_finish: true
+
+test: off
+build: off
+
+build_script:
+  - ps: .\build.ps1 -Target AppVeyor
+  - sh: ./build.sh --target=AppVeyor
+
+cache:
+  - "tools -> build.cake,tools/packages.config"
+
+for:
+  - matrix:
+      only:
+        - image: Ubuntu
+    environment:
+      GITHUB_PASSWORD:
+      GITTER_TOKEN:
+      MYGET_API_KEY:
+      NUGET_API_KEY:
+      SLACK_TOKEN:
+      TWITTER_ACCESS_TOKEN:
+      WYAM_ACCESS_TOKEN:

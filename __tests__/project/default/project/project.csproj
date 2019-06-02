@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <StartYear>2018</StartYear>
+        <EndYear>$([System.DateTime]::Today.Year)</EndYear>
+        <FullYear Condition="'$(StartYear)'=='$(EndYear)'">$(StartYear)</FullYear>
+        <FullYear Condition="'$(StartYear)'!='$(EndYear)'">$(StartYear)-$(EndYear)</FullYear>
+
+        <!-- Properties related to packaging -->
+        <Authors>Kim Nordmo</Authors>
+        <Copyright>Copyright © $(FullYear) — Kim Nordmo</Copyright>
+        <Description>Cake addin generation test</Description>
+        <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/AdmiringWorm/Cake.TestApp</PackageProjectUrl>
+        <PackageTags>cake;addin;testapp</PackageTags>
+        <RepositoryUrl>https://github.com/AdmiringWorm/Cake.TestApp.git</RepositoryUrl>
+        <PackageReleaseNotes>https://github.com/AdmiringWorm/Cake.TestApp/releases/tag/$(Version)</PackageReleaseNotes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="All" />
+        <PackageReference Include="stylecop.analyzers" Version="1.1.118">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

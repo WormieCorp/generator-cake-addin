@@ -1,0 +1,23 @@
+image:
+  - Visual Studio 2017
+
+pull_requests:
+  do_not_increment_build_number: true
+
+skip_branch_with_pr: true
+
+branches:
+  only:
+    - master
+    - develop
+    - /release\/.*/
+    - /hotfix\/.*/
+
+test: off
+build: off
+
+build_script:
+  - ps: .\build.ps1 -Target AppVeyor
+
+cache:
+  - "tools -> recipe.cake,tools/packages.config"

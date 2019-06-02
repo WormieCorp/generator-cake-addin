@@ -1,0 +1,53 @@
+# Ignore everything in vscode folder
+# except what we want users to
+# contribute if there is any
+# improvement
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+# User-specific files in Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+
+# GhostDoc plugin settings file
+*.GhostDoc.xml
+
+# Ignore cake tools directory, except packages.config
+tools/*
+!tools/packages.config
+
+# Ignore build artifacts
+BuildArtifacts/
+[Oo]bj/
+[Bb]in/
+
+# OS Specific files
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Windows shortcuts
+*.lnk
+
+# Thumbnails
+._*
+
+# Cake.Graph related
+docs/input/tasks/*
+
+# Wyam related
+config.wyam.*
