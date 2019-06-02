@@ -62,4 +62,6 @@ typings/
 
 *.js
 
+.npmrc
+
 generators/
