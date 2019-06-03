@@ -1,6 +1,6 @@
 {
     "name": "generator-cake-addin",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
     "scripts": {
         "setup": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",
@@ -56,6 +56,7 @@
     "devDependencies": {
         "@semantic-release/changelog": "^3.0.4",
         "@semantic-release/commit-analyzer": "^6.1.1",
+        "@semantic-release/exec": "^3.3.3",
         "@semantic-release/git": "^7.0.8",
         "@semantic-release/github": "^5.2.10",
         "@semantic-release/npm": "^5.1.9",

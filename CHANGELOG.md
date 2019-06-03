@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/WormieCorp/generator-cake-addin/compare/v1.0.2...v1.0.3) (2019-06-03)
+
+
+### Bug Fixes
+
+* **release:** addded building of project during deployment ([16109f1](https://github.com/WormieCorp/generator-cake-addin/commit/16109f1)), closes [#33](https://github.com/WormieCorp/generator-cake-addin/issues/33)
+
 ## [1.0.2](https://github.com/WormieCorp/generator-cake-addin/compare/v1.0.1...v1.0.2) (2019-06-03)
 
 
