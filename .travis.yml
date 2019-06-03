@@ -16,24 +16,9 @@ branches:
     - /hotfix/.*/
     - ci/travis
 
-before_install:
-  # Decrypt the git_gpg_keys.asc.enc key into /tmp/git_gpg_keys.asc
-  openssl aes-256-cbc -K $encrypted_3d7c4b072a13_key -iv $encrypted_3d7c4b072a13_iv -in git_gpg_keys_asc.enc -out git_gpg_keys_asc -d
-  # Make sure only the current user can read the keys
-  - chmod 600 /tmp/git_gpg_keys.asc
-  # Import the gpg key
-  - gpg --batch --yes --import /tmp/git_gpg_keys.asc
-  # Create a script that pass the passphrase to the gpg CLI called by git
-  - echo '/usr/bin/gpg2 --passphrase ${GPG_PASSPHRASE} --batch --no-tty "$@"' > /tmp/gpg-with-passphrase && chmod +x /tmp/gpg-with-passphrase
-  # Configure git to use the script that passes the passphrase
-  - git config gpg.program "/tmp/gpg-with-passphrase"
-  # Configure git to sign the commits and tags
-  - git config commit.gpgsign true
-  # Configure git to use your GPG key
-  - git config --global user.signingkey ${GPG_KEY_ID}
+before_script: export PATH="$(yarn global bin):$PATH"
 
 script:
-  - export PATH="$(yarn global bin):$PATH"
   - ./build.sh --build --test
   - bash <(curl -s https://codecov.io/bash) -e TRAVIS_NODE_VERSION
   - yarn global add codacy-coverage
@@ -46,9 +31,22 @@ jobs:
     - stage: release
       if: branch = master
       node_js: lts/*
-      script:
-        - export PATH="$(yarn global bin):$PATH"
-        - ./build.sh --build
+      before_install:
+        # Decrypt the git_gpg_keys.asc.enc key into /tmp/git_gpg_keys.asc
+        - openssl aes-256-cbc -K $encrypted_3d7c4b072a13_key -iv $encrypted_3d7c4b072a13_iv -in git_gpg_keys_asc.enc -out /tmp/git_gpg_keys.asc -d
+        # Make sure only the current user can read the keys
+        - chmod 600 /tmp/git_gpg_keys.asc
+        # Import the gpg key
+        - gpg --batch --yes --import /tmp/git_gpg_keys.asc
+        # Create a script that pass the passphrase to the gpg CLI called by git
+        - echo '/usr/bin/gpg2 --passphrase ${GPG_PASSPHRASE} --batch --no-tty "$@"' > /tmp/gpg-with-passphrase && chmod +x /tmp/gpg-with-passphrase
+        # Configure git to use the script that passes the passphrase
+        - git config gpg.program "/tmp/gpg-with-passphrase"
+        # Configure git to sign the commits and tags
+        - git config commit.gpgsign true
+        # Configure git to use your GPG key
+        - git config --global user.signingkey ${GPG_KEY_ID}
+      script: skip
       deploy:
         provider: script
         skip_cleanup: true
