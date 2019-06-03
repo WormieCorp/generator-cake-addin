@@ -38,6 +38,7 @@ uninstallGenerator() {
 }
 
 BUILD="FALSE"
+PACK="FALSE"
 TEST="FALSE"
 INSTALL="FALSE"
 UNINSTALL="FALSE"
@@ -51,6 +52,7 @@ for i in $arguments; do
     case $i in
     --build)
         BUILD="TRUE"
+        PACK="TRUE"
         ;;
     --tests | --test)
         TEST="TRUE"
@@ -59,16 +61,27 @@ for i in $arguments; do
         INSTALL="TRUE"
         if [ ! -f *.tgz ]; then
             BUILD="TRUE"
+            PACK="TRUE"
         fi
         ;;
     --uninstall)
         UNINSTALL="TRUE"
         ;;
+    --pack)
+        PACK="TRUE"
+        ;;
+    --no-pack)
+        PACK="FALSE"
+        ;;
     esac
 done
 
 if [ "$BUILD" = "TRUE" ]; then
-    runinstall && runsetup && runbuild && runpack
+    runinstall && runsetup && runbuild
+fi
+
+if [ "$PACK" = "TRUE" ]; then
+    runpack
 fi
 
 if [ "$TEST" = "TRUE" ]; then
