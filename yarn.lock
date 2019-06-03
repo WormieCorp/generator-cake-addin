@@ -1527,7 +1527,7 @@ chalk@^1.0.0:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2:
+chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4.1, chalk@^2.4.2, chalk@~2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -2915,7 +2915,7 @@ fstream@^1.0.0, fstream@^1.0.12:
     mkdirp ">=0.5 0"
     rimraf "2"
 
-fullname@^4.0.0:
+fullname@~4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/fullname/-/fullname-4.0.0.tgz#7fe597301ea5816ee83eb97653192159b3c3cd32"
   integrity sha512-Gbme1lDXhdZkKJiln8y3MNOslKW6I0C6eruP+22LwqNDLluI+gzs69XRtI6lQEicmkbXyochtsbgg6xVqn1ynw==
@@ -8266,7 +8266,7 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-username@^5.0.0:
+username@~5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/username/-/username-5.0.0.tgz#4c85696d85e0de29ac4a12369f247d5a0f1a51f9"
   integrity sha512-iPfqmcRP2FMDeTFumQVCFKwi0L5npM8W/skqusA5okl8YSwAZi0mTNx04zjM14Kx66LG9IsMG4kIjsQvgz4rOQ==
@@ -8292,7 +8292,7 @@ util.promisify@^1.0.0:
     define-properties "^1.1.2"
     object.getownpropertydescriptors "^2.0.3"
 
-uuid@^3.3.2:
+uuid@^3.3.2, uuid@~3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
@@ -8770,7 +8770,7 @@ yeoman-generator@^3.1.1:
     through2 "^3.0.0"
     yeoman-environment "^2.0.5"
 
-yeoman-generator@^4.0.1:
+yeoman-generator@~4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-4.0.1.tgz#6454056e451ebdfe4ac69927343ae37086bbecb0"
   integrity sha512-QFSHcJHfDwqNdcr5RPSCPLnRzVpPuDWb6By2Uz77YByqBqvR/r9QGBucCl58hs5QJl4NFgLFgIHZoNDCJP1byA==
@@ -8815,7 +8815,7 @@ yeoman-test@^2.0.0:
     yeoman-environment "^2.3.0"
     yeoman-generator "^3.1.1"
 
-yosay@^2.0.2:
+yosay@~2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/yosay/-/yosay-2.0.2.tgz#a7017e764cd88d64a1ae64812201de5b157adf6d"
   integrity sha512-avX6nz2esp7IMXGag4gu6OyQBsMh/SEn+ZybGu3yKPlOTE6z9qJrzG/0X5vCq/e0rPFy0CUYCze0G5hL310ibA==
