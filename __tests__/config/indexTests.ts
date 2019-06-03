@@ -55,13 +55,13 @@ describe("generator:contributing", () => {
     });
 
     it("creates GitReleaseManager file", () => {
-      assert.file("GitReleaseManager.yml");
+      assert.file("GitReleaseManager.yaml");
     });
 
     it("creates GitReleaseManager with expected content", () => {
       assert.equalsFileContent(
-        "GitReleaseManager.yml",
-        readFileSync(join(__dirname, "expected/GitReleaseManager.yml"), {
+        "GitReleaseManager.yaml",
+        readFileSync(join(__dirname, "expected/GitReleaseManager.yaml"), {
           encoding: "utf8",
         })
       );

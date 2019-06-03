@@ -29,7 +29,7 @@ export = class ConfigGenerator extends BaseGenerator {
   }
   public writing() {
     const copyFiles = [".editorconfig", ".gitattributes", ".gitignore"];
-    const templateFiles = ["GitReleaseManager.yml"];
+    const templateFiles = ["GitReleaseManager.yaml"];
     for (const file of copyFiles) {
       this.fs.copy(this.templatePath(file), this.destinationPath(file));
     }
