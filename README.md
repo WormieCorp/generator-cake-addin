@@ -92,7 +92,7 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [maintainer]: https://github.com/AdmiringWorm
 [npm]: https://www.npmjs.com/package/generator-cake-addin
 [npmimage]: https://img.shields.io/npm/v/generator-cake-addin.svg?logo=npm&style=flat-square
-[license]: LICENSE.txt
+[license]: LICENSE
 [subgenerator]: https://github.com/WormieCorp/generator-cake-addin/tree/develop/src
 [standard-readme]: https://github.com/RichardLitt/standard-readme
 [standard-readme compliant]: https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
