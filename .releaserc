@@ -4,10 +4,15 @@
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
         "@semantic-release/changelog",
-        "@semantic-release/npm",
+        ["@semantic-release/exec", {
+            "prepareCmd": "./build.sh --build --no-pack"
+        }],
+        ["@semantic-release/npm", {
+            "tarballDir": "dist"
+        }],
         "@semantic-release/git",
         ["@semantic-release/github", {
-            "assets": [{"path": "*.tgz", "label": "generator-cake-addin npm package"}]
+            "assets": [{"path": "dist/*.tgz", "label": "generator-cake-addin npm package"}]
         }]
     ]
 }
