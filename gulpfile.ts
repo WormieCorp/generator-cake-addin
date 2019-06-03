@@ -31,6 +31,7 @@ export function pretty() {
     "**/*.json",
     "**/*.md",
     "**/*.yml",
+    "!CHANGELOG.md",
     "!node_modules{,/**}",
     "!generators{,/**}",
     "!coverage/{,/**}",

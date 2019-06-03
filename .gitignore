@@ -63,5 +63,6 @@ typings/
 *.js
 
 .npmrc
+*_asc
 
 generators/
