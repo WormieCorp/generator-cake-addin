@@ -67,7 +67,7 @@ export abstract class GeneratorPrompts {
 
   public static getFilter(name: PromptNames) {
     const prompt = this.getPrompt(name);
-    if (prompt) {
+    if ("filter" in prompt) {
       return prompt.filter;
     }
 
@@ -231,7 +231,7 @@ export abstract class GeneratorPrompts {
       type: generatorPrompt.inputType,
       validate: generatorPrompt.validate,
       when: generatorPrompt.when,
-    };
+    } as Question;
   }
 
   private static _convertToOption(

@@ -21,7 +21,7 @@ import { Answers } from "yeoman-generator";
 import { InputType } from "./constants/input-type";
 
 export interface IGeneratorPrompt {
-  choices?: string[] | ChoiceType[];
+  choices?: Array<string | ChoiceType<string>>;
   default?: any | ((answers: Answers) => any);
   description?: string;
   filter?: (input: string) => string;
