@@ -131,7 +131,7 @@ export abstract class GeneratorPrompts {
       description:
         "The short description of the cake addin (120 characters or less): ",
       inputType: InputType.Text,
-      isCommon: false,
+      isCommon: true,
       message:
         "What is the short description for the cake addin (120 characters or less)? ",
       name: PromptNames.ShortDescription,
