@@ -13,7 +13,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 indent_size = 4
 
-[*.{ts,js,yml}]
+[*.{ts,js,yml,yaml}]
 indent_size = 2
 
 [*.md]
