@@ -75,6 +75,7 @@
         "@types/yeoman-test": "^2.0.3",
         "@types/yosay": "^0.0.29",
         "command-exists": "^1.2.8",
+        "commitizen": "3.1.1",
         "cz-conventional-changelog": "2.1.0",
         "del": "^4.1.1",
         "gulp": "^4.0.2",
