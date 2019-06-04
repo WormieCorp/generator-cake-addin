@@ -44,7 +44,7 @@ const expectedContentFiles = [
     testFile: "Cake.TestApp/TestAppSettings.cs",
   },
   {
-    expectedFile: "testProject/testProject.csproj",
+    expectedFile: "{unitTestLibrary}/testProject/testProject.csproj",
     name: "test project",
     testFile: "Cake.TestApp.Tests/Cake.TestApp.Tests.csproj",
   },
@@ -63,34 +63,37 @@ function assertFileContent(filePath: string, expectedFile: string) {
 }
 
 describe("generator:project", () => {
-  describe("default", () => {
-    beforeAll(() => {
-      return helpers
-        .run(generatorDir)
-        .withPrompts({
-          author: "Kim Nordmo",
-          description: "Cake addin generation test",
-          enableWyam: false,
-          licenseType: "MIT",
-          projectName: "TestApp",
-          repositoryOwner: "AdmiringWorm",
-          sourceDir: "./src",
-        })
-        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
-    });
-
-    it("creates default project structure files", () => {
-      assert.file(expectedFiles);
-    });
-
-    for (const fileCheck of expectedContentFiles) {
-      it(`creates ${fileCheck.name} file with expected content`, () => {
-        assertFileContent(
-          "src/" + fileCheck.testFile,
-          "default/" + fileCheck.expectedFile
-        );
+  describe("xunit", () => {
+    describe("default", () => {
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts({
+            author: "Kim Nordmo",
+            description: "Cake addin generation test",
+            enableWyam: false,
+            licenseType: "MIT",
+            projectName: "TestApp",
+            repositoryOwner: "AdmiringWorm",
+            sourceDir: "./src",
+          })
+          .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
       });
-    }
+
+      it("creates default project structure files", () => {
+        assert.file(expectedFiles);
+      });
+
+      for (const fileCheck of expectedContentFiles) {
+        it(`creates ${fileCheck.name} file with expected content`, () => {
+          assertFileContent(
+            "src/" + fileCheck.testFile,
+            "default/" +
+              fileCheck.expectedFile.replace("{unitTestLibrary}", "xunit")
+          );
+        });
+      }
+    });
   });
 
   describe("wyam enabled", () => {

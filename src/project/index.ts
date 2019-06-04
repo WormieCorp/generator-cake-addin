@@ -204,5 +204,6 @@ export = class ProjectGenerator extends BaseGenerator {
 
     this.setValue("mainProjectGuid", uuid().toUpperCase());
     this.setValue("testProjectGuid", uuid().toUpperCase());
+    this.setValue("unitTestLibrary", "xunit");
   }
 };
