@@ -187,6 +187,16 @@ export abstract class GeneratorPrompts {
       validate: new NotEmptyValidator("cake build script").validate,
     },
     {
+      choices: ["nunit", "xunit"],
+      default: "nunit",
+      inputType: InputType.Selection,
+      isCommon: false,
+      message:
+        "Which unit testing library do you want to use for the cake addin? ",
+      name: PromptNames.UnitTestLibrary,
+      validate: new NotEmptyValidator("unit test library").validate,
+    },
+    {
       default: false,
       inputType: InputType.Confirm,
       isCommon: true,
