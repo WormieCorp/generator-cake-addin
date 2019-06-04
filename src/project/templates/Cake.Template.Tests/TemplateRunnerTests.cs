@@ -3,7 +3,7 @@ namespace Cake.<%= projectName %>.Tests
     using System;
     using Cake.Core;
     using Cake.Testing;
-        <%
+    <%
 switch (unitTestLibrary) {
     case "xunit": %>using Xunit;
 <%      break
@@ -52,7 +52,7 @@ switch (unitTestLibrary) {
         {
             <%
 switch (unitTestLibrary) {
-    case "xunit": %>Assert.True(false, "More unit tests need to be implemented for the runner class");;
+    case "xunit": %>Assert.True(false, "More unit tests need to be implemented for the runner class");
 <%      break
     default: throw Error("Unknown testing library: " + unitTestLibrary);
         break

@@ -19,7 +19,7 @@ switch (unitTestLibrary) {
         {
             <%
 switch (unitTestLibrary) {
-    case "xunit": %>Assert.True(false, "More unit tests need to be implemented for aliases class");;
+    case "xunit": %>Assert.True(false, "More unit tests need to be implemented for aliases class");
 <%      break
     default: throw Error("Unknown testing library: " + unitTestLibrary);
         break
