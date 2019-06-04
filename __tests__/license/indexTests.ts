@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
@@ -70,4 +70,26 @@ describe("generator:license", () => {
       assert.file("UNLICENSE.txt");
     });
   });
+
+  const licenseNames = [
+    "COPYING",
+    "COPYING.md",
+    "COPYING.txt",
+    "LICENSE",
+    "LICENSE.md",
+    "LICENSE.txt",
+  ];
+
+  for (const license of licenseNames) {
+    it(`should reuse existing ${license} file`, () => {
+      return runHelper("MIT")
+        .inTmpDir((tmpDir) => writeFileSync(path.join(tmpDir, license), ""))
+        .then(() => {
+          assert.file(license);
+          if (license !== "LICENSE.txt") {
+            assert.noFile("LICENSE.txt");
+          }
+        });
+    });
+  }
 });
