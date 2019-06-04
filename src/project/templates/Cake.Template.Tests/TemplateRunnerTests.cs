@@ -5,7 +5,7 @@ namespace Cake.<%= projectName %>.Tests
     using Cake.Testing;
     using Xunit;
 
-    public class <%= projectName %>Tests
+    public class <%= projectName %>RunnerTests
     {
         [Fact]
         public void Should_Throw_If_Settings_Are_Null()
