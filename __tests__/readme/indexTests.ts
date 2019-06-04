@@ -243,4 +243,38 @@ describe("generator:Readme", () => {
       );
     });
   });
+
+  const licenses = [
+    "COPYING",
+    "COPYING.md",
+    "COPYING.txt",
+    "LICENSE",
+    "LICENSE.md",
+    "LICENSE.txt",
+  ];
+
+  for (const license of licenses) {
+    it(`should link to existing license: ${license}`, () => {
+      return helpers
+        .run(generatorDir)
+        .withPrompts({
+          author: "Kim Nordmo",
+          description: "The most awesome test cake addin library.",
+          enableAllContributors: false,
+          enableContributing: false,
+          enableTravis: false,
+          licenseType: "MIT",
+          projectMaintainer: "AdmiringWorm",
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+        })
+        .inTmpDir((tmpDir) => writeFileSync(path.join(tmpDir, license), ""))
+        .then(() => {
+          assert.fileContent(
+            "README.md",
+            new RegExp(`\\[license\\]:\\s*${license}[\\r\\n]`)
+          );
+        });
+    });
+  }
 });
