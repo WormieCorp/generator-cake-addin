@@ -30,7 +30,7 @@ runpack() {
 }
 
 installgenerator() {
-    find ~+ -name "*.tgz" -exec yarn global add {} --force \; || exit $?
+    find ~+ -maxdepth 2 -name "*.tgz" -exec yarn global add {} --force \; || exit $?
 }
 
 uninstallGenerator() {
