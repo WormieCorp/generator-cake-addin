@@ -33,4 +33,5 @@ export const enum PromptNames {
   ScriptName = "scriptName",
   ShortDescription = "shortDescription",
   SourceDir = "sourceDir",
+  UnitTestLibrary = "unitTestLibrary",
 }
