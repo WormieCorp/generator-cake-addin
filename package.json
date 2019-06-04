@@ -3,6 +3,7 @@
     "version": "1.0.3",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
     "scripts": {
+        "commit": "git-cz",
         "setup": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",
         "build": "gulp build",
         "test": "jest",
@@ -74,6 +75,7 @@
         "@types/yeoman-test": "^2.0.3",
         "@types/yosay": "^0.0.29",
         "command-exists": "^1.2.8",
+        "cz-conventional-changelog": "2.1.0",
         "del": "^4.1.1",
         "gulp": "^4.0.2",
         "gulp-prettier": "^2.1.0",
@@ -91,5 +93,10 @@
         "typescript": "^3.5.1",
         "yeoman-assert": "^3.1.1",
         "yeoman-test": "^2.0.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     }
 }
