@@ -29,6 +29,9 @@ end_of_line = crlf
 [*.sh]
 end_of_line = lf
 
+[*.{yml,yaml}]
+indent_size = 2
+
 # The visual studio code file
 # requires the use of crlf line endings
 [tasks.json]
