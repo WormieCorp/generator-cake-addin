@@ -161,6 +161,14 @@ export abstract class GeneratorPrompts {
       validate: new NotEmptyValidator("license").validate,
     },
     {
+      inputType: InputType.Text,
+      isCommon: false,
+      message:
+        "What email address may be used for contacting regarding unacceptable behavior? ",
+      name: "emailAddress",
+      validate: new NotEmptyValidator("email address").validate,
+    },
+    {
       default: "./src",
       description: "The path where the project source files will be located.",
       filter: new PathNormalizeFilter("./").filter,
