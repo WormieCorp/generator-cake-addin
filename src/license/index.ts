@@ -81,7 +81,7 @@ export = class LicenseGenerator extends BaseGenerator {
 
     this.addOption({
       alias: "o",
-      default: "LICENSE.txt",
+      default: this._availableLicense(),
       description: "The file to write the license to",
       name: "out",
       type: String,
@@ -91,5 +91,23 @@ export = class LicenseGenerator extends BaseGenerator {
     for (const option of options) {
       this.addOption(option);
     }
+  }
+  private _availableLicense() {
+    const licenseNames = [
+      "COPYING",
+      "COPYING.md",
+      "COPYING.txt",
+      "LICENSE",
+      "LICENSE.md",
+      "LICENSE.txt",
+    ];
+
+    for (const license of licenseNames) {
+      if (this.fs.exists(this.destinationPath(license))) {
+        return license;
+      }
+    }
+
+    return "LICENSE.txt";
   }
 };
