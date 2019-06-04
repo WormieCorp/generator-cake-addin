@@ -1,5 +1,5 @@
 import { sync } from "command-exists";
-import { readFileSync, writeFileSync, mkdirSync } from "fs";
+import { mkdirSync, readFileSync, writeFileSync } from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";

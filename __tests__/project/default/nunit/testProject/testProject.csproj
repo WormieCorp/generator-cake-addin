@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+        <TargetFrameworks Condition="'$(OS)'!='Unix'">$(TargetFrameworks);net461</TargetFrameworks>
+
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Cake.Testing" Version="0.33.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.1.0" />
+        <PackageReference Include="Moq" Version="4.10.1" />
+        <PackageReference Include="nunit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Cake.TestApp/Cake.TestApp.csproj" />
+    </ItemGroup>
+
+</Project>

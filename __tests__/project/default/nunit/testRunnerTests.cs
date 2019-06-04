@@ -3,8 +3,10 @@ namespace Cake.TestApp.Tests
     using System;
     using Cake.Core;
     using Cake.Testing;
-    using Xunit;
+    using NUnit.Framework;
 
+    [TestFixture]
+    [TestOf(typeof(TestAppRunner))]
     public class TestAppRunnerTests
     {
         [Fact]
@@ -14,7 +16,7 @@ namespace Cake.TestApp.Tests
 
             Action result = () => fixture.Run();
 
-            Assert.Throws<ArgumentNullException>(result);
+            Assert.That(result, Throws.ArgumentNullException.With.Message.Contains("message"));
         }
 
         [Fact]
@@ -26,14 +28,13 @@ namespace Cake.TestApp.Tests
 
             Action result = () => fixture.Run();
 
-            var ex = Assert.Throws<CakeException>(result);
-            Assert.Equal(expectedMessage, ex.Message);
+            Assert.That(result, Throws.TypeOf<CakeException>().With.Message.EqualTo(expectedMessage));
         }
 
         [Fact]
         public void Need_More_Unit_Test_Implementations()
         {
-            Assert.True(false, "More unit tests need to be implemented for the runner class");
+            Assert.That(false, Is.True, "More unit tests need to be implemented for the runner class");
         }
     }
 }
