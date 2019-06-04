@@ -20,6 +20,7 @@ export const enum PromptNames {
   AppVeyorAccount = "appveyorAccount",
   Author = "author",
   Description = "description",
+  EmailAddress = "emailAddress",
   EnableAllContributors = "enableAllContributors",
   EnableContributing = "enableContributing",
   EnableLinux = "enableLinux",

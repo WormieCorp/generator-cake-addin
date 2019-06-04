@@ -16,17 +16,23 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseGenerator } from "../utils";
+import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
 export = class ConductGenerator extends BaseGenerator {
   public prompting() {
     // There is nothing to ask the user.
+    const emailPrompt = GeneratorPrompts.getPrompt(PromptNames.EmailAddress);
+    emailPrompt.default = this.user.git.email();
+    this.addPrompt(emailPrompt);
+
+    return this.callPrompts();
   }
 
   public writing() {
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath("CODE_OF_CONDUCT.md"),
-      this.destinationPath("CODE_OF_CONDUCT.md")
+      this.destinationPath("CODE_OF_CONDUCT.md"),
+      this.allValues
     );
   }
 
