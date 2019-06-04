@@ -53,6 +53,21 @@ const expectedContentFiles = [
     name: "test alias fixture class",
     testFile: "Cake.TestApp.Tests/TestAppAliasesFixture.cs",
   },
+  {
+    expectedFile: "{unitTestLibrary}/testAliasesTests.cs",
+    name: "test alias tests class",
+    testFile: "Cake.TestApp.Tests/TestAppAliasesTests.cs",
+  },
+  {
+    expectedFile: "testRunnerFixture.cs",
+    name: "test runner fixture class",
+    testFile: "Cake.TestApp.Tests/TestAppRunnerFixture.cs",
+  },
+  {
+    expectedFile: "{unitTestLibrary}/testRunnerTests.cs",
+    name: "test runner tests class",
+    testFile: "Cake.TestApp.Tests/TestAppRunnerTests.cs",
+  },
 ];
 
 function assertFileContent(filePath: string, expectedFile: string) {
