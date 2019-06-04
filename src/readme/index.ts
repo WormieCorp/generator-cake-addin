@@ -93,5 +93,22 @@ export = class ReadmeGenerator extends BaseGenerator {
     for (const option of promptOptions) {
       this.addOption(option);
     }
+    this.setValue("licenseName", "LICENSE.txt");
+
+    const possibleLicenseNames = [
+      "COPYING",
+      "COPYING.md",
+      "COPYING.txt",
+      "LICENSE",
+      "LICENSE.md",
+      "LICENSE.txt",
+    ];
+
+    for (const licenseName of possibleLicenseNames) {
+      if (this.fs.exists(licenseName)) {
+        this.setValue("licenseName", licenseName);
+        break;
+      }
+    }
   }
 };
