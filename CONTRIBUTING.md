@@ -137,7 +137,7 @@ The header has a special format that includes a **type**, a **scope** and a **su
 
 The **header** is mandatary and the **scope** of the header is optional.
 
-Any line of the commit message cannat be longer than 100 characters!
+Any line of the commit message cannot be longer than 100 characters!
 This allows the message to be easier to read on GitHub as well
 as in various git tools.
 
@@ -181,7 +181,6 @@ The scope should be the name of the name of the generator affected (as perceived
 
 The following is a list of supported scopes that do not match a generator name:
 
-- **contributing**: Any change to `CONTRIBUTING.md` requires this scope.
 - **licensing**: Any change that is related to licensing or copyright requires this scope.
 
 ### Subject
