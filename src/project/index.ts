@@ -40,6 +40,7 @@ export = class ProjectGenerator extends BaseGenerator {
       PromptNames.Description,
       PromptNames.LicenseType,
       PromptNames.EnableWyam,
+      PromptNames.UnitTestLibrary,
     ];
 
     for (const name of promptNames) {
@@ -173,6 +174,7 @@ export = class ProjectGenerator extends BaseGenerator {
       PromptNames.Description,
       PromptNames.LicenseType,
       PromptNames.EnableWyam,
+      PromptNames.UnitTestLibrary,
     ];
 
     this.addOption({
@@ -204,6 +206,5 @@ export = class ProjectGenerator extends BaseGenerator {
 
     this.setValue("mainProjectGuid", uuid().toUpperCase());
     this.setValue("testProjectGuid", uuid().toUpperCase());
-    this.setValue("unitTestLibrary", "xunit");
   }
 };

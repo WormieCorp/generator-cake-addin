@@ -3,14 +3,17 @@ namespace Cake.<%= projectName %>.Tests
     using System;
     using Cake.Core;
     using Cake.Testing;
-    <%
+<%
 switch (unitTestLibrary) {
-    case "xunit": %>using Xunit;
+    case "xunit": -%>
+    using Xunit;
 <%      break
-    default: throw Error("Unknown testing library: " + unitTestLibrary);
-        break
-} -%>
-
+    case "nunit": -%>
+    using NUnit.Framework;
+<%      break } -%>
+<% if (unitTestLibrary === "nunit") { %>
+    [TestFixture]
+    [TestOf(typeof(<%= projectName %>Runner))]<% } %>
     public class <%= projectName %>RunnerTests
     {
         [Fact]
@@ -18,15 +21,17 @@ switch (unitTestLibrary) {
         {
             var fixture = new <%= projectName %>RunnerFixture { Settings = null };
 
-            <%
-switch (unitTestLibrary) {
-    case "xunit": %>Action result = () => fixture.Run();
+<% switch (unitTestLibrary) {
+    case "xunit": -%>
+            Action result = () => fixture.Run();
 
             Assert.Throws<ArgumentNullException>(result);
 <%      break
-    default: throw Error("Unknown testing library: " + unitTestLibrary);
-        break
-} -%>
+    case "nunit": -%>
+            Action result = () => fixture.Run();
+
+            Assert.That(result, Throws.ArgumentNullException.With.Message.Contains("message"));
+<%      break } -%>
         }
 
         [Fact]
@@ -34,29 +39,32 @@ switch (unitTestLibrary) {
         {
             var fixture = new <%= projectName %>RunnerFixture();
             fixture.GivenDefaultToolDoNotExist();
+            const string expectedMessage = "<%= projectName %>: Could not locate executable";
 
-            <%
-switch (unitTestLibrary) {
-    case "xunit": %>Action result = () => fixture.Run();
+<% switch (unitTestLibrary) {
+    case "xunit": -%>
+            Action result = () => fixture.Run();
 
             var ex = Assert.Throws<CakeException>(result);
-            Assert.Equal("<%= projectName %>: Could not locate executable", ex.Message);
+            Assert.Equal(expectedMessage, ex.Message);
 <%      break
-    default: throw Error("Unknown testing library: " + unitTestLibrary);
-        break
-} -%>
+    case "nunit": -%>
+            Action result = () => fixture.Run();
+
+            Assert.That(result, Throws.TypeOf<CakeException>().With.Message.EqualTo(expectedMessage));
+<%      break } -%>
         }
 
         [Fact]
         public void Need_More_Unit_Test_Implementations()
         {
-            <%
-switch (unitTestLibrary) {
-    case "xunit": %>Assert.True(false, "More unit tests need to be implemented for the runner class");
+<% switch (unitTestLibrary) {
+    case "xunit": -%>
+            Assert.True(false, "More unit tests need to be implemented for the runner class");
 <%      break
-    default: throw Error("Unknown testing library: " + unitTestLibrary);
-        break
-} -%>
+    case "nunit": -%>
+            Assert.That(false, Is.True, "More unit tests need to be implemented for the runner class");
+<%      break } -%>
         }
     }
 }
