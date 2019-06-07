@@ -50,6 +50,7 @@ describe("generator:app", () => {
           repositoryOwner: "AdmiringWorm",
           scriptName: "recipe.cake",
           sourceDir: "./src",
+          unitTestLibrary: "xunit",
         })
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
@@ -78,6 +79,7 @@ describe("generator:app", () => {
           repositoryOwner: "AdmiringWorm",
           scriptName: "recipe.cake",
           sourceDir: "./src",
+          unitTestLibrary: "xunit",
         })
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
@@ -103,6 +105,7 @@ describe("generator:app", () => {
           repositoryOwner: "AdmiringWorm",
           scriptName: "recipe.cake",
           sourceDir: "./src",
+          unitTestLibrary: "xunit",
         })
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
@@ -129,6 +132,7 @@ describe("generator:app", () => {
           repositoryOwner: "AdmiringWorm",
           scriptName: "recipe.cake",
           sourceDir: "./src",
+          unitTestLibrary: "xunit",
         })
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
