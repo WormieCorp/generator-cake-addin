@@ -1,0 +1,13 @@
+{
+    "scopes": {
+        "appveyor": "appveyor generator",
+        "build": "build scripts generator",
+        "conduct": "code of conduct generator",
+        "config": "configuration generator",
+        "contributing": "contribution guidelines generator",
+        "license": "license generator",
+        "project": "project generator",
+        "readme": "readme generator",
+        "travis": "travis generator"
+    }
+}

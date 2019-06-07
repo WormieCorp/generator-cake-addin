@@ -79,6 +79,7 @@
         "command-exists": "^1.2.8",
         "commitizen": "3.1.1",
         "commitlint": "^8.0.0",
+        "conventional-changelog-wormiecorp": "^1.0.0",
         "cz-conventional-changelog": "2.1.0",
         "del": "^4.1.1",
         "gulp": "^4.0.2",
@@ -105,10 +106,20 @@
         }
     },
     "release": {
-        "branch": "master",
+        "branch": "develop",
         "plugins": [
-            "@semantic-release/commit-analyzer",
-            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/commit-analyzer",
+                {
+                    "config": "conventional-changelog-wormiecorp"
+                }
+            ],
+            [
+                "@semantic-release/release-notes-generator",
+                {
+                    "config": "conventional-changelog-wormiecorp"
+                }
+            ],
             "@semantic-release/changelog",
             [
                 "@semantic-release/exec",
