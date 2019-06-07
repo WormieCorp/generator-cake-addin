@@ -47,12 +47,12 @@ function runPack() {
 
 function installGenerator() {
     "Installing cake addin generator..."
-    yarn global add "$(Get-Item "*.tgz" | Select-Object -ExpandProperty FullName)"
+    npm install --global "$(Get-Item "*.tgz" | Select-Object -ExpandProperty FullName)"
 }
 
 function uninstallGenerator() {
     "Uninstalling cake addin generator..."
-    yarn global remove generator-cake-addin
+    npm uninstall --global generator-cake-addin
 }
 
 $BUILD = $false
