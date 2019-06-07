@@ -187,7 +187,16 @@ export abstract class GeneratorPrompts {
       validate: new NotEmptyValidator("cake build script").validate,
     },
     {
-      choices: ["nunit", "xunit"],
+      choices: [
+        {
+          name: "NUnit Tests",
+          value: "nunit",
+        },
+        {
+          name: "xUnit Tests",
+          value: "xunit",
+        },
+      ],
       default: "nunit",
       inputType: InputType.Selection,
       isCommon: false,
