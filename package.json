@@ -138,7 +138,6 @@
     },
     "husky": {
         "hooks": {
-            "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
             "commit-msg": "commitlint -e $GIT_PARAMS"
         }
     }
