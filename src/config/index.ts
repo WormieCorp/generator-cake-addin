@@ -31,7 +31,10 @@ export = class ConfigGenerator extends BaseGenerator {
     const copyFiles = [".editorconfig", ".gitattributes", ".gitignore"];
     const templateFiles = ["GitReleaseManager.yaml"];
     for (const file of copyFiles) {
-      this.fs.copy(this.templatePath(file), this.destinationPath(file));
+      this.fs.copy(
+        this.templatePath(file.replace(/^\./, "")),
+        this.destinationPath(file)
+      );
     }
 
     for (const file of templateFiles) {
@@ -44,7 +47,7 @@ export = class ConfigGenerator extends BaseGenerator {
 
     if (this.getBoolValue(PromptNames.EnableAllContributors)) {
       this.fs.copyTpl(
-        this.templatePath(".all-contributorsrc"),
+        this.templatePath("all-contributorsrc"),
         this.destinationPath(".all-contributorsrc"),
         this.allValues
       );
