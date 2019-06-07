@@ -1,6 +1,6 @@
 #load nuget:?package=Cake.Recipe&version=1.0.0
 
-Environment.SetVariableName();
+Environment.SetVariableNames();
 
 BuildParameters.SetParameters(
     context: Context,
