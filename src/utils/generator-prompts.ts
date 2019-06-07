@@ -114,7 +114,7 @@ export abstract class GeneratorPrompts {
       filter: trimFilter,
       inputType: InputType.Text,
       isCommon: true,
-      message: "Who is the main author of the Cake addin? ",
+      message: "What is the the name of Cake addin author? ",
       name: PromptNames.Author,
       validate: new NotEmptyValidator(PromptNames.Author).validate,
     },
