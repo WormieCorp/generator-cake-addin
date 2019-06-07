@@ -3,6 +3,8 @@ import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
 
+jest.setTimeout(5 * 60 * 1000);
+
 const generatorDir = path.join(__dirname, "../../src/app");
 const expectedFiles = [
   ".all-contributorsrc",
