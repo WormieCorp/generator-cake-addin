@@ -27,6 +27,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "gep13",
+      "name": "Gary Ewan Park",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1271146?v=4",
+      "profile": "http://www.gep13.co.uk/blog",
+      "contributions": [
+        "video"
+      ]
     }
   ],
   "contributorsPerLine": 7,
