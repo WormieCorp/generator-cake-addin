@@ -1,3 +1,27 @@
+## [1.1.1](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.0...v1.1.1) (2019-06-07)
+
+
+### Bug Fixes
+
+* **config:** renamed templates to not use . prefix ([f1e0074](https://github.com/WormieCorp/generator-cake-addin/commit/f1e0074))
+
+# [1.1.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.0.3...v1.1.0) (2019-06-04)
+
+
+### Bug Fixes
+
+* changed short description to be a common prompt ([4dcd6ff](https://github.com/WormieCorp/generator-cake-addin/commit/4dcd6ff)), closes [#29](https://github.com/WormieCorp/generator-cake-addin/issues/29)
+* **conduct:** implemented prompt for email address ([210f935](https://github.com/WormieCorp/generator-cake-addin/commit/210f935)), closes [#34](https://github.com/WormieCorp/generator-cake-addin/issues/34)
+* **config:** fixed inconsistent indentation configured in editorconfig template ([3a5f80e](https://github.com/WormieCorp/generator-cake-addin/commit/3a5f80e)), closes [#35](https://github.com/WormieCorp/generator-cake-addin/issues/35)
+* **project:** fixed the generated class name for runner tests ([e7fab17](https://github.com/WormieCorp/generator-cake-addin/commit/e7fab17)), closes [#36](https://github.com/WormieCorp/generator-cake-addin/issues/36)
+
+
+### Features
+
+* **license:** implemented abitily to select existing license name when creating new license ([7d11bb7](https://github.com/WormieCorp/generator-cake-addin/commit/7d11bb7)), closes [#31](https://github.com/WormieCorp/generator-cake-addin/issues/31)
+* **project:** implemented ability to change unit testing library ([e77de86](https://github.com/WormieCorp/generator-cake-addin/commit/e77de86)), closes [#30](https://github.com/WormieCorp/generator-cake-addin/issues/30)
+* **readme:** implemented ability to select license name from existing license file names ([48360e1](https://github.com/WormieCorp/generator-cake-addin/commit/48360e1)), closes [#32](https://github.com/WormieCorp/generator-cake-addin/issues/32)
+
 ## [1.0.3](https://github.com/WormieCorp/generator-cake-addin/compare/v1.0.2...v1.0.3) (2019-06-03)
 
 
