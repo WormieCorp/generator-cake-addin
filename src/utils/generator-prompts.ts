@@ -191,10 +191,12 @@ export abstract class GeneratorPrompts {
       choices: [
         {
           name: "NUnit Tests",
+          short: "NUnit",
           value: "nunit",
         },
         {
           name: "xUnit Tests",
+          short: "xUnit",
           value: "xunit",
         },
       ],
