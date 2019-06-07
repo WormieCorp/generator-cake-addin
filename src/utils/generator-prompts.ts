@@ -136,6 +136,7 @@ export abstract class GeneratorPrompts {
         "What is the short description for the cake addin (120 characters or less)? ",
       name: PromptNames.ShortDescription,
       validate: new MultiValidator(
+        new NotEmptyValidator("short description"),
         new LengthValidator("short description", undefined, 120),
         new AnswerNotInInputValidator(
           "short description",
