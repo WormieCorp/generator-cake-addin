@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.0...v1.1.1) (2019-06-07)
+
+
+### Bug Fixes
+
+* **config:** renamed templates to not use . prefix ([f1e0074](https://github.com/WormieCorp/generator-cake-addin/commit/f1e0074))
+
 # [1.1.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.0.3...v1.1.0) (2019-06-04)
 
 

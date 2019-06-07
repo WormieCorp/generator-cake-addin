@@ -1,6 +1,6 @@
 {
     "name": "generator-cake-addin",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
     "scripts": {
         "commit": "git-cz",
