@@ -1,3 +1,25 @@
+# Cake Addin generator changelog
+
+## [1.1.2](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.1...v1.1.2) (2019-06-08)
+
+
+### Bug fixes
+
+* change short description prompt to not allow empty values ([7535908](https://github.com/WormieCorp/generator-cake-addin/commit/7535908)), closes [#48](https://github.com/WormieCorp/generator-cake-addin/issues/48)
+* **build scripts generator:** fix denotion for loading nuget package in recipe.cake template ([02fe69a](https://github.com/WormieCorp/generator-cake-addin/commit/02fe69a)), closes [#42](https://github.com/WormieCorp/generator-cake-addin/issues/42)
+* **build scripts generator:** fix method name used to set variable names in recipe.cake tepmlate ([25788f4](https://github.com/WormieCorp/generator-cake-addin/commit/25788f4)), closes [#43](https://github.com/WormieCorp/generator-cake-addin/issues/43)
+* **project generator:** change attribute used on unit tests generation ([85dede4](https://github.com/WormieCorp/generator-cake-addin/commit/85dede4)), closes [#52](https://github.com/WormieCorp/generator-cake-addin/issues/52)
+* **project generator:** fix selection of unit test library not working before enter is pressed ([1431103](https://github.com/WormieCorp/generator-cake-addin/commit/1431103)), closes [#41](https://github.com/WormieCorp/generator-cake-addin/issues/41)
+
+
+### Documentation
+
+* add a known issue section in readme with information of hang issue ([f93fcb7](https://github.com/WormieCorp/generator-cake-addin/commit/f93fcb7))
+* add gep13 as a contributor ([#40](https://github.com/WormieCorp/generator-cake-addin/issues//40)) ([aba8a20](https://github.com/WormieCorp/generator-cake-addin/commit/aba8a20))
+* add project name as title for CHANGELOG.md ([43ae9a9](https://github.com/WormieCorp/generator-cake-addin/commit/43ae9a9))
+* change the prompt message asking for the name of the author ([2e834e0](https://github.com/WormieCorp/generator-cake-addin/commit/2e834e0)), closes [#47](https://github.com/WormieCorp/generator-cake-addin/issues/47)
+* update gep13 contribution types ([#45](https://github.com/WormieCorp/generator-cake-addin/issues//45)) ([27d9df2](https://github.com/WormieCorp/generator-cake-addin/commit/27d9df2))
+
 ## [1.1.1](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.0...v1.1.1) (2019-06-07)
 
 
