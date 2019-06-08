@@ -10,7 +10,7 @@ namespace Cake.TestApp.Tests
     [TestOf(typeof(TestAppAliases))]
     public class TestAppAliasesTests
     {
-        [Fact]
+        [Test]
         public void Need_More_Unit_Test_Implementations()
         {
             Assert.That(false, Is.True, "More unit tests need to be implemented for aliases class");

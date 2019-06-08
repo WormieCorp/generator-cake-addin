@@ -9,7 +9,7 @@ namespace Cake.TestApp.Tests
     [TestOf(typeof(TestAppRunner))]
     public class TestAppRunnerTests
     {
-        [Fact]
+        [Test]
         public void Should_Throw_If_Settings_Are_Null()
         {
             var fixture = new TestAppRunnerFixture { Settings = null };
@@ -19,7 +19,7 @@ namespace Cake.TestApp.Tests
             Assert.That(result, Throws.ArgumentNullException.With.Message.Contains("message"));
         }
 
-        [Fact]
+        [Test]
         public void Should_Throw_If_TestApp_Executable_Was_Not_Found()
         {
             var fixture = new TestAppRunnerFixture();
@@ -31,7 +31,7 @@ namespace Cake.TestApp.Tests
             Assert.That(result, Throws.TypeOf<CakeException>().With.Message.EqualTo(expectedMessage));
         }
 
-        [Fact]
+        [Test]
         public void Need_More_Unit_Test_Implementations()
         {
             Assert.That(false, Is.True, "More unit tests need to be implemented for the runner class");
