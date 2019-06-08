@@ -1,22 +1,27 @@
+<% let unitTestAttribute = "";
+   let usingStatements = "";
+switch (unitTestLibrary) {
+    case "xunit":
+        unitTestAttribute = "[Fact]";
+        usingStatements = "using Xunit;";
+        break;
+    case "nunit":
+        unitTestAttribute = "[Test]";
+        usingStatements = "using NUnit.Framework;";
+        break
+} -%>
 namespace Cake.<%= projectName %>.Tests
 {
     using System;
     using Cake.Core;
     using Cake.Testing;
-<%
-switch (unitTestLibrary) {
-    case "xunit": -%>
-    using Xunit;
-<%      break
-    case "nunit": -%>
-    using NUnit.Framework;
-<%      break } -%>
+    <%= usingStatements %>
 <% if (unitTestLibrary === "nunit") { %>
     [TestFixture]
     [TestOf(typeof(<%= projectName %>Runner))]<% } %>
     public class <%= projectName %>RunnerTests
     {
-        [Fact]
+        <%= unitTestAttribute %>
         public void Should_Throw_If_Settings_Are_Null()
         {
             var fixture = new <%= projectName %>RunnerFixture { Settings = null };
@@ -34,7 +39,7 @@ switch (unitTestLibrary) {
 <%      break } -%>
         }
 
-        [Fact]
+        <%= unitTestAttribute %>
         public void Should_Throw_If_<%= projectName %>_Executable_Was_Not_Found()
         {
             var fixture = new <%= projectName %>RunnerFixture();
@@ -55,7 +60,7 @@ switch (unitTestLibrary) {
 <%      break } -%>
         }
 
-        [Fact]
+        <%= unitTestAttribute %>
         public void Need_More_Unit_Test_Implementations()
         {
 <% switch (unitTestLibrary) {

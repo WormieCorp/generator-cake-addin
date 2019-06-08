@@ -1,23 +1,28 @@
+<% let unitTestAttribute = "";
+   let usingStatements = "";
+switch (unitTestLibrary) {
+    case "xunit":
+        unitTestAttribute = "[Fact]";
+        usingStatements = "using Xunit;";
+        break;
+    case "nunit":
+        unitTestAttribute = "[Test]";
+        usingStatements = "using NUnit.Framework;";
+        break
+} -%>
 namespace Cake.<%= projectName %>.Tests
 {
     using System;
     using Cake.Core;
     using Cake.Core.IO;
     using Cake.Testing;
-<%
-switch (unitTestLibrary) {
-    case "xunit": -%>
-    using Xunit;
-<%      break
-    case "nunit": -%>
-    using NUnit.Framework;
-<%      break } -%>
+    <%= usingStatements %>
 <% if (unitTestLibrary === "nunit") { %>
     [TestFixture]
     [TestOf(typeof(<%= projectName %>Aliases))]<% } %>
     public class <%= projectName %>AliasesTests
     {
-        [Fact]
+        <%= unitTestAttribute %>
         public void Need_More_Unit_Test_Implementations()
         {
 <% switch (unitTestLibrary) {
