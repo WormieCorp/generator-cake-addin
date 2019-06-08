@@ -120,7 +120,12 @@
                     "config": "conventional-changelog-wormiecorp"
                 }
             ],
-            "@semantic-release/changelog",
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogTitle": "# Cake Addin generator changelog"
+                }
+            ],
             [
                 "@semantic-release/exec",
                 {
