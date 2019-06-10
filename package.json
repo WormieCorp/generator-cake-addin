@@ -100,6 +100,11 @@
         "yeoman-assert": "^3.1.1",
         "yeoman-test": "^2.0.0"
     },
+    "resolutions": {
+        "@semantic-release/commit-analyzer": "^6.2.0",
+        "@semantic-release/npm": "^5.1.9",
+        "@semantic-release/release-notes-generator": "^7.1.7"
+    },
     "config": {
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
