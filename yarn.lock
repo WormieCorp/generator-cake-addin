@@ -545,15 +545,15 @@
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.2.0.tgz#ee9d5a09c9969eade1ec864776aeda5c5cddbbf0"
   integrity sha512-9Tj/qn+y2j+sjCI3Jd+qseGtHjOAeg7dU2/lVcqIQ9TV3QDaDXDYXcoOHU+7o2Hwh8L8ymL4gfuO7KxDs3q2zg==
 
-"@semantic-release/exec@^3.3.3":
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/@semantic-release/exec/-/exec-3.3.3.tgz#5c915d289aa88492bc9f6b6fb62eb94701476005"
-  integrity sha512-cYmQZHlOda8XbGWfdDqQnnxFBAnxYE+heiNQUduAn7y1qRVKTBalXae/hzEucsBI9XK8NKYK55mgLqzzY21YUg==
+"@semantic-release/exec@^3.3.4":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@semantic-release/exec/-/exec-3.3.4.tgz#b2e29642045f5edfcdaf31286f8ea4943eec7604"
+  integrity sha512-r2132zCfqmaxeCVfMsaZk3PzpVj9mTaOVemHKtG5EET4Gv3aUFx/FZ8i1HohBRh8x32fXfOlZ10fEsb0L9Ks+w==
   dependencies:
     "@semantic-release/error" "^2.1.0"
     aggregate-error "^3.0.0"
     debug "^4.0.0"
-    execa "^1.0.0"
+    execa "^2.0.0"
     lodash "^4.17.4"
     parse-json "^4.0.0"
 
