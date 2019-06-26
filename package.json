@@ -162,9 +162,9 @@
         "hooks": {
             "pre-commit": "lint-staged",
             "commit-msg": "commitlint -e $GIT_PARAMS",
-            "post-checkout": "yarn install",
-            "post-merge": "yarn install",
-            "post-rewrite": "yarn install"
+            "post-checkout": "yarn install --frozen lockfile",
+            "post-merge": "yarn install --frozen-lockfile",
+            "post-rewrite": "yarn install --frozen-lockfile"
         }
     },
     "lint-staged": {
