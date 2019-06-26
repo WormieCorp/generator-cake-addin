@@ -161,7 +161,10 @@
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged",
-            "commit-msg": "commitlint -e $GIT_PARAMS"
+            "commit-msg": "commitlint -e $GIT_PARAMS",
+            "post-checkout": "yarn install",
+            "post-merge": "yarn install",
+            "post-rewrite": "yarn install"
         }
     },
     "lint-staged": {
