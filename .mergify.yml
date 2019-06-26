@@ -1,0 +1,28 @@
+pull_request_rules:
+  - name: "Merge Pull Request when CI passes, and no outstanding issues"
+    conditions:
+      - "status-success=Codacy/PR Quality Review"
+      - "status-success=Semantic Pull Request"
+      - "status-success=WIP"
+      - "status-success=codecov/patch"
+      - "status-success=continuous-integration/appveyor/pr"
+      - "status-success=continuous-integration/travis-ci/pr"
+      - "#assignee=0"
+      - "#approved-reviews-by>=1"
+      - "#review-requested=0"
+      - "#changes-requested-reviews-by=0"
+      - "#commented-reviews-by=0"
+    actions:
+      merge:
+        strict: smart
+        method: squash
+  - name: thank user and refer them to add themself as contributor
+    conditions:
+      - merged
+    actions:
+      comment:
+        message: "Thank you for your contribution, if you haven't already then feel free to add yourself as a contributors through the all-contributors bot. See https://allcontributors.org/docs/en/bot/usage for more information."
+  - name: delete head branch after merge
+    conditions: []
+    actions:
+      delete_head_branch: {}
