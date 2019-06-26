@@ -4,7 +4,6 @@ pull_request_rules:
       - "status-success=Codacy/PR Quality Review"
       - "status-success=Semantic Pull Request"
       - "status-success=WIP"
-      - "status-success=codecov/patch"
       - "status-success=continuous-integration/appveyor/pr"
       - "status-success=continuous-integration/travis-ci/pr"
       - "#assignee=0"
