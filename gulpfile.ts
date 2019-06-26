@@ -35,6 +35,7 @@ export function pretty() {
     "!node_modules{,/**}",
     "!generators{,/**}",
     "!coverage/{,/**}",
+    "!**/obj/{,/**}",
   ]).pipe(check());
 }
 
