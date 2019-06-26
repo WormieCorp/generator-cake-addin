@@ -161,10 +161,7 @@
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged",
-            "commit-msg": "commitlint -e $GIT_PARAMS",
-            "post-checkout": "yarn install --frozen lockfile",
-            "post-merge": "yarn install --frozen-lockfile",
-            "post-rewrite": "yarn install --frozen-lockfile"
+            "commit-msg": "commitlint -e $GIT_PARAMS"
         }
     },
     "lint-staged": {
