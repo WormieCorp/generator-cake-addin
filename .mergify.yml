@@ -1,20 +1,4 @@
 pull_request_rules:
-  - name: "Merge Pull Request when CI passes, and no outstanding issues"
-    conditions:
-      - "status-success=Codacy/PR Quality Review"
-      - "status-success=Semantic Pull Request"
-      - "status-success=WIP"
-      - "status-success=continuous-integration/appveyor/pr"
-      - "status-success=continuous-integration/travis-ci/pr"
-      - "#assignee=0"
-      - "#approved-reviews-by>=1"
-      - "#review-requested=0"
-      - "#changes-requested-reviews-by=0"
-      - "#commented-reviews-by=0"
-    actions:
-      merge:
-        strict: smart
-        method: squash
   - name: thank user and refer them to add themself as contributor
     conditions:
       - merged
