@@ -70,7 +70,7 @@
         "@types/jest": "24.0.15",
         "@types/merge-stream": "1.1.2",
         "@types/prettier": "1.16.4",
-        "@types/uuid": "3.4.4",
+        "@types/uuid": "3.4.5",
         "@types/yeoman-assert": "3.1.1",
         "@types/yeoman-environment": "2.3.1",
         "@types/yeoman-generator": "3.1.3",
