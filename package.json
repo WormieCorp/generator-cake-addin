@@ -117,7 +117,14 @@
             [
                 "@semantic-release/commit-analyzer",
                 {
-                    "config": "conventional-changelog-wormiecorp"
+                    "config": "conventional-changelog-wormiecorp",
+                    "releaseRules": [
+                        {
+                            "type": "chore",
+                            "scope": "deps",
+                            "release": "patch"
+                        }
+                    ]
                 }
             ],
             [
