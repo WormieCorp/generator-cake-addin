@@ -6,7 +6,7 @@ create:
     [nuget](https://nuget.org/packages/Cake.TestApp/{milestone}),
     or you can just reference it in a cake build script
     with `#addin nuget:?package=Cake.TestApp&version={milestone}`.
-  footer-include-milestone: true
+  footer-includes-milestone: true
   milestone-replace-text: "{milestone}"
 export:
   include-created-date-in-title: true
