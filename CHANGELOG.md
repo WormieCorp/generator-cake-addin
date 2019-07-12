@@ -1,5 +1,30 @@
 # Cake Addin generator changelog
 
+## [1.1.3](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.2...v1.1.3) (2019-07-12)
+
+
+### Bug fixes
+
+* **configuration generator:** update GitReleaseManager template to use the correct 'footer-includes-milestone' key ([151f2d9](https://github.com/WormieCorp/generator-cake-addin/commit/151f2d9)), closes [#86](https://github.com/WormieCorp/generator-cake-addin/issues/86)
+
+
+### Dependencies
+
+* bump lodash.template from 4.4.0 to 4.5.0 ([#84](https://github.com/WormieCorp/generator-cake-addin/issues//84)) ([d6baf50](https://github.com/WormieCorp/generator-cake-addin/commit/d6baf50))
+* bump username from 5.0.0 to 5.1.0 ([#58](https://github.com/WormieCorp/generator-cake-addin/issues//58)) ([ee48a0c](https://github.com/WormieCorp/generator-cake-addin/commit/ee48a0c))
+
+
+### Documentation
+
+* add liberapay donation badge ([e4834dc](https://github.com/WormieCorp/generator-cake-addin/commit/e4834dc))
+* **release-notes:** change configuration to not output scope when 'deps' is the scope ([afc8474](https://github.com/WormieCorp/generator-cake-addin/commit/afc8474))
+
+
+### Reverts
+
+* "build: remove husky configuration" ([3ba59e9](https://github.com/WormieCorp/generator-cake-addin/commit/3ba59e9))
+* "ci(travis-ci): disable commit-msg hook to allow creating new release on travis." ([ce27117](https://github.com/WormieCorp/generator-cake-addin/commit/ce27117))
+
 ## [1.1.2](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.1...v1.1.2) (2019-06-08)
 
 
