@@ -3,7 +3,7 @@ let hooks = {
 };
 
 if (process.env.TRAVIS !== "true") {
-  //hooks["commit-msg"] = "commitlint -E HUSKY_GIT_PARAMS";
+  hooks["commit-msg"] = "commitlint -E HUSKY_GIT_PARAMS";
 }
 
 module.exports = {
