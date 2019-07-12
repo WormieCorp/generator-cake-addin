@@ -8,6 +8,7 @@
         "license": "license generator",
         "project": "project generator",
         "readme": "readme generator",
-        "travis": "travis generator"
+        "travis": "travis generator",
+        "deps": ""
     }
 }
