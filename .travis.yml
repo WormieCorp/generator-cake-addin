@@ -50,4 +50,4 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
-          - yarn semantic-release
+          - yarn semantic-release --ci
