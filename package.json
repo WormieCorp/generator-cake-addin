@@ -77,7 +77,7 @@
         "@types/yeoman-test": "2.0.3",
         "@types/yosay": "0.0.29",
         "command-exists": "1.2.8",
-        "commitizen": "3.1.1",
+        "commitizen": "4.0.3",
         "commitlint": "8.1.0",
         "conventional-changelog-wormiecorp": "1.0.2",
         "cz-conventional-changelog": "2.1.0",
