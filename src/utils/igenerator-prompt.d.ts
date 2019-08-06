@@ -16,12 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { ChoiceType } from "inquirer";
+import { ChoiceOptions } from "inquirer";
 import { Answers } from "yeoman-generator";
 import { InputType } from "./constants/input-type";
 
 export interface IGeneratorPrompt {
-  choices?: Array<string | ChoiceType<string>>;
+  choices?: Array<string | ChoiceOptions>;
   default?: any | ((answers: Answers) => any);
   description?: string;
   filter?: (input: string) => string;
