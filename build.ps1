@@ -18,16 +18,25 @@ function UpdateAppveyorBuildVersion {
 function runSetup() {
     "Compiling gulp build file..."
     yarn setup
+    if ($LASTEXITCODE -ne 0) {
+        exit($LASTEXITCODE)
+    }
 }
 
 function runInstall() {
     "Installing generator dependencies..."
     yarn install --frozen-lockfile
+    if ($LASTEXITCODE -ne 0) {
+        exit($LASTEXITCODE)
+    }
 }
 
 function runBuild() {
     "Building generator..."
     yarn build
+    if ($LASTEXITCODE -ne 0) {
+        exit($LASTEXITCODE)
+    }
 }
 
 function runTest() {
@@ -37,22 +46,34 @@ function runTest() {
         if ($env:CI -ieq "true") { "--coverage"; "--ci" }
     )
     yarn @arguments
+    if ($LASTEXITCODE -ne 0) {
+        exit($LASTEXITCODE)
+    }
 }
 
 function runPack() {
     "Creating npm package..."
     Remove-Item "*.tgz"
     yarn pack
+    if ($LASTEXITCODE -ne 0) {
+        exit($LASTEXITCODE)
+    }
 }
 
 function installGenerator() {
     "Installing cake addin generator..."
     npm install --global "$(Get-Item "*.tgz" | Select-Object -ExpandProperty FullName)"
+    if ($LASTEXITCODE -ne 0) {
+        exit($LASTEXITCODE)
+    }
 }
 
 function uninstallGenerator() {
     "Uninstalling cake addin generator..."
     npm uninstall --global generator-cake-addin
+    if ($LASTEXITCODE -ne 0) {
+        exit($LASTEXITCODE)
+    }
 }
 
 $BUILD = $false
