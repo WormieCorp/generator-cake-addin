@@ -6,23 +6,27 @@ import * as helpers from "yeoman-test";
 const generatorDir = path.join(__dirname, "../../src/travis");
 
 describe("generator:travis", () => {
-  beforeEach(() => {
-    return helpers.run(generatorDir).inTmpDir((tmpDir) => {
-      fs.writeFileSync(
-        path.join(tmpDir, "package.json"),
-        '{"name": "Cake.Foo", "files":[]}'
-      );
+  describe("default", () => {
+    beforeEach(() => {
+      return helpers
+        .run(generatorDir)
+        .withPrompts({ useYamlTabs: false })
+        .inTmpDir((tmpDir) => {
+          fs.writeFileSync(
+            path.join(tmpDir, "package.json"),
+            '{"name": "Cake.Foo", "files":[]}'
+          );
+        });
     });
-  });
 
-  it("creates travis build file", () => {
-    assert.file([".travis.yml"]);
-  });
+    it("creates travis build file", () => {
+      assert.file([".travis.yml"]);
+    });
 
-  it("fills travis.yml file with expected content", () => {
-    assert.equalsFileContent(
-      ".travis.yml",
-      `language: csharp
+    it("fills travis.yml file with expected content", () => {
+      assert.equalsFileContent(
+        ".travis.yml",
+        `language: csharp
 dist: xenial
 os:
   - linux
@@ -52,6 +56,26 @@ branches:
 script:
   - ./build.sh
 `
-    );
+      );
+    });
+  });
+
+  describe("indentation", () => {
+    describe("tabs", () => {
+      beforeAll(() => {
+        return helpers.run(generatorDir).withPrompts({ useYamlTabs: true });
+      });
+
+      it("should create file with tabs instead of spaces", () => {
+        const buffer = fs.readFileSync(".travis.yml", {
+          encoding: "utf-8",
+        });
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(/^($|\t*[^\s])/);
+        });
+      });
+    });
   });
 });
