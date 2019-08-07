@@ -16,11 +16,11 @@ indent_size = 4
 [*.{ts,js,yml,yaml}]
 indent_size = 2
 
-[*.md]
+[*.{md,md.tmpl}]
 indent_size = 2
 trim_trailing_whitespace = false
 
-[*.ps1]
+[*.{ps1,ps1.tmpl}]
 charset = utf-8-bom
 end_of_line = crlf
 
