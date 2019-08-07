@@ -1,0 +1,38 @@
+<% let unitTestAttribute = "";
+   let usingStatements = "";
+switch (unitTestLibrary) {
+	case "xunit":
+		unitTestAttribute = "[Fact]";
+		usingStatements = "using Xunit;";
+		break;
+	case "nunit":
+		unitTestAttribute = "[Test]";
+		usingStatements = "using NUnit.Framework;";
+		break
+} -%>
+namespace Cake.<%= projectName %>.Tests
+{
+	using System;
+	using Cake.Core;
+	using Cake.Core.IO;
+	using Cake.Testing;
+	<%= usingStatements %>
+<% if (unitTestLibrary === "nunit") { %>
+	[TestFixture]
+	[TestOf(typeof(<%= projectName %>Aliases))]<% } %>
+	public class <%= projectName %>AliasesTests
+	{
+		<%= unitTestAttribute %>
+		public void Need_More_Unit_Test_Implementations()
+		{
+<% switch (unitTestLibrary) {
+	case "xunit": -%>
+			Assert.True(false, "More unit tests need to be implemented for aliases class");
+<%      break
+	case "nunit": -%>
+			Assert.That(false, Is.True, "More unit tests need to be implemented for aliases class");
+<%      break
+} -%>
+		}
+	}
+}

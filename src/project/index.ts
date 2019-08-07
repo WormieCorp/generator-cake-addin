@@ -71,65 +71,65 @@ export = class ProjectGenerator extends BaseGenerator {
       this.log("Solution file already exist, skipping creation of sln file");
     } else {
       this.fs.copyTpl(
-        this.templatePath("Template.sln"),
+        this.templatePath("Template.sln.tmpl"),
         solutionPath,
         this.allValues
       );
     }
 
     this.fs.copyTpl(
-      this.templatePath("Cake.Template/Cake.Template.csproj"),
+      this.templatePath("Cake.Template/Cake.Template.csproj.tmpl"),
       this.destinationPath(
         `${mainProjectDirectory}/Cake.${projectName}.csproj`
       ),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("Cake.Template/TemplateAliases.cs"),
+      this.templatePath("Cake.Template/TemplateAliases.cs.tmpl"),
       this.destinationPath(`${mainProjectDirectory}/${projectName}Aliases.cs`),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("Cake.Template/TemplateRunner.cs"),
+      this.templatePath("Cake.Template/TemplateRunner.cs.tmpl"),
       this.destinationPath(`${mainProjectDirectory}/${projectName}Runner.cs`),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("Cake.Template/TemplateSettings.cs"),
+      this.templatePath("Cake.Template/TemplateSettings.cs.tmpl"),
       this.destinationPath(`${mainProjectDirectory}/${projectName}Settings.cs`),
       this.allValues
     );
 
     this.fs.copyTpl(
-      this.templatePath("Cake.Template.Tests/Cake.Template.Tests.csproj"),
+      this.templatePath("Cake.Template.Tests/Cake.Template.Tests.csproj.tmpl"),
       this.destinationPath(
         `${testProjectDirectory}/Cake.${projectName}.Tests.csproj`
       ),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("Cake.Template.Tests/TemplateAliasesFixture.cs"),
+      this.templatePath("Cake.Template.Tests/TemplateAliasesFixture.cs.tmpl"),
       this.destinationPath(
         `${testProjectDirectory}/${projectName}AliasesFixture.cs`
       ),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("Cake.Template.Tests/TemplateAliasesTests.cs"),
+      this.templatePath("Cake.Template.Tests/TemplateAliasesTests.cs.tmpl"),
       this.destinationPath(
         `${testProjectDirectory}/${projectName}AliasesTests.cs`
       ),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("Cake.Template.Tests/TemplateRunnerFixture.cs"),
+      this.templatePath("Cake.Template.Tests/TemplateRunnerFixture.cs.tmpl"),
       this.destinationPath(
         `${testProjectDirectory}/${projectName}RunnerFixture.cs`
       ),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("Cake.Template.Tests/TemplateRunnerTests.cs"),
+      this.templatePath("Cake.Template.Tests/TemplateRunnerTests.cs.tmpl"),
       this.destinationPath(
         `${testProjectDirectory}/${projectName}RunnerTests.cs`
       ),
