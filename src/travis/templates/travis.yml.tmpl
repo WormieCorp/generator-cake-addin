@@ -1,29 +1,29 @@
 language: csharp
 dist: xenial
 os:
-  - linux
-  - osx
+	- linux
+	- osx
 mono: latest
 dotnet: 2.1.603
 
 cache:
-  directories:
-    - tools
+	directories:
+		- tools
 
 env:
-  global:
-    - DOTNET_CLI_TELEMETRY_OPTOUT: 1
-    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+	global:
+		- DOTNET_CLI_TELEMETRY_OPTOUT: 1
+		- DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 git:
-  depth: false
+	depth: false
 
 branches:
-  only:
-    - master
-    - develop
-    - /release\/.*/
-    - /hotfix\/.*/
+	only:
+		- master
+		- develop
+		- /release\/.*/
+		- /hotfix\/.*/
 
 script:
-  - ./build.sh
+	- ./build.sh
