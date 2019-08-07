@@ -30,7 +30,7 @@ export = class ConductGenerator extends BaseGenerator {
 
   public writing() {
     this.fs.copyTpl(
-      this.templatePath("CODE_OF_CONDUCT.md"),
+      this.templatePath("CODE_OF_CONDUCT.md.tmpl"),
       this.destinationPath("CODE_OF_CONDUCT.md"),
       this.allValues
     );
