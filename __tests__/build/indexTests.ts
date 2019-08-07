@@ -45,6 +45,7 @@ describe("generator:travis", () => {
         repositoryOwner: "AdmiringWorm",
         scriptName: "recipe.cake",
         sourceDir: "./src",
+        useTabs: false,
       });
     });
 
@@ -73,6 +74,7 @@ describe("generator:travis", () => {
         repositoryOwner: "gep13",
         scriptName: "setup.cake",
         sourceDir: "./source",
+        useTabs: false,
       });
     });
 
@@ -114,6 +116,7 @@ describe("generator:travis", () => {
         repositoryOwner: "cake-contrib",
         scriptName: "recipe.cake",
         sourceDir: "./src",
+        useTabs: false,
       });
     });
 
@@ -128,6 +131,33 @@ describe("generator:travis", () => {
 
     it("Cake script should set source directory", () => {
       assert.fileContent("recipe.cake", /appVeyorAccountName:\s*"cakecontrib"/);
+    });
+  });
+
+  describe("indentation", () => {
+    describe("tabs", () => {
+      beforeAll(() => {
+        return helpers.run(generatorDir).withPrompts({
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+          scriptName: "recipe.cake",
+          sourceDir: "./src",
+          useTabs: true,
+        });
+      });
+
+      it("creates default project structure files", () => {
+        assert.file(expectedFiles);
+      });
+
+      for (const fileCheck of expectedContentFiles) {
+        it(`creates ${fileCheck.name} file with tabs instead of spaces`, () => {
+          assertFileContent(
+            fileCheck.testFile,
+            "tabs/" + fileCheck.expectedFile
+          );
+        });
+      }
     });
   });
 });
