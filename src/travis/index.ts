@@ -24,7 +24,7 @@ export = class TravisGenerator extends BaseGenerator {
   }
   public writing(): void | Promise<void> {
     this.fs.copy(
-      this.templatePath("travis.yml"),
+      this.templatePath("travis.yml.tmpl"),
       this.destinationPath(".travis.yml")
     );
   }
