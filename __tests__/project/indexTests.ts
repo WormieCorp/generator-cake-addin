@@ -227,4 +227,154 @@ describe("generator:project", () => {
       });
     });
   }
+
+  describe("indentation", () => {
+    describe("tabs", () => {
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts({
+            author: "Kim Nordmo",
+            description: "Cake addin generation test",
+            enableWyam: false,
+            licenseType: "MIT",
+            projectName: "TestApp",
+            repositoryOwner: "AdmiringWorm",
+            sourceDir: "./src",
+            useTabs: true,
+          })
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2019,
+          });
+      });
+
+      const tabRegex = /^($|\t*[^\s])/;
+
+      it("should create solution file with tabs instead of spaces", () => {
+        const buffer = readFileSync("src/Cake.TestApp.sln", {
+          encoding: "utf-8",
+        });
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create project file with tabs instead of spaces", () => {
+        const buffer = readFileSync("src/Cake.TestApp/Cake.TestApp.csproj", {
+          encoding: "utf-8",
+        });
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create aliases file with tabs instead of spaces", () => {
+        const buffer = readFileSync("src/Cake.TestApp/TestAppAliases.cs", {
+          encoding: "utf-8",
+        });
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create Runner file with tabs instead of spaces", () => {
+        const buffer = readFileSync("src/Cake.TestApp/TestAppRunner.cs", {
+          encoding: "utf-8",
+        });
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create settings file with tabs instead of spaces", () => {
+        const buffer = readFileSync("src/Cake.TestApp/TestAppSettings.cs", {
+          encoding: "utf-8",
+        });
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create test project file with tabs instead of spaces", () => {
+        const buffer = readFileSync(
+          "src/Cake.TestApp.Tests/Cake.TestApp.Tests.csproj",
+          {
+            encoding: "utf-8",
+          }
+        );
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create test aliases fixture file with tabs instead of spaces", () => {
+        const buffer = readFileSync(
+          "src/Cake.TestApp.Tests/TestAppAliasesFixture.cs",
+          {
+            encoding: "utf-8",
+          }
+        );
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create test aliases file with tabs instead of spaces", () => {
+        const buffer = readFileSync(
+          "src/Cake.TestApp.Tests/TestAppAliasesTests.cs",
+          {
+            encoding: "utf-8",
+          }
+        );
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create test Runner fixture file with tabs instead of spaces", () => {
+        const buffer = readFileSync(
+          "src/Cake.TestApp.Tests/TestAppRunnerFixture.cs",
+          {
+            encoding: "utf-8",
+          }
+        );
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+
+      it("should create test runner file with tabs instead of spaces", () => {
+        const buffer = readFileSync(
+          "src/Cake.TestApp.Tests/TestAppRunnerTests.cs",
+          {
+            encoding: "utf-8",
+          }
+        );
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(tabRegex);
+        });
+      });
+    });
+  });
 });
