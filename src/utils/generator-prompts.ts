@@ -251,6 +251,13 @@ export abstract class GeneratorPrompts {
       message: "Do you wish to use tabs for indentation? ",
       name: PromptNames.UseTabs,
     },
+    {
+      default: false,
+      inputType: InputType.Confirm,
+      isCommon: true,
+      message: "Do you wish to use tabs for indentation in yml/yaml files?",
+      name: PromptNames.UseYamlTabs,
+    },
   ];
 
   private static _convertToPrompt(
