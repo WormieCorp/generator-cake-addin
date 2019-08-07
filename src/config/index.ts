@@ -21,7 +21,11 @@ import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
 export = class ConfigGenerator extends BaseGenerator {
   get promptNames() {
-    return [PromptNames.ProjectName, PromptNames.EnableAllContributors];
+    return [
+      PromptNames.ProjectName,
+      PromptNames.EnableAllContributors,
+      PromptNames.UseTabs,
+    ];
   }
 
   public prompting() {

@@ -95,7 +95,10 @@ export default abstract class BaseGenerator extends Generator {
       gulpIf(
         /.*\.ya?ml$/i,
         indentStream({ amount: 2, tabs: false }),
-        indentStream({ amount: 4, tabs: false })
+        indentStream({
+          amount: 4,
+          tabs: this.getBoolValue(PromptNames.UseTabs, false),
+        })
       )
     );
   }

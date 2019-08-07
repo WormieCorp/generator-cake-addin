@@ -30,6 +30,7 @@ export = class BuildGenerator extends BaseGenerator {
     this.addPrompt(PromptNames.RepositoryOwner, true);
     this.addPrompt(PromptNames.ScriptName, true);
     this.addPrompt(PromptNames.SourceDir, true);
+    this.addPrompt(PromptNames.UseTabs, true);
 
     await this.callPrompts();
 
@@ -82,6 +83,7 @@ export = class BuildGenerator extends BaseGenerator {
       PromptNames.ProjectName,
       PromptNames.RepositoryOwner,
       PromptNames.SourceDir,
+      PromptNames.UseTabs,
     ];
 
     for (const option of options) {

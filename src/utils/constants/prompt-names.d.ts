@@ -34,4 +34,6 @@ export const enum PromptNames {
   ShortDescription = "shortDescription",
   SourceDir = "sourceDir",
   UnitTestLibrary = "unitTestLibrary",
+  UseTabs = "useTabs",
+  YamlTabsOrSpaces = "yamlTabsOrSpaces",
 }

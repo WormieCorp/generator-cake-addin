@@ -244,6 +244,13 @@ export abstract class GeneratorPrompts {
       message: "Do you wish to use a CONTRIBUTING.md file? ",
       name: PromptNames.EnableContributing,
     },
+    {
+      default: false,
+      inputType: InputType.Confirm,
+      isCommon: true,
+      message: "Do you wish to use tabs for indentation? ",
+      name: PromptNames.UseTabs,
+    },
   ];
 
   private static _convertToPrompt(

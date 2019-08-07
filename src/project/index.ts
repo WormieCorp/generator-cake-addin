@@ -41,6 +41,7 @@ export = class ProjectGenerator extends BaseGenerator {
       PromptNames.LicenseType,
       PromptNames.EnableWyam,
       PromptNames.UnitTestLibrary,
+      PromptNames.UseTabs,
     ];
 
     for (const name of promptNames) {
@@ -175,6 +176,7 @@ export = class ProjectGenerator extends BaseGenerator {
       PromptNames.LicenseType,
       PromptNames.EnableWyam,
       PromptNames.UnitTestLibrary,
+      PromptNames.UseTabs,
     ];
 
     this.addOption({
