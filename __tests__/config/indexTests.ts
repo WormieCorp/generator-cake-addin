@@ -5,13 +5,14 @@ import { run } from "yeoman-test";
 
 const generatorDir = join(__dirname, "../../src/config");
 
-describe("generator:contributing", () => {
+describe("generator:config", () => {
   describe("default", () => {
     beforeAll(() =>
       run(generatorDir).withOptions({
         enableAllContributors: true,
         projectName: "TestApp",
         repositoryOwner: "AdmiringWorm",
+        useTabs: false,
       })
     );
 
@@ -86,11 +87,38 @@ describe("generator:contributing", () => {
       run(generatorDir).withPrompts({
         enableAllContributors: false,
         projectName: "TestApp",
+        useTabs: false,
       })
     );
 
     it("should not create all contributors configuratior file", () => {
       assert.noFile(".all-contributorsrc");
+    });
+  });
+
+  describe("indentation", () => {
+    describe("tabs", () => {
+      beforeAll(() =>
+        run(generatorDir).withPrompts({
+          enableAllContributors: true,
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+          useTabs: true,
+        })
+      );
+
+      it("creates all-contributorsrc file", () => {
+        assert.file(".all-contributorsrc");
+      });
+
+      it("creates all-contributorsrc with expected content", () => {
+        assert.equalsFileContent(
+          ".all-contributorsrc",
+          readFileSync(join(__dirname, "expected/tabs/.all-contributorsrc"), {
+            encoding: "utf8",
+          })
+        );
+      });
     });
   });
 });
