@@ -16,10 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import * as gulpIf from "gulp-if";
 import * as Generator from "yeoman-generator";
 import { PromptNames } from "./constants/prompt-names";
 import { GeneratorPrompts } from "./generator-prompts";
 import { IGeneratorOption } from "./igenerator-option";
+import { indentStream } from "./streams/indent-stream";
 
 /** Declares a common base to be used by all of the implemented generators */
 export default abstract class BaseGenerator extends Generator {
@@ -88,6 +90,14 @@ export default abstract class BaseGenerator extends Generator {
     this.validateOptions();
 
     this._answers = { ...(await this.prompt(this._prompts)), ...this._answers };
+
+    this.registerTransformStream(
+      gulpIf(
+        /.*\.ya?ml$/i,
+        indentStream({ amount: 2, tabs: false }),
+        indentStream({ amount: 4, tabs: false })
+      )
+    );
   }
 
   /** Everything that should be used by the generator will go here. */
