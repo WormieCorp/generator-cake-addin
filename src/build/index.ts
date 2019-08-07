@@ -47,24 +47,24 @@ export = class BuildGenerator extends BaseGenerator {
    */
   public writing() {
     this.fs.copyTpl(
-      this.templatePath("build.ps1"),
+      this.templatePath("build.ps1.tmpl"),
       this.destinationPath("build.ps1"),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("build.sh"),
+      this.templatePath("build.sh.tmpl"),
       this.destinationPath("build.sh"),
       this.allValues
     );
     this.fs.copyTpl(
-      this.templatePath("recipe.cake"),
+      this.templatePath("recipe.cake.tmpl"),
       this.destinationPath(
         this.getValue(PromptNames.ScriptName) || "recipe.cake"
       ),
       this.allValues
     );
     this.fs.copy(
-      this.templatePath("packages.config"),
+      this.templatePath("packages.config.tmpl"),
       this.destinationPath("tools/packages.config")
     );
   }
