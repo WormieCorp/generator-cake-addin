@@ -49,6 +49,7 @@
     "dependencies": {
         "chalk": "^2.4.2",
         "fullname": "^4.0.0",
+        "through2": "^3.0.1",
         "username": "^5.1.0",
         "uuid": "^3.3.2",
         "yeoman-generator": "^4.0.1",
@@ -70,6 +71,7 @@
         "@types/jest": "24.0.16",
         "@types/merge-stream": "1.1.2",
         "@types/prettier": "1.18.1",
+        "@types/through2": "^2.0.34",
         "@types/uuid": "3.4.5",
         "@types/yeoman-assert": "3.1.1",
         "@types/yeoman-environment": "2.3.2",
