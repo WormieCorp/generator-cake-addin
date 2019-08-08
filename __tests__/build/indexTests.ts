@@ -41,6 +41,7 @@ describe("generator:travis", () => {
   describe("default", () => {
     beforeAll(() => {
       return helpers.run(generatorDir).withPrompts({
+        indentSize: 4,
         projectName: "TestApp",
         repositoryOwner: "AdmiringWorm",
         scriptName: "recipe.cake",
@@ -70,6 +71,7 @@ describe("generator:travis", () => {
   describe("custom prompts", () => {
     beforeAll(() => {
       return helpers.run(generatorDir).withPrompts({
+        indentSize: 4,
         projectName: "MyAddin",
         repositoryOwner: "gep13",
         scriptName: "setup.cake",
@@ -135,6 +137,32 @@ describe("generator:travis", () => {
   });
 
   describe("indentation", () => {
+    describe("space", () => {
+      beforeAll(() => {
+        return helpers.run(generatorDir).withPrompts({
+          indentSize: 2,
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+          scriptName: "recipe.cake",
+          sourceDir: "./src",
+          useTabs: false,
+        });
+      });
+
+      it("creates default project structure files", () => {
+        assert.file(expectedFiles);
+      });
+
+      for (const fileCheck of expectedContentFiles) {
+        it(`creates ${fileCheck.name} file with expected content`, () => {
+          assertFileContent(
+            fileCheck.testFile,
+            "space/" + fileCheck.expectedFile
+          );
+        });
+      }
+    });
+
     describe("tabs", () => {
       beforeAll(() => {
         return helpers.run(generatorDir).withPrompts({
