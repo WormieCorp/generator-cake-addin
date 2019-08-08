@@ -16,10 +16,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BaseGenerator } from "../utils";
+import { BaseGenerator, PromptNames } from "../utils";
 
 export = class TravisGenerator extends BaseGenerator {
   public prompting(): void | Promise<void> {
+    this.addPrompt(PromptNames.UseYamlTabs, true);
+
     return this.callPrompts();
   }
   public writing(): void | Promise<void> {
@@ -31,5 +33,7 @@ export = class TravisGenerator extends BaseGenerator {
   protected _setup(): void {
     this.description =
       "Simple generator for creating a travis.yml file to be used with Cake addins";
+
+    this.addOption(PromptNames.UseYamlTabs);
   }
 };
