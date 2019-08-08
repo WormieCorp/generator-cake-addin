@@ -13,6 +13,7 @@ describe("generator:config", () => {
         projectName: "TestApp",
         repositoryOwner: "AdmiringWorm",
         useTabs: false,
+        useYamlTabs: false,
       })
     );
 
@@ -88,6 +89,7 @@ describe("generator:config", () => {
         enableAllContributors: false,
         projectName: "TestApp",
         useTabs: false,
+        useYamlTabs: false,
       })
     );
 
@@ -104,6 +106,7 @@ describe("generator:config", () => {
           projectName: "TestApp",
           repositoryOwner: "AdmiringWorm",
           useTabs: true,
+          useYamlTabs: true,
         })
       );
 
@@ -118,6 +121,17 @@ describe("generator:config", () => {
             encoding: "utf8",
           })
         );
+      });
+
+      it("creates GitReleaseManager.yaml using tabs instead of spaces", () => {
+        const buffer = readFileSync("GitReleaseManager.yaml", {
+          encoding: "utf-8",
+        });
+        const lines = buffer.toString().split(/\r?\n/g);
+
+        lines.forEach((line) => {
+          expect(line).toMatch(/^($|\t*[^\s])/);
+        });
       });
     });
   });
