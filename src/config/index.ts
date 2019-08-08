@@ -33,8 +33,8 @@ export = class ConfigGenerator extends BaseGenerator {
     return this.callPrompts();
   }
   public writing() {
-    const copyFiles = [".editorconfig", ".gitattributes", ".gitignore"];
-    const templateFiles = ["GitReleaseManager.yaml"];
+    const copyFiles = [".gitattributes", ".gitignore"];
+    const templateFiles = [".editorconfig", "GitReleaseManager.yaml"];
     for (const file of copyFiles) {
       this.fs.copy(
         this.templatePath(file.replace(/^\./, "") + ".tmpl"),
@@ -44,7 +44,7 @@ export = class ConfigGenerator extends BaseGenerator {
 
     for (const file of templateFiles) {
       this.fs.copyTpl(
-        this.templatePath(file + ".tmpl"),
+        this.templatePath(file.replace(/^\./, "") + ".tmpl"),
         this.destinationPath(file),
         this.allValues
       );
