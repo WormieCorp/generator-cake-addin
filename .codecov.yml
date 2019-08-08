@@ -1,0 +1,12 @@
+coverage:
+  range: 90..100
+  round: down
+  precision: 2
+  notify:
+    gitter:
+      default:
+        url: "secret:ez1osCWSu5sejfMwxirYo4FsfYlTFP7gmoD8JHJq8PnLBUBdHEkufa+YRzWKcGcqD0XFbHEnTeGo24/m6O6SsFQaodHKTRay6s6N4qZvPANp/skWwp55UQxG04pRQ2JT"
+        threshold: 1%
+        only_pulls: false
+comment:
+  require_changes: yes
