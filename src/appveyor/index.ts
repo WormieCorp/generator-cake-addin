@@ -26,7 +26,10 @@ export = class AppveyorGenerator extends BaseGenerator {
    * The function responsible for prompting the user for questions.
    */
   public prompting() {
-    this.addPrompt(PromptNames.ScriptName, true);
+    for (const promptName of this.commonPromptNames) {
+      this.addPrompt(promptName);
+    }
+
     this.addPrompt(PromptNames.EnableLinux);
     return this.callPrompts();
   }
@@ -51,6 +54,12 @@ export = class AppveyorGenerator extends BaseGenerator {
     this.description =
       "Simple generator for creating a appveyor.yml file to be used with Cake addins";
 
-    this.addOption(PromptNames.ScriptName);
+    for (const promptName of this.commonPromptNames) {
+      this.addOption(promptName);
+    }
+  }
+
+  private get commonPromptNames() {
+    return [PromptNames.ScriptName, PromptNames.UseYamlTabs];
   }
 };
