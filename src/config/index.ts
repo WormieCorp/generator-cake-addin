@@ -25,7 +25,6 @@ export = class ConfigGenerator extends BaseGenerator {
       PromptNames.ProjectName,
       PromptNames.EnableAllContributors,
       PromptNames.UseTabs,
-      PromptNames.UseYamlTabs,
     ];
   }
 
