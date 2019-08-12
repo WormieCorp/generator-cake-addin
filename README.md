@@ -106,7 +106,7 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [liberapay]: https://liberapay.com/WormieCorp/
 [liberapayimage]: https://img.shields.io/liberapay/receives/WormieCorp.svg?logo=liberapay&style=flat-square
 [license]: LICENSE
-[subgenerator]: https://github.com/WormieCorp/generator-cake-addin/tree/develop/src
+[subgenerators]: https://github.com/WormieCorp/generator-cake-addin/tree/develop/src
 [standard-readme]: https://github.com/RichardLitt/standard-readme
 [standard-readme compliant]: https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
 [travis]: https://travis-ci.org/WormieCorp/generator-cake-addin
