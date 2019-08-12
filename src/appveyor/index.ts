@@ -27,7 +27,7 @@ export = class AppveyorGenerator extends BaseGenerator {
    */
   public prompting() {
     for (const promptName of this.commonPromptNames) {
-      this.addPrompt(promptName, true);
+      this.addPrompt(promptName);
     }
 
     this.addPrompt(PromptNames.EnableLinux);
