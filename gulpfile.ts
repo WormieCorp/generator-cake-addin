@@ -30,7 +30,7 @@ export function pretty() {
     "gulpfile.ts",
     "**/*.json",
     "**/*.md",
-    "**/*.yml",
+    "src/**/*.yml",
     "!CHANGELOG.md",
     "!node_modules{,/**}",
     "!generators{,/**}",
