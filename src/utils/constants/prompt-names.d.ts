@@ -35,5 +35,4 @@ export const enum PromptNames {
   SourceDir = "sourceDir",
   UnitTestLibrary = "unitTestLibrary",
   UseTabs = "useTabs",
-  UseYamlTabs = "useYamlTabs",
 }
