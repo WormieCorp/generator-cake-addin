@@ -65,10 +65,12 @@ describe("generator:project", () => {
           author: "Kim Nordmo",
           description: "Cake addin generation test",
           enableWyam: false,
+          indentSize: 4,
           licenseType: "MIT",
           projectName: "TestApp",
           repositoryOwner: "AdmiringWorm",
           sourceDir: "./src",
+          useTabs: false,
         })
         .withOptions({
           "skip-dotnet": true,
@@ -132,9 +134,11 @@ describe("generator:project", () => {
         return helpers
           .run(generatorDir)
           .withPrompts({
+            indentSize: 4,
             projectName: "TestApp",
             sourceDir: "./src",
             unitTestLibrary: "xunit",
+            useTabs: false,
           })
           .withOptions({
             "skip-dotnet": true,
@@ -437,7 +441,7 @@ describe("generator:project", () => {
 
       it("should indent Test Project file with 2 spaces", () => {
         assertContent(
-          "src/Cake.TestApp.Tests/Cake.TestApp.Tests",
+          "src/Cake.TestApp.Tests/Cake.TestApp.Tests.csproj",
           "space/testProject.csproj"
         );
       });

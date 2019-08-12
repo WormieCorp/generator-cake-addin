@@ -10,6 +10,7 @@ describe("generator:config", () => {
     beforeAll(() =>
       run(generatorDir).withOptions({
         enableAllContributors: true,
+        indentSize: 4,
         projectName: "TestApp",
         repositoryOwner: "AdmiringWorm",
         useTabs: false,
@@ -130,89 +131,52 @@ describe("generator:config", () => {
       });
     });
 
-    describe("yaml-only", () => {
+    describe("default-space-set-to-2", () => {
       beforeAll(() =>
         run(generatorDir).withPrompts({
           enableAllContributors: true,
+          indentSize: 2,
+          indentYamlSize: 2,
           projectName: "TestApp",
           repositoryOwner: "AdmiringWorm",
           useTabs: false,
-          useYamlTabs: true,
+          useYamlTabs: false,
         })
       );
 
-      it("should create editorconfig with default to space", () => {
-        const re = /\[\*\][^\[]*indent_style\s=\sspace\s/g;
-        const buffer = readFileSync(".editorconfig", {
-          encoding: "utf-8",
-        });
-
-        const content = buffer.toString();
-
-        expect(content).toMatch(re);
-      });
-
-      it("should not set editorconfig with yaml indent style", () => {
-        const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\s(tab|space)\s/g;
-        const buffer = readFileSync(".editorconfig", {
-          encoding: "utf-8",
-        });
-
-        const content = buffer.toString();
-
-        expect(content).not.toMatch(re);
-      });
-
-      describe("default-space-set-to-2", () => {
-        beforeAll(() =>
-          run(generatorDir).withPrompts({
-            enableAllContributors: true,
-            indentSize: 2,
-            indentYamlSize: 2,
-            projectName: "TestApp",
-            repositoryOwner: "AdmiringWorm",
-            useTabs: false,
-            useYamlTabs: false,
+      it("creates all-contributorsrc with expected content", () => {
+        assert.equalsFileContent(
+          ".all-contributorsrc",
+          readFileSync(join(__dirname, "expected/space/.all-contributorsrc"), {
+            encoding: "utf8",
           })
         );
-
-        it("creates all-contributorsrc with expected content", () => {
-          assert.equalsFileContent(
-            ".all-contributorsrc",
-            readFileSync(
-              join(__dirname, "expected/space/.all-contributorsrc"),
-              {
-                encoding: "utf8",
-              }
-            )
-          );
-        });
       });
+    });
 
-      describe("yaml-space-set-to-4", () => {
-        beforeAll(() =>
-          run(generatorDir).withPrompts({
-            enableAllContributors: true,
-            indentSize: 4,
-            indentYamlSize: 4,
-            projectName: "TestApp",
-            repositoryOwner: "AdmiringWorm",
-            useTabs: false,
-            useYamlTabs: false,
-          })
+    describe("yaml-space-set-to-4", () => {
+      beforeAll(() =>
+        run(generatorDir).withPrompts({
+          enableAllContributors: true,
+          indentSize: 4,
+          indentYamlSize: 4,
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+          useTabs: false,
+          useYamlTabs: false,
+        })
+      );
+
+      it("creates all-contributorsrc with expected content", () => {
+        assert.equalsFileContent(
+          "GitReleaseManager.yaml",
+          readFileSync(
+            join(__dirname, "expected/space/GitReleaseManager.yaml"),
+            {
+              encoding: "utf8",
+            }
+          )
         );
-
-        it("creates all-contributorsrc with expected content", () => {
-          assert.equalsFileContent(
-            "GitReleaseManager.yaml",
-            readFileSync(
-              join(__dirname, "expected/space/GitReleaseManager.yaml"),
-              {
-                encoding: "utf8",
-              }
-            )
-          );
-        });
       });
     });
   });
