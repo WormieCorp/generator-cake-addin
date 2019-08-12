@@ -8,9 +8,11 @@ const baseDir = path.join(__dirname, "../../src/appveyor");
 describe("generator:appveyor", () => {
   describe("defaults", () => {
     beforeEach(() => {
-      return helpers
-        .run(baseDir)
-        .withPrompts({ scriptName: "recipe.cake", enableLinux: false });
+      return helpers.run(baseDir).withPrompts({
+        enableLinux: false,
+        indentYamlSize: 2,
+        scriptName: "recipe.cake",
+      });
     });
 
     it("creates appveyor build file", () => {
@@ -27,11 +29,36 @@ describe("generator:appveyor", () => {
     });
   });
 
+  describe("custom space", () => {
+    beforeEach(() => {
+      return helpers.run(baseDir).withPrompts({
+        enableLinux: false,
+        indentYamlSize: 4,
+        scriptName: "recipe.cake",
+      });
+    });
+
+    it("creates appveyor build file", () => {
+      assert.file([".appveyor.yml"]);
+    });
+
+    it("creates file with space indent set to 4", () => {
+      assert.equalsFileContent(
+        ".appveyor.yml",
+        fs.readFileSync(path.join(__dirname, "custom_space.yml"), {
+          encoding: "utf8",
+        })
+      );
+    });
+  });
+
   describe("custom-cake", () => {
     beforeEach(() => {
-      return helpers
-        .run(baseDir)
-        .withPrompts({ scriptName: "build.cake", enableLinux: false });
+      return helpers.run(baseDir).withPrompts({
+        enableLinux: false,
+        indentYamlSize: 2,
+        scriptName: "build.cake",
+      });
     });
 
     it("creates appveyor build file", () => {
@@ -50,9 +77,11 @@ describe("generator:appveyor", () => {
 
   describe("with-linux", () => {
     beforeEach(() => {
-      return helpers
-        .run(baseDir)
-        .withPrompts({ scriptName: "recipe.cake", enableLinux: true });
+      return helpers.run(baseDir).withPrompts({
+        enableLinux: true,
+        indentYamlSize: 2,
+        scriptName: "recipe.cake",
+      });
     });
 
     it("creates appveyor build file", () => {
@@ -71,9 +100,11 @@ describe("generator:appveyor", () => {
 
   describe("with-linux-and-custom-cake", () => {
     beforeAll(() => {
-      return helpers
-        .run(baseDir)
-        .withPrompts({ scriptName: "build.cake", enableLinux: true });
+      return helpers.run(baseDir).withPrompts({
+        enableLinux: true,
+        indentYamlSize: 2,
+        scriptName: "build.cake",
+      });
     });
 
     it("creates appveyor build file", () => {

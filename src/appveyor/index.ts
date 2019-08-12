@@ -27,6 +27,7 @@ export = class AppveyorGenerator extends BaseGenerator {
    */
   public prompting() {
     this.addPrompt(PromptNames.ScriptName, true);
+    this.addPrompt(PromptNames.IndentYamlSize, true);
     this.addPrompt(PromptNames.EnableLinux);
     return this.callPrompts();
   }
@@ -52,5 +53,6 @@ export = class AppveyorGenerator extends BaseGenerator {
       "Simple generator for creating a appveyor.yml file to be used with Cake addins";
 
     this.addOption(PromptNames.ScriptName);
+    this.addOption(PromptNames.IndentYamlSize);
   }
 };
