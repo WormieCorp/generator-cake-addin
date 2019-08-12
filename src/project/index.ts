@@ -42,6 +42,7 @@ export = class ProjectGenerator extends BaseGenerator {
       PromptNames.EnableWyam,
       PromptNames.UnitTestLibrary,
       PromptNames.UseTabs,
+      PromptNames.IndentSize,
     ];
 
     for (const name of promptNames) {
@@ -177,6 +178,7 @@ export = class ProjectGenerator extends BaseGenerator {
       PromptNames.EnableWyam,
       PromptNames.UnitTestLibrary,
       PromptNames.UseTabs,
+      PromptNames.IndentSize,
     ];
 
     this.addOption({
