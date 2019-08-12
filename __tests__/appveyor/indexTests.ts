@@ -8,11 +8,9 @@ const baseDir = path.join(__dirname, "../../src/appveyor");
 describe("generator:appveyor", () => {
   describe("defaults", () => {
     beforeEach(() => {
-      return helpers.run(baseDir).withPrompts({
-        enableLinux: false,
-        scriptName: "recipe.cake",
-        useYamlTabs: false,
-      });
+      return helpers
+        .run(baseDir)
+        .withPrompts({ scriptName: "recipe.cake", enableLinux: false });
     });
 
     it("creates appveyor build file", () => {
@@ -31,11 +29,9 @@ describe("generator:appveyor", () => {
 
   describe("custom-cake", () => {
     beforeEach(() => {
-      return helpers.run(baseDir).withPrompts({
-        enableLinux: false,
-        scriptName: "build.cake",
-        useYamlTabs: false,
-      });
+      return helpers
+        .run(baseDir)
+        .withPrompts({ scriptName: "build.cake", enableLinux: false });
     });
 
     it("creates appveyor build file", () => {
@@ -54,11 +50,9 @@ describe("generator:appveyor", () => {
 
   describe("with-linux", () => {
     beforeEach(() => {
-      return helpers.run(baseDir).withPrompts({
-        enableLinux: true,
-        scriptName: "recipe.cake",
-        useYamlTabs: false,
-      });
+      return helpers
+        .run(baseDir)
+        .withPrompts({ scriptName: "recipe.cake", enableLinux: true });
     });
 
     it("creates appveyor build file", () => {
@@ -77,11 +71,9 @@ describe("generator:appveyor", () => {
 
   describe("with-linux-and-custom-cake", () => {
     beforeAll(() => {
-      return helpers.run(baseDir).withPrompts({
-        enableLinux: true,
-        scriptName: "build.cake",
-        useYamlTabs: false,
-      });
+      return helpers
+        .run(baseDir)
+        .withPrompts({ scriptName: "build.cake", enableLinux: true });
     });
 
     it("creates appveyor build file", () => {
@@ -95,31 +87,6 @@ describe("generator:appveyor", () => {
           encoding: "utf8",
         })
       );
-    });
-  });
-
-  describe("indentation", () => {
-    beforeAll(() => {
-      return helpers.run(baseDir).withPrompts({
-        enableLinux: false,
-        scriptName: "build.cake",
-        useYamlTabs: true,
-      });
-    });
-
-    it("creates appveyor build file", () => {
-      assert.file(".appveyor.yml");
-    });
-
-    it("creates appveyor build file with indentation set to tabs", () => {
-      const buffer = fs.readFileSync(".appveyor.yml", {
-        encoding: "utf-8",
-      });
-      const lines = buffer.toString().split(/\r?\n/g);
-
-      lines.forEach((line) => {
-        expect(line).toMatch(/^($|\t*[^\s])/);
-      });
     });
   });
 });
