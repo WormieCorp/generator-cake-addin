@@ -4,13 +4,10 @@ pull_requests:
 skip_branch_with_pr: true
 
 branches:
-  # Whitelist
-  only:
-    - develop
-    - master
-    - /release/.*/
-    - /hotfix/.*/
-    - ci/appveyor
+  # Blacklist
+  except:
+    - /dependabot\/.*/
+    - ci/travis
 
 image:
   - Ubuntu
@@ -43,5 +40,5 @@ cache:
   - "node_modules -> package.json,yarn.lock"
 
 artifacts:
-  - path: '*.tgz'
+  - path: "*.tgz"
     name: npm package
