@@ -152,15 +152,15 @@ describe("generator:config", () => {
         expect(content).toMatch(re);
       });
 
-      it("should create editorconfig with yaml to tab", () => {
-        const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\stab\s/g;
+      it("should not set editorconfig with yaml indent style", () => {
+        const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\s(tab|space)\s/g;
         const buffer = readFileSync(".editorconfig", {
           encoding: "utf-8",
         });
 
         const content = buffer.toString();
 
-        expect(content).toMatch(re);
+        expect(content).not.toMatch(re);
       });
     });
   });
