@@ -9,13 +9,10 @@ node_js:
   - v12
 
 branches:
-  # Whitelist
-  only:
-    - develop
-    - master
-    - /release/.*/
-    - /hotfix/.*/
-    - ci/travis
+  # Blacklist
+  except:
+    - /dependabot/.*/
+    - ci/appveyor
 
 before_script: export PATH="$(yarn global bin):$PATH"
 
