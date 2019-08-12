@@ -162,6 +162,58 @@ describe("generator:config", () => {
 
         expect(content).not.toMatch(re);
       });
+
+      describe("default-space-set-to-2", () => {
+        beforeAll(() =>
+          run(generatorDir).withPrompts({
+            enableAllContributors: true,
+            indentSize: 2,
+            indentYamlSize: 2,
+            projectName: "TestApp",
+            repositoryOwner: "AdmiringWorm",
+            useTabs: false,
+            useYamlTabs: false,
+          })
+        );
+
+        it("creates all-contributorsrc with expected content", () => {
+          assert.equalsFileContent(
+            ".all-contributorsrc",
+            readFileSync(
+              join(__dirname, "expected/space/.all-contributorsrc"),
+              {
+                encoding: "utf8",
+              }
+            )
+          );
+        });
+      });
+
+      describe("yaml-space-set-to-4", () => {
+        beforeAll(() =>
+          run(generatorDir).withPrompts({
+            enableAllContributors: true,
+            indentSize: 4,
+            indentYamlSize: 4,
+            projectName: "TestApp",
+            repositoryOwner: "AdmiringWorm",
+            useTabs: false,
+            useYamlTabs: false,
+          })
+        );
+
+        it("creates all-contributorsrc with expected content", () => {
+          assert.equalsFileContent(
+            "GitReleaseManager.yaml",
+            readFileSync(
+              join(__dirname, "expected/space/GitReleaseManager.yaml"),
+              {
+                encoding: "utf8",
+              }
+            )
+          );
+        });
+      });
     });
   });
 });
