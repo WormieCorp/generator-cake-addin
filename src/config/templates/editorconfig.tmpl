@@ -31,7 +31,7 @@ end_of_line = lf
 
 [*.{yml,yaml}]
 indent_size = 2
-<% if (useTabs != useYamlTabs) { %>indent_style = <% if (useYamlTabs == true) { %>tab<% } else { %>space<% } %><% } -%>
+<% if (useTabs == true) { %>indent_style = space<% } -%>
 
 # The visual studio code file
 # requires the use of crlf line endings
