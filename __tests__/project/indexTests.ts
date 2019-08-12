@@ -376,5 +376,85 @@ describe("generator:project", () => {
         });
       });
     });
+
+    describe("space", () => {
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts({
+            author: "Kim Nordmo",
+            description: "Cake addin generation test",
+            enableWyam: false,
+            indentSize: 2,
+            licenseType: "MIT",
+            projectName: "TestApp",
+            repositoryOwner: "AdmiringWorm",
+            sourceDir: "./src",
+            unitTestLibrary: "xunit",
+            useTabs: false,
+          })
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          });
+      });
+
+      it("should indent Aliases class with 2 spaces", () => {
+        assertContent("src/Cake.TestApp/TestAppAliases.cs", "space/aliases.cs");
+      });
+
+      it("should indent Project file with 2 spaces", () => {
+        assertContent(
+          "src/Cake.TestApp/Cake.TestApp.csproj",
+          "space/project.csproj"
+        );
+      });
+
+      it("should indent Runner class with 2 spaces", () => {
+        assertContent("src/Cake.TestApp/TestAppRunner.cs", "space/runner.cs");
+      });
+
+      it("should indent Settings class with 2 spaces", () => {
+        assertContent(
+          "src/Cake.TestApp/TestAppSettings.cs",
+          "space/settings.cs"
+        );
+      });
+
+      it("should indent Aliases Fixture class with 2 spaces", () => {
+        assertContent(
+          "src/Cake.TestApp.Tests/TestAppAliasesFixture.cs",
+          "space/testAliasesFixture.cs"
+        );
+      });
+
+      it("should indent Aliases Tests class with 2 spaces", () => {
+        assertContent(
+          "src/Cake.TestApp.Tests/TestAppAliasesTests.cs",
+          "space/testAliasesTests.cs"
+        );
+      });
+
+      it("should indent Test Project file with 2 spaces", () => {
+        assertContent(
+          "src/Cake.TestApp.Tests/Cake.TestApp.Tests",
+          "space/testProject.csproj"
+        );
+      });
+
+      it("should indent Runner Fixture class with 2 spaces", () => {
+        assertContent(
+          "src/Cake.TestApp.Tests/TestAppRunnerFixture.cs",
+          "space/testRunnerFixture.cs"
+        );
+      });
+
+      it("should indent Runner Tests class with 2 spaces", () => {
+        assertContent(
+          "src/Cake.TestApp.Tests/TestAppRunnerTests.cs",
+          "space/testRunnerTests.cs"
+        );
+      });
+    });
   });
 });

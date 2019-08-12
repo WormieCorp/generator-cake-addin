@@ -14,10 +14,7 @@
             "type": "gulp",
             "task": "watch",
             "dependsOn": "install",
-            "problemMatcher": [],
-            "runOptions": {
-                "runOn": "folderOpen"
-            }
+            "problemMatcher": []
         },
         {
             "label": "test",
