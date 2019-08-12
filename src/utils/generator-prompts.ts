@@ -251,6 +251,22 @@ export abstract class GeneratorPrompts {
       message: "Do you wish to use tabs for indentation? ",
       name: PromptNames.UseTabs,
     },
+    {
+      default: 4,
+      inputType: InputType.Number,
+      isCommon: true,
+      message: "What indent size do you wish to use (amount of spaces)? ",
+      name: PromptNames.IndentSize,
+      when: (answers) => !answers[PromptNames.UseTabs],
+    },
+    {
+      default: 2,
+      inputType: InputType.Number,
+      isCommon: true,
+      message:
+        "What indent size do you wish to use for yml/yaml files (amount of spaces)? ",
+      name: PromptNames.IndentYamlSize,
+    },
   ];
 
   private static _convertToPrompt(

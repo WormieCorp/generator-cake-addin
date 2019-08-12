@@ -26,6 +26,8 @@ export const enum PromptNames {
   EnableLinux = "enableLinux",
   EnableTravis = "enableTravis",
   EnableWyam = "enableWyam",
+  IndentSize = "indentSize",
+  IndentYamlSize = "indentYamlSize",
   LicenseType = "licenseType",
   ProjectMaintainer = "projectMaintainer",
   ProjectName = "projectName",

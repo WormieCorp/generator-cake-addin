@@ -94,9 +94,15 @@ export default abstract class BaseGenerator extends Generator {
     this.registerTransformStream(
       gulpIf(
         /.*\.ya?ml$/i,
-        indentStream({ amount: 2, tabs: false }),
         indentStream({
-          amount: 4,
+          amount: this.getValue<number>(
+            PromptNames.IndentYamlSize,
+            2
+          ) as number,
+          tabs: false,
+        }),
+        indentStream({
+          amount: this.getValue<number>(PromptNames.IndentSize, 4) as number,
           tabs: this.getBoolValue(PromptNames.UseTabs, false),
         })
       )
