@@ -13,7 +13,6 @@ describe("generator:config", () => {
         projectName: "TestApp",
         repositoryOwner: "AdmiringWorm",
         useTabs: false,
-        useYamlTabs: false,
       })
     );
 
@@ -89,7 +88,6 @@ describe("generator:config", () => {
         enableAllContributors: false,
         projectName: "TestApp",
         useTabs: false,
-        useYamlTabs: false,
       })
     );
 
@@ -100,119 +98,69 @@ describe("generator:config", () => {
 
   describe("indentation", () => {
     describe("tabs", () => {
-      describe("default-only", () => {
-        beforeAll(() =>
-          run(generatorDir).withPrompts({
-            enableAllContributors: true,
-            projectName: "TestApp",
-            repositoryOwner: "AdmiringWorm",
-            useTabs: true,
-            useYamlTabs: false,
-          })
-        );
+      beforeAll(() =>
+        run(generatorDir).withPrompts({
+          enableAllContributors: true,
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+          useTabs: true,
+        })
+      );
 
-        it("should create editorconfig with default to tabs", () => {
-          const re = /\[\*\][^\[]*indent_style\s=\stab\s/g;
-          const buffer = readFileSync(".editorconfig", {
-            encoding: "utf-8",
-          });
-
-          const content = buffer.toString();
-
-          expect(content).toMatch(re);
+      it("should create editorconfig with default to tabs", () => {
+        const re = /\[\*\][^\[]*indent_style\s=\stab\s/g;
+        const buffer = readFileSync(".editorconfig", {
+          encoding: "utf-8",
         });
 
-        it("should create editorconfig with yaml to space", () => {
-          const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\sspace\s/g;
-          const buffer = readFileSync(".editorconfig", {
-            encoding: "utf-8",
-          });
+        const content = buffer.toString();
 
-          const content = buffer.toString();
-
-          expect(content).toMatch(re);
-        });
+        expect(content).toMatch(re);
       });
 
-      describe("yaml-only", () => {
-        beforeAll(() =>
-          run(generatorDir).withPrompts({
-            enableAllContributors: true,
-            projectName: "TestApp",
-            repositoryOwner: "AdmiringWorm",
-            useTabs: false,
-            useYamlTabs: true,
-          })
-        );
-
-        it("should create editorconfig with default to space", () => {
-          const re = /\[\*\][^\[]*indent_style\s=\sspace\s/g;
-          const buffer = readFileSync(".editorconfig", {
-            encoding: "utf-8",
-          });
-
-          const content = buffer.toString();
-
-          expect(content).toMatch(re);
+      it("should create editorconfig with yaml to space", () => {
+        const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\sspace\s/g;
+        const buffer = readFileSync(".editorconfig", {
+          encoding: "utf-8",
         });
 
-        it("should create editorconfig with yaml to tab", () => {
-          const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\stab\s/g;
-          const buffer = readFileSync(".editorconfig", {
-            encoding: "utf-8",
-          });
+        const content = buffer.toString();
 
-          const content = buffer.toString();
+        expect(content).toMatch(re);
+      });
+    });
 
-          expect(content).toMatch(re);
+    describe("yaml-only", () => {
+      beforeAll(() =>
+        run(generatorDir).withPrompts({
+          enableAllContributors: true,
+          projectName: "TestApp",
+          repositoryOwner: "AdmiringWorm",
+          useTabs: false,
+          useYamlTabs: true,
+        })
+      );
+
+      it("should create editorconfig with default to space", () => {
+        const re = /\[\*\][^\[]*indent_style\s=\sspace\s/g;
+        const buffer = readFileSync(".editorconfig", {
+          encoding: "utf-8",
         });
+
+        const content = buffer.toString();
+
+        expect(content).toMatch(re);
       });
 
-      describe("default-and-yaml-tabs-enabled", () => {
-        beforeAll(() =>
-          run(generatorDir).withPrompts({
-            enableAllContributors: true,
-            projectName: "TestApp",
-            repositoryOwner: "AdmiringWorm",
-            useTabs: true,
-            useYamlTabs: true,
-          })
-        );
-
-        it("creates all-contributorsrc file", () => {
-          assert.file(".all-contributorsrc");
+      it("should create editorconfig with yaml to tab", () => {
+        const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\stab\s/g;
+        const buffer = readFileSync(".editorconfig", {
+          encoding: "utf-8",
         });
 
-        it("creates all-contributorsrc with expected content", () => {
-          assert.equalsFileContent(
-            ".all-contributorsrc",
-            readFileSync(join(__dirname, "expected/tabs/.all-contributorsrc"), {
-              encoding: "utf8",
-            })
-          );
-        });
+        const content = buffer.toString();
 
-        it("creates GitReleaseManager.yaml using tabs instead of spaces", () => {
-          const buffer = readFileSync("GitReleaseManager.yaml", {
-            encoding: "utf-8",
-          });
-          const lines = buffer.toString().split(/\r?\n/g);
-
-          lines.forEach((line) => {
-            expect(line).toMatch(/^($|\t*[^\s])/);
-          });
-        });
-
-        it("should not create editorconfig with yaml to indent type set", () => {
-          const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\s(tab|space)\s/g;
-          const buffer = readFileSync(".editorconfig", {
-            encoding: "utf-8",
-          });
-
-          const content = buffer.toString();
-
-          expect(content).not.toMatch(re);
-        });
+        expect(content).toMatch(re);
       });
     });
   });
