@@ -92,7 +92,7 @@
         "gulp-tslint": "8.1.4",
         "gulp-typescript": "5.0.1",
         "husky": "3.0.3",
-        "jest": "24.8.0",
+        "jest": "24.9.0",
         "lint-staged": "9.2.1",
         "merge-stream": "2.0.0",
         "prettier": "1.18.2",
