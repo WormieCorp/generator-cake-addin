@@ -57,7 +57,7 @@
         "yosay": "^2.0.2"
     },
     "devDependencies": {
-        "@commitlint/config-angular": "8.1.0",
+        "@commitlint/config-angular": "8.2.0",
         "@commitlint/config-conventional": "8.1.0",
         "@semantic-release/changelog": "3.0.4",
         "@semantic-release/commit-analyzer": "6.3.0",
