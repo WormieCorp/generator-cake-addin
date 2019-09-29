@@ -593,10 +593,10 @@
   resolved "https://registry.yarnpkg.com/@semantic-release/error/-/error-2.2.0.tgz#ee9d5a09c9969eade1ec864776aeda5c5cddbbf0"
   integrity sha512-9Tj/qn+y2j+sjCI3Jd+qseGtHjOAeg7dU2/lVcqIQ9TV3QDaDXDYXcoOHU+7o2Hwh8L8ymL4gfuO7KxDs3q2zg==
 
-"@semantic-release/exec@3.3.6":
-  version "3.3.6"
-  resolved "https://registry.yarnpkg.com/@semantic-release/exec/-/exec-3.3.6.tgz#34cf1bf4256a8e5c71249641c62516203cb26b35"
-  integrity sha512-Nme7mgDHaoj+mc+hC7HCQB5r6c6f6P0jg/ZntG3AyyO8wPVQOXunbF8Qmhk5+JVlCer0ubPW7BlBXSi6pCbdzw==
+"@semantic-release/exec@3.3.7":
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/@semantic-release/exec/-/exec-3.3.7.tgz#31415bed49bc885bbeffd6a277a431f46c4fa1e6"
+  integrity sha512-X7PKvhUi9PwnwKpCJSIe+liSEXLudc1cVXEvXHFTOVEbFyokd6G8y1+6hr3NqgMfEBfiH5uilySvszQIud5nZw==
   dependencies:
     "@semantic-release/error" "^2.1.0"
     aggregate-error "^3.0.0"
