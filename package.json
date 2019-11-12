@@ -70,7 +70,7 @@
         "@types/gulp": "4.0.6",
         "@types/gulp-if": "^0.0.33",
         "@types/gulp-sourcemaps": "0.0.32",
-        "@types/jest": "24.0.20",
+        "@types/jest": "24.0.23",
         "@types/merge-stream": "1.1.2",
         "@types/prettier": "1.18.3",
         "@types/through2": "^2.0.34",
