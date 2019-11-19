@@ -83,7 +83,7 @@
         "command-exists": "1.2.8",
         "commitizen": "3.1.1",
         "commitlint": "8.2.0",
-        "conventional-changelog-wormiecorp": "1.0.3",
+        "conventional-changelog-wormiecorp": "1.0.4",
         "cz-conventional-changelog": "2.1.0",
         "del": "5.1.0",
         "gulp": "4.0.2",
