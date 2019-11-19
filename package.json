@@ -101,7 +101,7 @@
         "tslint": "5.20.1",
         "tslint-config-prettier": "1.18.0",
         "tslint-plugin-prettier": "2.0.1",
-        "typescript": "3.5.3",
+        "typescript": "3.7.2",
         "yeoman-assert": "3.1.1",
         "yeoman-test": "2.0.0"
     },
