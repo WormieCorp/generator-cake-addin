@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import chalk from "chalk";
+import chalk = require("chalk");
 import yosay = require("yosay");
 import {
   BaseGenerator,
