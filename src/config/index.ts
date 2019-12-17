@@ -19,7 +19,7 @@
 import { Answers } from "yeoman-generator";
 import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
-export = class ConfigGenerator extends BaseGenerator {
+export default class ConfigGenerator extends BaseGenerator {
   get promptNames() {
     return [
       PromptNames.ProjectName,
@@ -78,4 +78,4 @@ export = class ConfigGenerator extends BaseGenerator {
     this.addOption(PromptNames.RepositoryOwner);
     this.addPrompt(projectOwnerPrompt, true);
   }
-};
+}

@@ -21,7 +21,7 @@ import { BaseGenerator, PromptNames } from "../utils";
 /**
  * Generator for creating build scripts for a cake addin using Cake.Recipe.
  */
-export = class BuildGenerator extends BaseGenerator {
+export default class BuildGenerator extends BaseGenerator {
   /**
    * The function responsible for prompting the user for questions.
    */
@@ -92,4 +92,4 @@ export = class BuildGenerator extends BaseGenerator {
       this.addOption(option);
     }
   }
-};
+}

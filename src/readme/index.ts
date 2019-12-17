@@ -31,7 +31,7 @@ const promptOptions = [
   PromptNames.EnableContributing,
 ];
 
-export = class ReadmeGenerator extends BaseGenerator {
+export default class ReadmeGenerator extends BaseGenerator {
   public async prompting() {
     for (const prompt of promptOptions) {
       if (
@@ -111,4 +111,4 @@ export = class ReadmeGenerator extends BaseGenerator {
       }
     }
   }
-};
+}

@@ -18,7 +18,7 @@
 
 import { BaseGenerator, PromptNames } from "../utils";
 
-export = class TravisGenerator extends BaseGenerator {
+export default class TravisGenerator extends BaseGenerator {
   public prompting(): void | Promise<void> {
     this.addPrompt(PromptNames.IndentYamlSize, true);
 
@@ -36,4 +36,4 @@ export = class TravisGenerator extends BaseGenerator {
 
     this.addOption(PromptNames.IndentYamlSize);
   }
-};
+}

@@ -21,7 +21,7 @@ import { BaseGenerator, PromptNames } from "../utils";
 /**
  * Generator for creating a simple appveyor.yml file.
  */
-export = class AppveyorGenerator extends BaseGenerator {
+export default class AppveyorGenerator extends BaseGenerator {
   /**
    * The function responsible for prompting the user for questions.
    */
@@ -55,4 +55,4 @@ export = class AppveyorGenerator extends BaseGenerator {
     this.addOption(PromptNames.ScriptName);
     this.addOption(PromptNames.IndentYamlSize);
   }
-};
+}

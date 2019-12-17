@@ -25,7 +25,7 @@ import {
 } from "../utils";
 import { NotEmptyValidator } from "../utils/validators";
 
-export = class LicenseGenerator extends BaseGenerator {
+export default class LicenseGenerator extends BaseGenerator {
   private static _needsAuthor(
     options: { [name: string]: any },
     answers: Answers
@@ -110,4 +110,4 @@ export = class LicenseGenerator extends BaseGenerator {
 
     return "LICENSE.txt";
   }
-};
+}

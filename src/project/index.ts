@@ -23,7 +23,7 @@ import { BaseGenerator, PromptNames } from "../utils";
 /**
  * Generator for creating the basic Cake addin project structure.
  */
-export = class ProjectGenerator extends BaseGenerator {
+export default class ProjectGenerator extends BaseGenerator {
   constructor(args: string | string[], opts: {}) {
     super(args, opts);
   }
@@ -211,4 +211,4 @@ export = class ProjectGenerator extends BaseGenerator {
     this.setValue("mainProjectGuid", uuid().toUpperCase());
     this.setValue("testProjectGuid", uuid().toUpperCase());
   }
-};
+}

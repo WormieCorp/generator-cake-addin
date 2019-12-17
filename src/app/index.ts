@@ -25,7 +25,7 @@ import {
   PromptNames,
 } from "../utils";
 
-export = class MainGenerator extends BaseGenerator {
+export default class MainGenerator extends BaseGenerator {
   public async prompting() {
     const message =
       `Welcome to the ${chalk.red("cake-addin generator")}. ` +
@@ -85,4 +85,4 @@ export = class MainGenerator extends BaseGenerator {
     }
     this.addPrompt(PromptNames.EnableContributing);
   }
-};
+}

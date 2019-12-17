@@ -18,7 +18,7 @@
 
 import { BaseGenerator, GeneratorPrompts, PromptNames } from "../utils";
 
-export = class ConductGenerator extends BaseGenerator {
+export default class ConductGenerator extends BaseGenerator {
   public prompting() {
     // There is nothing to ask the user.
     const emailPrompt = GeneratorPrompts.getPrompt(PromptNames.EmailAddress);
@@ -39,4 +39,4 @@ export = class ConductGenerator extends BaseGenerator {
   protected _setup() {
     // There is nothing to set up
   }
-};
+}

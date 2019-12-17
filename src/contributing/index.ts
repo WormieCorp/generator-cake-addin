@@ -18,7 +18,7 @@
 
 import { BaseGenerator, PromptNames } from "../utils/index";
 
-export = class Contributing extends BaseGenerator {
+export default class Contributing extends BaseGenerator {
   get promptNames() {
     return [PromptNames.ProjectName, PromptNames.RepositoryOwner];
   }
@@ -41,4 +41,4 @@ export = class Contributing extends BaseGenerator {
       this.addPrompt(name, true);
     }
   }
-};
+}
