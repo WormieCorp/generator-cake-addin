@@ -13,6 +13,9 @@ image:
   - Ubuntu
   - Visual Studio 2015
 
+matrix:
+  fast_finish: true
+
 environment:
   APPVEYOR_YML_DISABLE_PS_LINUX: true
   matrix:
