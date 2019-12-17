@@ -4,7 +4,6 @@ os:
 
 language: node_js
 node_js:
-  - v8
   - v10
   - v12
 matrix:
