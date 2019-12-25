@@ -152,6 +152,15 @@ describe("generator:config", () => {
           })
         );
       });
+
+      it("creates .editorconfig with expected content", () => {
+        assert.equalsFileContent(
+          ".editorconfig",
+          readFileSync(join(__dirname, "expected/space/.editorconfig"), {
+            encoding: "utf8",
+          })
+        );
+      });
     });
 
     describe("yaml-space-set-to-4", () => {
