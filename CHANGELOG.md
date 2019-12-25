@@ -1,5 +1,22 @@
 # Cake Addin generator changelog
 
+# [1.3.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.2.0...v1.3.0) (2019-12-25)
+
+
+### Dependencies
+
+* bump yeoman-generator from 4.3.0 to 4.4.0 ([0b592a3](https://github.com/WormieCorp/generator-cake-addin/commit/0b592a3))
+
+
+### Features
+
+* **configuration generator:** use user specified indent size in editorconfig ([ed51c8e](https://github.com/WormieCorp/generator-cake-addin/commit/ed51c8e)), closes [#105](https://github.com/WormieCorp/generator-cake-addin/issues/105)
+
+
+### Improvements
+
+* add project icons ([e0e8745](https://github.com/WormieCorp/generator-cake-addin/commit/e0e8745))
+
 # [1.2.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.3...v1.2.0) (2019-12-18)
 
 
