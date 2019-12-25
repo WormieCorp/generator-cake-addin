@@ -2,6 +2,7 @@
     "name": "generator-cake-addin",
     "version": "1.2.0",
     "description": "A yeoman generator to get you quickly set up for writing Cake Addins.",
+    "icon": "graphics/icon_128x128.png",
     "scripts": {
         "commit": "git-cz",
         "setup": "tsc gulpfile.ts --target ES2018 --module commonjs --esModuleInterop",

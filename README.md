@@ -1,5 +1,7 @@
 # generator-cake-addin
 
+![banner](graphics/icon_128x128.png)
+
 [![standard-readme compliant][]][standard-readme]
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Appveyor build][appveyorimage]][appveyor]

@@ -170,6 +170,7 @@ Must be one of the following:
 - **docs**: Documentation only changes
 - **feat**: A new feature
 - **fix**: A bug fix
+- **improvement**: Improvements to project without adding new features
 - **perf**: A code change that improves performance
 - **refactor**: A code change that neither fixes a bug nor adds a feature
 - **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
