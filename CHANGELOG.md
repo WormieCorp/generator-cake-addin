@@ -1,5 +1,62 @@
 # Cake Addin generator changelog
 
+# [1.2.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.3...v1.2.0) (2019-12-18)
+
+
+### Bug fixes
+
+* change export = to export default ([87dc363](https://github.com/WormieCorp/generator-cake-addin/commit/87dc363))
+* **app:** update import for the chalk module ([2a2a4e4](https://github.com/WormieCorp/generator-cake-addin/commit/2a2a4e4))
+
+
+### Dependencies
+
+* [security] bump https-proxy-agent from 2.2.2 to 2.2.4 ([3321f16](https://github.com/WormieCorp/generator-cake-addin/commit/3321f16))
+* [security] bump npm from 6.11.2 to 6.13.4 ([e0156c2](https://github.com/WormieCorp/generator-cake-addin/commit/e0156c2))
+* add gulp-if as a dependency for conditionally running streams ([9257497](https://github.com/WormieCorp/generator-cake-addin/commit/9257497))
+* add through2 as new dependency ([e445151](https://github.com/WormieCorp/generator-cake-addin/commit/e445151))
+* bump chalk from 2.4.2 to 3.0.0 ([256012b](https://github.com/WormieCorp/generator-cake-addin/commit/256012b))
+* bump uuid from 3.3.2 to 3.3.3 ([10c8bad](https://github.com/WormieCorp/generator-cake-addin/commit/10c8bad))
+* bump yeoman-generator from 4.0.1 to 4.1.0 ([#137](https://github.com/WormieCorp/generator-cake-addin/issues//137)) ([7c9b44d](https://github.com/WormieCorp/generator-cake-addin/commit/7c9b44d))
+* bump yeoman-generator from 4.1.0 to 4.2.0 ([#164](https://github.com/WormieCorp/generator-cake-addin/issues//164)) ([b990b3b](https://github.com/WormieCorp/generator-cake-addin/commit/b990b3b))
+* bump yeoman-generator from 4.2.0 to 4.3.0 ([963a877](https://github.com/WormieCorp/generator-cake-addin/commit/963a877))
+
+
+### Documentation
+
+* correct link to generator folder ([b2d6550](https://github.com/WormieCorp/generator-cake-addin/commit/b2d6550))
+* create support file documentation ([e0d96cf](https://github.com/WormieCorp/generator-cake-addin/commit/e0d96cf))
+* **release-notes:** remove invalid entries in changelog ([0d9cf8e](https://github.com/WormieCorp/generator-cake-addin/commit/0d9cf8e))
+
+
+### Features
+
+* add ability for users to select wether to use tabs or spaces as default ([9388e26](https://github.com/WormieCorp/generator-cake-addin/commit/9388e26)), closes [#51](https://github.com/WormieCorp/generator-cake-addin/issues/51)
+* add indent style stream to allow changing between tabs and spaces ([904116a](https://github.com/WormieCorp/generator-cake-addin/commit/904116a)), closes [#51](https://github.com/WormieCorp/generator-cake-addin/issues/51) [#50](https://github.com/WormieCorp/generator-cake-addin/issues/50)
+* **appveyor generator:** add ability for user to select space indent size ([7e80a70](https://github.com/WormieCorp/generator-cake-addin/commit/7e80a70)), closes [#50](https://github.com/WormieCorp/generator-cake-addin/issues/50)
+* **appveyor generator:** add prompt for supporting selection between using tabs or spaces in .appveyor.yml ([3ea2f0c](https://github.com/WormieCorp/generator-cake-addin/commit/3ea2f0c)), closes [#51](https://github.com/WormieCorp/generator-cake-addin/issues/51)
+* **build scripts generator:** add ability to select indent size during generation ([c2b6a8e](https://github.com/WormieCorp/generator-cake-addin/commit/c2b6a8e)), closes [#50](https://github.com/WormieCorp/generator-cake-addin/issues/50)
+* **configuration generator:** add ability to select indent size during generation ([57b6827](https://github.com/WormieCorp/generator-cake-addin/commit/57b6827)), closes [#50](https://github.com/WormieCorp/generator-cake-addin/issues/50)
+* **configuration generator:** add support for selecting between tabs or spaces in GitReleaseManager.yaml ([e1d01e5](https://github.com/WormieCorp/generator-cake-addin/commit/e1d01e5)), closes [#51](https://github.com/WormieCorp/generator-cake-addin/issues/51)
+* **configuration generator:** update editorconfig to set user specified indent style ([48b83a4](https://github.com/WormieCorp/generator-cake-addin/commit/48b83a4)), closes [#104](https://github.com/WormieCorp/generator-cake-addin/issues/104)
+* **configuration generator:** update editorconfig to set user specified indent style  fix [#104](https://github.com/WormieCorp/generator-cake-addin/issues//104) ([d56356b](https://github.com/WormieCorp/generator-cake-addin/commit/d56356b))
+* **project generator:** add ability for user to select space indent size ([d3ce7aa](https://github.com/WormieCorp/generator-cake-addin/commit/d3ce7aa)), closes [#50](https://github.com/WormieCorp/generator-cake-addin/issues/50)
+* **travis generator:** add ability for user to select space indent size ([460baa5](https://github.com/WormieCorp/generator-cake-addin/commit/460baa5)), closes [#50](https://github.com/WormieCorp/generator-cake-addin/issues/50)
+* **travis generator:** add prompt for supporting selection between using tabs or spaces in travis.yml ([b925533](https://github.com/WormieCorp/generator-cake-addin/commit/b925533)), closes [#51](https://github.com/WormieCorp/generator-cake-addin/issues/51)
+* **travis generator:** add prompt for supporting selection between using tabs or spaces in travis.yml  re [#51](https://github.com/WormieCorp/generator-cake-addin/issues//51) ([c8dad1b](https://github.com/WormieCorp/generator-cake-addin/commit/c8dad1b))
+
+
+### Reverts
+
+* "feat(appveyor): add prompt for supporting selection between using tabs or spaces in .appveyor.yml" ([484cfe2](https://github.com/WormieCorp/generator-cake-addin/commit/484cfe2))
+* "feat(config): add support for selecting between tabs or spaces in GitReleaseManager.yaml" ([a0480d9](https://github.com/WormieCorp/generator-cake-addin/commit/a0480d9))
+* "feat(travis): add prompt for supporting selection between using tabs or spaces in travis.yml  re [#51](https://github.com/WormieCorp/generator-cake-addin/issues//51)" ([ea7ccaf](https://github.com/WormieCorp/generator-cake-addin/commit/ea7ccaf))
+* "feat(travis): add prompt for supporting selection between using tabs or spaces in travis.yml" ([9f6c8d4](https://github.com/WormieCorp/generator-cake-addin/commit/9f6c8d4))
+* "refactor: add new available prompt for asking wether to use tabs or spaces for yaml files" ([96b72e0](https://github.com/WormieCorp/generator-cake-addin/commit/96b72e0))
+* "refactor(appveyor): correct duplicate calls for prompt asking wether to use tabs or not in yaml file" ([a014b15](https://github.com/WormieCorp/generator-cake-addin/commit/a014b15))
+* "test(travis): add unit tests for using tabs instead of spaces in travis.yml" ([9b9e250](https://github.com/WormieCorp/generator-cake-addin/commit/9b9e250))
+* **configuration generator:** revert ability to set tabs in indentation for yaml files in editorconfig ([7d6be4d](https://github.com/WormieCorp/generator-cake-addin/commit/7d6be4d))
+
 ## [1.1.3](https://github.com/WormieCorp/generator-cake-addin/compare/v1.1.2...v1.1.3) (2019-07-12)
 
 ### Bug fixes
