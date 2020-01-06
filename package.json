@@ -59,7 +59,7 @@
     },
     "devDependencies": {
         "@commitlint/cli": "^8.3.4",
-        "@commitlint/config-conventional": "^8.3.3",
+        "@commitlint/config-conventional": "^8.3.4",
         "@semantic-release/changelog": "3.0.6",
         "@semantic-release/commit-analyzer": "6.3.3",
         "@semantic-release/exec": "3.3.8",
