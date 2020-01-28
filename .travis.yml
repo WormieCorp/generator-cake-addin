@@ -6,8 +6,6 @@ language: node_js
 node_js:
   - v10
   - v12
-matrix:
-  fast_finish: true
 
 branches:
   # Blacklist
@@ -28,6 +26,7 @@ notifications:
     secure: "GrRoUvcLJfZhmGGy7pqBBLj06AH5VjDpSmoN133Z+LkuCZu5h96+V7uRcr66IuBLjYp58JiCmqDFMWJu5g9WayoF1IMZfD5hS0wy+4C75Ym+OmehQ73TQnMaLRro7pQqQ/qhW15Tsxy8/2MUbwYDMUliMKOjyvTunY4ARGfL8um0nYn/a+OABeDxN5I5cql1qKs2D/zG4LwTh9oY8YHK8VlUSV6FZeGxg9tDGoy/i/8qXFd1trAOOT3GZf4BsoyfW6p2NyxOCbcoQlFY1JGrbD0GcNC6Mh/h7g5quq9IdfuTV8Y8WvFQwQRNA0Nw+MyMhPyAtKfRNEVV8au2OPqyvpVMyCSlAgWR9FuzRvpQic3L3KhOYOE0ydSDwmLg3W5+J6F4PyZQyaHzZYeK7sxcuULHWV+qPPk6cmiWWfJXf6AAnmydgNvXXPzblHkg3ijz9s43zuzukbezD1g7OIZEz/WveG0mtEcZFByccVk+LCfRmPe6fSln2tpwsowbXGNcWnkdidPmQYYCAmKP9DEuyCnhmP1xRUFWxZB+9bmM4v8/7lD5mHHhT++ceU9JE7id58OjIKieKorJDj8ILFWNs9SN2SqVHefWs0UeiXlHobz0G0mCoLM5CANJrTH5XboQZXKBF9PSLqXZe+b4QPUG7t0bojlo3ZosAmb1ZC6DZGE="
 
 jobs:
+  fast_finish: true
   include:
     - stage: release
       if: branch = master
