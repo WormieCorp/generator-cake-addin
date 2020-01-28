@@ -54,7 +54,7 @@
         "through2": "^3.0.1",
         "username": "^5.1.0",
         "uuid": "^3.4.0",
-        "yeoman-generator": "^4.4.0",
+        "yeoman-generator": "^4.5.0",
         "yosay": "^2.0.2"
     },
     "devDependencies": {
