@@ -84,7 +84,7 @@
         "command-exists": "1.2.8",
         "commitizen": "4.0.3",
         "conventional-changelog-wormiecorp": "1.1.1",
-        "cz-conventional-changelog": "3.0.2",
+        "cz-conventional-changelog": "3.1.0",
         "del": "5.1.0",
         "gulp": "4.0.2",
         "gulp-prettier": "2.3.0",
