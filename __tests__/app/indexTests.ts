@@ -2,6 +2,7 @@ import { sync } from "command-exists";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
+import { getPromptConfig } from "../../defaultConfigs";
 
 jest.setTimeout(5 * 60 * 1000);
 
@@ -40,20 +41,14 @@ describe("generator:app", () => {
     beforeAll(() => {
       return helpers
         .run(generatorDir)
-        .withPrompts({
-          author: "Kim Nordmo",
-          description: "My Awesome Test Description",
-          enableAllContributors: true,
-          enableLinux: true,
-          enableTravis: true,
-          enableWyam: true,
-          licenseType: "MIT",
-          projectName: "MyTestApp",
-          repositoryOwner: "AdmiringWorm",
-          scriptName: "recipe.cake",
-          sourceDir: "./src",
-          unitTestLibrary: "xunit",
-        })
+        .withPrompts(
+          getPromptConfig({
+            enableAllContributors: true,
+            enableLinux: true,
+            enableTravis: true,
+            projectName: "MyTestApp",
+          })
+        )
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
 
@@ -70,19 +65,11 @@ describe("generator:app", () => {
     beforeAll(() => {
       return helpers
         .run(generatorDir)
-        .withPrompts({
-          author: "Kim Nordmo",
-          description: "My Awesome Test Description",
-          enableLinux: true,
-          enableTravis: false,
-          enableWyam: true,
-          licenseType: "MIT",
-          projectName: "MyTestApp",
-          repositoryOwner: "AdmiringWorm",
-          scriptName: "recipe.cake",
-          sourceDir: "./src",
-          unitTestLibrary: "xunit",
-        })
+        .withPrompts(
+          getPromptConfig({
+            enableTravis: false,
+          })
+        )
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
 
@@ -95,20 +82,11 @@ describe("generator:app", () => {
     beforeAll(() => {
       return helpers
         .run(generatorDir)
-        .withPrompts({
-          author: "Kim Nordmo",
-          description: "My Awesome Test Description",
-          enableContributing: true,
-          enableLinux: true,
-          enableTravis: false,
-          enableWyam: true,
-          licenseType: "MIT",
-          projectName: "MyTestApp",
-          repositoryOwner: "AdmiringWorm",
-          scriptName: "recipe.cake",
-          sourceDir: "./src",
-          unitTestLibrary: "xunit",
-        })
+        .withPrompts(
+          getPromptConfig({
+            enableContributing: true,
+          })
+        )
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
 
@@ -121,21 +99,11 @@ describe("generator:app", () => {
     beforeAll(() => {
       return helpers
         .run(generatorDir)
-        .withPrompts({
-          author: "Kim Nordmo",
-          description: "My Awesome Test Description",
-          enableAllContributors: false,
-          enableContributing: false,
-          enableLinux: true,
-          enableTravis: false,
-          enableWyam: true,
-          licenseType: "MIT",
-          projectName: "MyTestApp",
-          repositoryOwner: "AdmiringWorm",
-          scriptName: "recipe.cake",
-          sourceDir: "./src",
-          unitTestLibrary: "xunit",
-        })
+        .withPrompts(
+          getPromptConfig({
+            enableAllContributors: false,
+          })
+        )
         .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
     });
 

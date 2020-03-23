@@ -3,6 +3,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
+import { getPromptConfig } from "../../defaultConfigs";
 
 jest.setTimeout(5 * 60 * 1000);
 
@@ -25,11 +26,11 @@ describe("generator:project", () => {
   it("should not overwrite solution file if one exist", () => {
     return helpers
       .run(generatorDir)
-      .withOptions({
-        projectName: "TestApp",
-        "skip-dotnet": true,
-        sourceDir: "./src",
-      })
+      .withOptions(
+        getPromptConfig({
+          "skip-dotnet": true,
+        })
+      )
       .inTmpDir((tmpDir) => {
         mkdirSync(path.join(tmpDir, "src"));
         writeFileSync(path.join(tmpDir, "src/Cake.TestApp.sln"), "");
@@ -42,12 +43,7 @@ describe("generator:project", () => {
   it("should set up url to wyam documentation when enabled", () => {
     return helpers
       .run(generatorDir)
-      .withPrompts({
-        enableWyam: true,
-        projectName: "TestApp",
-        repositoryOwner: "AdmiringWorm",
-        sourceDir: "./src",
-      })
+      .withPrompts(getPromptConfig())
       .withOptions({ "skip-dotnet": true })
       .then(() =>
         assert.fileContent(
@@ -61,17 +57,12 @@ describe("generator:project", () => {
     beforeAll(() => {
       return helpers
         .run(generatorDir)
-        .withPrompts({
-          author: "Kim Nordmo",
-          description: "Cake addin generation test",
-          enableWyam: false,
-          indentSize: 4,
-          licenseType: "MIT",
-          projectName: "TestApp",
-          repositoryOwner: "AdmiringWorm",
-          sourceDir: "./src",
-          useTabs: false,
-        })
+        .withPrompts(
+          getPromptConfig({
+            description: "Cake addin generation test",
+            enableWyam: false,
+          })
+        )
         .withOptions({
           "skip-dotnet": true,
           "start-year": 2018,
@@ -133,13 +124,7 @@ describe("generator:project", () => {
       beforeAll(() => {
         return helpers
           .run(generatorDir)
-          .withPrompts({
-            indentSize: 4,
-            projectName: "TestApp",
-            sourceDir: "./src",
-            unitTestLibrary: "xunit",
-            useTabs: false,
-          })
+          .withPrompts(getPromptConfig())
           .withOptions({
             "skip-dotnet": true,
           });
@@ -180,7 +165,7 @@ describe("generator:project", () => {
     it("should allow changing source directory through prompts", () => {
       return helpers
         .run(generatorDir)
-        .withPrompts({ projectName: "TestApp", sourceDir: "./source" })
+        .withPrompts(getPromptConfig({ sourceDir: "./source" }))
         .withOptions({ "skip-dotnet": true })
         .then(() => assert.file("source/Cake.TestApp.sln"));
     });
@@ -188,11 +173,12 @@ describe("generator:project", () => {
     it("should allow changing source directory through options", () => {
       return helpers
         .run(generatorDir)
-        .withOptions({
-          projectName: "TestApp",
-          "skip-dotnet": true,
-          sourceDir: "./source",
-        })
+        .withOptions(
+          getPromptConfig({
+            "skip-dotnet": true,
+            sourceDir: "./source",
+          })
+        )
         .then(() => assert.file("source/Cake.TestApp.sln"));
     });
   });
@@ -200,9 +186,7 @@ describe("generator:project", () => {
   if (!skipDotnet) {
     describe("dotnet restore", () => {
       beforeAll(() => {
-        return helpers
-          .run(generatorDir)
-          .withPrompts({ projectName: "TestApp", sourceDir: "./src" });
+        return helpers.run(generatorDir).withPrompts(getPromptConfig());
       });
       it("should run dotnet restore by default", () => {
         assert.file([
@@ -214,12 +198,11 @@ describe("generator:project", () => {
 
     describe("dotnet build", () => {
       beforeAll(() => {
-        return helpers.run(generatorDir).withOptions({
-          build: true,
-          projectName: "TestApp",
-          sourceDir: "./src",
-          unitTestLibrary: "xunit",
-        });
+        return helpers.run(generatorDir).withOptions(
+          getPromptConfig({
+            build: true,
+          })
+        );
       });
 
       it("should run dotnet build when --build is specified", () => {
@@ -237,16 +220,13 @@ describe("generator:project", () => {
       beforeAll(() => {
         return helpers
           .run(generatorDir)
-          .withPrompts({
-            author: "Kim Nordmo",
-            description: "Cake addin generation test",
-            enableWyam: false,
-            licenseType: "MIT",
-            projectName: "TestApp",
-            repositoryOwner: "AdmiringWorm",
-            sourceDir: "./src",
-            useTabs: true,
-          })
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              useTabs: true,
+            })
+          )
           .withOptions({
             "skip-dotnet": true,
             "start-year": 2019,
@@ -385,18 +365,13 @@ describe("generator:project", () => {
       beforeAll(() => {
         return helpers
           .run(generatorDir)
-          .withPrompts({
-            author: "Kim Nordmo",
-            description: "Cake addin generation test",
-            enableWyam: false,
-            indentSize: 2,
-            licenseType: "MIT",
-            projectName: "TestApp",
-            repositoryOwner: "AdmiringWorm",
-            sourceDir: "./src",
-            unitTestLibrary: "xunit",
-            useTabs: false,
-          })
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              indentSize: 2,
+            })
+          )
           .withOptions({
             "skip-dotnet": true,
             "start-year": 2018,
