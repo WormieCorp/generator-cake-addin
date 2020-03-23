@@ -206,8 +206,8 @@ describe("generator:project", () => {
       });
       it("should run dotnet restore by default", () => {
         assert.file([
-          "src/Cake.TestApp/obj/Cake.TestApp.csproj.nuget.cache",
-          "src/Cake.TestApp.Tests/obj/Cake.TestApp.Tests.csproj.nuget.cache",
+          "src/Cake.TestApp/obj/project.nuget.cache",
+          "src/Cake.TestApp.Tests/obj/project.nuget.cache",
         ]);
       });
     });
