@@ -24,6 +24,13 @@ environment:
 
 stack: node %nodejs_version%
 
+for:
+  - matrix:
+      only:
+        - image: macos
+    environment:
+      DOTNET_ROOT: "/Users/appveyor/.dotnet"
+
 install:
   - sh: if [ "$CI_MACOS" ]; then brew install yarn; export PATH="$PATH:/Users/appveyor/.dotnet/tools" ; fi
   - sh: export FrameworkPathOverride=$(dirname $(which mono))/../lib/mono/4.5/
