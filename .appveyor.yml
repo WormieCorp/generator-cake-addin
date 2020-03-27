@@ -10,6 +10,7 @@ branches:
     - ci/travis
 
 image:
+  - macOS
   - Ubuntu
   - Visual Studio 2015
 
