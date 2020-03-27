@@ -36,7 +36,7 @@ test_script:
   - pwsh: ./build.ps1 --test
 
 on_success:
-  - codecov --env 'nodejs_version APPVEYOR_BUILD_WORKER_IMAGE' --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
+  - dotnet codecov --env 'nodejs_version APPVEYOR_BUILD_WORKER_IMAGE' --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
 
 cache:
   - "node_modules -> package.json,yarn.lock"
