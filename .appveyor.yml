@@ -12,7 +12,7 @@ branches:
 image:
   - macOS
   - Ubuntu
-  - Visual Studio 2015
+#  - Visual Studio 2015
 
 matrix:
   fast_finish: true
