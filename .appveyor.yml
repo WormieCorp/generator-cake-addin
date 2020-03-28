@@ -43,8 +43,11 @@ build_script:
 test_script:
   - pwsh: ./build.ps1 --test
 
-on_success:
+on_finish:
   - codecov --env 'nodejs_version APPVEYOR_BUILD_WORKER_IMAGE' --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
+  - pwsh: |
+      $wc = New-Object 'System.Net.WebClient'
+      $wc.UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\junit.xml))
 
 cache:
   - "node_modules -> package.json,yarn.lock"
