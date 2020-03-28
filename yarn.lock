@@ -4281,14 +4281,13 @@ gulp-match@^1.1.0:
   dependencies:
     minimatch "^3.0.3"
 
-gulp-prettier@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/gulp-prettier/-/gulp-prettier-2.3.0.tgz#143a5d75ee6a79e5c647b108c6a28ce7d26e3edd"
-  integrity sha512-3byhZ6+tT3uqZUmIuhNs+upiUiwTtZXQ5vD/rrXq+ZypYyYlCIGGmSYq7wDc0uTJyGhHtYNTJ97ix2hI747zyg==
+gulp-prettier@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gulp-prettier/-/gulp-prettier-3.0.0.tgz#21c7de272fc7528168af6086e8edae6a645168a8"
+  integrity sha512-vZFyC1F+7EjuI2WDUOcbPt9o3ZjdqjFMjr8a9Yk2K8EmNhP1w6X01QAkv5Ym3dsHCBsBA4AEFcYds2vOTSgx0A==
   dependencies:
     plugin-error "^1.0.1"
-    prettier "^1.5.3"
-    safe-buffer "^5.1.2"
+    prettier "^2.0.0"
     through2 "^3.0.0"
 
 gulp-sourcemaps@2.6.5:
@@ -7782,15 +7781,10 @@ prepend-http@^1.0.1:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier@2.0.2:
+prettier@2.0.2, prettier@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.2.tgz#1ba8f3eb92231e769b7fcd7cb73ae1b6b74ade08"
   integrity sha512-5xJQIPT8BraI7ZnaDwSbu5zLrB6vvi8hVV58yHQ+QK64qrY40dULy0HSRlQ2/2IdzeBpjhDkqdcFBnFeDEMVdg==
-
-prettier@^1.5.3:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
-  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
 
 pretty-bytes@^5.2.0:
   version "5.3.0"
