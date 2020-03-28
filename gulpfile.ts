@@ -63,9 +63,7 @@ function exportTemplatesTask() {
 }
 
 function compileTypescript() {
-  const tsResult = src("src/**/*.ts")
-    .pipe(init())
-    .pipe(tsProject());
+  const tsResult = src("src/**/*.ts").pipe(init()).pipe(tsProject());
   return merge([
     src("src/**/*.d.ts"),
     tsResult.dts,
