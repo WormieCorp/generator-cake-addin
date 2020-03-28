@@ -33,7 +33,7 @@ for:
 
 install:
   - ps: Install-Product node $env:nodejs_version
-  - sh: if [ "$CI_MACOS" ]; then brew install yarn; export PATH="$PATH:/Users/appveyor/.dotnet/tools" ; fi
+  - sh: if [ "$CI_LINUX" != 'true' ]; then brew install yarn; export PATH="$PATH:/Users/appveyor/.dotnet/tools" ; fi
   - sh: export FrameworkPathOverride=$(dirname $(which mono))/../lib/mono/4.5/
   - dotnet tool install --global codecov.tool
 
