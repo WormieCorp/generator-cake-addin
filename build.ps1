@@ -7,12 +7,17 @@ $ErrorActionPreference = 'Stop'
 
 function UpdateAppveyorBuildVersion {
     $pkgJson = Get-Content -Raw -Encoding utf8 -LiteralPath "package.json" | ConvertFrom-Json
-    $buildVersion = $env:APPVEYOR_BUILD_VERSION
+    $buildVersion = $env:APPVEYOR_BUILD_NUMBER
     $commitSha = $env:APPVEYOR_REPO_COMMIT
 
     $newVersion = "$($pkgJson.version)+build.$buildVersion.sha.$commitSha"
 
-    Update-AppveyorBuild -Version $newVersion
+    try {
+        Update-AppveyorBuild -Version $newVersion
+    }
+    catch {
+        Write-Warning "Unable to update build version, ignoring..."
+    }
 }
 
 function runSetup() {
