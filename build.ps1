@@ -48,7 +48,8 @@ function runTest() {
     "Running unit tests..."
     $arguments = @(
         "test"
-        if ($env:CI -ieq "true") { "--coverage"; "--ci" }
+        "--reporters=default"
+        if ($env:CI -ieq "true") { "--reporters=jest-junit"; "--coverage"; "--ci" }
     )
     yarn @arguments
     if ($LASTEXITCODE -ne 0) {

@@ -65,6 +65,8 @@ typings/
 .npmrc
 *_asc
 
+junit.xml
+
 generators/
 
 [Oo]bj/
