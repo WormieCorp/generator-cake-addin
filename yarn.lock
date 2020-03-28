@@ -1297,10 +1297,10 @@
   resolved "https://registry.yarnpkg.com/@types/yeoman-assert/-/yeoman-assert-3.1.1.tgz#d1f683e5f6e6b15d36bfb216221a19bd7e9735c6"
   integrity sha512-ACDlMVhoLIA3VQPFKtJWlr3evUE3DaEbVxi1ukivBRNB1havMW+vo2J0+hNURF19yiqs7iu+yUHLG25bCi2xcw==
 
-"@types/yeoman-environment@2.3.2":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-environment/-/yeoman-environment-2.3.2.tgz#6dea34595508bec714fc2275943685656e0ad860"
-  integrity sha512-5+GphmX9+BWdbEVVUF+6MJHtVXtCyfAHj6fudLv82yUFC1zCCmePcEDrL7o8cD6qksIbA9PNiAwDIo06M3WQMA==
+"@types/yeoman-environment@2.3.3":
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/@types/yeoman-environment/-/yeoman-environment-2.3.3.tgz#6535ae2a5de2f19199bf4f6fbe1eafacae491acf"
+  integrity sha512-s9qn0TVNxnHn6KR71m9Om3Lxsvd4PMc9SfDMnmIjZpbSycp/M+IIgNCKN8xJ4GhK0APJKwm+n9+lCvX5BsmUag==
   dependencies:
     "@types/inquirer" "*"
     "@types/mem-fs" "*"
@@ -8480,14 +8480,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@>=6.4.0, rxjs@^6.3.3, rxjs@^6.4.0:
-  version "6.5.3"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.3.tgz#510e26317f4db91a7eb1de77d9dd9ba0a4899a3a"
-  integrity sha512-wuYsAYYFdWTAnAaPoKGNhfpWwKZbJW+HgAJ+mImp+Epl7BG8oNWBCTyRM8gba9k4lk8BgWdoYm21Mo/RYhhbgA==
-  dependencies:
-    tslib "^1.9.0"
-
-rxjs@^6.5.3:
+rxjs@>=6.4.0, rxjs@^6.3.3, rxjs@^6.4.0, rxjs@^6.5.3:
   version "6.5.4"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.4.tgz#e0777fe0d184cec7872df147f303572d414e211c"
   integrity sha512-naMQXcgEo3csAEGvw/NydRA0fuS2nDZJiw1YUWFKU7aPPAPGZEsD4Iimit96qwCieH6y614MCLYwdkrWx7z/7Q==
