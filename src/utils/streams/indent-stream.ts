@@ -39,7 +39,7 @@ export const indentStream = (
     options.amount = 4;
   }
 
-  return through.obj(function(
+  return through.obj(function (
     file: BufferFile,
     _enc: string,
     done: TransformCallback
