@@ -41,10 +41,10 @@ export function pretty() {
 
 export function prettyFix() {
   return src([
-    "{src,__tests__}/**/*.ts",
     "gulpfile.ts",
     "**/*.json",
     "**/*.md",
+    "{src,__tests__}/**/*.ts",
     "src/**/*.yml",
     "!CHANGELOG.md",
     "!node_modules{,/**}",
@@ -80,9 +80,7 @@ function exportTemplatesTask() {
 }
 
 function compileTypescript() {
-  const tsResult = src("src/**/*.ts")
-    .pipe(init())
-    .pipe(tsProject());
+  const tsResult = src("src/**/*.ts").pipe(init()).pipe(tsProject());
   return merge([
     src("src/**/*.d.ts"),
     tsResult.dts,
