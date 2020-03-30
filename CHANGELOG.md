@@ -1,5 +1,20 @@
 # Cake Addin generator changelog
 
+## [1.3.2](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.1...v1.3.2) (2020-03-30)
+
+
+### Bug fixes
+
+* **project generator:** correct generation of mixed indentation of test project ([b9b9e9a](https://github.com/WormieCorp/generator-cake-addin/commit/b9b9e9a))
+
+
+### Dependencies
+
+* [security] bump acorn from 5.7.3 to 5.7.4 ([063ef59](https://github.com/WormieCorp/generator-cake-addin/commit/063ef59))
+* bump fullname from 4.0.0 to 4.0.1 ([bb68a98](https://github.com/WormieCorp/generator-cake-addin/commit/bb68a98))
+* bump uuid from 3.4.0 to 7.0.2 ([2a850c1](https://github.com/WormieCorp/generator-cake-addin/commit/2a850c1))
+* bump yeoman-generator from 4.5.0 to 4.7.2 ([#282](https://github.com/WormieCorp/generator-cake-addin/issues//282)) ([6db10fc](https://github.com/WormieCorp/generator-cake-addin/commit/6db10fc))
+
 ## [1.3.1](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.0...v1.3.1) (2020-01-28)
 
 
