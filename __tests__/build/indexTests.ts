@@ -2,6 +2,7 @@ import { readFileSync } from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
+import { getPromptConfig } from "../../defaultConfigs";
 
 const generatorDir = path.join(__dirname, "../../src/build");
 
@@ -40,14 +41,7 @@ function assertFileContent(filePath: string, expectedFile: string) {
 describe("generator:travis", () => {
   describe("default", () => {
     beforeAll(() => {
-      return helpers.run(generatorDir).withPrompts({
-        indentSize: 4,
-        projectName: "TestApp",
-        repositoryOwner: "AdmiringWorm",
-        scriptName: "recipe.cake",
-        sourceDir: "./src",
-        useTabs: false,
-      });
+      return helpers.run(generatorDir).withPrompts(getPromptConfig());
     });
 
     it("creates default project structure files", () => {
@@ -70,14 +64,14 @@ describe("generator:travis", () => {
 
   describe("custom prompts", () => {
     beforeAll(() => {
-      return helpers.run(generatorDir).withPrompts({
-        indentSize: 4,
-        projectName: "MyAddin",
-        repositoryOwner: "gep13",
-        scriptName: "setup.cake",
-        sourceDir: "./source",
-        useTabs: false,
-      });
+      return helpers.run(generatorDir).withPrompts(
+        getPromptConfig({
+          projectName: "MyAddin",
+          repositoryOwner: "gep13",
+          scriptName: "setup.cake",
+          sourceDir: "./source",
+        })
+      );
     });
 
     it("creates build files", () => {
@@ -113,13 +107,12 @@ describe("generator:travis", () => {
 
   describe("custom handling for cake-contrib", () => {
     beforeAll(() => {
-      return helpers.run(generatorDir).withPrompts({
-        projectName: "MyContribAddin",
-        repositoryOwner: "cake-contrib",
-        scriptName: "recipe.cake",
-        sourceDir: "./src",
-        useTabs: false,
-      });
+      return helpers.run(generatorDir).withPrompts(
+        getPromptConfig({
+          projectName: "MyContribAddin",
+          repositoryOwner: "cake-contrib",
+        })
+      );
     });
 
     it("creates build files", () => {
@@ -139,14 +132,11 @@ describe("generator:travis", () => {
   describe("indentation", () => {
     describe("space", () => {
       beforeAll(() => {
-        return helpers.run(generatorDir).withPrompts({
-          indentSize: 2,
-          projectName: "TestApp",
-          repositoryOwner: "AdmiringWorm",
-          scriptName: "recipe.cake",
-          sourceDir: "./src",
-          useTabs: false,
-        });
+        return helpers.run(generatorDir).withPrompts(
+          getPromptConfig({
+            indentSize: 2,
+          })
+        );
       });
 
       it("creates default project structure files", () => {
@@ -165,13 +155,11 @@ describe("generator:travis", () => {
 
     describe("tabs", () => {
       beforeAll(() => {
-        return helpers.run(generatorDir).withPrompts({
-          projectName: "TestApp",
-          repositoryOwner: "AdmiringWorm",
-          scriptName: "recipe.cake",
-          sourceDir: "./src",
-          useTabs: true,
-        });
+        return helpers.run(generatorDir).withPrompts(
+          getPromptConfig({
+            useTabs: true,
+          })
+        );
       });
 
       it("creates default project structure files", () => {

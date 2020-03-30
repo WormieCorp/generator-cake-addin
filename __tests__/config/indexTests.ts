@@ -2,19 +2,18 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import * as assert from "yeoman-assert";
 import { run } from "yeoman-test";
+import { getPromptConfig } from "../../defaultConfigs";
 
 const generatorDir = join(__dirname, "../../src/config");
 
 describe("generator:config", () => {
   describe("default", () => {
     beforeAll(() =>
-      run(generatorDir).withOptions({
-        enableAllContributors: true,
-        indentSize: 4,
-        projectName: "TestApp",
-        repositoryOwner: "AdmiringWorm",
-        useTabs: false,
-      })
+      run(generatorDir).withOptions(
+        getPromptConfig({
+          enableAllContributors: true,
+        })
+      )
     );
 
     it("creates editorconfig file", () => {
@@ -84,13 +83,7 @@ describe("generator:config", () => {
   });
 
   describe("disable all-contributors", () => {
-    beforeAll(() =>
-      run(generatorDir).withPrompts({
-        enableAllContributors: false,
-        projectName: "TestApp",
-        useTabs: false,
-      })
-    );
+    beforeAll(() => run(generatorDir).withPrompts(getPromptConfig()));
 
     it("should not create all contributors configuratior file", () => {
       assert.noFile(".all-contributorsrc");
@@ -100,12 +93,12 @@ describe("generator:config", () => {
   describe("indentation", () => {
     describe("tabs", () => {
       beforeAll(() =>
-        run(generatorDir).withPrompts({
-          enableAllContributors: true,
-          projectName: "TestApp",
-          repositoryOwner: "AdmiringWorm",
-          useTabs: true,
-        })
+        run(generatorDir).withPrompts(
+          getPromptConfig({
+            enableAllContributors: true,
+            useTabs: true,
+          })
+        )
       );
 
       it("should create editorconfig with default to tabs", () => {
@@ -133,15 +126,12 @@ describe("generator:config", () => {
 
     describe("default-space-set-to-2", () => {
       beforeAll(() =>
-        run(generatorDir).withPrompts({
-          enableAllContributors: true,
-          indentSize: 2,
-          indentYamlSize: 2,
-          projectName: "TestApp",
-          repositoryOwner: "AdmiringWorm",
-          useTabs: false,
-          useYamlTabs: false,
-        })
+        run(generatorDir).withPrompts(
+          getPromptConfig({
+            enableAllContributors: true,
+            indentSize: 2,
+          })
+        )
       );
 
       it("creates all-contributorsrc with expected content", () => {
@@ -165,15 +155,12 @@ describe("generator:config", () => {
 
     describe("yaml-space-set-to-4", () => {
       beforeAll(() =>
-        run(generatorDir).withPrompts({
-          enableAllContributors: true,
-          indentSize: 4,
-          indentYamlSize: 4,
-          projectName: "TestApp",
-          repositoryOwner: "AdmiringWorm",
-          useTabs: false,
-          useYamlTabs: false,
-        })
+        run(generatorDir).withPrompts(
+          getPromptConfig({
+            enableAllContributors: true,
+            indentYamlSize: 4,
+          })
+        )
       );
 
       it("creates all-contributorsrc with expected content", () => {

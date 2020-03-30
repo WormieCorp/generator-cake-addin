@@ -10,8 +10,9 @@ branches:
     - ci/travis
 
 image:
+  - macOS
   - Ubuntu
-  - Visual Studio 2015
+#  - Visual Studio 2015
 
 matrix:
   fast_finish: true
@@ -23,7 +24,16 @@ environment:
 
 stack: node %nodejs_version%
 
+for:
+  - matrix:
+      only:
+        - image: macos
+    environment:
+      DOTNET_ROOT: "/Users/appveyor/.dotnet"
+
 install:
+  - ps: Install-Product node $env:nodejs_version
+  - sh: if [ "$CI_LINUX" != 'true' ]; then brew install yarn; export PATH="$PATH:/Users/appveyor/.dotnet/tools" ; fi
   - sh: export FrameworkPathOverride=$(dirname $(which mono))/../lib/mono/4.5/
   - dotnet tool install --global codecov.tool
 
@@ -33,8 +43,11 @@ build_script:
 test_script:
   - pwsh: ./build.ps1 --test
 
-on_success:
+on_finish:
   - codecov --env 'nodejs_version APPVEYOR_BUILD_WORKER_IMAGE' --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
+  - pwsh: |
+      $wc = New-Object 'System.Net.WebClient'
+      $wc.UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\junit.xml))
 
 cache:
   - "node_modules -> package.json,yarn.lock"

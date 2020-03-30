@@ -2,14 +2,17 @@ import { readFileSync, writeFileSync } from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
+import { getPromptConfig } from "../../defaultConfigs";
 
 function runHelper(licenseType: string, author: string = "Kim Nordmo") {
   return helpers
     .run(path.join(__dirname, "../../src/license"))
-    .withPrompts({
-      author,
-      licenseType,
-    })
+    .withPrompts(
+      getPromptConfig({
+        author,
+        licenseType,
+      })
+    )
     .withOptions({
       year: 2019,
     });
@@ -46,7 +49,7 @@ describe("generator:license", () => {
         it("should not require author to be set", () => {
           return helpers
             .run(path.join(__dirname, "../../src/license"))
-            .withPrompts({ licenseType: license.Name })
+            .withPrompts(getPromptConfig({ licenseType: license.Name }))
             .withOptions({ year: 2019 })
             .then(() => {
               assert.equalsFileContent(

@@ -1,6 +1,6 @@
 import del from "del";
 import { dest, parallel, series, src, watch as gulpWatch } from "gulp";
-import { check } from "gulp-prettier";
+import prettier = require("gulp-prettier");
 import { init, write } from "gulp-sourcemaps";
 import gtslint from "gulp-tslint";
 import { createProject, Project } from "gulp-typescript";
@@ -36,13 +36,30 @@ export function pretty() {
     "!generators{,/**}",
     "!coverage/{,/**}",
     "!**/obj/{,/**}",
-  ]).pipe(check());
+  ]).pipe(prettier.check());
+}
+
+export function prettyFix() {
+  return src([
+    "gulpfile.ts",
+    "**/*.json",
+    "**/*.md",
+    "{src,__tests__}/**/*.ts",
+    "src/**/*.yml",
+    "!CHANGELOG.md",
+    "!node_modules{,/**}",
+    "!generators{,/**}",
+    "!coverage/{,/**}",
+    "!**/obj/{,/**}",
+  ])
+    .pipe(prettier())
+    .pipe(dest("."));
 }
 
 export function lint() {
   const program = Linter.createProgram("tsconfig.json");
   return src("{src,__tests__}/**/*.ts")
-    .pipe(check())
+    .pipe(prettier.check())
     .pipe(
       gtslint({
         formatter: "stylish",
@@ -63,9 +80,7 @@ function exportTemplatesTask() {
 }
 
 function compileTypescript() {
-  const tsResult = src("src/**/*.ts")
-    .pipe(init())
-    .pipe(tsProject());
+  const tsResult = src("src/**/*.ts").pipe(init()).pipe(tsProject());
   return merge([
     src("src/**/*.d.ts"),
     tsResult.dts,

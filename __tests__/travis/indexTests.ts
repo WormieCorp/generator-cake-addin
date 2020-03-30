@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
+import { getPromptConfig } from "../../defaultConfigs";
 
 const generatorDir = path.join(__dirname, "../../src/travis");
 
@@ -10,7 +11,7 @@ describe("generator:travis", () => {
     beforeEach(() => {
       return helpers
         .run(generatorDir)
-        .withPrompts({ indentYamlSize: 2 })
+        .withPrompts(getPromptConfig())
         .inTmpDir((tmpDir) => {
           fs.writeFileSync(
             path.join(tmpDir, "package.json"),
@@ -64,7 +65,7 @@ script:
     beforeEach(() => {
       return helpers
         .run(generatorDir)
-        .withPrompts({ indentYamlSize: 4 })
+        .withPrompts(getPromptConfig({ indentYamlSize: 4 }))
         .inTmpDir((tmpDir) => {
           fs.writeFileSync(
             path.join(tmpDir, "package.json"),
