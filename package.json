@@ -48,7 +48,7 @@
         ]
     },
     "dependencies": {
-        "chalk": "^3.0.0",
+        "chalk": "^4.0.0",
         "fullname": "^4.0.1",
         "gulp-if": "^3.0.0",
         "through2": "^3.0.1",
