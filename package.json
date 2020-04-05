@@ -94,7 +94,7 @@
         "husky": "4.2.3",
         "jest": "25.2.7",
         "jest-junit": "10.0.0",
-        "lint-staged": "10.1.1",
+        "lint-staged": "10.1.2",
         "merge-stream": "2.0.0",
         "prettier": "2.0.2",
         "semantic-release": "17.0.4",
