@@ -97,7 +97,7 @@
         "lint-staged": "10.2.6",
         "merge-stream": "2.0.0",
         "prettier": "2.0.5",
-        "semantic-release": "17.0.7",
+        "semantic-release": "17.0.8",
         "ts-jest": "26.0.0",
         "tslint": "6.1.2",
         "tslint-config-prettier": "1.18.0",
