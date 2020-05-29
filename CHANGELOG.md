@@ -1,5 +1,22 @@
 # Cake Addin generator changelog
 
+## [1.3.3](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.2...v1.3.3) (2020-05-29)
+
+
+### Bug fixes
+
+* correct call to new uuid library ([26d256c](https://github.com/WormieCorp/generator-cake-addin/commit/26d256c))
+
+
+### Dependencies
+
+* [security] bump handlebars from 4.5.3 to 4.7.6 ([b918301](https://github.com/WormieCorp/generator-cake-addin/commit/b918301))
+* bump chalk from 3.0.0 to 4.0.0 ([12f4aa6](https://github.com/WormieCorp/generator-cake-addin/commit/12f4aa6))
+* bump uuid from 7.0.2 to 7.0.3 ([196caa3](https://github.com/WormieCorp/generator-cake-addin/commit/196caa3))
+* bump uuid from 7.0.3 to 8.1.0 ([5b25621](https://github.com/WormieCorp/generator-cake-addin/commit/5b25621))
+* bump yeoman-generator from 4.7.2 to 4.8.0 ([c521e81](https://github.com/WormieCorp/generator-cake-addin/commit/c521e81))
+* bump yeoman-generator from 4.8.0 to 4.10.1 ([ed33518](https://github.com/WormieCorp/generator-cake-addin/commit/ed33518))
+
 ## [1.3.2](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.1...v1.3.2) (2020-03-30)
 
 
