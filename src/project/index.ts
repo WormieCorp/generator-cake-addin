@@ -17,7 +17,7 @@
  */
 
 import { join } from "path";
-import * as uuid from "uuid/v4";
+import { v4 as uuid4 } from "uuid";
 import { BaseGenerator, PromptNames } from "../utils";
 
 /**
@@ -208,7 +208,7 @@ export default class ProjectGenerator extends BaseGenerator {
       this.addOption(name);
     }
 
-    this.setValue("mainProjectGuid", uuid().toUpperCase());
-    this.setValue("testProjectGuid", uuid().toUpperCase());
+    this.setValue("mainProjectGuid", uuid4().toUpperCase());
+    this.setValue("testProjectGuid", uuid4().toUpperCase());
   }
 }
