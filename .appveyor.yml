@@ -24,13 +24,6 @@ environment:
 
 stack: node %nodejs_version%
 
-for:
-  - matrix:
-      only:
-        - image: macos
-    environment:
-      DOTNET_ROOT: "/Users/appveyor/.dotnet"
-
 install:
   - ps: Install-Product node $env:nodejs_version
   - sh: if [ "$CI_LINUX" != 'true' ]; then brew install yarn; export PATH="$PATH:/Users/appveyor/.dotnet/tools" ; fi
