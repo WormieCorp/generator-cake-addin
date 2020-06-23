@@ -1,5 +1,12 @@
 # Cake Addin generator changelog
 
+## [1.3.4](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.3...v1.3.4) (2020-06-23)
+
+
+### Dependencies
+
+* bump chalk from 4.0.0 to 4.1.0 ([da82b6d](https://github.com/WormieCorp/generator-cake-addin/commit/da82b6d))
+
 ## [1.3.3](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.2...v1.3.3) (2020-05-29)
 
 
