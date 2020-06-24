@@ -37,7 +37,7 @@ test_script:
   - pwsh: ./build.ps1 --test
 
 on_finish:
-  - codecov --env 'nodejs_version APPVEYOR_BUILD_WORKER_IMAGE' --file "coverage/clover.xml coverage/coverage-final.json coverage/lcov.info"
+  - codecov --env 'nodejs_version APPVEYOR_BUILD_WORKER_IMAGE' --file coverage/clover.xml coverage/coverage-final.json coverage/lcov.info --required
   - pwsh: |
       $wc = New-Object 'System.Net.WebClient'
       $wc.UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\junit.xml))
