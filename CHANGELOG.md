@@ -1,5 +1,13 @@
 # Cake Addin generator changelog
 
+## [1.3.5](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.4...v1.3.5) (2020-06-24)
+
+
+### Dependencies
+
+* bump through2 from 3.0.1 to 3.0.2 ([84d9b30](https://github.com/WormieCorp/generator-cake-addin/commit/84d9b30))
+* bump uuid from 8.1.0 to 8.2.0 ([9ccf166](https://github.com/WormieCorp/generator-cake-addin/commit/9ccf166))
+
 ## [1.3.4](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.3...v1.3.4) (2020-06-23)
 
 
