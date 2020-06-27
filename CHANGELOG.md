@@ -1,5 +1,12 @@
 # Cake Addin generator changelog
 
+## [1.3.6](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.5...v1.3.6) (2020-06-27)
+
+
+### Dependencies
+
+* bump yeoman-generator from 4.10.1 to 4.11.0 ([248ae3b](https://github.com/WormieCorp/generator-cake-addin/commit/248ae3b))
+
 ## [1.3.5](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.4...v1.3.5) (2020-06-24)
 
 
