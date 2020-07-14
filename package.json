@@ -73,7 +73,7 @@
         "@types/gulp-sourcemaps": "0.0.32",
         "@types/jest": "26.0.4",
         "@types/merge-stream": "1.1.2",
-        "@types/prettier": "2.0.1",
+        "@types/prettier": "2.0.2",
         "@types/through2": "2.0.36",
         "@types/uuid": "8.0.0",
         "@types/yeoman-assert": "3.1.1",
