@@ -8,11 +8,13 @@ const generatorDir = path.join(__dirname, "../../src/travis");
 
 describe("generator:travis", () => {
   describe("default", () => {
+    let workDir = "";
     beforeEach(() => {
       return helpers
         .run(generatorDir)
         .withPrompts(getPromptConfig())
         .inTmpDir((tmpDir) => {
+          workDir = tmpDir;
           fs.writeFileSync(
             path.join(tmpDir, "package.json"),
             '{"name": "Cake.Foo", "files":[]}'
@@ -21,12 +23,12 @@ describe("generator:travis", () => {
     });
 
     it("creates travis build file", () => {
-      assert.file([".travis.yml"]);
+      assert.file(path.join(workDir, ".travis.yml"));
     });
 
     it("fills travis.yml file with expected content", () => {
       assert.equalsFileContent(
-        ".travis.yml",
+        path.join(workDir, ".travis.yml"),
         `language: csharp
 dist: xenial
 os:
@@ -62,11 +64,13 @@ script:
   });
 
   describe("custom indent", () => {
+    let workDir = "";
     beforeEach(() => {
       return helpers
         .run(generatorDir)
         .withPrompts(getPromptConfig({ indentYamlSize: 4 }))
         .inTmpDir((tmpDir) => {
+          workDir = tmpDir;
           fs.writeFileSync(
             path.join(tmpDir, "package.json"),
             '{"name": "Cake.Foo", "files":[]}'
@@ -75,12 +79,12 @@ script:
     });
 
     it("creates travis build file", () => {
-      assert.file([".travis.yml"]);
+      assert.file(path.join(workDir, ".travis.yml"));
     });
 
     it("fills travis.yml file with expected content", () => {
       assert.equalsFileContent(
-        ".travis.yml",
+        path.join(workDir, ".travis.yml"),
         `language: csharp
 dist: xenial
 os:

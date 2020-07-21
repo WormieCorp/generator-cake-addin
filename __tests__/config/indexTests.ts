@@ -8,21 +8,24 @@ const generatorDir = join(__dirname, "../../src/config");
 
 describe("generator:config", () => {
   describe("default", () => {
+    let workDir = "";
     beforeAll(() =>
-      run(generatorDir).withOptions(
-        getPromptConfig({
-          enableAllContributors: true,
-        })
-      )
+      run(generatorDir)
+        .withOptions(
+          getPromptConfig({
+            enableAllContributors: true,
+          })
+        )
+        .inTmpDir((dir) => (workDir = dir))
     );
 
     it("creates editorconfig file", () => {
-      assert.file(".editorconfig");
+      assert.file(join(workDir, ".editorconfig"));
     });
 
     it("creates editorconfig with expected content", () => {
       assert.equalsFileContent(
-        ".editorconfig",
+        join(workDir, ".editorconfig"),
         readFileSync(join(__dirname, "expected/.editorconfig"), {
           encoding: "utf8",
         })
@@ -30,12 +33,12 @@ describe("generator:config", () => {
     });
 
     it("creates gitattributes file", () => {
-      assert.file(".gitattributes");
+      assert.file(join(workDir, ".gitattributes"));
     });
 
     it("creates gitattributes with expected content", () => {
       assert.equalsFileContent(
-        ".gitattributes",
+        join(workDir, ".gitattributes"),
         readFileSync(join(__dirname, "expected/.gitattributes"), {
           encoding: "utf8",
         })
@@ -43,12 +46,12 @@ describe("generator:config", () => {
     });
 
     it("creates gitignore file", () => {
-      assert.file(".gitignore");
+      assert.file(join(workDir, ".gitignore"));
     });
 
     it("creates gitignore with expected content", () => {
       assert.equalsFileContent(
-        ".gitignore",
+        join(workDir, ".gitignore"),
         readFileSync(join(__dirname, "expected/.gitignore"), {
           encoding: "utf8",
         })
@@ -56,12 +59,12 @@ describe("generator:config", () => {
     });
 
     it("creates GitReleaseManager file", () => {
-      assert.file("GitReleaseManager.yaml");
+      assert.file(join(workDir, "GitReleaseManager.yaml"));
     });
 
     it("creates GitReleaseManager with expected content", () => {
       assert.equalsFileContent(
-        "GitReleaseManager.yaml",
+        join(workDir, "GitReleaseManager.yaml"),
         readFileSync(join(__dirname, "expected/GitReleaseManager.yaml"), {
           encoding: "utf8",
         })
@@ -69,12 +72,12 @@ describe("generator:config", () => {
     });
 
     it("creates all-contributorsrc file", () => {
-      assert.file(".all-contributorsrc");
+      assert.file(join(workDir, ".all-contributorsrc"));
     });
 
     it("creates all-contributorsrc with expected content", () => {
       assert.equalsFileContent(
-        ".all-contributorsrc",
+        join(workDir, ".all-contributorsrc"),
         readFileSync(join(__dirname, "expected/.all-contributorsrc"), {
           encoding: "utf8",
         })
@@ -83,27 +86,35 @@ describe("generator:config", () => {
   });
 
   describe("disable all-contributors", () => {
-    beforeAll(() => run(generatorDir).withPrompts(getPromptConfig()));
+    let workDir = "";
+    beforeAll(() =>
+      run(generatorDir)
+        .withPrompts(getPromptConfig())
+        .inTmpDir((dir) => (workDir = dir))
+    );
 
     it("should not create all contributors configuratior file", () => {
-      assert.noFile(".all-contributorsrc");
+      assert.noFile(join(workDir, ".all-contributorsrc"));
     });
   });
 
   describe("indentation", () => {
     describe("tabs", () => {
+      let workDir = "";
       beforeAll(() =>
-        run(generatorDir).withPrompts(
-          getPromptConfig({
-            enableAllContributors: true,
-            useTabs: true,
-          })
-        )
+        run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              enableAllContributors: true,
+              useTabs: true,
+            })
+          )
+          .inTmpDir((dir) => (workDir = dir))
       );
 
       it("should create editorconfig with default to tabs", () => {
         const re = /\[\*\][^\[]*indent_style\s=\stab\s/g;
-        const buffer = readFileSync(".editorconfig", {
+        const buffer = readFileSync(join(workDir, ".editorconfig"), {
           encoding: "utf-8",
         });
 
@@ -114,7 +125,7 @@ describe("generator:config", () => {
 
       it("should create editorconfig with yaml to space", () => {
         const re = /\[\*\.{yml,yaml}\][^\[]*indent_style\s=\sspace\s/g;
-        const buffer = readFileSync(".editorconfig", {
+        const buffer = readFileSync(join(workDir, ".editorconfig"), {
           encoding: "utf-8",
         });
 
@@ -125,18 +136,21 @@ describe("generator:config", () => {
     });
 
     describe("default-space-set-to-2", () => {
+      let workDir = "";
       beforeAll(() =>
-        run(generatorDir).withPrompts(
-          getPromptConfig({
-            enableAllContributors: true,
-            indentSize: 2,
-          })
-        )
+        run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              enableAllContributors: true,
+              indentSize: 2,
+            })
+          )
+          .inTmpDir((dir) => (workDir = dir))
       );
 
       it("creates all-contributorsrc with expected content", () => {
         assert.equalsFileContent(
-          ".all-contributorsrc",
+          join(workDir, ".all-contributorsrc"),
           readFileSync(join(__dirname, "expected/space/.all-contributorsrc"), {
             encoding: "utf8",
           })
@@ -145,7 +159,7 @@ describe("generator:config", () => {
 
       it("creates .editorconfig with expected content", () => {
         assert.equalsFileContent(
-          ".editorconfig",
+          join(workDir, ".editorconfig"),
           readFileSync(join(__dirname, "expected/space/.editorconfig"), {
             encoding: "utf8",
           })
@@ -154,18 +168,21 @@ describe("generator:config", () => {
     });
 
     describe("yaml-space-set-to-4", () => {
+      let workDir = "";
       beforeAll(() =>
-        run(generatorDir).withPrompts(
-          getPromptConfig({
-            enableAllContributors: true,
-            indentYamlSize: 4,
-          })
-        )
+        run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              enableAllContributors: true,
+              indentYamlSize: 4,
+            })
+          )
+          .inTmpDir((dir) => (workDir = dir))
       );
 
       it("creates all-contributorsrc with expected content", () => {
         assert.equalsFileContent(
-          "GitReleaseManager.yaml",
+          join(workDir, "GitReleaseManager.yaml"),
           readFileSync(
             join(__dirname, "expected/space/GitReleaseManager.yaml"),
             {

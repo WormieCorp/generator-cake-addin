@@ -38,6 +38,7 @@ const skipDotnet = !sync("dotnet");
 
 describe("generator:app", () => {
   describe("default", () => {
+    let workDir = "";
     beforeAll(() => {
       return helpers
         .run(generatorDir)
@@ -49,19 +50,21 @@ describe("generator:app", () => {
             projectName: "MyTestApp",
           })
         )
-        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet })
+        .inTmpDir((dir) => (workDir = dir));
     });
 
     it("creates default project structure files", () => {
-      assert.file(expectedFiles);
+      assert.file(expectedFiles.map((v) => path.join(workDir, v)));
     });
 
     it("does not create contributing file when not enabled", () => {
-      assert.noFile("CONTRIBUTING.md");
+      assert.noFile(path.join(workDir, "CONTRIBUTING.md"));
     });
   });
 
   describe("disable-travis", () => {
+    let workDir = "";
     beforeAll(() => {
       return helpers
         .run(generatorDir)
@@ -70,15 +73,17 @@ describe("generator:app", () => {
             enableTravis: false,
           })
         )
-        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet })
+        .inTmpDir((dir) => (workDir = dir));
     });
 
     it("does not create travis file when disabled", () => {
-      assert.noFile(".travis.yml");
+      assert.noFile(path.join(workDir, ".travis.yml"));
     });
   });
 
   describe("enable-contributing", () => {
+    let workDir = "";
     beforeAll(() => {
       return helpers
         .run(generatorDir)
@@ -87,15 +92,17 @@ describe("generator:app", () => {
             enableContributing: true,
           })
         )
-        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet })
+        .inTmpDir((dir) => (workDir = dir));
     });
 
     it("creates contributing file when enabled", () => {
-      assert.file("CONTRIBUTING.md");
+      assert.file(path.join(workDir, "CONTRIBUTING.md"));
     });
   });
 
   describe("disable-allcontributors", () => {
+    let workDir = "";
     beforeAll(() => {
       return helpers
         .run(generatorDir)
@@ -104,11 +111,12 @@ describe("generator:app", () => {
             enableAllContributors: false,
           })
         )
-        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet });
+        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet })
+        .inTmpDir((dir) => (workDir = dir));
     });
 
     it("should not create all contributors file when disabled", () => {
-      assert.noFile(".all-contributorsrc");
+      assert.noFile(path.join(workDir, ".all-contributorsrc"));
     });
   });
 });
