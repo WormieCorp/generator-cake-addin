@@ -21,7 +21,6 @@ an optional travis build file.
 
 - [Install](#install)
 - [Usage](#usage)
-- [Known Issues](#known-issues)
 - [Maintainer](#maintainer)
 - [Contributing](#contributing)
   - [Contributors](#contributors)
@@ -55,14 +54,6 @@ You may also run any of the sub generators located in [the source directory][sub
 ```sh
 yo cake-addin:sub-generator
 ```
-
-## Known Issues
-
-- **Windows only**: After the generator have ran there may be a need to press enter to return to the commandline.
-  This is an upstream issue, which seem to be tracked here:
-  [yeoman/generator#1098](https://github.com/yeoman/generator/issues/1098).
-  - **Workaround**: Either just press `{Enter}` after the generator have finished,
-    or downgrade NodeJS to version 8.x (not officially supported).
 
 ## Maintainer
 
