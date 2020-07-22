@@ -256,7 +256,7 @@ describe("generator:project", () => {
           [
             "src/Cake.TestApp/bin/Debug/netstandard2.0/Cake.TestApp.dll",
             "src/Cake.TestApp/bin/Debug/net461/Cake.TestApp.dll",
-            "src/Cake.TestApp.Tests/bin/Debug/netcoreapp2.0/Cake.TestApp.Tests.dll",
+            "src/Cake.TestApp.Tests/bin/Debug/netcoreapp2.1/Cake.TestApp.Tests.dll",
           ].map((v) => path.join(workDir, v))
         );
       });
