@@ -152,11 +152,10 @@ export default class ProjectGenerator extends BaseGenerator {
         PromptNames.ProjectName
       )}.sln`
     );
-    const done = this.async();
     if (this.getBoolValue("build")) {
-      this.spawnCommand("dotnet", ["build", solutionPath]).on("close", done);
+      this.spawnCommandSync("dotnet", ["build", solutionPath]);
     } else {
-      this.spawnCommand("dotnet", ["restore", solutionPath]).on("close", done);
+      this.spawnCommandSync("dotnet", ["restore", solutionPath]);
     }
   }
 
