@@ -4,7 +4,10 @@ import * as assert from "yeoman-assert";
 import * as helpers from "yeoman-test";
 import { getPromptConfig } from "../../defaultConfigs";
 
-function runHelper(licenseType: string, author: string = "Kim Nordmo") {
+function runHelper(
+  licenseType: string,
+  author: string = "Kim Nordmo"
+): helpers.RunContext {
   return helpers
     .run(path.join(__dirname, "../../src/license"))
     .withPrompts(
@@ -30,15 +33,18 @@ const licenses = [
 describe("generator:license", () => {
   for (const license of licenses) {
     describe(`${license.Name} License`, () => {
-      beforeAll(() => runHelper(license.Name));
+      let workDir = "";
+      beforeAll(() =>
+        runHelper(license.Name).inTmpDir((dir) => (workDir = dir))
+      );
 
       it("should create license.txt", () => {
-        assert.file("LICENSE.txt");
+        assert.file(path.join(workDir, "LICENSE.txt"));
       });
 
       it("should create license with expected content", () => {
         assert.equalsFileContent(
-          "LICENSE.txt",
+          path.join(workDir, "LICENSE.txt"),
           readFileSync(path.join(__dirname, `${license.Name}.txt`), {
             encoding: "utf8",
           })
@@ -47,13 +53,15 @@ describe("generator:license", () => {
 
       if (!license.Author) {
         it("should not require author to be set", () => {
+          let workDir2 = "";
           return helpers
             .run(path.join(__dirname, "../../src/license"))
             .withPrompts(getPromptConfig({ licenseType: license.Name }))
             .withOptions({ year: 2019 })
+            .inTmpDir((dir) => (workDir2 = dir))
             .then(() => {
               assert.equalsFileContent(
-                "LICENSE.txt",
+                path.join(workDir2, "LICENSE.txt"),
                 readFileSync(path.join(__dirname, `${license.Name}.txt`), {
                   encoding: "utf8",
                 })
@@ -65,12 +73,15 @@ describe("generator:license", () => {
   }
 
   describe("custom location", () => {
+    let workDir = "";
     beforeAll(() =>
-      runHelper("Unlicense").withOptions({ out: "UNLICENSE.txt" })
+      runHelper("Unlicense")
+        .withOptions({ out: "UNLICENSE.txt" })
+        .inTmpDir((dir) => (workDir = dir))
     );
 
     it("should allow user to specify file with options", () => {
-      assert.file("UNLICENSE.txt");
+      assert.file(path.join(workDir, "UNLICENSE.txt"));
     });
   });
 
@@ -84,13 +95,17 @@ describe("generator:license", () => {
   ];
 
   for (const license of licenseNames) {
+    let workDir = "";
     it(`should reuse existing ${license} file`, () => {
       return runHelper("MIT")
-        .inTmpDir((tmpDir) => writeFileSync(path.join(tmpDir, license), ""))
+        .inTmpDir((tmpDir) => {
+          writeFileSync(path.join(tmpDir, license), "");
+          workDir = tmpDir;
+        })
         .then(() => {
-          assert.file(license);
+          assert.file(path.join(workDir, license));
           if (license !== "LICENSE.txt") {
-            assert.noFile("LICENSE.txt");
+            assert.noFile(path.join(workDir, "LICENSE.txt"));
           }
         });
     });

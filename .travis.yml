@@ -1,11 +1,11 @@
 os:
   - linux
-#  - osx
+  - osx
 
 language: node_js
 node_js:
-  - v10
-  - v12
+  - lts/*
+  - node
 
 branches:
   # Blacklist
@@ -30,7 +30,7 @@ jobs:
   include:
     - stage: release
       if: branch = master
-      node_js: v10
+      node_js: lts/*
       script: skip
       deploy:
         provider: script

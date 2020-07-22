@@ -25,7 +25,7 @@ import { indentStream } from "./streams/indent-stream";
 
 /** Declares a common base to be used by all of the implemented generators */
 export default abstract class BaseGenerator extends Generator {
-  private _prompts: Generator.Question[] = [];
+  private _generatorPrompts: Generator.Question[] = [];
   private _answers: Generator.Answers = {};
   private _overrides: Generator.Answers = {};
   private _optionConfigs: IGeneratorOption[] = [];
@@ -89,7 +89,10 @@ export default abstract class BaseGenerator extends Generator {
     // First let us populate the existing answers with available options
     this.validateOptions();
 
-    this._answers = { ...(await this.prompt(this._prompts)), ...this._answers };
+    this._answers = {
+      ...(await this.prompt(this._generatorPrompts)),
+      ...this._answers,
+    };
 
     this.registerTransformStream(
       gulpIf(
@@ -129,7 +132,7 @@ export default abstract class BaseGenerator extends Generator {
       return;
     }
 
-    this._prompts.push(question);
+    this._generatorPrompts.push(question);
   }
 
   protected addOption(question: IGeneratorOption | PromptNames) {

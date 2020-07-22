@@ -40,113 +40,157 @@ function assertFileContent(filePath: string, expectedFile: string) {
 
 describe("generator:travis", () => {
   describe("default", () => {
+    let workDir = "";
     beforeAll(() => {
-      return helpers.run(generatorDir).withPrompts(getPromptConfig());
+      return helpers
+        .run(generatorDir)
+        .withPrompts(getPromptConfig())
+        .inTmpDir((dir) => (workDir = dir));
     });
 
     it("creates default project structure files", () => {
-      assert.file(expectedFiles);
+      assert.file(expectedFiles.map((v) => path.join(workDir, v)));
     });
 
     for (const fileCheck of expectedContentFiles) {
       it(`creates ${fileCheck.name} file with expected content`, () => {
         assertFileContent(
-          fileCheck.testFile,
+          path.join(workDir, fileCheck.testFile),
           "default/" + fileCheck.expectedFile
         );
       });
     }
 
     it("windows bootstrapper sets cake build file to expected script name", () => {
-      assert.fileContent("build.ps1", /\$Script\s*=\s*"recipe\.cake"/);
+      assert.fileContent(
+        path.join(workDir, "build.ps1"),
+        /\$Script\s*=\s*"recipe\.cake"/
+      );
     });
   });
 
   describe("custom prompts", () => {
+    let workDir = "";
     beforeAll(() => {
-      return helpers.run(generatorDir).withPrompts(
-        getPromptConfig({
-          projectName: "MyAddin",
-          repositoryOwner: "gep13",
-          scriptName: "setup.cake",
-          sourceDir: "./source",
-        })
-      );
+      return helpers
+        .run(generatorDir)
+        .withPrompts(
+          getPromptConfig({
+            projectName: "MyAddin",
+            repositoryOwner: "gep13",
+            scriptName: "setup.cake",
+            sourceDir: "./source",
+          })
+        )
+        .inTmpDir((dir) => (workDir = dir));
     });
 
     it("creates build files", () => {
-      assert.file([
-        "build.ps1",
-        "build.sh",
-        "setup.cake",
-        "tools/packages.config",
-      ]);
+      assert.file(
+        [
+          "build.ps1",
+          "build.sh",
+          "setup.cake",
+          "tools/packages.config",
+        ].map((v) => path.join(workDir, v))
+      );
     });
 
     it("Unix bootstrapper should set cake script name", () => {
-      assert.fileContent("build.sh", /SCRIPT="setup\.cake"/);
+      assert.fileContent(
+        path.join(workDir, "build.sh"),
+        /SCRIPT="setup\.cake"/
+      );
     });
 
     it("Windows bootstrapper should set cake script name", () => {
-      assert.fileContent("build.ps1", /\$Script\s*=\s*"setup\.cake"/);
+      assert.fileContent(
+        path.join(workDir, "build.ps1"),
+        /\$Script\s*=\s*"setup\.cake"/
+      );
     });
 
     it("Cake script should set project name", () => {
-      assert.fileContent("setup.cake", /title:\s*"Cake\.MyAddin"/);
-      assert.fileContent("setup.cake", /repositoryName:\s*"Cake\.MyAddin"/);
+      assert.fileContent(
+        path.join(workDir, "setup.cake"),
+        /title:\s*"Cake\.MyAddin"/
+      );
+      assert.fileContent(
+        path.join(workDir, "setup.cake"),
+        /repositoryName:\s*"Cake\.MyAddin"/
+      );
     });
 
     it("Cake script should set repositoryOwner", () => {
-      assert.fileContent("setup.cake", /repositoryOwner:\s*"gep13"/);
+      assert.fileContent(
+        path.join(workDir, "setup.cake"),
+        /repositoryOwner:\s*"gep13"/
+      );
     });
 
     it("Cake script should set source directory", () => {
-      assert.fileContent("setup.cake", /sourceDirectoryPath:\s*"\.\/source"/);
+      assert.fileContent(
+        path.join(workDir, "setup.cake"),
+        /sourceDirectoryPath:\s*"\.\/source"/
+      );
     });
   });
 
   describe("custom handling for cake-contrib", () => {
+    let workDir = "";
     beforeAll(() => {
-      return helpers.run(generatorDir).withPrompts(
-        getPromptConfig({
-          projectName: "MyContribAddin",
-          repositoryOwner: "cake-contrib",
-        })
-      );
+      return helpers
+        .run(generatorDir)
+        .withPrompts(
+          getPromptConfig({
+            projectName: "MyContribAddin",
+            repositoryOwner: "cake-contrib",
+          })
+        )
+        .inTmpDir((dir) => (workDir = dir));
     });
 
     it("creates build files", () => {
-      assert.file([
-        "build.ps1",
-        "build.sh",
-        "recipe.cake",
-        "tools/packages.config",
-      ]);
+      assert.file(
+        [
+          "build.ps1",
+          "build.sh",
+          "recipe.cake",
+          "tools/packages.config",
+        ].map((v) => path.join(workDir, v))
+      );
     });
 
     it("Cake script should set source directory", () => {
-      assert.fileContent("recipe.cake", /appVeyorAccountName:\s*"cakecontrib"/);
+      assert.fileContent(
+        path.join(workDir, "recipe.cake"),
+        /appVeyorAccountName:\s*"cakecontrib"/
+      );
     });
   });
 
   describe("indentation", () => {
+    let workDir = "";
     describe("space", () => {
       beforeAll(() => {
-        return helpers.run(generatorDir).withPrompts(
-          getPromptConfig({
-            indentSize: 2,
-          })
-        );
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              indentSize: 2,
+            })
+          )
+          .inTmpDir((dir) => (workDir = dir));
       });
 
       it("creates default project structure files", () => {
-        assert.file(expectedFiles);
+        assert.file(expectedFiles.map((v) => path.join(workDir, v)));
       });
 
       for (const fileCheck of expectedContentFiles) {
         it(`creates ${fileCheck.name} file with expected content`, () => {
           assertFileContent(
-            fileCheck.testFile,
+            path.join(workDir, fileCheck.testFile),
             "space/" + fileCheck.expectedFile
           );
         });
@@ -154,22 +198,26 @@ describe("generator:travis", () => {
     });
 
     describe("tabs", () => {
+      let workDir2 = "";
       beforeAll(() => {
-        return helpers.run(generatorDir).withPrompts(
-          getPromptConfig({
-            useTabs: true,
-          })
-        );
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              useTabs: true,
+            })
+          )
+          .inTmpDir((dir) => (workDir2 = dir));
       });
 
       it("creates default project structure files", () => {
-        assert.file(expectedFiles);
+        assert.file(expectedFiles.map((v) => path.join(workDir2, v)));
       });
 
       for (const fileCheck of expectedContentFiles) {
         it(`creates ${fileCheck.name} file with tabs instead of spaces`, () => {
           assertFileContent(
-            fileCheck.testFile,
+            path.join(workDir2, fileCheck.testFile),
             "tabs/" + fileCheck.expectedFile
           );
         });
