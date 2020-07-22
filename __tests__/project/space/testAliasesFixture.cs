@@ -25,7 +25,8 @@ namespace Cake.TestApp.Tests
         argumentsMoq.Object,
         ProcessRunner,
         registryMoq.Object,
-        Tools,dataService.Object,
+        Tools,
+        dataService.Object,
         Configuration);
     }
 
