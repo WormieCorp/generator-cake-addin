@@ -4,7 +4,6 @@
 
 [![standard-readme compliant][]][standard-readme]
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
-[![Appveyor build][appveyorimage]][appveyor]
 [![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
 [![NPM package][npmimage]][npm]
@@ -95,8 +94,6 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [GNU General Public License v3.0 or later © Kim J. Nordmo][license]
 
 [all-contributors]: https://github.com/all-contributors/all-contributors
-[appveyor]: https://ci.appveyor.com/project/admiringworm/generator-cake-addin
-[appveyorimage]: https://img.shields.io/appveyor/ci/admiringworm/generator-cake-addin.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/WormieCorp/generator-cake-addin
 [codecovimage]: https://img.shields.io/codecov/c/github/WormieCorp/generator-cake-addin.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
