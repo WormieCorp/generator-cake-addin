@@ -17,7 +17,7 @@
         <Copyright>Copyright © $(FullYear) — Kim Nordmo</Copyright>
         <Description>Cake addin generation test</Description>
         <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://admiringworm.github.io/Cake.TestApp</PackageProjectUrl>
         <PackageTags>cake;addin;testapp</PackageTags>
         <RepositoryUrl>https://github.com/AdmiringWorm/Cake.TestApp.git</RepositoryUrl>

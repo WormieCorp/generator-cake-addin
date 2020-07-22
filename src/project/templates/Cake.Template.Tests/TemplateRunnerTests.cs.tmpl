@@ -1,4 +1,5 @@
-<% let unitTestAttribute = "";
+<%- include('../headers/csheader.tmpl', {filename: projectName + 'RunnerTests.cs' })
+_%><% let unitTestAttribute = "";
    let usingStatements = "";
 switch (unitTestLibrary) {
 	case "xunit":

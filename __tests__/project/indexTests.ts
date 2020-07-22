@@ -29,6 +29,7 @@ describe("generator:project", () => {
       .run(generatorDir)
       .withOptions(
         getPromptConfig({
+          licenseType: "MPL-2.0",
           "skip-dotnet": true,
         })
       )
@@ -50,7 +51,7 @@ describe("generator:project", () => {
     return helpers
       .run(generatorDir)
       .withPrompts(getPromptConfig())
-      .withOptions({ "skip-dotnet": true })
+      .withOptions({ licenseType: "MPL-2.0", "skip-dotnet": true })
       .inTmpDir((dir) => (workDir = dir))
       .then(() =>
         assert.fileContent(
@@ -68,6 +69,7 @@ describe("generator:project", () => {
         .withPrompts(
           getPromptConfig({
             description: "Cake addin generation test",
+            licenseType: "MPL-2.0",
             enableWyam: false,
           })
         )
@@ -154,6 +156,7 @@ describe("generator:project", () => {
           .run(generatorDir)
           .withPrompts(getPromptConfig())
           .withOptions({
+            licenseType: "MPL-2.0",
             "skip-dotnet": true,
           })
           .inTmpDir((dir) => (workDir2 = dir));
@@ -213,7 +216,7 @@ describe("generator:project", () => {
       return helpers
         .run(generatorDir)
         .withPrompts(getPromptConfig({ sourceDir: "./source" }))
-        .withOptions({ "skip-dotnet": true })
+        .withOptions({ licenseType: "MPL-2.0", "skip-dotnet": true })
         .inTmpDir((dir) => (workDir = dir))
         .then(() =>
           assert.file(path.join(workDir, "source", "Cake.TestApp.sln"))
@@ -226,6 +229,7 @@ describe("generator:project", () => {
         .run(generatorDir)
         .withOptions(
           getPromptConfig({
+            licenseType: "MPL-2.0",
             "skip-dotnet": true,
             sourceDir: "./source",
           })
@@ -246,6 +250,7 @@ describe("generator:project", () => {
           .withOptions(
             getPromptConfig({
               build: true,
+              licenseType: "MPL-2.0",
             })
           )
           .inTmpDir((dir) => (workDir = dir));
@@ -277,13 +282,14 @@ describe("generator:project", () => {
             })
           )
           .withOptions({
+            licenseType: "MPL-2.0",
             "skip-dotnet": true,
             "start-year": 2019,
           })
           .inTmpDir((dir) => (workDir = dir));
       });
 
-      const tabRegex = /^($|\t*[^\s])/;
+      const tabRegex = /^($| \*|\t*[^\s])/;
 
       it("should create solution file with tabs instead of spaces", () => {
         const buffer = readFileSync(
@@ -461,6 +467,7 @@ describe("generator:project", () => {
               description: "Cake addin generation test",
               enableWyam: false,
               indentSize: 2,
+              licenseType: "MPL-2.0",
             })
           )
           .withOptions({
@@ -555,6 +562,246 @@ describe("generator:project", () => {
             "TestAppRunnerTests.cs"
           ),
           "space/testRunnerTests.cs"
+        );
+      });
+    });
+  });
+
+  describe("licenses", () => {
+    describe("Apache-2.0", () => {
+      let workDir = "";
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              licenseType: "Apache-2.0",
+            })
+          )
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          })
+          .inTmpDir((dir) => (workDir = dir));
+      });
+
+      it("should generate correct apache license header", () => {
+        assert.fileContent(
+          path.join(workDir, "src", "Cake.TestApp", "TestAppSettings.cs"),
+          `/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */`
+        );
+      });
+    });
+
+    describe("GPL-3.0-or-later", () => {
+      let workDir = "";
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              licenseType: "GPL-3.0-or-later",
+            })
+          )
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          })
+          .inTmpDir((dir) => (workDir = dir));
+      });
+
+      it("should generate correct gpl 3.0 license header", () => {
+        assert.fileContent(
+          path.join(workDir, "src", "Cake.TestApp", "TestAppSettings.cs"),
+          `/*
+ * Copyright (C) 2018-${new Date().getFullYear()} Kim Nordmo
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, either version 3 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://www.gnu.org/licenses/.
+ */`
+        );
+      });
+    });
+
+    describe("MIT", () => {
+      let workDir = "";
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              licenseType: "MIT",
+            })
+          )
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          })
+          .inTmpDir((dir) => (workDir = dir));
+      });
+
+      it("should generate correct mit license header", () => {
+        assert.fileContent(
+          path.join(workDir, "src", "Cake.TestApp", "TestAppSettings.cs"),
+          `/*
+ * MIT License
+ *
+ * Copyright (c) 2018-${new Date().getFullYear()} Kim Nordmo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */`
+        );
+      });
+    });
+
+    describe("MPL-2.0", () => {
+      let workDir = "";
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              licenseType: "MPL-2.0",
+            })
+          )
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          })
+          .inTmpDir((dir) => (workDir = dir));
+      });
+
+      it("should generate correct mozilla 2.0 license header", () => {
+        assert.fileContent(
+          path.join(workDir, "src", "Cake.TestApp", "TestAppSettings.cs"),
+          `/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */`
+        );
+      });
+    });
+
+    describe("Unlicense", () => {
+      let workDir = "";
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              licenseType: "Unlicense",
+            })
+          )
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          })
+          .inTmpDir((dir) => (workDir = dir));
+      });
+
+      it("should generate correct The Unlicense header", () => {
+        assert.equalsFileContent(
+          path.join(workDir, "src", "Cake.TestApp", "TestAppSettings.cs"),
+          `namespace Cake.TestApp
+{
+    using System;
+    using Cake.Core.Tooling;
+
+    public sealed class TestAppSettings : ToolSettings
+    {
+    }
+}
+`
+        );
+      });
+    });
+
+    describe("WTFPL", () => {
+      let workDir = "";
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              licenseType: "WTFPL",
+            })
+          )
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          })
+          .inTmpDir((dir) => (workDir = dir));
+      });
+
+      it("should generate correct WTFPL license header", () => {
+        assert.equalsFileContent(
+          path.join(workDir, "src", "Cake.TestApp", "TestAppSettings.cs"),
+          `namespace Cake.TestApp
+{
+    using System;
+    using Cake.Core.Tooling;
+
+    public sealed class TestAppSettings : ToolSettings
+    {
+    }
+}
+`
         );
       });
     });
