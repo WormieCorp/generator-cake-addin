@@ -4,7 +4,6 @@
 
 [![standard-readme compliant][]][standard-readme]
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
-[![Appveyor build][appveyorimage]][appveyor]
 [![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
 [![NPM package][npmimage]][npm]
@@ -22,7 +21,6 @@ an optional travis build file.
 
 - [Install](#install)
 - [Usage](#usage)
-- [Known Issues](#known-issues)
 - [Maintainer](#maintainer)
 - [Contributing](#contributing)
   - [Contributors](#contributors)
@@ -57,14 +55,6 @@ You may also run any of the sub generators located in [the source directory][sub
 yo cake-addin:sub-generator
 ```
 
-## Known Issues
-
-- **Windows only**: After the generator have ran there may be a need to press enter to return to the commandline.
-  This is an upstream issue, which seem to be tracked here:
-  [yeoman/generator#1098](https://github.com/yeoman/generator/issues/1098).
-  - **Workaround**: Either just press `{Enter}` after the generator have finished,
-    or downgrade NodeJS to version 8.x (not officially supported).
-
 ## Maintainer
 
 [Kim J. Nordmo @AdmiringWorm][maintainer]
@@ -95,8 +85,6 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [GNU General Public License v3.0 or later © Kim J. Nordmo][license]
 
 [all-contributors]: https://github.com/all-contributors/all-contributors
-[appveyor]: https://ci.appveyor.com/project/admiringworm/generator-cake-addin
-[appveyorimage]: https://img.shields.io/appveyor/ci/admiringworm/generator-cake-addin.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/WormieCorp/generator-cake-addin
 [codecovimage]: https://img.shields.io/codecov/c/github/WormieCorp/generator-cake-addin.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
