@@ -1,5 +1,25 @@
 # Cake Addin generator changelog
 
+## [1.3.7](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.6...v1.3.7) (2020-07-22)
+
+
+### Bug fixes
+
+* **app:** correct duplicate prompting when running app generator ([1973392](https://github.com/WormieCorp/generator-cake-addin/commit/1973392)), closes [#410](https://github.com/WormieCorp/generator-cake-addin/issues/410)
+
+
+### Dependencies
+
+* [security] bump npm from 6.13.4 to 6.14.7 ([#412](https://github.com/WormieCorp/generator-cake-addin/issues//412)) ([ed25431](https://github.com/WormieCorp/generator-cake-addin/commit/ed25431))
+* bump npm-registry-fetch from 4.0.2 to 4.0.5 ([#402](https://github.com/WormieCorp/generator-cake-addin/issues//402)) ([7d6e30a](https://github.com/WormieCorp/generator-cake-addin/commit/7d6e30a))
+* bump through2 from 3.0.2 to 4.0.2 ([a148c1f](https://github.com/WormieCorp/generator-cake-addin/commit/a148c1f))
+
+
+### Documentation
+
+* remove build badge for appveyor ([7bd5a2a](https://github.com/WormieCorp/generator-cake-addin/commit/7bd5a2a))
+* remove known issue section ([459eaa1](https://github.com/WormieCorp/generator-cake-addin/commit/459eaa1))
+
 ## [1.3.6](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.5...v1.3.6) (2020-06-27)
 
 
