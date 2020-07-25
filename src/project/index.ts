@@ -46,7 +46,12 @@ export default class ProjectGenerator extends BaseGenerator {
     ];
 
     for (const name of promptNames) {
-      this.addPrompt(name, true);
+      if (
+        name !== PromptNames.IndentSize ||
+        !this.getBoolValue(PromptNames.UseTabs, false)
+      ) {
+        this.addPrompt(name, true);
+      }
     }
 
     return this.callPrompts();

@@ -31,7 +31,10 @@ export default class BuildGenerator extends BaseGenerator {
     this.addPrompt(PromptNames.ScriptName, true);
     this.addPrompt(PromptNames.SourceDir, true);
     this.addPrompt(PromptNames.UseTabs, true);
-    this.addPrompt(PromptNames.IndentSize, true);
+
+    if (!this.getBoolValue(PromptNames.UseTabs, false)) {
+      this.addPrompt(PromptNames.IndentSize, true);
+    }
 
     await this.callPrompts();
 

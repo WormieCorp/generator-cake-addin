@@ -64,7 +64,12 @@ export default class ConfigGenerator extends BaseGenerator {
 
     for (const name of this.promptNames) {
       this.addOption(name);
-      this.addPrompt(name, true);
+      if (
+        name !== PromptNames.IndentSize ||
+        !this.getBoolValue(PromptNames.UseTabs, false)
+      ) {
+        this.addPrompt(name, true);
+      }
     }
 
     const whenCondition = (answers: Answers) =>
