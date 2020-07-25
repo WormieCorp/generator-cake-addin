@@ -162,6 +162,17 @@ export abstract class GeneratorPrompts {
       validate: new NotEmptyValidator("license").validate,
     },
     {
+      default: true,
+      description:
+        "Wether to generate source files with a license header or not.",
+      inputType: InputType.Confirm,
+      isCommon: false,
+      message: "Do you want to use license header for source files? ",
+      name: PromptNames.UseLicenseHeaders,
+      when: (answers) =>
+        answers.licenseType !== "Unlicense" && answers.licenseType !== "WTFPL",
+    },
+    {
       inputType: InputType.Text,
       isCommon: false,
       message:

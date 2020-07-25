@@ -827,5 +827,41 @@ describe("generator:project", () => {
         );
       });
     });
+
+    describe("License Disabled", () => {
+      let workDir = "";
+      beforeAll(() => {
+        return helpers
+          .run(generatorDir)
+          .withPrompts(
+            getPromptConfig({
+              description: "Cake addin generation test",
+              enableWyam: false,
+              useLicenseHeaders: false,
+            })
+          )
+          .withOptions({
+            "skip-dotnet": true,
+            "start-year": 2018,
+          })
+          .inTmpDir((dir) => (workDir = dir));
+      });
+
+      it("should not generate license headers when disabled", () => {
+        assert.equalsFileContent(
+          path.join(workDir, "src", "Cake.TestApp", "TestAppSettings.cs"),
+          `namespace Cake.TestApp
+{
+    using System;
+    using Cake.Core.Tooling;
+
+    public sealed class TestAppSettings : ToolSettings
+    {
+    }
+}
+`
+        );
+      });
+    });
   });
 });

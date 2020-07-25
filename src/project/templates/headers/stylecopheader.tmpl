@@ -1,11 +1,14 @@
 <%
-	var text = include(licenseType + ".tmpl", { startYear: "{year}", author: "{companyName}" }).trimEnd();
-	var replacements = '\t';
+	let text = "";
+	if (useLicenseHeaders) {
+		text = include(licenseType + ".tmpl", { startYear: "{year}", author: "{companyName}" }).trimEnd();
+		var replacements = '\t';
 
-	if (!useTabs) {
-		replacements = '';
-		for (let i = 0; i < indentSize; i++) {
-			replacements = replacements + ' ';
+		if (!useTabs) {
+			replacements = '';
+			for (let i = 0; i < indentSize; i++) {
+				replacements = replacements + ' ';
+			}
 		}
 	}
 %>

@@ -1,15 +1,18 @@
 <%
-	var text = include(licenseType + ".tmpl").split('\n').map(s => {
-		if (!s || s.trim() == "") {
-			return " *";
-		}
-		else {
-			return " * " + s;
-		}
-	}).join('\n').replace(/[\* \n\r]*$/, '');
+	let text = "";
+	if (useLicenseHeaders) {
+		text = include(licenseType + ".tmpl").split('\n').map(s => {
+			if (!s || s.trim() == "") {
+				return " *";
+			}
+			else {
+				return " * " + s;
+			}
+		}).join('\n').replace(/[\* \n\r]*$/, '');
 
-	if (text && text !== " *") {
-		text = "/*\n" + text + "\n */\n\n";
+		if (text && text !== " *") {
+			text = "/*\n" + text + "\n */\n\n";
+		}
 	}
 -%>
 <%- text -%>

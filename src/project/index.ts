@@ -39,6 +39,7 @@ export default class ProjectGenerator extends BaseGenerator {
       PromptNames.RepositoryOwner,
       PromptNames.Description,
       PromptNames.LicenseType,
+      PromptNames.UseLicenseHeaders,
       PromptNames.EnableWyam,
       PromptNames.UnitTestLibrary,
       PromptNames.UseTabs,
@@ -62,6 +63,11 @@ export default class ProjectGenerator extends BaseGenerator {
    * the user specified directory.
    */
   public writing() {
+    const licenseType = this.getValue<string>(PromptNames.LicenseType);
+    if (licenseType === "Unlicense" || licenseType === "WTFPL") {
+      this.setValue(PromptNames.UseLicenseHeaders, false);
+    }
+
     const sourceDir = this.getValue<string>(PromptNames.SourceDir, "./src");
     if (!sourceDir) {
       throw Error("Unable to get the current source directory to use");
