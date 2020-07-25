@@ -84,6 +84,7 @@ describe("generator:project", () => {
       assert.file(
         [
           "src/Cake.TestApp.sln",
+          "src/stylecop.json",
           "src/Cake.TestApp/Cake.TestApp.csproj",
           "src/Cake.TestApp/TestAppAliases.cs",
           "src/Cake.TestApp/TestAppRunner.cs",
@@ -146,6 +147,13 @@ describe("generator:project", () => {
           "TestAppRunnerFixture.cs"
         ),
         "default/testRunnerFixture.cs"
+      );
+    });
+
+    it("should create stylecop configuration with expected content", () => {
+      assertContent(
+        path.join(workDir, "src", "stylecop.json"),
+        "default/stylecop.json"
       );
     });
 
@@ -455,6 +463,13 @@ describe("generator:project", () => {
           expect(line).toMatch(tabRegex);
         });
       });
+
+      it("should create stylecop configuration with tabs", () => {
+        assertContent(
+          path.join(workDir, "src", "stylecop.json"),
+          "tabs/stylecop.json"
+        );
+      });
     });
 
     describe("space", () => {
@@ -562,6 +577,13 @@ describe("generator:project", () => {
             "TestAppRunnerTests.cs"
           ),
           "space/testRunnerTests.cs"
+        );
+      });
+
+      it("should create stylecop configuration with 2 spaces", () => {
+        assertContent(
+          path.join(workDir, "src", "stylecop.json"),
+          "space/stylecop.json"
         );
       });
     });

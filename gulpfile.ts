@@ -36,6 +36,7 @@ export function pretty() {
     "!generators{,/**}",
     "!coverage/{,/**}",
     "!**/obj/{,/**}",
+    "!__tests__/**/*.json",
   ]).pipe(prettier.check());
 }
 
@@ -51,6 +52,7 @@ export function prettyFix() {
     "!generators{,/**}",
     "!coverage/{,/**}",
     "!**/obj/{,/**}",
+    "!__tests__/**/*.json",
   ])
     .pipe(prettier())
     .pipe(dest("."));

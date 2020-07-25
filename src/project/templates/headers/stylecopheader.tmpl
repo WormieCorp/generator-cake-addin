@@ -1,0 +1,12 @@
+<%
+	var text = include(licenseType + ".tmpl", { startYear: "{year}", author: "{companyName}" }).trimEnd();
+	var replacements = '\t';
+
+	if (!useTabs) {
+		replacements = '';
+		for (let i = 0; i < indentSize; i++) {
+			replacements = replacements + ' ';
+		}
+	}
+%>
+<%- JSON.stringify(text.replace(/\t/gi, replacements)) %>

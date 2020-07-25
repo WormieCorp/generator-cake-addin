@@ -3,7 +3,9 @@
 	<PropertyGroup>
 		<TargetFrameworks>netcoreapp2.1</TargetFrameworks>
 		<TargetFrameworks Condition="'$(OS)'!='Unix'">$(TargetFrameworks);net461</TargetFrameworks>
-
+<% if (licenseType === "Unlicense" || licenseType === "WTFPL") { -%>
+		<NoWarn>$(NoWarn);SA1633</NoWarn>
+<% } %>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
 

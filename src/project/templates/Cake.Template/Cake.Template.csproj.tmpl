@@ -4,6 +4,9 @@
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+<% if (licenseType === "Unlicense" || licenseType === "WTFPL") { -%>
+		<NoWarn>$(NoWarn);SA1633</NoWarn>
+<% } -%>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -34,5 +37,8 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
 	</ItemGroup>
 </Project>

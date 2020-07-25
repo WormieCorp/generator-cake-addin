@@ -1,6 +1,9 @@
 <% var currentYear = new Date().getFullYear();
    var fullYear = currentYear;
-   if (currentYear != startYear) {
+   if (typeof startYear === "string") {
+	   fullYear = startYear;
+   }
+   else if (currentYear != startYear) {
 	   fullYear = startYear + "-" + currentYear;
    }
 -%>

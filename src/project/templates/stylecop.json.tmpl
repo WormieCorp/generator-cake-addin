@@ -1,0 +1,21 @@
+<% var currentYear = new Date().getFullYear();
+   var fullYear = currentYear;
+   if (currentYear != startYear) {
+	   fullYear = startYear + "-" + currentYear;
+   }
+   let text = include("headers/stylecopheader.tmpl").trim();
+-%>
+{
+	"$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+	"settings": {
+		"documentationRules": {
+			"companyName": "<%= author %>",
+			"copyrightText": <%- text %>,
+			"fileNamingConvention": "metadata",
+			"xmlHeader": false,
+			"variables": {
+				"year": "<%= fullYear %>"
+			}
+		}
+	}
+}

@@ -137,6 +137,11 @@ export default class ProjectGenerator extends BaseGenerator {
       ),
       this.allValues
     );
+    this.fs.copyTpl(
+      this.templatePath("stylecop.json.tmpl"),
+      this.destinationPath(`${destinationDir}/stylecop.json`),
+      this.allValues
+    );
   }
 
   /**
