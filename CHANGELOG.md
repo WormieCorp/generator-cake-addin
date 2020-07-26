@@ -1,5 +1,30 @@
 # Cake Addin generator changelog
 
+# [1.4.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.7...v1.4.0) (2020-07-26)
+
+
+### Bug fixes
+
+* fix indent size being prompted when user selects to use tabs ([9b88bf8](https://github.com/WormieCorp/generator-cake-addin/commit/9b88bf8))
+* **project generator:** fix generator exiting early when running dotnet build/restore ([4d11805](https://github.com/WormieCorp/generator-cake-addin/commit/4d11805))
+* **project generator:** fix generator outputting template with parameters on same line ([a04a1fd](https://github.com/WormieCorp/generator-cake-addin/commit/a04a1fd))
+* **project generator:** fix test project not generated with documentation comments disabled ([be4119f](https://github.com/WormieCorp/generator-cake-addin/commit/be4119f))
+
+
+### Features
+
+* **build scripts generator:** update cake.recipe version in generated build script ([0cd6811](https://github.com/WormieCorp/generator-cake-addin/commit/0cd6811))
+* **build scripts generator:** update generated powershell bootstrapper to latest edition ([e171db8](https://github.com/WormieCorp/generator-cake-addin/commit/e171db8))
+* **project generator:** add ability to include license header for source files ([e5d199f](https://github.com/WormieCorp/generator-cake-addin/commit/e5d199f)), closes [#26](https://github.com/WormieCorp/generator-cake-addin/issues/26)
+* **project generator:** add ability to specifically decide whether to use license headers or not ([7b0e80f](https://github.com/WormieCorp/generator-cake-addin/commit/7b0e80f)), closes [#26](https://github.com/WormieCorp/generator-cake-addin/issues/26)
+* **project generator:** add basic stylecop configuration json file ([b6208f6](https://github.com/WormieCorp/generator-cake-addin/commit/b6208f6))
+* **project generator:** update package dependencies on all generated project files ([6280538](https://github.com/WormieCorp/generator-cake-addin/commit/6280538))
+
+
+### Reverts
+
+* "feat(project): add ability to specifically decide whether to use license headers or not" ([12aef7f](https://github.com/WormieCorp/generator-cake-addin/commit/12aef7f))
+
 ## [1.3.7](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.6...v1.3.7) (2020-07-22)
 
 
