@@ -11,7 +11,6 @@ defaultConfig[PromptNames.Description] = "My Awesome Test Description";
 defaultConfig[PromptNames.ShortDescription] =
   defaultConfig[PromptNames.Description];
 defaultConfig[PromptNames.LicenseType] = "MIT";
-defaultConfig[PromptNames.UseLicenseHeaders] = true;
 defaultConfig[PromptNames.EmailAddress] = "test@app.com";
 defaultConfig[PromptNames.SourceDir] = "./src";
 defaultConfig[PromptNames.ScriptName] = "recipe.cake";

@@ -36,6 +36,5 @@ export const enum PromptNames {
   ShortDescription = "shortDescription",
   SourceDir = "sourceDir",
   UnitTestLibrary = "unitTestLibrary",
-  UseLicenseHeaders = "useLicenseHeaders",
   UseTabs = "useTabs",
 }
