@@ -75,7 +75,7 @@
         "@types/merge-stream": "1.1.2",
         "@types/prettier": "2.0.2",
         "@types/through2": "2.0.36",
-        "@types/uuid": "8.0.0",
+        "@types/uuid": "8.0.1",
         "@types/yeoman-assert": "3.1.1",
         "@types/yeoman-environment": "2.3.3",
         "@types/yeoman-generator": "3.1.4",
