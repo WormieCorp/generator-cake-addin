@@ -93,7 +93,7 @@
         "gulp-tslint": "8.1.4",
         "gulp-typescript": "6.0.0-alpha.1",
         "husky": "4.2.5",
-        "jest": "26.2.2",
+        "jest": "26.4.2",
         "jest-junit": "11.1.0",
         "lint-staged": "10.2.11",
         "merge-stream": "2.0.0",
