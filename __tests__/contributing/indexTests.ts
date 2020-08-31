@@ -16,7 +16,7 @@ describe("generator:contributing", () => {
     );
 
     it("creates contributing file", () => {
-      assert.file(join(workDir, "CONTRIBUTING.md"));
+      return assert.file(join(workDir, "CONTRIBUTING.md"));
     });
 
     it("creates file with expected content", () => {

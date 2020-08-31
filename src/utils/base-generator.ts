@@ -22,6 +22,7 @@ import { PromptNames } from "./constants/prompt-names";
 import { GeneratorPrompts } from "./generator-prompts";
 import { IGeneratorOption } from "./igenerator-option";
 import { indentStream } from "./streams/indent-stream";
+import { Transform } from "stream";
 
 /** Declares a common base to be used by all of the implemented generators */
 export default abstract class BaseGenerator extends Generator {
@@ -108,7 +109,7 @@ export default abstract class BaseGenerator extends Generator {
           amount: this.getValue<number>(PromptNames.IndentSize, 4) as number,
           tabs: this.getBoolValue(PromptNames.UseTabs, false),
         })
-      )
+      ) as Transform
     );
   }
 
