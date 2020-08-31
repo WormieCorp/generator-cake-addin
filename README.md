@@ -7,7 +7,7 @@
 [![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
 [![NPM package][npmimage]][npm]
-[![Liberapay receiving][liberapayimage]][liberapay]
+![CodeQL][codeqlbadge]
 
 > A yeoman generator to get you quickly set up for writing Cake Addins
 
@@ -87,14 +87,13 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [all-contributors]: https://github.com/all-contributors/all-contributors
 [codecov]: https://codecov.io/gh/WormieCorp/generator-cake-addin
 [codecovimage]: https://img.shields.io/codecov/c/github/WormieCorp/generator-cake-addin.svg?logo=codecov&style=flat-square
+[codeqlbadge]: https://github.com/WormieCorp/generator-cake-addin/workflows/CodeQL/badge.svg
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
 [contributing]: CONTRIBUTING.md
 [emoji-key]: https://allcontributors.org/docs/en/emoji-key
 [maintainer]: https://github.com/AdmiringWorm
 [npm]: https://www.npmjs.com/package/generator-cake-addin
 [npmimage]: https://img.shields.io/npm/v/generator-cake-addin.svg?logo=npm&style=flat-square
-[liberapay]: https://liberapay.com/WormieCorp/
-[liberapayimage]: https://img.shields.io/liberapay/receives/WormieCorp.svg?logo=liberapay&style=flat-square
 [license]: LICENSE
 [subgenerators]: https://github.com/WormieCorp/generator-cake-addin/tree/develop/src
 [standard-readme]: https://github.com/RichardLitt/standard-readme
