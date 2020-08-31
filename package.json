@@ -97,7 +97,7 @@
         "jest-junit": "11.1.0",
         "lint-staged": "10.2.13",
         "merge-stream": "2.0.0",
-        "prettier": "2.0.5",
+        "prettier": "2.1.1",
         "semantic-release": "17.1.1",
         "ts-jest": "26.3.0",
         "tslint": "6.1.3",
