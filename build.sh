@@ -61,7 +61,8 @@ for i in $arguments; do
         INSTALL="TRUE"
         FOUND="FALSE"
         PACK="TRUE"
-        for f in *.tgz; then
+        for f in *.tgz
+        do
             # If we get at least 1 result, then the file exist
             # and we should quit
             FOUND="TRUE"
