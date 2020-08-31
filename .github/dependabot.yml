@@ -14,3 +14,9 @@ updates:
       - dependencies
       - javascript
     versioning-strategy: increase
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "build: "
