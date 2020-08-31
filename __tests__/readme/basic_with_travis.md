@@ -6,7 +6,7 @@
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
 
-> The most awesome test cake addin library.
+The most awesome test cake addin library.
 
 ## Table of Contents
 

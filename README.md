@@ -9,7 +9,7 @@
 [![NPM package][npmimage]][npm]
 ![CodeQL][codeqlbadge]
 
-> A yeoman generator to get you quickly set up for writing Cake Addins
+A yeoman generator to get you quickly set up for writing Cake Addins
 
 This generator will get you set up with a basic project structure for
 a new Cake Addin, as well as adding basic configuration, documentation,

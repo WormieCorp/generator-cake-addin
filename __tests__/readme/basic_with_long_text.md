@@ -5,7 +5,7 @@
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
 
-> Lorem ipsum dolor sit amet, consectetur cras amet.
+Lorem ipsum dolor sit amet, consectetur cras amet.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tincidunt, nisl tincidunt convallis iaculis, tellus ante mattis dui, ac tincidunt libero nibh non tortor. Ut condimentum erat in mi efficitur fringilla. Mauris pellentesque, nulla et viverra rutrum, justo tortor condimentum augue, vitae commodo mauris enim interdum nibh. Vestibulum non dictum velit, in porta nisi. Mauris eu pulvinar urna. Nulla congue turpis eu felis aliquam faucibus. Ut eget orci vehicula turpis euismod faucibus. Curabitur ut eros vel massa feugiat ultricies. Praesent elit velit, elementum et velit sed, faucibus interdum odio. Aliquam interdum mi urna, fermentum maximus elit facilisis eget. Morbi facilisis lectus non odio eleifend rhoncus ac egestas felis. Sed eget nisi mollis, ornare risus id, ultricies quam. Sed et nulla consequat, mollis risus eu, iaculis leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec placerat sem sit amet vestibulum cursus. Sed feugiat ultrices lectus, interdum vehicula enim luctus et.
 
