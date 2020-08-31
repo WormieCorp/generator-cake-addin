@@ -59,7 +59,15 @@ for i in $arguments; do
         ;;
     --install)
         INSTALL="TRUE"
-        if [ ! -f *.tgz ]; then
+        FOUND="FALSE"
+        PACK="TRUE"
+        for f in *.tgz; then
+            # If we get at least 1 result, then the file exist
+            # and we should quit
+            FOUND="TRUE"
+            break
+        done
+        if [ "$FOUND" == "TRUE" ]; then
             BUILD="TRUE"
             PACK="TRUE"
         fi
