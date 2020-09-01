@@ -1,5 +1,23 @@
 # Cake Addin generator changelog
 
+# [1.5.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.4.0...v1.5.0) (2020-09-01)
+
+
+### Dependencies
+
+* bump yeoman-generator from 4.11.0 to 4.12.0 ([#454](https://github.com/WormieCorp/generator-cake-addin/issues//454)) ([62e0873](https://github.com/WormieCorp/generator-cake-addin/commit/62e0873))
+
+
+### Documentation
+
+* add codeql badge to readme ([5f08fdb](https://github.com/WormieCorp/generator-cake-addin/commit/5f08fdb))
+
+
+### Features
+
+* **code of conduct generator:** update code of contributing to latest version (2.0) ([9ebd384](https://github.com/WormieCorp/generator-cake-addin/commit/9ebd384))
+* **readme generator:** update generator to be compliant with latest standard-readme specs ([ed39dd9](https://github.com/WormieCorp/generator-cake-addin/commit/ed39dd9))
+
 # [1.4.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.3.7...v1.4.0) (2020-07-26)
 
 
