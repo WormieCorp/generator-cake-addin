@@ -3,7 +3,7 @@
 ![banner](graphics/icon_128x128.png)
 
 [![standard-readme compliant][]][standard-readme]
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors][all-contributorsimage]](#contributors)
 [![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
 [![NPM package][npmimage]][npm]
@@ -85,6 +85,7 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [GNU General Public License v3.0 or later © Kim J. Nordmo][license]
 
 [all-contributors]: https://github.com/all-contributors/all-contributors
+[all-contributorsimage]: https://img.shields.io/github/all-contributors/WormieCorp/generator-cake-addin.svg?color=orange&style=flat-square
 [codecov]: https://codecov.io/gh/WormieCorp/generator-cake-addin
 [codecovimage]: https://img.shields.io/codecov/c/github/WormieCorp/generator-cake-addin.svg?logo=codecov&style=flat-square
 [codeqlbadge]: https://github.com/WormieCorp/generator-cake-addin/workflows/CodeQL/badge.svg
