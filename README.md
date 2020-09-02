@@ -74,6 +74,7 @@ This project follows the [all-contributors][] specification. Contributions of an
 
 Thanks goes to these wonderful people ([emoji key][emoji-key]):
 
+<!-- prettier-ignore -->
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -88,6 +89,7 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
