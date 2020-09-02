@@ -1,5 +1,19 @@
 # Cake Addin generator changelog
 
+# [1.6.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.5.0...v1.6.0) (2020-09-02)
+
+
+### Documentation
+
+* add missing 'prettier-ignore' comment ([49c196a](https://github.com/WormieCorp/generator-cake-addin/commit/49c196a))
+* add nils-a as a contributor ([#457](https://github.com/WormieCorp/generator-cake-addin/issues//457)) ([a0d927f](https://github.com/WormieCorp/generator-cake-addin/commit/a0d927f))
+* update contributors badge to new edition ([a94fd6b](https://github.com/WormieCorp/generator-cake-addin/commit/a94fd6b))
+
+
+### Improvements
+
+* change to updated shields.io badge ([aae3d78](https://github.com/WormieCorp/generator-cake-addin/commit/aae3d78)), closes [#456](https://github.com/WormieCorp/generator-cake-addin/issues/456)
+
 # [1.5.0](https://github.com/WormieCorp/generator-cake-addin/compare/v1.4.0...v1.5.0) (2020-09-01)
 
 
