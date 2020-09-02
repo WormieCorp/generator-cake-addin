@@ -124,6 +124,10 @@
                             "type": "chore",
                             "scope": "deps",
                             "release": "patch"
+                        },
+                        {
+                            "type": "improvement",
+                            "release": "minor"
                         }
                     ]
                 }
