@@ -3,7 +3,7 @@
 ![banner](graphics/icon_128x128.png)
 
 [![standard-readme compliant][]][standard-readme]
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors][all-contributorsimage]](#contributors)
 [![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
 [![NPM package][npmimage]][npm]
@@ -75,9 +75,19 @@ This project follows the [all-contributors][] specification. Contributions of an
 Thanks goes to these wonderful people ([emoji key][emoji-key]):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://github.com/AdmiringWorm"><img src="https://avatars3.githubusercontent.com/u/1474648?v=4" width="100px;" alt="Kim J. Nordmo"/><br /><sub><b>Kim J. Nordmo</b></sub></a><br /><a href="#maintenance-AdmiringWorm" title="Maintenance">🚧</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=AdmiringWorm" title="Code">💻</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=AdmiringWorm" title="Documentation">📖</a> <a href="#ideas-AdmiringWorm" title="Ideas, Planning, & Feedback">🤔</a> <a href="#review-AdmiringWorm" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=AdmiringWorm" title="Tests">⚠️</a></td><td align="center"><a href="https://github.com/apps/allcontributors"><img src="https://avatars0.githubusercontent.com/in/23186?v=4" width="100px;" alt="allcontributors[bot]"/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=allcontributors[bot]" title="Documentation">📖</a></td><td align="center"><a href="http://www.gep13.co.uk/blog"><img src="https://avatars3.githubusercontent.com/u/1271146?v=4" width="100px;" alt="Gary Ewan Park"/><br /><sub><b>Gary Ewan Park</b></sub></a><br /><a href="#video-gep13" title="Videos">📹</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=gep13" title="Code">💻</a> <a href="https://github.com/WormieCorp/generator-cake-addin/issues?q=author%3Agep13" title="Bug reports">🐛</a></td></tr></table>
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/AdmiringWorm"><img src="https://avatars3.githubusercontent.com/u/1474648?v=4" width="100px;" alt=""/><br /><sub><b>Kim J. Nordmo</b></sub></a><br /><a href="#maintenance-AdmiringWorm" title="Maintenance">🚧</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=AdmiringWorm" title="Code">💻</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=AdmiringWorm" title="Documentation">📖</a> <a href="#ideas-AdmiringWorm" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/WormieCorp/generator-cake-addin/pulls?q=is%3Apr+reviewed-by%3AAdmiringWorm" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=AdmiringWorm" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/apps/allcontributors"><img src="https://avatars0.githubusercontent.com/in/23186?v=4" width="100px;" alt=""/><br /><sub><b>allcontributors[bot]</b></sub></a><br /><a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=allcontributors[bot]" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.gep13.co.uk/blog"><img src="https://avatars3.githubusercontent.com/u/1271146?v=4" width="100px;" alt=""/><br /><sub><b>Gary Ewan Park</b></sub></a><br /><a href="#video-gep13" title="Videos">📹</a> <a href="https://github.com/WormieCorp/generator-cake-addin/commits?author=gep13" title="Code">💻</a> <a href="https://github.com/WormieCorp/generator-cake-addin/issues?q=author%3Agep13" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://www.nils-andresen.de"><img src="https://avatars3.githubusercontent.com/u/349188?v=4" width="100px;" alt=""/><br /><sub><b>Nils Andresen</b></sub></a><br /><a href="#ideas-nils-a" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License
@@ -85,6 +95,7 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [GNU General Public License v3.0 or later © Kim J. Nordmo][license]
 
 [all-contributors]: https://github.com/all-contributors/all-contributors
+[all-contributorsimage]: https://img.shields.io/github/all-contributors/WormieCorp/generator-cake-addin.svg?color=orange&style=flat-square
 [codecov]: https://codecov.io/gh/WormieCorp/generator-cake-addin
 [codecovimage]: https://img.shields.io/codecov/c/github/WormieCorp/generator-cake-addin.svg?logo=codecov&style=flat-square
 [codeqlbadge]: https://github.com/WormieCorp/generator-cake-addin/workflows/CodeQL/badge.svg
