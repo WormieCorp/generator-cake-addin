@@ -27,7 +27,6 @@ const promptOptions = [
   PromptNames.LicenseType,
   PromptNames.Author,
   PromptNames.EnableAllContributors,
-  PromptNames.EnableTravis,
   PromptNames.EnableContributing,
 ];
 
@@ -51,23 +50,8 @@ export default class ReadmeGenerator extends BaseGenerator {
 
     await this.callPrompts();
 
-    const repoOwner = this.getValue<string>(
-      PromptNames.RepositoryOwner
-    ) as string;
-    if (repoOwner === "cake-contrib") {
-      this.setValue(PromptNames.AppVeyorAccount, "cakecontrib");
-    } else {
-      this.setValue(
-        PromptNames.AppVeyorAccount,
-        repoOwner.replace("-", "").toLowerCase()
-      );
-    }
     const fullProjectName = `Cake.${this.getValue(PromptNames.ProjectName)}`;
     this.setValue("fullProjectName", fullProjectName);
-    this.setValue(
-      "appveyorProjectName",
-      fullProjectName.replace(".", "-").toLowerCase()
-    );
 
     const licenseTypeSpdx = this.getValue<string>(
       PromptNames.LicenseType,

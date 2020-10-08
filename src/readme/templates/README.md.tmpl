@@ -3,9 +3,6 @@
 [![standard-readme compliant][]][standard-readme]
 <% if (enableAllContributors) { %>[![All Contributors][all-contributorsimage]](#contributors)
 <% } -%>
-[![Appveyor build][appveyorimage]][appveyor]
-<% if (enableTravis) { %>[![Travis build][travisimage]][travis]
-<% } -%>
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
 <% if(description.length > 120) { -%>
@@ -79,8 +76,6 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 <% if (enableAllContributors) { %>[all-contributors]: https://github.com/all-contributors/all-contributors
 [all-contributorsimage]: https://img.shields.io/github/all-contributors/<%= repositoryOwner %>/<%= fullProjectName %>.svg?color=orange&style=flat-square
 <% } -%>
-[appveyor]: https://ci.appveyor.com/project/<%= appveyorAccount %>/<%= appveyorProjectName %>
-[appveyorimage]: https://img.shields.io/appveyor/ci/<%= appveyorAccount %>/<%= appveyorProjectName %>.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/<%= repositoryOwner %>/<%= fullProjectName %>
 [codecovimage]: https://img.shields.io/codecov/c/github/<%= repositoryOwner %>/<%= fullProjectName %>.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
@@ -95,7 +90,3 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 [license]: <%= licenseName %>
 [standard-readme]: https://github.com/RichardLitt/standard-readme
 [standard-readme compliant]: https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
-<% if(enableTravis) { -%>
-[travis]: https://travis-ci.org/<%= repositoryOwner %>/<%= fullProjectName %>
-[travisimage]: https://img.shields.io/travis/<%= repositoryOwner %>/<%= fullProjectName %>.svg?logo=travis&style=flat-square
-<% } -%>

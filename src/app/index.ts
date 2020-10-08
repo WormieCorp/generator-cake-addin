@@ -40,10 +40,6 @@ export default class MainGenerator extends BaseGenerator {
     }
     this.composeWith(require.resolve("../license"), this.allValues);
     this.composeWith(require.resolve("../config"), this.allValues);
-    this.composeWith(require.resolve("../appveyor"), this.allValues);
-    if (this.getBoolValue(PromptNames.EnableTravis)) {
-      this.composeWith(require.resolve("../travis"), this.allValues);
-    }
     this.composeWith(require.resolve("../readme"), this.allValues);
     this.composeWith(require.resolve("../build"), this.allValues);
     this.composeWith(require.resolve("../project"), this.allValues);

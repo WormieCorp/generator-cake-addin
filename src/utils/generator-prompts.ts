@@ -233,13 +233,6 @@ export abstract class GeneratorPrompts {
     {
       default: false,
       inputType: InputType.Confirm,
-      isCommon: true,
-      message: "Do you wish to enable travis builds? ",
-      name: PromptNames.EnableTravis,
-    },
-    {
-      default: false,
-      inputType: InputType.Confirm,
       isCommon: false,
       message: "Do you wish to use a CONTRIBUTING.md file? ",
       name: PromptNames.EnableContributing,

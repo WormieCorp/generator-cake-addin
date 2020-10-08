@@ -2,7 +2,6 @@
 
 [![standard-readme compliant][]][standard-readme]
 [![All Contributors][all-contributorsimage]](#contributors)
-[![Appveyor build][appveyorimage]][appveyor]
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
 
@@ -61,8 +60,6 @@ Thanks goes to these wonderful people ([emoji key][emoji-key]):
 
 [all-contributors]: https://github.com/all-contributors/all-contributors
 [all-contributorsimage]: https://img.shields.io/github/all-contributors/AdmiringWorm/Cake.TestApp.svg?color=orange&style=flat-square
-[appveyor]: https://ci.appveyor.com/project/admiringworm/cake-testapp
-[appveyorimage]: https://img.shields.io/appveyor/ci/admiringworm/cake-testapp.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/AdmiringWorm/Cake.TestApp
 [codecovimage]: https://img.shields.io/codecov/c/github/AdmiringWorm/Cake.TestApp.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct

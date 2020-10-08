@@ -14,8 +14,8 @@ A yeoman generator to get you quickly set up for writing Cake Addins
 This generator will get you set up with a basic project structure for
 a new Cake Addin, as well as adding basic configuration, documentation,
 and a cake build script using Cake.Recipe (with bootstrappers).
-It will also add a appveyor build file (optionally with linux enabled) and
-an optional travis build file.
+No CI Provider will be installed by with the default generater.
+These can be installed by calling running `yo cake-addin:appveyor` or `yo cake-addin:travis`
 
 ## Table of Contents
 

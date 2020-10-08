@@ -30,11 +30,11 @@ runpack() {
 }
 
 installgenerator() {
-    find ~+ -maxdepth 2 -name "*.tgz" -exec yarn global add {} --force \; || exit $?
+    find ~+ -maxdepth 2 -name "*.tgz" -exec sudo yarn global add {} --force \; || exit $?
 }
 
 uninstallGenerator() {
-    yarn global remove generator-cake-addin || exit $?
+    sudo yarn global remove generator-cake-addin || exit $?
 }
 
 BUILD="FALSE"

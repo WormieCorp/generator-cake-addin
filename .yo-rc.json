@@ -1,13 +1,13 @@
 {
-  "generator-cake-addin": {
-    "promptValues": {
-      "projectName": "generator-cake-addin",
-      "repositoryOwner": "WormieCorp",
-      "projectMaintainer": "AdmiringWorm",
-      "description": "A yeoman generator to get you quickly set up for writing Cake Addins.\n\nThis generator will get you set up with a basic project structure for\na new Cake Addin, as well as adding basic configuration, documentation,\nand a cake build script using Cake.Recipe (with bootstrappers).\n\nIt will also add a appveyor build file (optionally with linux enabled) and\nan optional travis build file.",
-      "licenseType": "GPL-3.0-or-later",
-      "author": "Kim J. Nordmo",
-      "enableAllContributors": true
+    "generator-cake-addin": {
+        "promptValues": {
+            "projectName": "generator-cake-addin",
+            "repositoryOwner": "WormieCorp",
+            "projectMaintainer": "AdmiringWorm",
+            "description": "A yeoman generator to get you quickly set up for writing Cake Addins.\n\nThis generator will get you set up with a basic project structure for\na new Cake Addin, as well as adding basic configuration, documentation,\nand a cake build script using Cake.Recipe (with bootstrappers).\n\nNo CI Provider will be installed by with the default generater.\n\nThese can be installed by calling running `yo cake-addin:appveyor` or `yo cake-addin:travis`.",
+            "licenseType": "GPL-3.0-or-later",
+            "author": "Kim J. Nordmo",
+            "enableAllContributors": true
+        }
     }
-  }
 }

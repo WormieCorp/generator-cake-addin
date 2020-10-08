@@ -1,8 +1,6 @@
 # Cake.TestApp
 
 [![standard-readme compliant][]][standard-readme]
-[![Appveyor build][appveyorimage]][appveyor]
-[![Travis build][travisimage]][travis]
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
 
@@ -48,8 +46,6 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 
 [MIT License © Kim Nordmo][license]
 
-[appveyor]: https://ci.appveyor.com/project/admiringworm/cake-testapp
-[appveyorimage]: https://img.shields.io/appveyor/ci/admiringworm/cake-testapp.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/AdmiringWorm/Cake.TestApp
 [codecovimage]: https://img.shields.io/codecov/c/github/AdmiringWorm/Cake.TestApp.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct
@@ -59,5 +55,3 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 [license]: LICENSE.txt
 [standard-readme]: https://github.com/RichardLitt/standard-readme
 [standard-readme compliant]: https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square
-[travis]: https://travis-ci.org/AdmiringWorm/Cake.TestApp
-[travisimage]: https://img.shields.io/travis/AdmiringWorm/Cake.TestApp.svg?logo=travis&style=flat-square

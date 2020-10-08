@@ -1,7 +1,6 @@
 # Cake.TestApp
 
 [![standard-readme compliant][]][standard-readme]
-[![Appveyor build][appveyorimage]][appveyor]
 [![Codecov Report][codecovimage]][codecov]
 [![NuGet package][nugetimage]][nuget]
 
@@ -51,8 +50,6 @@ Small note: If editing the Readme, please conform to the [standard-readme][] spe
 
 [MIT License © Kim Nordmo][license]
 
-[appveyor]: https://ci.appveyor.com/project/admiringworm/cake-testapp
-[appveyorimage]: https://img.shields.io/appveyor/ci/admiringworm/cake-testapp.svg?logo=appveyor&style=flat-square
 [codecov]: https://codecov.io/gh/AdmiringWorm/Cake.TestApp
 [codecovimage]: https://img.shields.io/codecov/c/github/AdmiringWorm/Cake.TestApp.svg?logo=codecov&style=flat-square
 [contrib-covenant]: https://www.contributor-covenant.org/version/1/4/code-of-conduct

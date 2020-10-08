@@ -9,11 +9,9 @@ jest.setTimeout(5 * 60 * 1000);
 const generatorDir = path.join(__dirname, "../../src/app");
 const expectedFiles = [
   ".all-contributorsrc",
-  ".appveyor.yml",
   ".editorconfig",
   ".gitattributes",
   ".gitignore",
-  ".travis.yml",
   "build.ps1",
   "build.sh",
   "CODE_OF_CONDUCT.md",
@@ -45,8 +43,6 @@ describe("generator:app", () => {
         .withPrompts(
           getPromptConfig({
             enableAllContributors: true,
-            enableLinux: true,
-            enableTravis: true,
             projectName: "MyTestApp",
           })
         )
@@ -61,23 +57,12 @@ describe("generator:app", () => {
     it("does not create contributing file when not enabled", () => {
       assert.noFile(path.join(workDir, "CONTRIBUTING.md"));
     });
-  });
 
-  describe("disable-travis", () => {
-    let workDir = "";
-    beforeAll(() => {
-      return helpers
-        .run(generatorDir)
-        .withPrompts(
-          getPromptConfig({
-            enableTravis: false,
-          })
-        )
-        .withOptions({ "start-year": "2018", "skip-dotnet": skipDotnet })
-        .inTmpDir((dir) => (workDir = dir));
+    it("does not create appveyor build file", () => {
+      assert.noFile(path.join(workDir, ".appveyor.yml"));
     });
 
-    it("does not create travis file when disabled", () => {
+    it("does not create travis build file", () => {
       assert.noFile(path.join(workDir, ".travis.yml"));
     });
   });
