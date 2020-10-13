@@ -1,5 +1,5 @@
 image:
-  - Visual Studio 2017
+  - Visual Studio 2019
 
 pull_requests:
   do_not_increment_build_number: true
@@ -17,7 +17,7 @@ test: off
 build: off
 
 build_script:
-  - ps: .\build.ps1 -Target AppVeyor
+  - pwsh: ./build.ps1 --target=CI
 
 cache:
-  - "tools -> recipe.cake,tools/packages.config"
+  - "tools -> recipe.cake,.config/dotnet-tools.json"
