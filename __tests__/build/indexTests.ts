@@ -20,6 +20,11 @@ const expectedContentFiles = [
     testFile: "build.sh",
   },
   {
+    expectedFile: "build.ps1",
+    name: "windows build script",
+    testFile: "build.ps1",
+  },
+  {
     expectedFile: "recipe.cake",
     name: "cake build script",
     testFile: "recipe.cake",
@@ -64,7 +69,7 @@ describe("generator:build", () => {
     it("windows bootstrapper sets cake build file to expected script name", () => {
       assert.fileContent(
         path.join(workDir, "build.ps1"),
-        /\$Script\s*=\s*"recipe\.cake"/
+        /\$SCRIPT_NAME\s*=\s*"recipe\.cake"/
       );
     });
   });
@@ -99,14 +104,14 @@ describe("generator:build", () => {
     it("Unix bootstrapper should set cake script name", () => {
       assert.fileContent(
         path.join(workDir, "build.sh"),
-        /SCRIPT="setup\.cake"/
+        /SCRIPT_NAME="setup\.cake"/
       );
     });
 
     it("Windows bootstrapper should set cake script name", () => {
       assert.fileContent(
         path.join(workDir, "build.ps1"),
-        /\$Script\s*=\s*"setup\.cake"/
+        /\$SCRIPT_NAME\s*=\s*"setup\.cake"/
       );
     });
 
