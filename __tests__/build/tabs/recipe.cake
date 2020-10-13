@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Recipe&version=1.1.2
+#load nuget:?package=Cake.Recipe&version=2.0.1
 
 Environment.SetVariableNames();
 
@@ -9,10 +9,6 @@ BuildParameters.SetParameters(
 	title: "Cake.TestApp",
 	repositoryOwner: "AdmiringWorm",
 	repositoryName: "Cake.TestApp",
-	shouldRunGitVersion: true,
-	shouldExecuteGitLink: false,
-	shouldRunCodecov: true,
-	shouldDeployGraphDocumentation: false,
 	shouldRunDotNetCorePack: true);
 
 BuildParameters.PrintParameters(Context);
