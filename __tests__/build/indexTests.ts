@@ -10,7 +10,7 @@ const expectedFiles = [
   "build.ps1",
   "build.sh",
   "recipe.cake",
-  "tools/packages.config",
+  ".config/dotnet-tools.json",
 ];
 
 const expectedContentFiles = [
@@ -25,9 +25,9 @@ const expectedContentFiles = [
     testFile: "recipe.cake",
   },
   {
-    expectedFile: "packages.config",
-    name: "Package config",
-    testFile: "tools/packages.config",
+    expectedFile: "dotnet-tools.json",
+    name: ".NET Core Tool Manifest",
+    testFile: ".config/dotnet-tools.json",
   },
 ];
 
@@ -38,7 +38,7 @@ function assertFileContent(filePath: string, expectedFile: string) {
   );
 }
 
-describe("generator:travis", () => {
+describe("generator:build", () => {
   describe("default", () => {
     let workDir = "";
     beforeAll(() => {
@@ -91,7 +91,7 @@ describe("generator:travis", () => {
           "build.ps1",
           "build.sh",
           "setup.cake",
-          "tools/packages.config",
+          ".config/dotnet-tools.json",
         ].map((v) => path.join(workDir, v))
       );
     });
@@ -151,14 +151,7 @@ describe("generator:travis", () => {
     });
 
     it("creates build files", () => {
-      assert.file(
-        [
-          "build.ps1",
-          "build.sh",
-          "recipe.cake",
-          "tools/packages.config",
-        ].map((v) => path.join(workDir, v))
-      );
+      assert.file(expectedFiles.map((v) => path.join(workDir, v)));
     });
 
     it("Cake script should set source directory", () => {

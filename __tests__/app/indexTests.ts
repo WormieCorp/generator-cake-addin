@@ -29,7 +29,7 @@ const expectedFiles = [
   "src/Cake.MyTestApp.Tests/MyTestAppAliasesTests.cs",
   "src/Cake.MyTestApp.Tests/MyTestAppRunnerFixture.cs",
   "src/Cake.MyTestApp.Tests/MyTestAppRunnerTests.cs",
-  "tools/packages.config",
+  ".config/dotnet-tools.json",
 ];
 
 const skipDotnet = !sync("dotnet");

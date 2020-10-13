@@ -69,8 +69,8 @@ export default class BuildGenerator extends BaseGenerator {
       this.allValues
     );
     this.fs.copy(
-      this.templatePath("packages.config.tmpl"),
-      this.destinationPath("tools/packages.config")
+      this.templatePath("dotnet-tools.json.tmpl"),
+      this.destinationPath(".config/dotnet-tools.json")
     );
   }
 
