@@ -35,7 +35,7 @@ os:
   - linux
   - osx
 mono: latest
-dotnet: 2.1.603
+dotnet: 3.1.402
 
 cache:
   directories:
@@ -57,7 +57,7 @@ branches:
     - /hotfix\\/.*/
 
 script:
-  - ./build.sh
+  - ./build.sh --target=CI
 `
       );
     });
@@ -91,7 +91,7 @@ os:
     - linux
     - osx
 mono: latest
-dotnet: 2.1.603
+dotnet: 3.1.402
 
 cache:
     directories:
@@ -113,7 +113,7 @@ branches:
         - /hotfix\\/.*/
 
 script:
-    - ./build.sh
+    - ./build.sh --target=CI
 `
       );
     });

@@ -10,7 +10,7 @@ const expectedFiles = [
   "build.ps1",
   "build.sh",
   "recipe.cake",
-  "tools/packages.config",
+  ".config/dotnet-tools.json",
 ];
 
 const expectedContentFiles = [
@@ -20,14 +20,19 @@ const expectedContentFiles = [
     testFile: "build.sh",
   },
   {
+    expectedFile: "build.ps1",
+    name: "windows build script",
+    testFile: "build.ps1",
+  },
+  {
     expectedFile: "recipe.cake",
     name: "cake build script",
     testFile: "recipe.cake",
   },
   {
-    expectedFile: "packages.config",
-    name: "Package config",
-    testFile: "tools/packages.config",
+    expectedFile: "dotnet-tools.json",
+    name: ".NET Core Tool Manifest",
+    testFile: ".config/dotnet-tools.json",
   },
 ];
 
@@ -38,7 +43,7 @@ function assertFileContent(filePath: string, expectedFile: string) {
   );
 }
 
-describe("generator:travis", () => {
+describe("generator:build", () => {
   describe("default", () => {
     let workDir = "";
     beforeAll(() => {
@@ -64,7 +69,7 @@ describe("generator:travis", () => {
     it("windows bootstrapper sets cake build file to expected script name", () => {
       assert.fileContent(
         path.join(workDir, "build.ps1"),
-        /\$Script\s*=\s*"recipe\.cake"/
+        /\$SCRIPT_NAME\s*=\s*"recipe\.cake"/
       );
     });
   });
@@ -91,7 +96,7 @@ describe("generator:travis", () => {
           "build.ps1",
           "build.sh",
           "setup.cake",
-          "tools/packages.config",
+          ".config/dotnet-tools.json",
         ].map((v) => path.join(workDir, v))
       );
     });
@@ -99,14 +104,14 @@ describe("generator:travis", () => {
     it("Unix bootstrapper should set cake script name", () => {
       assert.fileContent(
         path.join(workDir, "build.sh"),
-        /SCRIPT="setup\.cake"/
+        /SCRIPT_NAME="setup\.cake"/
       );
     });
 
     it("Windows bootstrapper should set cake script name", () => {
       assert.fileContent(
         path.join(workDir, "build.ps1"),
-        /\$Script\s*=\s*"setup\.cake"/
+        /\$SCRIPT_NAME\s*=\s*"setup\.cake"/
       );
     });
 
@@ -151,14 +156,7 @@ describe("generator:travis", () => {
     });
 
     it("creates build files", () => {
-      assert.file(
-        [
-          "build.ps1",
-          "build.sh",
-          "recipe.cake",
-          "tools/packages.config",
-        ].map((v) => path.join(workDir, v))
-      );
+      assert.file(expectedFiles.map((v) => path.join(workDir, v)));
     });
 
     it("Cake script should set source directory", () => {
